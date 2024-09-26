@@ -1,0 +1,22 @@
+/* SCSS HEX */
+$white: #FFFFFFff;
+$black: #000000ff;
+$dark-pastel-green: #00B923ff;
+$raisin-black: #282828ff;
+$green: #26FF10ff;
+$risd-blue: #2A57FFff;
+$black-2: #000000ff;
+$red: #FF0000ff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: pink;
+}
+
+main {
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+}
