@@ -1,32 +1,32 @@
 <?php
-class Area extends CI_Controller
+
+class Book  extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Area_model');
-        $this->load->library('form_validation');
-        $this->load->helper('security');
+        $this->load->model("Books_model");
+        $this->load->library("form_validation");
+        $this->load->helper("security");
     }
-
-
-    public function create_area()
+    public function create_books()
     {
 
-        $this->form_validation->set_rules('area', 'Area', 'required');
-        $this->form_validation->set_rules('population', 'Population', 'required');
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('author', 'Author', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             echo json_encode(array('status' => 'error', 'message' => validation_errors()));
         } else {
             // Prepare data for insertion
             $data = array(
-                'area' => $this->input->post('area'),
-                'population' => $this->input->post('population')
+                'title' => $this->input->post('title'),
+                'author' => $this->input->post('author')
             );
 
             // Call the model to insert data
-            if ($this->Area_model->create_area($data)) {
+            if ($this->Books_model->create_books($data)) {
                 echo json_encode(array('status' => 'success', 'message' => 'added successfully.'));
             } else {
                 echo json_encode(array('status' => 'error', 'message' => 'Failed to add question and answer.'));
@@ -36,17 +36,15 @@ class Area extends CI_Controller
 
     public function list()
     {
-        $area = $this->Area_model->get_all_areas();
+        $books = $this->Books_model->get_all_books();
 
         $response = [
             'status' => true,
-            'data' => $area
+            'data' => $books
         ];
 
         return $this->output
             ->set_content_type('application/json')
             ->set_output(json_encode($response));
     }
-
-    
 }

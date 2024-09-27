@@ -117,16 +117,26 @@
                         <div class="col-6 p-5 Leftside">
                             <h3 class="fw-bold mx-5">Login</h3>
                             <h6 class="fw-normal mx-5 mt-3">Signin to start your session</h6>
+                            <?php if ($this->session->flashdata('success')): ?>
+                                <div class="alert alert-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
+                                </div>
+                            <?php endif; ?>
 
-                            <form action="" class="p-5 rounded-start-3">
-                                <input type="text" name="Username" placeholder="Username :"
+                            <?php if ($this->session->flashdata('error')): ?>
+                                <div class="alert alert-danger">
+                                    <?php echo $this->session->flashdata('error'); ?>
+                                </div>
+                            <?php endif; ?>
+                            <form action="<?php echo site_url('auth/login'); ?>" method="post" class="p-5 rounded-start-3">
+                                <input type="text" name="email" placeholder="Username :"
                                     class="mb-5 py-2 w-100 border-0 rounded-3 Username">
-                                <input type="password" name="Password" placeholder="Password :"
+                                <input type="password" name="password" placeholder="Password :"
                                     class="mb-5 py-2 w-100 border-0 rounded-3 Password">
 
                                 <div class="row px-2">
                                     <div class="col-6">
-                                        <input type="button" value="Sign in"
+                                        <input type="submit" value="Sign in"
                                             class="px-5 border-0 text-center text-light fw-semibold fs-6 Button">
                                     </div>
                                     <div class="col-6 text-end">

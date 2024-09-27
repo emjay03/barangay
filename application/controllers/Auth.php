@@ -12,6 +12,11 @@ class Auth extends CI_Controller
         $this->load->helper('security');
     }
 
+
+    public function index()
+    {
+        $this->load->view('signin');
+    }
     // Register a new user
     public function register()
     {
@@ -95,27 +100,17 @@ class Auth extends CI_Controller
         $user = $this->User_model->login_user($email, $password);
 
         if ($user) {
-            $response = [
-                'status' => true,
-                'message' => 'Login successful.',
-                'data' => [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'role_id' => $user->role_id
-                ]
-            ];
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_output(json_encode($response));
+
+            $this->session->set_flashdata('success', 'Login successful.');
+
+
+            redirect('dashboard');
         } else {
-            $response = [
-                'status' => false,
-                'message' => 'Invalid email or password.'
-            ];
-            return $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(401)
-                ->set_output(json_encode($response));
+            // Set flash data for error
+            $this->session->set_flashdata('error', 'Invalid email or password.');
+
+
+            redirect('sigin');
         }
     }
 }
