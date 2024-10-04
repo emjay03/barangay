@@ -10,6 +10,11 @@ class Blotters   extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper('security');
     }
+
+    public function index() {
+        $this->load->view('admin/Blotter_record');
+    }
+
     public function create_blotters()
     {
         $this->form_validation->set_rules('incident_type', 'Incident_Type', 'required');

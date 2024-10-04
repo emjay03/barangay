@@ -11,7 +11,9 @@ class Resident extends CI_Controller
         $this->load->helper('security');
     }
 
-    public function index() {}
+    public function index() {
+        $this->load->view('admin/Resident_information');
+    }
 
     public function create_resident()
     {
