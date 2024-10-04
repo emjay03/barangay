@@ -66,10 +66,45 @@
         <main class="bg-light">
             <?php include 'application/views/admin/include/header.php'; ?>
 
+
             <div class="row content">
-            <div class="center">
-            </div>
-            <h1>Blotters Record</h1>
+                <div class="center"></div>
+                <h1>Resident Information</h1>
+
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>incident_type</th>
+                            <th>status</th>
+                            <th>schedule</th>
+                            <th>date_reported</th>
+                            <th>time_reported</th>
+                            <th>date_incident</th>
+                            <th>time_incident</th>
+                            <th>incident_location</th>
+                            <th>incident_narrative</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($all_blotters as $all_blotter): ?>
+                            <tr>
+
+                                <td><?php echo $all_blotter['incident_type']; ?></td>
+                                <td><?php echo $all_blotter['status']; ?></td>
+                                <td><?php echo $all_blotter['schedule']; ?></td>
+                                <td><?php echo $all_blotter['date_reported']; ?></td>
+                                <td><?php echo $all_blotter['time_reported']; ?></td>
+                                <td><?php echo $all_blotter['date_incident']; ?></td>
+                                <td><?php echo $all_blotter['time_incident']; ?></td>
+                                <td><?php echo $all_blotter['incident_location']; ?></td>
+                                <td><?php echo $all_blotter['incident_narrative']; ?></td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

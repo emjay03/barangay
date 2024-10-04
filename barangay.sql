@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2024 at 03:55 PM
+-- Generation Time: Oct 04, 2024 at 04:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `barangay`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blotters`
+--
+
+CREATE TABLE `blotters` (
+  `blotter_id` bigint(20) UNSIGNED NOT NULL,
+  `incident_type` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `schedule` varchar(255) DEFAULT NULL,
+  `schedule_date` date DEFAULT NULL,
+  `date_reported` date DEFAULT NULL,
+  `time_reported` time DEFAULT NULL,
+  `date_incident` date DEFAULT NULL,
+  `time_incident` time DEFAULT NULL,
+  `incident_location` varchar(255) DEFAULT NULL,
+  `incident_narrative` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blotters`
+--
+
+INSERT INTO `blotters` (`blotter_id`, `incident_type`, `status`, `schedule`, `schedule_date`, `date_reported`, `time_reported`, `date_incident`, `time_incident`, `incident_location`, `incident_narrative`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'test', 'monday', NULL, '2024-02-02', '12:00:00', '2024-02-02', '12:00:00', 'Tala', 'test', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -76,6 +105,7 @@ CREATE TABLE `resident_infos` (
   `address_1` varchar(255) DEFAULT NULL,
   `address_2` varchar(255) DEFAULT NULL,
   `date_registered` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -84,9 +114,9 @@ CREATE TABLE `resident_infos` (
 -- Dumping data for table `resident_infos`
 --
 
-INSERT INTO `resident_infos` (`resident_id`, `lastname`, `firstname`, `middlename`, `alias`, `birthday`, `age`, `gender`, `civilstatus`, `voterstatus`, `birth_of_place`, `citizenship`, `telephone_no`, `mobile_no`, `height`, `weight`, `PAG_IBIG`, `PHILHEALTH`, `SSS`, `TIN`, `email`, `spouse`, `father`, `mother`, `area`, `address_1`, `address_2`, `date_registered`, `created_at`, `updated_at`) VALUES
-(2, 'test', 'test', 'test', 'test', '0000-00-00', 12, 'female', 'test', 'test', 'test', 'test', '01', '1', '1', '1', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', '2024-10-15 13:54:00', NULL),
-(3, 'test', 'test', 'test', 'test', '2024-02-02', 12, 'male', 'test', 'test', 'test', 'test', '01', '1', '1', '1', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', '2024-10-16 13:53:52', NULL);
+INSERT INTO `resident_infos` (`resident_id`, `lastname`, `firstname`, `middlename`, `alias`, `birthday`, `age`, `gender`, `civilstatus`, `voterstatus`, `birth_of_place`, `citizenship`, `telephone_no`, `mobile_no`, `height`, `weight`, `PAG_IBIG`, `PHILHEALTH`, `SSS`, `TIN`, `email`, `spouse`, `father`, `mother`, `area`, `address_1`, `address_2`, `date_registered`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'lastname', 'test', 'test', 'test', '2024-02-02', 12, 'female', 'test', 'test', 'test', 'test', '01', '1', '1', '1', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', 1, '2024-10-15 13:54:00', NULL),
+(3, 'test', 'test', 'test', 'test', '2024-02-02', 12, 'male', 'test', 'test', 'test', 'test', '01', '1', '1', '1', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', 0, '2024-10-16 13:53:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +167,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `role_id`, `created_at`, `update
 --
 
 --
+-- Indexes for table `blotters`
+--
+ALTER TABLE `blotters`
+  ADD PRIMARY KEY (`blotter_id`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -163,6 +199,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `blotters`
+--
+ALTER TABLE `blotters`
+  MODIFY `blotter_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `questions`

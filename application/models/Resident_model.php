@@ -15,6 +15,16 @@ class Resident_model extends CI_Model
         return $this->db->insert('resident_infos', $data);
     }
 
+    public function update_resident($data, $id)
+    {
+        return $this->db->where('resident_id', $id)->update('resident_infos', $data);
+    }
+
+    public function archive_resident($data, $id)
+    {
+        return $this->db->where('resident_id', $id)->update('resident_infos', $data);
+    }
+
     public function get_all_resident()
     {
         $query = $this->db->get('resident_infos');
