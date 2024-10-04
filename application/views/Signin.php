@@ -22,11 +22,15 @@
         * {
             font-family: "Poppins", sans-serif;
             transition: all 0.3s ease;
-            overflow: hidden;
+        }
+
+        body {
+            overflow-y: hidden;
+            overflow-y: scroll;
         }
 
         main {
-            height: 100vh;
+            height: 100%;
         }
 
         h1 {
@@ -53,7 +57,7 @@
             text-indent: 0rem;
             letter-spacing: 1px;
             height: 30px;
-            text-transform: uppercase
+            text-transform: uppercase;
         }
 
         .Button:hover {
@@ -99,21 +103,21 @@
 
 <body>
     <main class="position-relative">
-        <div class="container-fluid p-5">
-            <div class="container d-flex justify-content-center align-items-center mt-2">
+        <div class="container-fluid p-1">
+            <div class="container d-flex justify-content-center align-items-center mt-5">
                 <img class="rounded-circle me-4" style="z-index: 2"
-                    src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/243452652_187913776797965_1265155358119833421_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEltPmCH2mkgGbpveR0mr_VrRZEYCFUhn2tFkRgIVSGfQj2VRqYC62Ulv7atBqLLYHXVyGuPcIOKzs0kQTGmT4O&_nc_ohc=4ggRdj8r1O0Q7kNvgFxnVpc&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=At8TKuEvrMepfYoHu0Bfpua&oh=00_AYBbrZcMxPhOWcosaQGQjJ52t9tErnPAXExZoW4boghv_Q&oe=66FB131D"
-                    alt="barangay187" width="150">
+                    src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/243452652_187913776797965_1265155358119833421_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEltPmCH2mkgGbpveR0mr_VrRZEYCFUhn2tFkRgIVSGfQj2VRqYC62Ulv7atBqLLYHXVyGuPcIOKzs0kQTGmT4O&_nc_ohc=Dr6MphUMueIQ7kNvgFhqORh&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=AzXGoAs9u8wUQ0zAHWW7eTv&oh=00_AYASuq7fK6lB9nINGhx1R_YjIJ0otVPB2sBGgRV-i1sRsQ&oe=67059F1D"
+                    alt="barangay187" width="100">
 
-                <h1 class="text-light fw-bold" style="z-index: 2">BARANGAY 185 MALARIA DISTRICT 3, <br />
-                    CALOOCAN CITY</h1>
+                <h2 class="text-light fw-bold" style="z-index: 2">BARANGAY 185 MALARIA DISTRICT 3, <br />
+                    CALOOCAN CITY</h2>
             </div>
         </div>
 
-        <div class="container-fluid p-3 d-flex justify-content-center align-items-center">
+        <div class="mt-2">
             <div class="container p-5">
                 <div class="contianer-fluid bg-light p-2 rounded-4 shadow" style="z-index: 5">
-                    <div class="row">
+                    <div class="row d-flex">
                         <div class="col-6 p-5 Leftside">
                             <h3 class="fw-bold mx-5">Login</h3>
                             <h6 class="fw-normal mx-5 mt-3">Signin to start your session</h6>
@@ -134,7 +138,7 @@
                                 <input type="password" name="password" placeholder="Password :"
                                     class="mb-5 py-2 w-100 border-0 rounded-3 Password">
 
-                                <div class="row px-2">
+                                <div class="row">
                                     <div class="col-6">
                                         <input type="submit" value="Sign in"
                                             class="px-5 border-0 text-center text-light fw-semibold fs-6 Button">
