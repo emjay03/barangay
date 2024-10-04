@@ -11,8 +11,12 @@ class Resident extends CI_Controller
         $this->load->helper('security');
     }
 
-    public function index() {
-        $this->load->view('admin/Resident_information');
+    public function index()
+    {
+        $data['all_resident'] = $this->Resident_model->get_all_resident();
+
+
+        $this->load->view('admin/Resident_information', $data);
     }
 
     public function create_resident()
@@ -28,7 +32,7 @@ class Resident extends CI_Controller
         $this->form_validation->set_rules('civilstatus', 'Civilstatus', 'required');
         $this->form_validation->set_rules('voterstatus', 'Voterstatus', 'required');
         $this->form_validation->set_rules('birth_of_place', 'Birth_of_place', 'required');
-        $this->form_validation->set_rules('citzenship', 'Citizenship', 'required');
+        $this->form_validation->set_rules('citizenship', 'Citizenship', 'required');
         $this->form_validation->set_rules('telephone_no', 'Telephone_no', 'required');
         $this->form_validation->set_rules('mobile_no', 'Mobile_no', 'required');
         $this->form_validation->set_rules('height', 'Height', 'required');
@@ -43,8 +47,8 @@ class Resident extends CI_Controller
         $this->form_validation->set_rules('father', 'Father', 'required');
         $this->form_validation->set_rules('mother', 'Mother', 'required');
         $this->form_validation->set_rules('area', 'Area', 'required');
-        $this->form_validation->set_rules('address1', 'Address1', 'required');
-        $this->form_validation->set_rules('address2', 'Address2', 'required');
+        $this->form_validation->set_rules('address_1', 'Address_1', 'required');
+        $this->form_validation->set_rules('address_2', 'Address_2', 'required');
         $this->form_validation->set_rules('date_registered', 'Date_registered', 'required');
 
         if ($this->form_validation->run() === FALSE) {
@@ -61,7 +65,7 @@ class Resident extends CI_Controller
                 'civilstatus' => $this->input->post('civilstatus'),
                 'voterstatus' => $this->input->post('voterstatus'),
                 'birth_of_place' => $this->input->post('birth_of_place'),
-                'citzenship' => $this->input->post('citzenship'),
+                'citizenship' => $this->input->post('citizenship'),
                 'telephone_no' => $this->input->post('telephone_no'),
                 'mobile_no' => $this->input->post('mobile_no'),
                 'height' => $this->input->post('height'),
@@ -75,15 +79,15 @@ class Resident extends CI_Controller
                 'father' => $this->input->post('father'),
                 'mother' => $this->input->post('mother'),
                 'area' => $this->input->post('area'),
-                'address1' => $this->input->post('address1'),
-                'address2' => $this->input->post('address2'),
+                'address_1' => $this->input->post('address_1'),
+                'address_2' => $this->input->post('address_2'),
                 'date_registered' => $this->input->post('date_registered'),
 
 
 
             );
 
-            if ($this->Resident_model->create_blotters($data)) {
+            if ($this->Resident_model->create_resident($data)) {
                 echo json_encode(array('status' => 'success', 'message' => 'added successfully.'));
             } else {
                 echo json_encode(array('status' => 'error', 'message' => 'Failed to add.'));
@@ -94,7 +98,49 @@ class Resident extends CI_Controller
 
     public function list()
     {
-        $resident = $this->Resident__model->get_all_resident();
+        $resident = $this->Resident_model->get_all_resident();
+
+        $response = [
+            'status' => true,
+            'data' => $resident
+        ];
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+
+    public function list_female()
+    {
+        $resident = $this->Resident_model->get_female_residents();
+
+        $response = [
+            'status' => true,
+            'data' => $resident
+        ];
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+    public function list_male()
+    {
+        $resident = $this->Resident_model->get_male_residents();
+
+        $response = [
+            'status' => true,
+            'data' => $resident
+        ];
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+    public function resident_count()
+    {
+        $resident = $this->Resident_model->get_all_resident_count();
 
         $response = [
             'status' => true,

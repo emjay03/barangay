@@ -88,28 +88,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($residents)): ?>
-                            <?php foreach ($residents as $resident): ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($resident->lastname); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->firstname); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->middlename); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->alias); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->birthday); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->age); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->gender); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->civilstatus); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->email); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->address1 . ', ' . $resident->address2); ?></td>
-                                    <td><?php echo htmlspecialchars($resident->date_registered); ?></td>
-                                    <!-- Add more fields as necessary -->
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
+                        <?php foreach ($all_resident as $resident): ?>
                             <tr>
-                                <td colspan="11">No residents found.</td>
+
+                                <td><?php echo $resident['lastname']; ?></td>
+                                <td><?php echo $resident['firstname']; ?></td>
+                                <td><?php echo $resident['middlename']; ?></td>
+                                <td><?php echo $resident['alias']; ?></td>
+                                <td><?php echo $resident['birthday']; ?></td>
+                                <td><?php echo $resident['age']; ?></td>
+                                <td><?php echo $resident['gender']; ?></td>
+                                <td><?php echo $resident['civilstatus']; ?></td>
+                                <td><?php echo $resident['email']; ?></td>
+                                <td><?php echo $resident['address_1']; ?></td>
+                                <td><?php echo $resident['created_at']; ?></td>
                             </tr>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

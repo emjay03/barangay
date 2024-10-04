@@ -11,7 +11,8 @@ class Blotters   extends CI_Controller
         $this->load->helper('security');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->load->view('admin/Blotter_record');
     }
 

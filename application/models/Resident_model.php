@@ -20,4 +20,22 @@ class Resident_model extends CI_Model
         $query = $this->db->get('resident_infos');
         return $query->result_array();
     }
+
+    public function get_female_residents()
+    {
+        $this->db->where('gender', 'female');
+        return $this->db->count_all_results('resident_infos');
+    }
+
+    public function get_male_residents()
+    {
+        $this->db->where('gender', 'male');
+        return $this->db->count_all_results('resident_infos');
+    }
+
+
+    public function get_all_resident_count()
+    {
+        return $this->db->count_all_results('resident_infos');
+    }
 }

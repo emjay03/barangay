@@ -67,7 +67,7 @@
             <?php include 'application/views/admin/include/header.php'; ?>
 
             <div class="row content">
-            <div class="center"></div>
+                <div class="center"></div>
                 <div class="col-4 p-0 m-0">
                     <div class="contaier-fluid bg-primary h-100 opacity-25"></div>
                 </div>
@@ -86,7 +86,8 @@
                                         <p style="font-size: 12px;">total population</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold">000</p>
+                                        <p class="fw-bold"><?php echo $all_resident; ?></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +97,7 @@
                                         <p style="font-size: 12px;">Male</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold">000</p>
+                                        <p class="fw-bold"><?php echo $male_count; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +117,9 @@
                                         <p style="font-size: 12px;">Female</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold">000</p>
+
+                                        <p class="fw-bold"><?php echo $male_count; ?></p>
+
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +146,7 @@
                                     <div class="card-header">
                                         <p style="font-size: 12px;">Unscheduled Cases</p>
                                     </div>
-                                    <div class="card-body">                               
+                                    <div class="card-body">
                                     </div>
                                 </div>
                             </div>
