@@ -263,4 +263,18 @@ class Resident extends CI_Controller
             ->set_content_type('application/json')
             ->set_output(json_encode($response));
     }
+
+
+    public function voters_registered()
+    {
+        $registered = $this->Resident_model->get_all_registered_voter();
+
+        $registered = [
+            'status' > true,
+            'data' => $registered
+        ];
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($registered));
+    }
 }

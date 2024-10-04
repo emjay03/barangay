@@ -48,4 +48,10 @@ class Resident_model extends CI_Model
     {
         return $this->db->count_all_results('resident_infos');
     }
+
+    public function get_all_registered_voter()
+    {
+        $this->db->where('voterstatus', 'registered');
+        return $this->db->count_all_results('resident_infos');
+    }
 }

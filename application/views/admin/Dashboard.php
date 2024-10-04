@@ -86,7 +86,7 @@
                                         <p style="font-size: 12px;">total population</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold"><?php echo $all_resident; ?></p>
+                                        <p class="fw-bold"><?php echo !empty($all_resident) ? $all_resident : 0; ?></p>
 
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                                         <p style="font-size: 12px;">Male</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold"><?php echo $male_count; ?></p>
+                                        <p class="fw-bold"><?php echo !empty($male_count) ? $male_count : 0; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,8 @@
                                         <p style="font-size: 12px;">registered Voters</p>
                                     </div>
                                     <div class="card-body text-center">
-                                        <p class="fw-bold">000</p>
+                                        <p class="fw-bold"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +119,7 @@
                                     </div>
                                     <div class="card-body text-center">
 
-                                        <p class="fw-bold"><?php echo $male_count; ?></p>
+                                        <p class="fw-bold"><?php echo !empty($female_count) ? $female_count : 0; ?></p>
 
                                     </div>
                                 </div>

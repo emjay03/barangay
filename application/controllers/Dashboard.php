@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller
 
         $data['female_count'] = $this->Resident_model->get_female_residents();
         $data['male_count'] = $this->Resident_model->get_male_residents();
+        $data['registered_voters'] = $this->Resident_model->get_all_registered_voter();
         $data['all_resident'] = $this->Resident_model->get_all_resident_count();
 
         $this->load->view("admin/Dashboard", $data);
