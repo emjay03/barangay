@@ -10,6 +10,7 @@ class Auth extends CI_Controller
         $this->load->model('User_model');
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $this->load->library('session');
     }
 
 
@@ -84,14 +85,16 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            $response = [
-                'status' => false,
-                'message' => validation_errors()
-            ];
+            // Set flash data for validation errors
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('auth');
             return $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(400)
-                ->set_output(json_encode($response));
+                ->set_output(json_encode([
+                    'status' => false,
+                    'message' => validation_errors()
+                ]));
         }
 
         $email = $this->input->post('email');
@@ -100,17 +103,12 @@ class Auth extends CI_Controller
         $user = $this->User_model->login_user($email, $password);
 
         if ($user) {
-
-            $this->session->set_flashdata('success', 'Login successful.');
-
-
+            $this->session->set_userdata('user_data', $user);
             redirect('dashboard');
         } else {
-            // Set flash data for error
+            // Set flash data for invalid login
             $this->session->set_flashdata('error', 'Invalid email or password.');
-
-
-            redirect('sigin');
+            redirect('auth');
         }
     }
 }

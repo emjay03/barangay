@@ -77,6 +77,7 @@
                     <div class="container-fluid">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
                             <p class="text-dark">RESIDENT RECORD SUMMARY</p>
+
                         </div>
 
                         <div class="row p-0 pe-3 m-0 w-100 h-100" style="width:500px; max-width: 500px;">
