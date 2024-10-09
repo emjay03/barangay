@@ -41,19 +41,6 @@
         overflow-x: hidden;
     }
 
-    .center {
-        height: 100%;
-        width: 100%;
-        background-image: url("https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/243452652_187913776797965_1265155358119833421_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEltPmCH2mkgGbpveR0mr_VrRZEYCFUhn2tFkRgIVSGfQj2VRqYC62Ulv7atBqLLYHXVyGuPcIOKzs0kQTGmT4O&_nc_ohc=Dr6MphUMueIQ7kNvgFhqORh&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=AzXGoAs9u8wUQ0zAHWW7eTv&oh=00_AYASuq7fK6lB9nINGhx1R_YjIJ0otVPB2sBGgRV-i1sRsQ&oe=67059F1D");
-        background-position: center;
-        background-repeat: repeat;
-        background-size: auto;
-        opacity: 0.1;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     .content {
         margin-top: 4rem;
     }
@@ -69,59 +56,69 @@
             <div class="row content">
                 <div class="center"></div>
                 <div class="col-4 p-0 m-0">
-                    <div class="contaier-fluid bg-primary h-100 opacity-25"></div>
+                    <div class="contaier-fluid bg-primary opacity-50 d-flex justify-content-center" style="height: 100vh;">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220" class="rounded-circle opacity-100 mt-5" width="250" height="250" alt="">
+                    </div>
                 </div>
                 <div class="col-4 p-0 m-0">
                 </div>
                 <div class="col-4 p-0 m-0 position-relative">
                     <div class="container-fluid">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                            <p class="text-dark">RESIDENT RECORD SUMMARY</p>
-
+                            <p class="text-dark fs-3">RESIDENT RECORD SUMMARY</p>
                         </div>
 
                         <div class="row p-0 pe-3 m-0 w-100 h-100" style="width:500px; max-width: 500px;">
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">total population</p>
+                                        <p class="fs-6">total population</p>
                                     </div>
-                                    <div class="card-body text-center">
-                                        <p class="fw-bold"><?php echo !empty($all_resident) ? $all_resident : 0; ?></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
-                                    <div class="card-header">
-                                        <p style="font-size: 12px;">Male</p>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <p class="fw-bold"><?php echo !empty($male_count) ? $male_count : 0; ?></p>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people-fill fs-1 text-success me-2"></i>
+                                        <div class="text-center w-100"><p class="fw-bold mt-3 fs-3"><?php echo !empty($all_resident) ? $all_resident : 0; ?></p></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">registered Voters</p>
+                                        <p class="fs-6">Male</p>
                                     </div>
-                                    <div class="card-body text-center">
-                                        <p class="fw-bold"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-gender-male fs-1 text-primary me-2 fw-bold"></i>
+                                        <div class="text-center w-100">
+                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($male_count) ? $male_count : 0; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 m-0 p-2">
+                                <div class="card z-3 shadow-lg">
+                                    <div class="card-header">
+                                        <p class="fs-6">registered Voters</p>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
+                                        <div class="text-center w-100">
+                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
                                         </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">Female</p>
+                                        <p class="fs-6">Female</p>
                                     </div>
-                                    <div class="card-body text-center">
 
-                                        <p class="fw-bold"><?php echo !empty($female_count) ? $female_count : 0; ?></p>
-
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-gender-female fs-1 text-warning me-2"></i>
+                                        <div class="text-center w-100">
+                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($female_count) ? $female_count : 0; ?></p>
+                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -130,14 +127,14 @@
 
                     <div class="container-fluid">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 mt-5 fw-bold rounded-0">
-                            <p class="text-dark">BLOTTER RECORD SUMMARY</p>
+                            <p class="text-dark fs-3">BLOTTER RECORD SUMMARY</p>
                         </div>
 
                         <div class="row p-0 pe-3 m-0 w-100 h-100">
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">Settled Cases</p>
+                                        <p class="fs-6">Settled Cases</p>
                                     </div>
                                     <div class="card-body">
                                     </div>
@@ -146,7 +143,7 @@
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">Unscheduled Cases</p>
+                                        <p class="fs-6">Unscheduled Cases</p>
                                     </div>
                                     <div class="card-body">
                                     </div>
@@ -155,7 +152,7 @@
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">Unsettled Cases</p>
+                                        <p class="fs-6">Unsettled Cases</p>
                                     </div>
                                     <div class="card-body">
                                     </div>
@@ -164,7 +161,7 @@
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p style="font-size: 12px;">Scheduled Cases</p>
+                                        <p class="fs-6">Scheduled Cases</p>
                                     </div>
                                     <div class="card-body">
                                     </div>

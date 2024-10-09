@@ -31,9 +31,9 @@
         <button class="border-0 bg-light fs-4 text-dark" id="btn-toggle">
             <i class="bi bi-list text-bold fs-2"></i>
         </button>
-        <button class="btn btn-primary p-2 d-flex align-items-center me-5" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+        <button class="btn btn-primary py-0 d-flex align-items-center me-5" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
             <i class="bi bi-person-circle me-3 fs-4"></i>
-            <span class="d-none d-sm-inline"><?php echo $user->email; ?></span>
+            <span class="d-none d-sm-inline px-5">Admin</span>
         </button>
     </div>
 

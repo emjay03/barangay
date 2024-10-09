@@ -105,13 +105,17 @@
     background-color: #2E58FF;
     border-bottom: 2px solid #fff;
   }
+
+  .setting {
+    width: 100%;
+  }
 </style>
 
 <!-- Sidebar -->
 <nav id="sidebar" class="sidebar bg-dark">
-  <div class="sidebar-header py-4 bg-dark d-flex align-items-center justify-content-center">
+  <div class="sidebar-header py-4 bg-dark d-flex align-items-center justify-content-between px-5">
     <img
-      src="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/243452652_187913776797965_1265155358119833421_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEltPmCH2mkgGbpveR0mr_VrRZEYCFUhn2tFkRgIVSGfQj2VRqYC62Ulv7atBqLLYHXVyGuPcIOKzs0kQTGmT4O&_nc_ohc=Dr6MphUMueIQ7kNvgFhqORh&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=AzXGoAs9u8wUQ0zAHWW7eTv&oh=00_AYASuq7fK6lB9nINGhx1R_YjIJ0otVPB2sBGgRV-i1sRsQ&oe=67059F1D"
+      src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220"
       alt="logo" class="rounded-circle" height="40" onclick="window.location.href='/barangay/Dashboard'">>
     <h6 class="text-light fw-normal" style="font-size: 15px; letter-spacing: 1px;">Barangay 185 MLR</h6>
   </div>
@@ -138,11 +142,12 @@
     <span class="menu-title">Certificate Issurance
     </span>
   </a>
-  <a href="#" class="menu-item">
+  <button class="btn btn-dark setting menu-item text-start" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+  aria-controls="collapseExample">
     <i class="bi bi-sliders2"></i>
-    <span class="menu-title" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-      aria-controls="collapseExample">Settings</span>
-  </a>
+    <span class="menu-title">Settings</span>
+  </button>
+
 
   <div class="collapse bg-primary" id="collapseExample">
     <a href="#" class="Smenu-item">
