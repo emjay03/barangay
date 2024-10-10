@@ -25,7 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addResidentForm" class="p-5 rounded-4 shadow-lg">
+                <form id="addResidentForm" action="<?php echo site_url('resident/create_resident'); ?>" method="post" class="p-5 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="lastname" class="form-label">Lastname</label>
@@ -51,6 +51,10 @@
                             <input type="date" class="form-control" id="birthday" name="birthday" required>
                         </div>
                         <div class="col-md-3">
+                            <label for="birth_of_place" class="form-label">birth_of_place</label>
+                            <input type="text" class="form-control" id="birth_of_place" name="birth_of_place" required>
+                        </div>
+                        <div class="col-md-3">
                             <label for="age" class="form-label">Age</label>
                             <input type="number" class="form-control" id="age" name="age" required>
                         </div>
@@ -72,9 +76,25 @@
                                 <option value="Widowed">Widowed</option>
                             </select>
                         </div>
+                        <div class="col-md-3">
+                            <label for="citizenship" class="form-label">Citizenship</label>
+                            <select class="form-select" id="citizenship" name="citizenship" required>
+                                <option value="">Select</option>
+                                <option value="Filipino">Filipino</option>
+
+                            </select>
+                        </div>
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="voterstatus" class="form-label">voterstatus</label>
+                            <select class="form-select" id="voterstatus" name="voterstatus" required>
+                                <option value="">Select</option>
+                                <option value="1">Registered</option>
+                                <option value="0">Not Registered</option>
+                            </select>
+                        </div>
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
