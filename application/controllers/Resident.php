@@ -123,7 +123,7 @@ class Resident extends CI_Controller
         $this->form_validation->set_rules('area', 'Area', 'required');
         $this->form_validation->set_rules('address_1', 'Address 1', 'required');
         $this->form_validation->set_rules('address_2', 'Address 2', 'required');
-        $this->form_validation->set_rules('date_registered', 'Date Registered', 'required');
+
 
         // Validate the input
         if ($this->form_validation->run() === FALSE) {
@@ -161,7 +161,7 @@ class Resident extends CI_Controller
                 'area' => $this->input->post('area'),
                 'address_1' => $this->input->post('address_1'),
                 'address_2' => $this->input->post('address_2'),
-                'date_registered' => $this->input->post('date_registered')
+
             ];
 
 
@@ -171,6 +171,7 @@ class Resident extends CI_Controller
                     'status' => 'success',
                     'message' => 'Resident updated successfully.'
                 ]);
+                redirect('Resident');
             } else {
 
                 echo json_encode([

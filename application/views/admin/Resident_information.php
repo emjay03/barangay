@@ -278,12 +278,19 @@
                                     <td><?php echo htmlspecialchars($resident['area']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['date_registered']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['created_at']); ?></td>
+
+                                    <!-- Edit button with the resident ID -->
                                     <td>
-                                    <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editResidentModal">Edit</button>
+                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editResidentModal"
+                                            data-resident='<?php echo json_encode($resident); ?>'>
+                                            Edit
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
+
+
                     </table>
                 </div>
 
@@ -297,7 +304,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.resident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -311,7 +318,7 @@
                 }
             });
 
-            $('.search-btn').on('click', function () {
+            $('.search-btn').on('click', function() {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
             });
