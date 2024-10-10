@@ -34,7 +34,7 @@
 
     main {
         height: 100vh;
-        overflow-y: scroll;
+        overflow-y: hidden;
         width: 100vw;
         overflow-x: hidden;
         position: relative;
@@ -53,12 +53,11 @@
 
     .content {
         position: relative;
-        margin-top: 10rem;
+        margin-top: 5rem;
         z-index: 2;
     }
 
     .resident-table {
-        width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
@@ -219,8 +218,8 @@
 
             <div class="row content p-5 mx-5 rounded-4 bg-light shadow-lg ">
                 <h1 class="fw-bold text-dark mb-5"> <i class="bi bi-people-fill me-2"></i> Resident Information</h1>
-                <div class="container-fluid overflow-scroll">
-                    <table class="resident-table mb-5" style="max-height: 700px;">
+                <div class="table-responsive">
+                    <table class="resident-table table mb-5">
                         <thead>
                             <tr>
                                 <th>Lastname</th>
@@ -232,8 +231,22 @@
                                 <th>Gender</th>
                                 <th>Civil Status</th>
                                 <th>Email</th>
-                                <th>Address</th>
+                                <th>Address 1</th>
+                                <th>Address 2</th>
+                                <th>Telephone No</th>
+                                <th>Mobile No</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>PAG-IBIG</th>
+                                <th>PHILHEALTH</th>
+                                <th>SSS</th>
+                                <th>TIN</th>
+                                <th>Spouse</th>
+                                <th>Father</th>
+                                <th>Mother</th>
+                                <th>Area</th>
                                 <th>Date Registered</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -250,19 +263,37 @@
                                     <td><?php echo htmlspecialchars($resident['civilstatus']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['email']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['address_1']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['address_2']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['telephone_no']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['mobile_no']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['height']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['weight']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['PAG_IBIG']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['PHILHEALTH']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['SSS']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['TIN']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['spouse']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['father']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['mother']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['area']); ?></td>
+                                    <td><?php echo htmlspecialchars($resident['date_registered']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['created_at']); ?></td>
                                     <td>
-                                        <button class="btn btn-primary px-5 my-1">Edit</button>
+                                    <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editResidentModal">Edit</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary w-25 m-3 mt-5 p-2">Add Resident</button>
+
+                <button class="btn btn-primary w-25 m-3 mt-5 p-2" data-bs-toggle="modal"
+                    data-bs-target="#addResidentModal">Add Resident</button>
             </div>
         </main>
     </div>
+    <?php include 'application/views/admin/include/add_resident.php'; ?>
+    <?php include 'application/views/admin/include/edit_info_resident.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

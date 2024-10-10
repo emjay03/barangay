@@ -55,24 +55,25 @@
 
             <div class="row content">
                 <div class="center"></div>
-                <div class="col-4 p-0 m-0">
-                    <div class="contaier-fluid bg-primary opacity-50 d-flex justify-content-center" style="height: 100vh;">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220" class="rounded-circle opacity-100 mt-5" width="250" height="250" alt="">
+                <div class="col-l-12 col-xl-4 p-0 m-0 d-flex justify-content-center align-items-center">
+                    <div class="bg-primary opacity-50 w-100 h-100"></div>
+                    <div class="position-absolute top-0 left-0 shadow-lg rounded-circle" style="margin-top: 10rem; border: 5px solid #fff">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220" class="rounded-circle opacity-100" width="250" alt="">
                     </div>
                 </div>
-                <div class="col-4 p-0 m-0">
+                <div class="col-l-12 col-xl-4 p-0 m-0">
                 </div>
-                <div class="col-4 p-0 m-0 position-relative">
+                <div class="col-l-12 col-xl-4 p-0 m-0 position-relative">
                     <div class="container-fluid">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                            <p class="text-dark fs-3">RESIDENT RECORD SUMMARY</p>
+                            <p class="text-dark fs-5 xl-fs-3 mt-5">RESIDENT RECORD SUMMARY</p>
                         </div>
 
-                        <div class="row p-0 pe-3 m-0 w-100 h-100" style="width:500px; max-width: 500px;">
-                            <div class="col-6 m-0 p-2">
+                        <div class="row p-0 pe-3 m-0 w-100 h-100">
+                            <div class="col-12 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p class="fs-6">total population</p>
+                                        <p class="" style="font-size: 14px">total population</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people-fill fs-1 text-success me-2"></i>
@@ -80,6 +81,22 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-12 m-0 p-2">
+                                <div class="card z-3 shadow-lg">
+                                    <div class="card-header">
+                                        <p class="" style="font-size: 14px">registered Voters</p>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
+                                        <div class="text-center w-100">
+                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
@@ -93,20 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
-                                    <div class="card-header">
-                                        <p class="fs-6">registered Voters</p>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
-                                        <div class="text-center w-100">
-                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
-                                        </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
@@ -127,7 +131,7 @@
 
                     <div class="container-fluid">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 mt-5 fw-bold rounded-0">
-                            <p class="text-dark fs-3">BLOTTER RECORD SUMMARY</p>
+                            <p class="text-dark fs-5 xl-fs-3">BLOTTER RECORD SUMMARY</p>
                         </div>
 
                         <div class="row p-0 pe-3 m-0 w-100 h-100">
@@ -143,7 +147,7 @@
                             <div class="col-6 m-0 p-2">
                                 <div class="card z-3 shadow-lg">
                                     <div class="card-header">
-                                        <p class="fs-6">Unscheduled Cases</p>
+                                        <p class="" style="font-size: 14px">Unscheduled Cases</p>
                                     </div>
                                     <div class="card-body">
                                     </div>

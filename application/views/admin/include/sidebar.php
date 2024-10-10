@@ -7,8 +7,8 @@
     top: 0;
     left: 0;
     transition: all 0.3s ease;
-    overflow: hidden;
     z-index: 1000;
+    scrollbar-width: thin;
   }
 
   .sidebar.collapsed {
@@ -113,36 +113,36 @@
 
 <!-- Sidebar -->
 <nav id="sidebar" class="sidebar bg-dark">
-  <div class="sidebar-header py-4 bg-dark d-flex align-items-center justify-content-between px-5">
+  <div class="sidebar-header bg-dark d-flex align-items-start justify-content-start py-2 px-2">
     <img
       src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220"
-      alt="logo" class="rounded-circle" height="40" onclick="window.location.href='/barangay/Dashboard'">>
-    <h6 class="text-light fw-normal" style="font-size: 15px; letter-spacing: 1px;">Barangay 185 MLR</h6>
+      alt="logo" class="rounded-circle" height="50" onclick="window.location.href='/barangay/Dashboard'">>
   </div>
 
   <!-- Menu Items -->
-  <a href="/barangay/Dashboard" class="menu-item mt-5">
+   <p class="text-light mt-5 mx-3" style="font-size: 12px">General</p>
+  <a href="/barangay/Dashboard" class="menu-item mt-3 mb-2">
     <i class="bi bi-house-fill"></i>
     <span class="menu-title">Dashboard</span>
   </a>
-  <a href="/barangay/Resident" class="menu-item">
+  <a href="/barangay/Resident" class="menu-item my-2">
     <i class="bi bi-person"></i>
     <span class="menu-title">Resident Information</span>
   </a>
-  <a href="/barangay/Blotters" class="menu-item">
+  <a href="/barangay/Blotters" class="menu-item my-2">
     <i class="bi bi-archive-fill"></i>
     <span class="menu-title">Blotter Record</span>
   </a>
-  <a href="#" class="menu-item">
+  <a href="#" class="menu-item my-2">
     <i class="bi bi-calendar-fill"></i>
     <span class="menu-title">Settlement Schedule</span>
   </a>
-  <a href="#" class="menu-item">
+  <a href="#" class="menu-item my-2">
     <i class="bi bi-patch-check-fill"></i>
     <span class="menu-title">Certificate Issurance
     </span>
   </a>
-  <button class="btn btn-dark setting menu-item text-start" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+  <button class="btn btn-dark setting menu-item text-start my-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
   aria-controls="collapseExample">
     <i class="bi bi-sliders2"></i>
     <span class="menu-title">Settings</span>

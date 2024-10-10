@@ -51,6 +51,7 @@ class Resident extends CI_Controller
         $this->form_validation->set_rules('address_2', 'Address_2', 'required');
         $this->form_validation->set_rules('date_registered', 'Date_registered', 'required');
 
+
         if ($this->form_validation->run() === FALSE) {
             echo json_encode(array('status' => false, 'msg' => validation_errors()));
         } else {
@@ -82,9 +83,6 @@ class Resident extends CI_Controller
                 'address_1' => $this->input->post('address_1'),
                 'address_2' => $this->input->post('address_2'),
                 'date_registered' => $this->input->post('date_registered'),
-
-
-
             );
 
             if ($this->Resident_model->create_resident($data)) {

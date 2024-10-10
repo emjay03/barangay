@@ -53,7 +53,7 @@
 
     .content {
         position: relative;
-        margin-top: 10rem;
+        margin-top: 5rem;
         z-index: 2;
     }
 
@@ -248,17 +248,21 @@
                                     <td><?php echo htmlspecialchars($all_blotter['incident_location']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['incident_narrative']); ?></td>
                                     <td>
-                                        <button class="btn btn-primary px-5 my-1">Update</button>
+                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editIncidentModal">Update</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary w-25 m-3 mt-5 p-2">Add Blotter</button>
+                <button class="btn btn-primary w-25 m-3 mt-5 p-2" data-bs-toggle="modal"
+                data-bs-target="#addIncidentModal">Add Blotter</button>
             </div>
         </main>
     </div>
+
+    <?php include 'application/views/admin/include/add_blotter.php'; ?>
+    <?php include 'application/views/admin/include/edit_info_blotter.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

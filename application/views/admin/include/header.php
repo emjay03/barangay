@@ -31,6 +31,7 @@
         <button class="border-0 bg-light fs-4 text-dark" id="btn-toggle">
             <i class="bi bi-list text-bold fs-2"></i>
         </button>
+        <h6 class="text-dark fw-bold text-center mt-2" style="font-size: 25px; letter-spacing: 1px;">Barangay 185 MLR</h6>
         <button class="btn btn-primary py-0 d-flex align-items-center me-5" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
             <i class="bi bi-person-circle me-3 fs-4"></i>
             <span class="d-none d-sm-inline px-5">Admin</span>
