@@ -34,7 +34,7 @@
 
     main {
         height: 100vh;
-        overflow-y: hidden;
+        overflow-y: scroll;
         width: 100vw;
         overflow-x: hidden;
         position: relative;
@@ -207,10 +207,30 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.next {
         font-weight: bold;
     }
+
+    .alert {
+        position: absolute;
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        z-index: 500;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .alert.show {
+        display: block;
+        opacity: 1;
+    }
+
+    .alert.hide {
+        opacity: 0;
+    }
 </style>
 
 <body>
-
+    <div id="alertMessage" class="alert px-5" role="alert"></div>
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
@@ -222,6 +242,7 @@
                     <table class="resident-table table mb-5">
                         <thead>
                             <tr>
+                                <th>id</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
                                 <th>Middlename</th>
@@ -253,6 +274,7 @@
                         <tbody>
                             <?php foreach ($all_resident as $resident): ?>
                                 <tr>
+                                    <td><?php echo htmlspecialchars($resident['resident_id']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['lastname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['firstname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['middlename']); ?></td>
@@ -281,7 +303,8 @@
 
                                     <!-- Edit button with the resident ID -->
                                     <td>
-                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editResidentModal"
+                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal"
+                                            data-bs-target="#editResidentModal"
                                             data-resident='<?php echo json_encode($resident); ?>'>
                                             Edit
                                         </button>
@@ -289,8 +312,6 @@
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
-
-
                     </table>
                 </div>
 
@@ -303,8 +324,9 @@
     <?php include 'application/views/admin/include/edit_info_resident.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.resident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -318,10 +340,132 @@
                 }
             });
 
-            $('.search-btn').on('click', function() {
+            $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
             });
+
+        });
+
+        document.getElementById('addResidentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            fetch(this.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error('Error: ' + text);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.className = 'alert';
+
+                    if (data.status === 'error') {
+                        alertMessage.innerText = data.message;
+                        alertMessage.classList.add('alert-danger');
+                    } else {
+                        alertMessage.innerText = 'Added successfully!';
+                        alertMessage.classList.add('alert-success');
+
+                        $('#addResidentModal').modal('hide');
+                        this.reset();
+
+                        setTimeout(() => {
+                            window.location.href = 'Resident';
+                        }, 2000);
+                    }
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                })
+                .catch(error => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
+                    alertMessage.className = 'alert alert-danger';
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                });
+        });
+
+        // Update resident
+        document.getElementById('editResidentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            fetch(this.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.className = 'alert';
+
+                    if (data.status === 'error') {
+                        alertMessage.innerText = data.message;
+                        alertMessage.classList.add('alert-danger');
+                    } else {
+                        alertMessage.innerText = data.message;
+                        alertMessage.classList.add('alert-success');
+
+                        $('#editResidentModal').modal('hide');
+
+                        setTimeout(() => {
+                            window.location.href = 'Resident';
+                        }, 2000);
+                    }
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                })
+                .catch(error => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
+                    alertMessage.className = 'alert alert-danger';
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                });
         });
     </script>
 </body>

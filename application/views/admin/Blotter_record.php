@@ -208,10 +208,29 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.next {
         font-weight: bold;
     }
+
+    .alert {
+        position: absolute;
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+        z-index: 500;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .alert.show {
+        display: block;
+        opacity: 1;
+    }
+
+    .alert.hide {
+        opacity: 0;
+    }
 </style>
 
 <body>
-
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
@@ -223,6 +242,7 @@
                     <table class="incident-table mb-5">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Incident Type</th>
                                 <th>Status</th>
                                 <th>Schedule</th>
@@ -238,6 +258,7 @@
                         <tbody>
                             <?php foreach ($all_blotters as $all_blotter): ?>
                                 <tr>
+                                    <td><?php echo htmlspecialchars($all_blotter['blotter_id']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['incident_type']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['status']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['schedule']); ?></td>
@@ -248,7 +269,9 @@
                                     <td><?php echo htmlspecialchars($all_blotter['incident_location']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['incident_narrative']); ?></td>
                                     <td>
-                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal" data-bs-target="#editIncidentModal">Update</button>
+                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal"
+                                            data-bs-target="#editIncidentModal"
+                                            data-resident='<?php echo json_encode($all_blotter); ?>'>Update</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -256,7 +279,7 @@
                     </table>
                 </div>
                 <button class="btn btn-primary w-25 m-3 mt-5 p-2" data-bs-toggle="modal"
-                data-bs-target="#addIncidentModal">Add Blotter</button>
+                    data-bs-target="#addIncidentModal">Add Blotter</button>
             </div>
         </main>
     </div>
@@ -285,6 +308,72 @@
                 $('.incident-table').DataTable().search(searchValue).draw();
             });
         });
+
+        document.getElementById('addIncidentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            fetch(this.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error('Error: ' + text);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.className = 'alert';
+
+                    if (data.status === 'error') {
+                        alertMessage.innerText = data.message;
+                        alertMessage.classList.add('alert-danger');
+                    } else {
+                        alertMessage.innerText = 'Added successfully!';
+                        alertMessage.classList.add('alert-success');
+
+                        $('#addResidentModal').modal('hide');
+                        this.reset();
+
+                        setTimeout(() => {
+                            window.location.href = 'Blotters';
+                        }, 2000);
+                    }
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                })
+                .catch(error => {
+                    const alertMessage = document.getElementById('alertMessage');
+                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
+                    alertMessage.className = 'alert alert-danger';
+
+                    alertMessage.classList.add('show');
+                    setTimeout(() => {
+                        alertMessage.classList.remove('show');
+                        alertMessage.classList.add('hide');
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none';
+                            alertMessage.classList.remove('hide');
+                        }, 500);
+                    }, 3000);
+                });
+        });
+
+        
     </script>
 </body>
 

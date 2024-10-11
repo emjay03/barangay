@@ -31,7 +31,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addIncidentForm" class="p-4 rounded-4 shadow-lg">
+                <div id="alertMessage" class="alert px-5" role="alert"></div>
+                <form id="addIncidentForm" action="<?php echo site_url('blotters/create_blotters'); ?>" method="post" class="p-4 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="incident_type" class="form-label">Incident Type</label>
@@ -96,7 +97,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Optional: JavaScript for handling form submission can be added here
-</script>

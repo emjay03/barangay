@@ -87,7 +87,6 @@ class Resident extends CI_Controller
 
             if ($this->Resident_model->create_resident($data)) {
                 echo json_encode(array('status' => 'success', 'message' => 'added successfully.'));
-                redirect('Resident');
             } else {
                 echo json_encode(array('status' => 'error', 'message' => 'Failed to add.'));
             }
@@ -171,7 +170,6 @@ class Resident extends CI_Controller
                     'status' => 'success',
                     'message' => 'Resident updated successfully.'
                 ]);
-                redirect('Resident');
             } else {
 
                 echo json_encode([
@@ -205,8 +203,6 @@ class Resident extends CI_Controller
             ]);
         }
     }
-
-
 
     public function list()
     {

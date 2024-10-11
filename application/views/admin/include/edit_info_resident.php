@@ -25,10 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
                 <form id="editResidentForm" action="<?php echo site_url('resident/update_resident/' . $resident['resident_id']); ?>" method="post" class="p-5 rounded-4 shadow-lg">
-
-
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="lastname" class="form-label">Lastname</label>
