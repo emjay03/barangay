@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>barangay 185</title>
-    <link rel="shortcut icon"
-        href="https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/243452652_187913776797965_1265155358119833421_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEltPmCH2mkgGbpveR0mr_VrRZEYCFUhn2tFkRgIVSGfQj2VRqYC62Ulv7atBqLLYHXVyGuPcIOKzs0kQTGmT4O&_nc_ohc=4ggRdj8r1O0Q7kNvgFxnVpc&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=At8TKuEvrMepfYoHu0Bfpua&oh=00_AYBbrZcMxPhOWcosaQGQjJ52t9tErnPAXExZoW4boghv_Q&oe=66FB131D"
-        type="image/x-icon">
+    <link rel="shortcut icon" href="application/public/logo.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -30,6 +28,10 @@
         font-family: "Poppins", sans-serif;
     }
 
+    #notesContainer {
+        scrollbar-width: thin;
+    }
+
     body {
         overflow: hidden;
     }
@@ -41,8 +43,82 @@
         overflow-x: hidden;
     }
 
-    .content {
-        margin-top: 4rem;
+    .cal {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .cal::before {
+        content: "";
+        position: absolute;
+        top: -3rem;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        background-color: #929EB2;
+        z-index: -5;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+
+    .cal::after {
+        content: "";
+        position: absolute;
+        top: 3rem;
+        left: -3rem;
+        width: 150px;
+        height: 150px;
+        background-color: #203659;
+        z-index: -5;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+
+    .record {
+        position: relative;
+        isolation: isolate;
+    }
+
+    .record::before {
+        content: "";
+        position: absolute;
+        bottom: -3rem;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background-color: #929EB2;
+        z-index: -5;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+
+    .record::after {
+        content: "";
+        position: absolute;
+        bottom: 3rem;
+        right: -3rem;
+        width: 150px;
+        height: 150px;
+        background-color: #203659;
+        z-index: -5;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+
+    .today {
+        background-color: #fff;
+        color: #203659;
+        border-radius: 15px;
+        border: 1px solid #203659;
+        padding: 0;
+        height: 30px;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .note {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
     }
 </style>
 
@@ -51,134 +127,220 @@
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
-            <?php include 'application/views/admin/include/header.php'; ?>
-
+            <header>
+                <?php include 'application/views/admin/include/header.php'; ?>
+            </header>
             <div class="row content">
-                <div class="center"></div>
-                <div class="col-l-12 col-xl-4 p-0 m-0 d-flex justify-content-center align-items-center">
-                    <div class="bg-primary opacity-50 w-100 h-100"></div>
-                    <div class="position-absolute top-0 left-0 shadow-lg rounded-circle" style="margin-top: 10rem; border: 5px solid #fff">
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220" class="rounded-circle opacity-100" width="250" alt="">
-                    </div>
-                </div>
-                <div class="col-l-12 col-xl-4 p-0 m-0">
-                </div>
-                <div class="col-l-12 col-xl-4 p-0 m-0 position-relative">
-                    <div class="container-fluid">
-                        <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                            <p class="text-dark fs-5 xl-fs-3 mt-5">RESIDENT RECORD SUMMARY</p>
+                <div class="col-lg-12 col-xl-5 p-0 m-0 cal d-flex justify-content-center">
+                    <div class="p-0 text-center" style="max-width: 390px">
+                        <p class="mt-5 fw-bold px-5">Barangay 185 Malaria District 3, Caloocan City</p>
+
+                        <h5 class="mt-3 mx-5 fw-bold text-start">Time</h5>
+                        <div class="text-center d-flex align-items-center justify-content-center time">
+                            <p id="current-time" class="fs-1 fw-bold text-light p-2 px-3 rounded-4 shadow"
+                                style="background-color: #203659"></p>
                         </div>
 
-                        <div class="row p-0 pe-3 m-0 w-100 h-100">
-                            <div class="col-12 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                        <div class="mt-2 calendar">
+                            <div class="p-4">
+                                <h5 class="fw-bold text-start">Calendar</h5>
+                                <div class="card calendar shadow">
+                                    <div class="card-body">
+                                        <div class="calendar-header d-flex justify-content-between align-items-center">
+                                            <button id="prevMonth"
+                                                class="btn rounded-circle btn-primary shadow fs-6 px-2 py-0"
+                                                style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&lt;</button>
+                                            <p id="monthYear" class="m-0 fw-bold"></p>
+                                            <button id="nextMonth"
+                                                class="btn rounded-circle btn-primary shadow fs-6 px-2 py-0"
+                                                style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&gt;</button>
+                                        </div>
+                                        <div class="calendar-body mt-4 p-0 py-2"
+                                            style="font-size: 12px; height: 250px;">
+                                            <div class="row fw-bold">
+                                                <p class="col text-danger">Sun</p>
+                                                <p class="col">Mon</p>
+                                                <p class="col">Tue</p>
+                                                <p class="col">Wed</p>
+                                                <p class="col">Thu</p>
+                                                <p class="col">Fri</p>
+                                                <p class="col">Sat</p>
+                                            </div>
+                                            <div id="calendarDays" style="font-size: 14px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-l-12 col-xl-3 p-0 m-0 d-flex justify-content-center align-items-center"
+                    style="max-height: 700px;">
+                    <div class="p-0 text-center" style="max-width: 230px;">
+                        <div class="notes shadow" style="height: 500px; width: 230px;">
+                            <div class="card h-100">
+                                <div
+                                    class="card-header text-start fw-bold d-flex justify-content-between align-items-center">
+                                    <span>Notes</span>
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#addNoteModal">+</button>
+                                </div>
+                                <div class="card-body" id="notesContainer" style="overflow-y: scroll;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for adding notes -->
+                <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addNoteModalLabel">Add Note</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea id="noteInput" class="form-control" rows="3"
+                                    placeholder="Write your note here..."></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="saveNoteButton">Save Note</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-l-12 col-xl-4 p-0 m-0 d-flex justify-content-center record">
+                    <div class="p-0 text-center" style="max-width: 280px">
+                        <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
+                            <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
+                        </div>
+
+                        <div class="row p-0 m-0 fw-bold">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="" style="font-size: 14px">total population</p>
+                                        <p class="text-start" style="font-size: 10px">total population</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people-fill fs-1 text-success me-2"></i>
-                                        <div class="text-center w-100"><p class="fw-bold mt-3 fs-3"><?php echo !empty($all_resident) ? $all_resident : 0; ?></p></div>
+                                        <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($all_resident) ? $all_resident : 0; ?>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="" style="font-size: 14px">registered Voters</p>
+                                        <p class="text-start" style="font-size: 10px">registered Voters</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
                                         <i class="bi bi-list-check fs-1 text-dark me-2"></i>
                                         <div class="text-center w-100">
-                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
-                                        </p>
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="fs-6">Male</p>
+                                        <p class="text-start" style="font-size: 10px">Male</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-male fs-1 text-primary me-2 fw-bold"></i>
+                                        <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
                                         <div class="text-center w-100">
-                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($male_count) ? $male_count : 0; ?></p>
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($male_count) ? $male_count : 0; ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="fs-6">Female</p>
+                                        <p class="text-start" style="font-size: 10px">Female</p>
                                     </div>
 
                                     <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-female fs-1 text-warning me-2"></i>
+                                        <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
                                         <div class="text-center w-100">
-                                        <p class="fw-bold mt-3 fs-3"><?php echo !empty($female_count) ? $female_count : 0; ?></p>
-                                        </p>
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($female_count) ? $female_count : 0; ?>
+                                            </p>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="container-fluid">
-                        <div class="card z-3 bg-transparent border-0 text-center p-3 mt-5 fw-bold rounded-0">
-                            <p class="text-dark fs-5 xl-fs-3">BLOTTER RECORD SUMMARY</p>
+                        <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
+                            <p class="text-dark fs-6 xl-fs-6 mt-4">BLOTTER RECORD SUMMARY</p>
                         </div>
 
-                        <div class="row p-0 pe-3 m-0 w-100 h-100">
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                        <div class="row p-0 m-0 fw-bold">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow" style="max-height: 200px">
                                     <div class="card-header">
-                                        <p class="fs-6">Settled Cases</p>
+                                        <p class="text-start" style="font-size: 10px">Settled Cases</p>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                        style="background-color: #203659">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow" style="max-height: 200px">
                                     <div class="card-header">
-                                        <p class="" style="font-size: 14px">Unscheduled Cases</p>
+                                        <p class="text-start" style="font-size: 10px">Unscheduled Cases</p>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                        style="background-color: #203659">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow" style="max-height: 200px">
                                     <div class="card-header">
-                                        <p class="fs-6">Unsettled Cases</p>
+                                        <p class="text-start" style="font-size: 10px">Scheduled Cases</p>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                        style="background-color: #203659">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 m-0 p-2">
-                                <div class="card z-3 shadow-lg">
+                            <div class="col-6 m-0 p-1">
+                                <div class="card z-3 shadow" style="max-height: 200px">
                                     <div class="card-header">
-                                        <p class="fs-6">Scheduled Cases</p>
+                                        <p class="text-start" style="font-size: 10px">Settled Cases</p>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                        style="background-color: #203659">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card bg-transparent border-0  w-100 p-4 d-flex align-items-center justify-content-center z-3">
-                        <button class="btn btn-primary text-light px-5 py-2 fw-bold rounded-5" onclick="window.location.href='/barangay/Dashboard'">Refresh Dashboard</button>
+                        <div
+                            class="card bg-transparent border-0 mt-4 d-flex align-items-center justify-content-center z-3">
+                            <button class="btn btn-primary text-light px-5 py-1 fw-semibold rounded-5"
+                                onclick="window.location.href='/barangay/Dashboard'">Refresh Dashboard</button>
+                        </div>
                     </div>
-
-                    <div class="mask position-absolute top-0 bg-danger h-100 w-100 opacity-25 z-n2"></div>
                 </div>
             </div>
         </main>
@@ -187,6 +349,128 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('current-time').innerText = now.toLocaleTimeString([], options);
+        }
+
+        // Initial rendering
+        updateTime();
+        setInterval(updateTime, 0);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // VARIABLES FOR MONTHS
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            // VARIABLES FOR CURRENT DATE
+            let today = new Date();
+            let currentMonth = today.getMonth();
+            let currentYear = today.getFullYear();
+            let currentDate = today.getDate();
+
+            // VARIABLES FOR HEADER OF CALENDAR
+            const monthYear = document.getElementById("monthYear");
+            const calendarDays = document.getElementById("calendarDays");
+            const prevMonthBtn = document.getElementById("prevMonth");
+            const nextMonthBtn = document.getElementById("nextMonth");
+
+            // FUNCTION TO RENDER CALENDAR
+            function renderCalendar(month, year) {
+                calendarDays.innerHTML = "";
+                monthYear.textContent = `${monthNames[month]} ${year}`;
+
+                // VARIABLE FOR DAYS IN A MONTH
+                const firstDay = new Date(year, month).getDay();
+                const daysInMonth = 32 - new Date(year, month, 32).getDate();
+
+                let date = 1;
+
+                for (let i = 0; i < 6; i++) {
+                    let row = document.createElement("div");
+                    row.className = "row";
+
+                    for (let j = 0; j < 7; j++) {
+                        let cell = document.createElement("div");
+                        cell.className = "col text-center py-2";
+
+                        if (i === 0 && j < firstDay) {
+                            cell.classList.add("empty");
+                        } else if (date > daysInMonth) {
+                            cell.classList.add("empty");
+                        } else {
+                            if (date === currentDate && month === today.getMonth() && year === today.getFullYear()) {
+                                cell.classList.add("today");
+                                cell.innerHTML = `<strong>${date}</strong>`;
+                            } else {
+                                cell.innerHTML = date;
+                            }
+                            date++;
+                        }
+                        row.appendChild(cell);
+                    }
+                    calendarDays.appendChild(row);
+                }
+            }
+
+            // EVENT LISTENERS FOR BUTTONS
+            nextMonthBtn.addEventListener("click", function () {
+                if (currentMonth === 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                } else {
+                    currentMonth++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            prevMonthBtn.addEventListener("click", function () {
+                if (currentMonth === 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                } else {
+                    currentMonth--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            // INITIAL RENDERING OF CALENDAR
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const notesContainer = document.getElementById("notesContainer");
+            const saveNoteButton = document.getElementById("saveNoteButton");
+            const noteInput = document.getElementById("noteInput");
+
+            // Function to add a note
+            saveNoteButton.addEventListener("click", function () {
+                const noteText = noteInput.value.trim();
+
+                if (noteText) {
+                    // Create a new note element
+                    const noteElement = document.createElement("div");
+                    noteElement.className = "note mb-2 p-2 border rounded";
+                    noteElement.textContent = noteText;
+                    noteElement.style.fontSize = "12px";
+
+                    // Append the note to the notes container
+                    notesContainer.appendChild(noteElement);
+
+                    // Clear the input field and close the modal
+                    noteInput.value = '';
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addNoteModal'));
+                    modal.hide();
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>

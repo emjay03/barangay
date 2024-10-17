@@ -60,6 +60,7 @@
     .resident-table {
         border-collapse: collapse;
         margin-top: 20px;
+        font-size: 14px;
     }
 
     .resident-table th,
@@ -71,7 +72,7 @@
     }
 
     .resident-table th {
-        background-color: #0056b3;
+        background-color: #203659;
         color: white;
     }
 
@@ -110,7 +111,7 @@
     }
 
     .dataTables_wrapper .dataTables_filter input {
-        border: 1px solid #007bff;
+        border: 1px solid #203659;
         border-radius: 4px;
         padding: 8px;
         width: 250px;
@@ -118,12 +119,12 @@
     }
 
     .dataTables_wrapper .dataTables_filter input:focus {
-        border-color: #0056b3;
+        border-color: #203659;
         outline: none;
     }
 
     .dataTables_wrapper .dataTables_filter .search-btn {
-        background-color: #007bff;
+        background-color: #203659;
         color: white;
         border: none;
         padding: 8px 12px;
@@ -149,7 +150,7 @@
     }
 
     .dataTables_wrapper .dataTables_length select {
-        border: 1px solid #007bff;
+        border: 1px solid #203659;
         border-radius: 4px;
         padding: 3px;
         padding-inline: 5px;
@@ -159,7 +160,7 @@
     }
 
     .dataTables_wrapper .dataTables_length select:focus {
-        border-color: #0056b3;
+        border-color: #203659;
         outline: none;
     }
 
@@ -179,9 +180,8 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button {
         padding: 5px 12px;
         margin-left: 5px;
-        border: 1px solid #0056b3;
         border-radius: 4px;
-        background-color: #0056b3;
+        background-color: #f0f0f0;
         color: white;
         transition: background-color 0.3s, color 0.3s;
     }
@@ -194,7 +194,7 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background-color: #007bff;
         color: white;
-        border: 1px solid #0056b3;
+        border: none;
     }
 
     .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
@@ -237,73 +237,38 @@
             <?php include 'application/views/admin/include/header.php'; ?>
 
             <div class="row content p-5 mx-5 rounded-4 bg-light shadow-lg ">
-                <h1 class="fw-bold text-dark mb-5"> <i class="bi bi-people-fill me-2"></i> Resident Information</h1>
+                <div class="d-flex justify-content-between mb-5">
+                    <h1 class="fw-bold text-dark"> <i class="bi bi-people-fill me-2"></i> Resident Information</h1>
+                    <button class="btn btn-primary max-w-50 px-5 m-2" data-bs-toggle="modal"
+                        data-bs-target="#addResidentModal">Add Resident</button>
+                </div>
+
                 <div class="table-responsive">
                     <table class="resident-table table mb-5">
                         <thead>
                             <tr>
-                                <th>id</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
                                 <th>Middlename</th>
-                                <th>Alias</th>
-                                <th>Birthday</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Civil Status</th>
-                                <th>Email</th>
                                 <th>Address 1</th>
-                                <th>Address 2</th>
                                 <th>Telephone No</th>
                                 <th>Mobile No</th>
-                                <th>Height</th>
-                                <th>Weight</th>
-                                <th>PAG-IBIG</th>
-                                <th>PHILHEALTH</th>
-                                <th>SSS</th>
-                                <th>TIN</th>
-                                <th>Spouse</th>
-                                <th>Father</th>
-                                <th>Mother</th>
-                                <th>Area</th>
-                                <th>Date Registered</th>
-                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($all_resident as $resident): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($resident['resident_id']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['lastname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['firstname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['middlename']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['alias']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['birthday']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['age']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['gender']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['civilstatus']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['email']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['address_1']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['address_2']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['telephone_no']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['mobile_no']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['height']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['weight']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['PAG_IBIG']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['PHILHEALTH']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['SSS']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['TIN']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['spouse']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['father']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['mother']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['area']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['date_registered']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['created_at']); ?></td>
 
                                     <!-- Edit button with the resident ID -->
-                                    <td>
-                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal"
+                                    <td class="d-flex justify-content-center align-items-center">
+                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
                                             data-bs-target="#editResidentModal"
                                             data-resident='<?php echo json_encode($resident); ?>'>
                                             Edit
@@ -314,9 +279,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <button class="btn btn-primary w-25 m-3 mt-5 p-2" data-bs-toggle="modal"
-                    data-bs-target="#addResidentModal">Add Resident</button>
             </div>
         </main>
     </div>

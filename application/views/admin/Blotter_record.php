@@ -72,7 +72,7 @@
     }
 
     .incident-table th {
-        background-color: #0056b3;
+        background-color: #203659;
         color: white;
     }
 
@@ -111,7 +111,7 @@
     }
 
     .dataTables_wrapper .dataTables_filter input {
-        border: 1px solid #007bff;
+        border: 1px solid #203659;
         border-radius: 4px;
         padding: 8px;
         width: 250px;
@@ -119,12 +119,12 @@
     }
 
     .dataTables_wrapper .dataTables_filter input:focus {
-        border-color: #0056b3;
+        border-color: #203659;
         outline: none;
     }
 
     .dataTables_wrapper .dataTables_filter .search-btn {
-        background-color: #007bff;
+        background-color: #203659;
         color: white;
         border: none;
         padding: 8px 12px;
@@ -150,7 +150,7 @@
     }
 
     .dataTables_wrapper .dataTables_length select {
-        border: 1px solid #007bff;
+        border: 1px solid #203659;
         border-radius: 4px;
         padding: 3px;
         padding-inline: 5px;
@@ -160,7 +160,7 @@
     }
 
     .dataTables_wrapper .dataTables_length select:focus {
-        border-color: #0056b3;
+        border-color: #203659;
         outline: none;
     }
 
@@ -182,7 +182,7 @@
         margin-left: 5px;
         border: 1px solid #0056b3;
         border-radius: 4px;
-        background-color: #0056b3;
+        background-color: #fff;
         color: white;
         transition: background-color 0.3s, color 0.3s;
     }
@@ -195,13 +195,13 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background-color: #007bff;
         color: white;
-        border: 1px solid #0056b3;
+        border: none;
     }
 
     .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
         background-color: #0056b3;
         color: white;
-        border: 1px solid #0056b3;
+        border: none;
     }
 
     .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
@@ -237,39 +237,34 @@
             <?php include 'application/views/admin/include/header.php'; ?>
 
             <div class="row content p-5 mx-5 rounded-4 bg-light shadow-lg ">
-                <h1 class="fw-bold text-dark mb-5"> <i class="bi bi-card-list me-2"></i>Blotter Record</h1>
+                <div class="d-flex justify-content-between mb-5">
+                    <h1 class="fw-bold text-dark"> <i class="bi bi-card-list me-2"></i>Blotter Record</h1>
+                    <button class="btn btn-primary max-w-50 px-5 m-2" data-bs-toggle="modal"
+                        data-bs-target="#addIncidentModal">Add Blotter</button>
+                </div>
+
                 <div class="container-fluid overflow-scroll">
                     <table class="incident-table mb-5">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Incident Type</th>
                                 <th>Status</th>
                                 <th>Schedule</th>
                                 <th>Date Reported</th>
                                 <th>Time Reported</th>
-                                <th>Date Incident</th>
-                                <th>Time Incident</th>
-                                <th>Incident Location</th>
-                                <th>Incident Narrative</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($all_blotters as $all_blotter): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($all_blotter['blotter_id']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['incident_type']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['status']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['schedule']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['date_reported']); ?></td>
                                     <td><?php echo htmlspecialchars($all_blotter['time_reported']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['date_incident']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['time_incident']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['incident_location']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['incident_narrative']); ?></td>
-                                    <td>
-                                        <button class="btn btn-primary px-5 my-1" data-bs-toggle="modal"
+                                    <td class="d-flex justify-content-center align-items-center">
+                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
                                             data-bs-target="#editIncidentModal"
                                             data-resident='<?php echo json_encode($all_blotter); ?>'>Update</button>
                                     </td>
@@ -278,8 +273,6 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary w-25 m-3 mt-5 p-2" data-bs-toggle="modal"
-                    data-bs-target="#addIncidentModal">Add Blotter</button>
             </div>
         </main>
     </div>
@@ -373,7 +366,7 @@
                 });
         });
 
-        
+
     </script>
 </body>
 

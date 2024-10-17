@@ -1,10 +1,10 @@
 <style>
     .headnav {
+        background-color: #203659;
         max-width: 100vw;
         width: calc(100vw - 250px);
-        position: fixed;
-        top: 0;
         transition: width 0.3s ease;
+        position: relative;
         /* Smooth transition */
         z-index: 100;
         /* Ensure it stays on top */
@@ -26,21 +26,18 @@
 </style>
 
 
-<nav class="container-fluid bg-light p-2 shadow headnav " id="headnav">
-    <div class="d-flex justify-content-between w-100">
-        <button class="border-0 bg-light fs-4 text-dark" id="btn-toggle">
-            <i class="bi bi-list text-bold fs-2"></i>
-        </button>
-        <h6 class="text-dark fw-bold text-center mt-2" style="font-size: 25px; letter-spacing: 1px;">Barangay 185 MLR</h6>
-        <button class="btn btn-primary py-0 d-flex align-items-center me-5" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
-            <i class="bi bi-person-circle me-3 fs-4"></i>
-            <span class="d-none d-sm-inline px-5">Admin</span>
-        </button>
-    </div>
-
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-        <div class="d-flex align-items-end justify-content-end">
-            <button class="btn btn-primary mt-3 me-5 px-5 rounded-0 me-4" onclick="window.location.href='/barangay/auth';">Logout</button>
+<nav class="container-fluid p-3 shadow headnav " id="headnav">
+    <div class="row">
+        <div class="col-6">
+            <button class="border-0 bg-transparent fs-4 text-light" id="btn-toggle">
+                <i class="bi bi-list text-bold fs-2"></i>
+            </button>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
+                <i class="bi bi-person-circle fs-4 me-2"></i>
+                <span class="d-none d-sm-inline me-5">ADMIN</span>
+            </div>
         </div>
     </div>
 </nav>
