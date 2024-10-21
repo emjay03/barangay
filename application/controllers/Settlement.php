@@ -9,6 +9,12 @@ class Settlement extends CI_Controller
         $this->load->helper('security');
     }
 
+    public function index()
+    {
+        $data['all_settlement'] = $this->Settlement_model->get_all_settlement();
+
+        $this->load->view('admin/Settlement_Schedule', $data);
+    }
 
     public function create_settlement()
     {
@@ -122,7 +128,7 @@ class Settlement extends CI_Controller
 
         $upload_path = './application/views/admin/signature/';
         $file_names = [];
-        $existing_files = $this->Settlement_model->get_settlement_files($id);  
+        $existing_files = $this->Settlement_model->get_settlement_files($id);
 
         for ($i = 1; $i <= 3; $i++) {
             $file_field = 'signature_file' . $i;
@@ -140,7 +146,7 @@ class Settlement extends CI_Controller
                 }
             } else {
                 // If no file was uploaded, use existing file name
-                $file_names[] = $existing_files['signature_file' . $i];  
+                $file_names[] = $existing_files['signature_file' . $i];
             }
         }
 

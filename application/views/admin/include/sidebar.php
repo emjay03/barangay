@@ -160,7 +160,7 @@
     <i class="bi bi-archive-fill"></i>
     <span class="menu-title">Blotter Record</span>
   </a>
-  <a href="#" class="menu-item my-2">
+  <a href="/barangay/settlement" class="menu-item my-2">
     <i class="bi bi-calendar-fill"></i>
     <span class="menu-title">Settlement Schedule</span>
   </a>
