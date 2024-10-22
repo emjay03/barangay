@@ -353,7 +353,11 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const options = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
             document.getElementById('current-time').innerText = now.toLocaleTimeString([], options);
         }
 
@@ -361,7 +365,7 @@
         updateTime();
         setInterval(updateTime, 0);
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // VARIABLES FOR MONTHS
             const monthNames = [
                 "January", "February", "March", "April", "May", "June",
@@ -419,7 +423,7 @@
             }
 
             // EVENT LISTENERS FOR BUTTONS
-            nextMonthBtn.addEventListener("click", function () {
+            nextMonthBtn.addEventListener("click", function() {
                 if (currentMonth === 11) {
                     currentMonth = 0;
                     currentYear++;
@@ -429,7 +433,7 @@
                 renderCalendar(currentMonth, currentYear);
             });
 
-            prevMonthBtn.addEventListener("click", function () {
+            prevMonthBtn.addEventListener("click", function() {
                 if (currentMonth === 0) {
                     currentMonth = 11;
                     currentYear--;
@@ -443,13 +447,13 @@
             renderCalendar(currentMonth, currentYear);
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const notesContainer = document.getElementById("notesContainer");
             const saveNoteButton = document.getElementById("saveNoteButton");
             const noteInput = document.getElementById("noteInput");
 
             // Function to add a note
-            saveNoteButton.addEventListener("click", function () {
+            saveNoteButton.addEventListener("click", function() {
                 const noteText = noteInput.value.trim();
 
                 if (noteText) {
@@ -469,7 +473,6 @@
                 }
             });
         });
-
     </script>
 </body>
 

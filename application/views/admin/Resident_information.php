@@ -247,6 +247,7 @@
                     <table class="resident-table table mb-5">
                         <thead>
                             <tr>
+                                <th>id</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
                                 <th>Middlename</th>
@@ -259,6 +260,7 @@
                         <tbody>
                             <?php foreach ($all_resident as $resident): ?>
                                 <tr>
+                                    <td><?php echo htmlspecialchars($resident['resident_id']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['lastname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['firstname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['middlename']); ?></td>
@@ -268,6 +270,7 @@
 
                                     <!-- Edit button with the resident ID -->
                                     <td class="d-flex justify-content-center align-items-center">
+
                                         <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
                                             data-bs-target="#editResidentModal"
                                             data-resident='<?php echo json_encode($resident); ?>'>
@@ -288,7 +291,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.resident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -302,23 +305,23 @@
                 }
             });
 
-            $('.search-btn').on('click', function () {
+            $('.search-btn').on('click', function() {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
             });
 
         });
 
-        document.getElementById('addResidentForm').addEventListener('submit', function (event) {
+        document.getElementById('addResidentForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             fetch(this.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(this)),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(this)),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
                 .then(response => {
                     if (!response.ok) {
                         return response.text().then(text => {
@@ -374,16 +377,16 @@
         });
 
         // Update resident
-        document.getElementById('editResidentForm').addEventListener('submit', function (event) {
+        document.getElementById('editResidentForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             fetch(this.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(this)),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(this)),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
                 .then(response => response.json())
                 .then(data => {
                     const alertMessage = document.getElementById('alertMessage');
@@ -428,8 +431,14 @@
                         }, 500);
                     }, 3000);
                 });
+            $(document).on('click', '[data-bs-target="#editResidentModal"]', function() {
+                const residentData = $(this).data('resident');
+                // Populate your modal fields with the resident data
+                console.log("tst", residentData)
+            });
         });
     </script>
+
 </body>
 
 </html>
