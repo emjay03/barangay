@@ -70,8 +70,8 @@
                             <label for="gender" class="form-label">Gender</label>
                             <select class="form-select" id="updategender" name="gender" required>
                                 <option value="">Select</option>
-                                <option value="Male" <?php echo (isset($resident['gender']) && $resident['gender'] === 'Male') ? 'selected' : ''; ?>>Male</option>
-                                <option value="Female" <?php echo (isset($resident['gender']) && $resident['gender'] === 'Female') ? 'selected' : ''; ?>>Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
 
@@ -79,10 +79,10 @@
                             <label for="civilstatus" class="form-label">Civil Status</label>
                             <select class="form-select" id="updatecivilstatus" name="civilstatus" required>
                                 <option value="">Select</option>
-                                <option value="Single" <?php echo (isset($resident['civilstatus']) && $resident['civilstatus'] === 'Single') ? 'selected' : ''; ?>>Single</option>
-                                <option value="Married" <?php echo (isset($resident['civilstatus']) && $resident['civilstatus'] === 'Married') ? 'selected' : ''; ?>>Married</option>
-                                <option value="Divorced" <?php echo (isset($resident['civilstatus']) && $resident['civilstatus'] === 'Divorced') ? 'selected' : ''; ?>>Divorced</option>
-                                <option value="Widowed" <?php echo (isset($resident['civilstatus']) && $resident['civilstatus'] === 'Widowed') ? 'selected' : ''; ?>>Widowed</option>
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Widowed">>Widowed</option>
                             </select>
                         </div>
 
@@ -90,7 +90,7 @@
                             <label for="citizenship" class="form-label">Citizenship</label>
                             <select class="form-select" id="updatecitizenship" name="citizenship" required>
                                 <option value="">Select</option>
-                                <option value="Filipino" <?php echo (isset($resident['citizenship']) && $resident['citizenship'] === 'Filipino') ? 'selected' : ''; ?>>Filipino</option>
+                                <option value="Filipino">Filipino</option>
                             </select>
                         </div>
                     </div>
@@ -100,93 +100,81 @@
                             <label for="voterstatus" class="form-label">Voter Status</label>
                             <select class="form-select" id="updatevoterstatus" name="voterstatus" required>
                                 <option value="">Select</option>
-                                <option value="1" <?php echo (isset($resident['voterstatus']) && $resident['voterstatus'] === '1') ? 'selected' : ''; ?>>Registered</option>
-                                <option value="0" <?php echo (isset($resident['voterstatus']) && $resident['voterstatus'] === '0') ? 'selected' : ''; ?>>Not Registered</option>
+                                <option value="1">Registered</option>
+                                <option value="0">Not Registered</option>
                             </select>
                         </div>
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="updateemail" name="email"
+                            <input type="text" class="form-control" id="updateemail" name="email"
                                 required>
                         </div>
                         <div class="col-md-3">
                             <label for="address_1" class="form-label">Address 1</label>
-                            <input type="text" class="form-control" id="address_1" name="address_1"
-                                value="<?php echo htmlspecialchars($resident['address_1']); ?>" required>
+                            <input type="text" class="form-control" id="updateaddress_1" name="address_1"
+                                required>
                         </div>
                         <div class="col-md-3">
                             <label for="address_2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="address_2" name="address_2"
-                                value="<?php echo htmlspecialchars($resident['address_2']); ?>">
+                            <input type="text" class="form-control" id="updateaddress_2" name="address_2">
+
                         </div>
                         <div class="col-md-3">
                             <label for="telephone_no" class="form-label">Telephone No</label>
-                            <input type="text" class="form-control" id="telephone_no" name="telephone_no"
-                                value="<?php echo htmlspecialchars($resident['telephone_no']); ?>">
+                            <input type="text" class="form-control" id="updatetelephone_no" name="telephone_no">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="mobile_no" class="form-label">Mobile No</label>
-                            <input type="text" class="form-control" id="mobile_no" name="mobile_no"
-                                value="<?php echo htmlspecialchars($resident['mobile_no']); ?>">
+                            <input type="text" class="form-control" id="updatemobile_no" name="mobile_no">
                         </div>
                         <div class="col-md-3">
                             <label for="height" class="form-label">Height (cm)</label>
-                            <input type="text" class="form-control" id="height" name="height"
-                                value="<?php echo htmlspecialchars($resident['height']); ?>">
+                            <input type="text" class="form-control" id="updateheight" name="height">
                         </div>
                         <div class="col-md-3">
                             <label for="weight" class="form-label">Weight (kg)</label>
-                            <input type="text" class="form-control" id="weight" name="weight"
-                                value="<?php echo htmlspecialchars($resident['weight']); ?>">
+                            <input type="text" class="form-control" id="updateweight" name="weight">
                         </div>
                         <div class="col-md-3">
                             <label for="PAG_IBIG" class="form-label">PAG-IBIG</label>
-                            <input type="text" class="form-control" id="PAG_IBIG" name="PAG_IBIG"
-                                value="<?php echo htmlspecialchars($resident['PAG_IBIG']); ?>">
+                            <input type="text" class="form-control" id="updatePAG_IBIG" name="PAG_IBIG">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="PHILHEALTH" class="form-label">PHILHEALTH</label>
-                            <input type="text" class="form-control" id="PHILHEALTH" name="PHILHEALTH"
-                                value="<?php echo htmlspecialchars($resident['PHILHEALTH']); ?>">
+                            <input type="text" class="form-control" id="updatePHILHEALTH" name="PHILHEALTH">
                         </div>
                         <div class="col-md-3">
                             <label for="SSS" class="form-label">SSS</label>
-                            <input type="text" class="form-control" id="SSS" name="SSS"
-                                value="<?php echo htmlspecialchars($resident['SSS']); ?>">
+                            <input type="text" class="form-control" id="updateSSS" name="SSS">
                         </div>
                         <div class="col-md-3">
                             <label for="TIN" class="form-label">TIN</label>
-                            <input type="text" class="form-control" id="TIN" name="TIN"
-                                value="<?php echo htmlspecialchars($resident['TIN']); ?>">
+                            <input type="text" class="form-control" id="updateTIN" name="TIN">
                         </div>
                         <div class="col-md-3">
                             <label for="spouse" class="form-label">Spouse Name</label>
-                            <input type="text" class="form-control" id="spouse" name="spouse"
-                                value="<?php echo htmlspecialchars($resident['spouse']); ?>">
+                            <input type="text" class="form-control" id="updatespouse" name="spouse">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="father" class="form-label">Father's Name</label>
-                            <input type="text" class="form-control" id="father" name="father"
-                                value="<?php echo htmlspecialchars($resident['father']); ?>">
+                            <input type="text" class="form-control" id="updatefather" name="father">
                         </div>
                         <div class="col-md-3">
                             <label for="mother" class="form-label">Mother's Name</label>
-                            <input type="text" class="form-control" id="mother" name="mother"
-                                value="<?php echo htmlspecialchars($resident['mother']); ?>">
+                            <input type="text" class="form-control" id="updatemother" name="mother">
                         </div>
                         <div class="col-md-3">
                             <label for="area" class="form-label">Area</label>
-                            <input type="text" class="form-control" id="area" name="area"
-                                value="<?php echo htmlspecialchars($resident['area']); ?>">
+                            <input type="text" class="form-control" id="updatearea" name="area">
                         </div>
 
                     </div>
@@ -205,7 +193,8 @@
             button.addEventListener('click', () => {
                 const residentData = JSON.parse(button.getAttribute('data-resident'));
                 const resident_id_u = residentData.resident_id;
-                console.log("s", resident_id_u)
+                console.log("s", residentData)
+
                 const form = document.getElementById('editResidentForm');
                 form.action = `<?php echo site_url('resident/update_resident/'); ?>${resident_id_u}`;
                 console.log(residentData);
@@ -242,31 +231,32 @@
 
                 document.getElementById('updateresident_id').value = residentData.resident_id || '';
                 document.getElementById('updatelastname').value = residentData.lastname || '';
-                document.getElementById('updatefirstname').value = firstname;
-                document.getElementById('updatemiddlename').value = middlename;
-                document.getElementById('updatealias').value = alias;
-                document.getElementById('updatebirthday').value = birthday;
-                document.getElementById('updatebirth_of_place').value = birth_of_place;
-                document.getElementById('updateage').value = age;
-                document.getElementById('updategender').value = gender;
-                document.getElementById('updatecivilstatus').value = civilstatus;
-                document.getElementById('updatevoterstatus').value = voterstatus;
-                document.getElementById('updatetelephone_no').value = telephone_no;
-                document.getElementById('updatemobile_no').value = mobile_no;
-                document.getElementById('updateemail').value = email;
-                document.getElementById('updateheight').value = height;
-                document.getElementById('updateweight').value = weight;
-                document.getElementById('updatePAG_IBIG').value = PAG_IBIG;
-                document.getElementById('PHILHEALTH').value = PHILHEALTH;
-                document.getElementById('SSS').value = SSS;
-                document.getElementById('TIN').value = TIN;
+                document.getElementById('updatefirstname').value = residentData.firstname;
+                document.getElementById('updatemiddlename').value = residentData.middlename;
+                document.getElementById('updateaddress_2').value = residentData.address_2;
+                document.getElementById('updateaddress_1').value = residentData.address_1;
+                document.getElementById('updatealias').value = residentData.alias;
+                document.getElementById('updatebirthday').value = residentData.birthday;
+                document.getElementById('updatebirth_of_place').value = residentData.birth_of_place;
+                document.getElementById('updateage').value = residentData.age;
+                document.getElementById('updategender').value = residentData.gender;
+                document.getElementById('updatecivilstatus').value = residentData.civilstatus;
+                document.getElementById('updatevoterstatus').value = residentData.voterstatus;
+                document.getElementById('updatetelephone_no').value = residentData.telephone_no;
+                document.getElementById('updatemobile_no').value = residentData.mobile_no;
+                document.getElementById('updateemail').value = residentData.email;
+                document.getElementById('updateheight').value = residentData.height;
+                document.getElementById('updateweight').value = residentData.eight;
+                document.getElementById('updatePAG_IBIG').value = residentData.PAG_IBIG;
+                document.getElementById('updatePHILHEALTH').value = residentData.PHILHEALTH;
+                document.getElementById('updateSSS').value = residentData.SSS;
+                document.getElementById('updateTIN').value = residentData.TIN;
+                document.getElementById('updatespouse').value = residentData.spouse;
+                document.getElementById('updatefather').value = residentData.father;
+                document.getElementById('updatemother').value = residentData.mother;
+                document.getElementById('updatearea').value = residentData.area;
 
-                document.getElementById('spouse').value = spouse;
-                document.getElementById('father').value = father;
-                document.getElementById('mother').value = mother;
-                document.getElementById('area').value = area;
-                document.getElementById('address_1').value = address_1;
-                document.getElementById('address_2').value = address_2;
+                document.getElementById('updateaddress2').value = residentData.address_2;
             });
         });
     });
