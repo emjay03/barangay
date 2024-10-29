@@ -164,7 +164,7 @@
     <i class="bi bi-calendar-fill"></i>
     <span class="menu-title">Settlement Schedule</span>
   </a>
-  <a href="#" class="menu-item my-2">
+  <a href="/barangay/Certificate" class="menu-item my-2">
     <i class="bi bi-patch-check-fill"></i>
     <span class="menu-title">Certificate Issurance
     </span>
