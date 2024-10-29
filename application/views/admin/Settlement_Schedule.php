@@ -13,10 +13,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </head>
 
 <style>
@@ -586,7 +591,6 @@
 
     <script>
         $(document).ready(function () {
-            // Initialize DataTables for each table
             $('.resident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -602,25 +606,25 @@
                     "lengthMenu": "Show _MENU_ entries",
                 }
             });
-
-            // Click event for table selection
-            $('.clickable').on('click', function () {
-                var target = $(this).data('target');
-
-                // Hide all tables and show the target table
-                $('.table-container').hide();
-                $(target).show();
-
-                // Remove active class from all items and add to the clicked item
-                $('.clickable').removeClass('active');
-                $(this).addClass('active');
-            });
-
-            // Show the first table by default and set active class
-            $('.table-container').hide();
-            $('#scheduledTable').show();
-            $('.clickable').first().addClass('active');
         });
+
+        // Click event for table selection
+        $('.clickable').on('click', function () {
+            var target = $(this).data('target');
+
+            // Hide all tables and show the target table
+            $('.table-container').hide();
+            $(target).show();
+
+            // Remove active class from all items and add to the clicked item
+            $('.clickable').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        // Show the first table by default and set active class
+        $('.table-container').hide();
+        $('#scheduledTable').show();
+        $('.clickable').first().addClass('active');
     </script>
 </body>
 
