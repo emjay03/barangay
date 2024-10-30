@@ -17,6 +17,7 @@ class Resident extends CI_Controller
 
 
         $this->load->view('admin/Resident_information', $data);
+       
     }
 
     public function create_resident()

@@ -353,13 +353,13 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
             document.getElementById('current-time').innerText = now.toLocaleTimeString([], options);
         }
 
         // Initial rendering
         updateTime();
-        setInterval(updateTime, 0);
+        setInterval(updateTime, 1000); // Update every second
 
         document.addEventListener("DOMContentLoaded", function () {
             // VARIABLES FOR MONTHS
@@ -469,7 +469,6 @@
                 }
             });
         });
-
     </script>
 </body>
 
