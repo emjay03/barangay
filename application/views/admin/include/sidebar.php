@@ -141,8 +141,12 @@
 <!-- Sidebar -->
 <nav id="sidebar" class="sidebar">
   <div class="sidebar-header d-block text-center py-4 pt-5">
-    <img src="application/public/logo.png" alt="logo" class="rounded-circle mb-3" height="60"
-      onclick="window.location.href='/barangay/Dashboard'">
+    <div class="d-flex justify-content-center align-items-center">
+      <img src="application/public/logo.png" alt="logo" class="rounded-circle mb-3 mx-2" height="60"
+        onclick="window.location.href='/barangay/Dashboard'">
+      <img src="application/public/northcaloocan_logo.png" alt="logo" class="rounded-circle mb-3 mx-2" height="60"
+        onclick="window.location.href='/barangay/Dashboard'">
+    </div>
     <p class="text-light fw-bold">BRGY. 185 MLR SYSTEM</p>
   </div>
 

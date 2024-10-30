@@ -112,8 +112,12 @@
                     <div class="row" style="max-width: 992px">
                         <div class="col-7 d-flex justify-content-center align-items-center">
                             <div class="d-block text-center py-5 px-5">
-                                <img class="rounded-circle" style="z-index: 2" src="application/public/brgy185.jpg"
-                                    alt="barangay187" width="120">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img class="rounded-circle mx-3" style="z-index: 2" src="application/public/brgy185.jpg"
+                                        alt="barangay187" width="120">
+                                    <img class="rounded-circle mx-3" style="z-index: 2" src="application/public/northcaloocan_logo.png"
+                                        alt="barangay187" width="120">
+                                </div>
                                 <h1 class="text-light fw-bold mt-3"
                                     style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">BARANGAY 185
                                     MALARIA DISTRICT 3,
@@ -129,10 +133,12 @@
                                 <form action="<?php echo site_url('auth/login'); ?>" method="post"
                                     class="p-5 rounded-3">
                                     <input type="text" name="email" placeholder="Username :"
-                                        class="mb-3 py-2 px-3 w-100 border-0 rounded-3 Username" style="box-shadow: 0 3px 10px 4px rgba(0, 0, 0, 0.3); font-size: 14px;">
-                                        
+                                        class="mb-3 py-2 px-3 w-100 border-0 rounded-3 Username"
+                                        style="box-shadow: 0 3px 10px 4px rgba(0, 0, 0, 0.3); font-size: 14px;">
+
                                     <input type="password" name="password" placeholder="Password :"
-                                        class="mb-3 py-2 px-3 w-100 border-0 rounded-3 Password" style="box-shadow: 0 3px 10px 4px rgba(0, 0, 0, 0.3); font-size: 14px;">
+                                        class="mb-3 py-2 px-3 w-100 border-0 rounded-3 Password"
+                                        style="box-shadow: 0 3px 10px 4px rgba(0, 0, 0, 0.3); font-size: 14px;">
 
                                     <div class="mb-2" style="width: 100%; height: 50px;">
                                         <?php if ($this->session->flashdata('success')): ?>
@@ -152,10 +158,12 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <input type="submit" value="Sign in"
-                                                class="btn btn-primary px-5 border-0 text-center text-light fw-normal" style="font-size: 14px;">
+                                                class="btn btn-primary px-5 border-0 text-center text-light fw-normal"
+                                                style="font-size: 14px;">
                                         </div>
                                         <div class="col-6 d-flex justify-content-end align-items-center">
-                                            <a href="" class="text-decoration-none" style="font-size: 12px;">Forget Password</a>
+                                            <a href="" class="text-decoration-none" style="font-size: 12px;">Forget
+                                                Password</a>
                                         </div>
                                     </div>
                                 </form>
