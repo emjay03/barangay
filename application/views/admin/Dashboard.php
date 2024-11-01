@@ -455,7 +455,7 @@
                 if (noteText) {
                     // Create a new note element
                     const noteElement = document.createElement("div");
-                    noteElement.className = "note mb-2 p-2 border rounded";
+                    noteElement.className = "note mb-2 p-2 border-bottom-dark rounded";
                     noteElement.textContent = noteText;
                     noteElement.style.fontSize = "12px";
 

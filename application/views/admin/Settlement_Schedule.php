@@ -144,7 +144,6 @@
 </style>
 
 <body>
-    <div id="alertMessage" class="alert px-5" role="alert"></div>
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
@@ -222,168 +221,7 @@
                                     </table>
                                 </div>
                             </div>
-
-                            <div class="table-container" id="unscheduledTable">
-                                <div class="table-responsive">
-                                    <table class="resident-table table mb-5">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Case Number</th>
-                                                <th scope="col">Date of Filling</th>
-                                                <th scope="col">Type of Case</th>
-                                                <th scope="col">Details</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Contact</th>
-                                                <th scope="col">Respondent Relationship</th>
-                                                <th scope="col">Date Mediation</th>
-                                                <th scope="col">Lupon Member 1</th>
-                                                <th scope="col">Lupon Member 2</th>
-                                                <th scope="col">Lupon Member 3</th>
-                                                <th scope="col">Summary</th>
-                                                <th scope="col">Term Settlement</th>
-                                                <th scope="col">Date Settlement</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($all_settlement as $settlement): ?>
-                                                <tr>
-                                                    <td><?php echo htmlspecialchars($settlement['case_number']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_of_filling']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['type_of_case']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['details']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['contact']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['respondent_relationship']); ?>
-                                                    </td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_mediation']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member1']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member2']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member3']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['summary']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['term_settlement']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_settlement']); ?></td>
-                                                    <td class="d-flex justify-content-center align-items-center">
-                                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
-                                                            data-bs-target="#editSettlementModal"
-                                                            data-settlement='<?php echo json_encode($settlement); ?>'>
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="table-container" id="todayTable">
-                                <div class="table-responsive">
-                                    <table class="resident-table table mb-5">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Case Number</th>
-                                                <th scope="col">Date of Filling</th>
-                                                <th scope="col">Type of Case</th>
-                                                <th scope="col">Details</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Contact</th>
-                                                <th scope="col">Respondent Relationship</th>
-                                                <th scope="col">Date Mediation</th>
-                                                <th scope="col">Lupon Member 1</th>
-                                                <th scope="col">Lupon Member 2</th>
-                                                <th scope="col">Lupon Member 3</th>
-                                                <th scope="col">Summary</th>
-                                                <th scope="col">Term Settlement</th>
-                                                <th scope="col">Date Settlement</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($all_settlement as $settlement): ?>
-                                                <tr>
-                                                    <td><?php echo htmlspecialchars($settlement['case_number']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_of_filling']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['type_of_case']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['details']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['contact']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['respondent_relationship']); ?>
-                                                    </td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_mediation']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member1']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member2']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member3']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['summary']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['term_settlement']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_settlement']); ?></td>
-                                                    <td class="d-flex justify-content-center align-items-center">
-                                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
-                                                            data-bs-target="#editSettlementModal"
-                                                            data-settlement='<?php echo json_encode($settlement); ?>'>
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="table-container" id="settledTable">
-                                <div class="table-responsive">
-                                    <table class="resident-table table mb-5">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Case Number</th>
-                                                <th scope="col">Date of Filling</th>
-                                                <th scope="col">Type of Case</th>
-                                                <th scope="col">Details</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Contact</th>
-                                                <th scope="col">Respondent Relationship</th>
-                                                <th scope="col">Date Mediation</th>
-                                                <th scope="col">Lupon Member 1</th>
-                                                <th scope="col">Lupon Member 2</th>
-                                                <th scope="col">Lupon Member 3</th>
-                                                <th scope="col">Summary</th>
-                                                <th scope="col">Term Settlement</th>
-                                                <th scope="col">Date Settlement</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($all_settlement as $settlement): ?>
-                                                <tr>
-                                                    <td><?php echo htmlspecialchars($settlement['case_number']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_of_filling']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['type_of_case']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['details']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['name']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['contact']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['respondent_relationship']); ?>
-                                                    </td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_mediation']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member1']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member2']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['lupon_member3']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['summary']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['term_settlement']); ?></td>
-                                                    <td><?php echo htmlspecialchars($settlement['date_settlement']); ?></td>
-                                                    <td class="d-flex justify-content-center align-items-center">
-                                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
-                                                            data-bs-target="#editSettlementModal"
-                                                            data-settlement='<?php echo json_encode($settlement); ?>'>
-                                                            Edit
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -588,7 +426,9 @@
     <?php include 'application/views/admin/include/edit_info_resident.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    
     <script>
         $(document).ready(function () {
             $('.resident-table').DataTable({

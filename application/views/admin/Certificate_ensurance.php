@@ -18,6 +18,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fruktur&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -49,6 +50,13 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+
+    .residency {
+        background-image: url("application/public/indigency.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 </style>
 
 <body>
@@ -68,27 +76,274 @@
                         <div class="col p-2">
                             <div class="card p-2 shadow">
                                 <div class="card-head text-center fw-bold fs-4">B. INDIGENCY</div>
-                                <div class="card-body text-center">
+                                <div class="card-body text-center d-flex justify-content-center">
                                     <div class="bg-danger border border-light shadow p-2 indigency"
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary">Create</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#indigencyModal">
+                                        <i class="bi bi-box-arrow-in-down-left"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col p-2 bg-danger"></div>
-                        <div class="col p-2 bg-warning"></div>
-                        <div class="col p-2 bg-primary"></div>
+                        <div class="col p-2">
+                            <div class="card p-2 shadow">
+                                <div class="card-head text-center fw-bold fs-4">B. RESIDENCY</div>
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                        style="width: 250px; height: 300px;"></div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-primary"><i
+                                            class="bi bi-box-arrow-in-down-left"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-2">
+                            <div class="card p-2 shadow">
+                                <div class="card-head text-center fw-bold fs-4">B. RESIDENCY</div>
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                        style="width: 250px; height: 300px;"></div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-primary"><i
+                                            class="bi bi-box-arrow-in-down-left"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-2">
+                            <div class="card p-2 shadow">
+                                <div class="card-head text-center fw-bold fs-4">B. RESIDENCY</div>
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                        style="width: 250px; height: 300px;"></div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-primary"><i
+                                            class="bi bi-box-arrow-in-down-left"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <?php include 'application/views/admin/include/indigency.php'; ?>
         </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        function updateDisplay() {
+            const fullName = document.getElementById('fullName').value;
+            const wifeName = document.getElementById('wifeName').value;
+            const date = document.getElementById('dateInput').value;
+            const address = document.getElementById('address').value;
+
+            document.getElementById('displayName').value = fullName;
+            document.getElementById('displayWifeName').value = wifeName;
+            document.getElementById('displayAddress').value = address;
+
+            formatDate(new Date(date));
+        }
+
+        function formatDate(date) {
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'long' });
+            const year = date.getFullYear();
+
+            const suffix = (day % 10 === 1 && day !== 11) ? 'st' :
+                (day % 10 === 2 && day !== 12) ? 'nd' :
+                    (day % 10 === 3 && day !== 13) ? 'rd' : 'th';
+
+            // Set the values in the corresponding input fields
+            document.getElementById('day').value = day;
+            document.getElementById('suffix').innerText = suffix;
+            document.getElementById('month').value = month;
+            document.getElementById('year').value = year;
+        }
+
+
+        function printModalContent() {
+            const { jsPDF } = window.jspdf;
+
+            // Get the current values from the input fields
+            const fullName = document.getElementById('displayName').value;
+            const wifeName = document.getElementById('displayWifeName').value;
+            const address = document.getElementById('displayAddress').value;
+            const day = document.getElementById('day').value;
+            const suffix = document.getElementById('suffix').innerText;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+
+            // Create the content for the PDF
+            const modalContent = `
+        <div>
+                        <div class="header">
+                            <div class="d-flex justify-content-between align-items-center py-2"
+                                style="border-bottom: solid 1px #000;">
+                                <img src="application/public/logo.png" alt="logo1" class="rounded-circle" height="80" />
+                                <div class="d-block text-center" style="line-height: 0.3;">
+                                    <img src="application/public/rp.png" alt="logo3" class="" width="300" />
+                                    <p class="mt-1" style="font-family: 'Times New Roman', Times, serif;">City of
+                                        Caloocan</p>
+                                    <p style="font-family: 'Times New Roman', Times, serif;">Barangay
+                                        158 Zone 16 District 3</p>
+                                    <p style="font-family: 'Times New Roman', Times, serif;">Mobile No.
+                                        : </p>
+                                </div>
+                                <img src="application/public/northcaloocan_logo.png" alt="logo2" class="rounded-circle"
+                                    height="80" />
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-3 text-center pt-2"
+                                    style="border-right: solid 1px #000; line-height: 1;">
+                                    <p class="fw-bold">SANGUNIANG <br /> BARANGAY 185</p>
+
+                                    <p class="fw-semibold mt-3" style="font-size: 13px;">HON. RODOLFO
+                                        "ATO" D. OLIVA <br /> <small class="fw-normal">Punong
+                                            Barangay</small>
+                                    </p>
+
+                                    <p class="fw-semibold mt-5" style="font-size: 13px;">NANCY E.
+                                        MARCELINO <br /> <small class="fw-normal">Barangay
+                                            Secretary</small>
+                                    </p>
+
+                                    <p class="fw-semibold mt-5" style="font-size: 13px;">ROSALINA TIGLAO
+                                        <br /> <small class="fw-normal">Barangay Treasurer</small>
+                                    </p>
+
+                                    <br /><br /><br />
+
+                                    <small style="font-size: 13px;">Barangay 185 Council
+                                        (Kagawads)</small><br /><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. MARIVIC H.
+                                        GALIT</p><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. JUAN ESPAYOS JR
+                                    </p><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. MELVIN ESPAYOS
+                                    </p><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. EMILY CAMMAYO
+                                    </p><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. MANOLITO
+                                        BAOILAN</p><br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. VICTOR DIAZ</p>
+                                    <br />
+                                    <p class="fw-semibold" style="font-size: 13px;">HON. GRACE LAMPA</p>
+
+                                    <br /><br /><br />
+
+                                    <p class="fw-semibold" style="font-size: 13px;">AIRA GRACE O.
+                                        CAPUCHINO <br /> <small class="fw-normal">Barangay
+                                            Administrator</small>
+                                    </p>
+
+                                    <p class="fw-semibold" style="font-size: 13px;">LUPON TAGAPAMAYAPA
+                                        <br /> <small class="fw-normal">Summon Officer</small>
+                                    </p>
+
+                                    <p class="fw-semibold" style="font-size: 13px;">MARIO BODEÑA <br />
+                                        <small class="fw-normal">Barangay Ex-Officio</small>
+                                    </p> <br /><br />
+
+                                </div>
+                                <div class="col-9">
+                                    <div class="text-center mt-4" style="line-height: 0.3;">
+                                        <h5 class="fw-bold" style="font-family: 'Times New Roman', Times, serif;">
+                                            BARANGAY INDIGENCY
+                                        </h5>
+                                        <p style="font-family: 'Times New Roman', Times, serif;">Control
+                                            No. :</p>
+                                    </div>
+                                    <div class="position-relative w-75 z-n1 mt-5 mx-3">
+                                        <img src="application/public/logo.png" alt="bglogo"
+                                            class="rounded-circle w-100 opacity-25 position-absolute mx-5"/>
+                                    </div>
+                                    <div class="px-3 text-justify z-3"
+                                        style="font-size: 13px; font-family: 'Times New Roman', Times, serif; margin-top: 5rem;">
+                                        This is to certify that,
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${fullName}</strong>,
+                                        is a bonafide resident of this barangay, presently residing at
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${address}</strong>,
+                                        who belongs to the <strong
+                                            style="font-family: 'Times New Roman', Times, serif;">INDIGENT
+                                            FAMILY</strong> with low family income / No permanent job.
+                                        <br /> <br />
+                                        This certification is being issued upon request of the
+                                        above-mentioned named to seek
+                                        <strong style="font-family: 'Times New Roman', Times, serif;">FINANCIAL
+                                            ASSISTANCE</strong> for his wife,
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${wifeName}</strong>.
+                                        <br /> <br />
+
+                                        Given on this
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${day}</strong>
+                                        <strong style="border-bottom: 1px solid #000">${suffix}</strong>
+                                        day of
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${month}</strong>
+                                        in the year of our Lord,
+                                        <strong class="text-capitalize" style="border-bottom: 1px solid #000">${year}</strong>
+                                        at the office of Barangay 185, District 3, Malaria, Caloocan
+                                        City.
+                                    </div>
+                                    <div class="container-fluid mt-5">
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-center align-items-center mt-5">
+                                            <p class="text-center" style="font-size: 12px; font-family: 'Times New Roman', Times, serif;"> <strong style="font-family: 'Times New Roman', Times, serif;"> LETICIO GRACIANO</strong> <br/>
+                                            Punong Barangay</p>
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                                <p class="text-center" style="font-size: 12px; font-family: 'Times New Roman', Times, serif;"> <strong style="font-family: 'Times New Roman', Times, serif;"> CECILIO ABORGOCIO</strong> <br/>
+                                            Barangay Kagawad On Duty</p></div>
+                                            <div class="col-12 d-flex justify-content-center align-items-center border border-dark p-3 mt-5" style="font-size: 12px; font-family: 'Times New Roman', Times, serif;">
+                                            *NOT VALID FOR 6 (SIX) MONTHS FROM THE DATE OF ISSUANCE
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    `;
+
+            const printWindow = window.open('', '', 'height=800,width=1000');
+
+            // Create a new jsPDF instance
+            const pdf = new jsPDF('p', 'pt', 'a4');
+
+            // Add content to the PDF
+            pdf.html(modalContent, {
+                callback: function (doc) {
+                    // Save the PDF
+                    doc.save('indigency.pdf');
+                },
+                x: 10,
+                y: 10
+            });
+
+            printWindow.document.write('<html><head><title>Print Indigency</title>');
+            printWindow.document.write('<style>');
+            printWindow.document.write('body { font-family: "Times New Roman", Times, serif; margin: 20px; }');
+            printWindow.document.write('</style>');
+            printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(modalContent); // Include the newly constructed content
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+    </script>
 </body>
 
 </html>

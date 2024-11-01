@@ -288,10 +288,11 @@
     <?php include 'application/views/admin/include/add_resident.php'; ?>
     <?php include 'application/views/admin/include/edit_info_resident.php'; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>\
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.resident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -305,23 +306,22 @@
                 }
             });
 
-            $('.search-btn').on('click', function() {
+            $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
             });
-
         });
 
-        document.getElementById('addResidentForm').addEventListener('submit', function(event) {
+        document.getElementById('addResidentForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             fetch(this.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(this)),
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
                 .then(response => {
                     if (!response.ok) {
                         return response.text().then(text => {
@@ -377,16 +377,16 @@
         });
 
         // Update resident
-        document.getElementById('editResidentForm').addEventListener('submit', function(event) {
+        document.getElementById('editResidentForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             fetch(this.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(this)),
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
+                method: 'POST',
+                body: new URLSearchParams(new FormData(this)),
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
                 .then(response => response.json())
                 .then(data => {
                     const alertMessage = document.getElementById('alertMessage');
@@ -431,7 +431,7 @@
                         }, 500);
                     }, 3000);
                 });
-            $(document).on('click', '[data-bs-target="#editResidentModal"]', function() {
+            $(document).on('click', '[data-bs-target="#editResidentModal"]', function () {
                 const residentData = $(this).data('resident');
                 // Populate your modal fields with the resident data
                 console.log("tst", residentData)
