@@ -118,14 +118,16 @@
                         </div>
                         <div class="col p-2">
                             <div class="card p-2 shadow">
-                                <div class="card-head text-center fw-bold fs-4">B. RESIDENCY</div>
+                                <div class="card-head text-center fw-bold fs-4">B. CERTIFICATE</div>
                                 <div class="card-body text-center d-flex justify-content-center">
                                     <div class="bg-danger border border-light shadow p-2 residency"
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary"><i
-                                            class="bi bi-box-arrow-in-down-left"></i></button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#certificateModal">
+                                        <i class="bi bi-box-arrow-in-down-left"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -135,6 +137,7 @@
 
             <?php include 'application/views/admin/include/indigency.php'; ?>
             <?php include 'application/views/admin/include/clearance.php'; ?>
+            <?php include 'application/views/admin/include/certificate.php'; ?>
         </main>
     </div>
 
@@ -145,6 +148,7 @@
 
     <script src="application/public/js/indigency.js"></script>
     <script src="application/public/js/clearance.js"></script>
+    <script src="application/public/js/certificate.js"></script>
 </body>
 
 </html>
