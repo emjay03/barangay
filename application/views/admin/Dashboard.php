@@ -186,30 +186,35 @@
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#addNoteModal">+</button>
                                 </div>
-                                <div class="card-body" id="notesContainer" style="overflow-y: scroll;"></div>
+                                <div class="card-body p-0" id="notesContainer" style="overflow-y: scroll;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Modal for adding notes -->
                 <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addNoteModalLabel">Add Note</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <textarea id="noteInput" class="form-control" rows="3"
-                                    placeholder="Write your note here..."></textarea>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="saveNoteButton">Save Note</button>
-                            </div>
+                            <form>
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addNoteModalLabel">Add Note</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea id="noteInput" class="form-control" rows="3"
+                                        placeholder="Write your note here..."></textarea>
+                                    <input type="hidden" id="noteId" value="0" /> <!-- Hidden input for note ID -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger" id="deleteNoteButton"
+                                        style="display: none;">Delete Note</button>
+                                    <button type="button" class="btn btn-primary" id="saveNoteButton">Save Note</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -446,28 +451,106 @@
         document.addEventListener("DOMContentLoaded", function () {
             const notesContainer = document.getElementById("notesContainer");
             const saveNoteButton = document.getElementById("saveNoteButton");
+            const deleteNoteButton = document.getElementById("deleteNoteButton");
             const noteInput = document.getElementById("noteInput");
+            const noteIdInput = document.getElementById("noteId");
+            const addNoteModal = new bootstrap.Modal(document.getElementById('addNoteModal'));
+
+            // Function to fetch and display all notes
+            function loadNotes() {
+                fetch('<?php echo site_url('notes/get_notes'); ?>')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            notesContainer.innerHTML = ''; // Clear existing notes
+                            data.data.forEach(note => {
+                                const noteElement = document.createElement("div");
+                                noteElement.className = "note p-2 border border-dark border-0 border-bottom";
+                                noteElement.textContent = note.note;
+                                noteElement.style.fontSize = "12px";
+
+                                // Show modal when the note is clicked
+                                noteElement.onclick = () => {
+                                    noteInput.value = note.note; // Set the current note text in the input
+                                    noteIdInput.value = note.id; // Set the ID of the note being edited
+                                    deleteNoteButton.style.display = "block"; // Show delete button
+                                    addNoteModal.show(); // Show the modal
+                                };
+
+                                notesContainer.appendChild(noteElement);
+                            });
+                        } else {
+                            console.error('Failed to load notes:', data.message);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
 
             // Function to add a note
             saveNoteButton.addEventListener("click", function () {
                 const noteText = noteInput.value.trim();
 
                 if (noteText) {
-                    // Create a new note element
-                    const noteElement = document.createElement("div");
-                    noteElement.className = "note mb-2 p-2 border-bottom-dark rounded";
-                    noteElement.textContent = noteText;
-                    noteElement.style.fontSize = "12px";
+                    const noteId = noteIdInput.value; // Get the note ID (0 for new notes)
+                    const url = noteId === "0" ? '<?php echo site_url('notes/create_note'); ?>' : '<?php echo site_url('notes/edit_note'); ?>';
+                    const body = new URLSearchParams({ note: noteText, id: noteId });
 
-                    // Append the note to the notes container
-                    notesContainer.appendChild(noteElement);
-
-                    // Clear the input field and close the modal
-                    noteInput.value = '';
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('addNoteModal'));
-                    modal.hide();
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: body
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                loadNotes(); // Reload notes after adding/editing
+                                noteInput.value = ''; // Clear the input field
+                                noteIdInput.value = '0'; // Reset the hidden ID input
+                                addNoteModal.hide(); // Close the modal
+                                deleteNoteButton.style.display = "none"; // Hide delete button
+                            } else {
+                                console.error('Failed to save note:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                } else {
+                    alert('Please enter a note.'); // Prompt for note text
                 }
             });
+
+            // Function to delete a note
+            deleteNoteButton.addEventListener("click", function () {
+                const noteId = noteIdInput.value;
+
+                if (noteId) {
+                    if (confirm("Are you sure you want to delete this note?")) {
+                        fetch('<?php echo site_url('notes/delete_note'); ?>', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({ id: noteId })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    loadNotes(); // Reload notes after deleting
+                                    noteInput.value = ''; // Clear the input field
+                                    noteIdInput.value = '0'; // Reset the hidden ID input
+                                    addNoteModal.hide(); // Close the modal
+                                } else {
+                                    console.error('Failed to delete note:', data.message);
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                    }
+                }
+            });
+
+            // Load notes on page load
+            loadNotes();
         });
     </script>
 </body>
