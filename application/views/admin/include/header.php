@@ -36,7 +36,10 @@
         <div class="col-6 d-flex justify-content-end align-items-center">
             <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
                 <i class="bi bi-person-circle fs-4 me-2"></i>
-                <span class="d-none d-sm-inline me-5">ADMIN</span>
+                <span class="d-none d-sm-inline me-5"><?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
+
+                 
+                </span>
             </div>
         </div>
     </div>

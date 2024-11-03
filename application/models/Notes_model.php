@@ -14,7 +14,13 @@ class Notes_model extends CI_Model
     public function get_notes()
     {
         $query = $this->db->get('notes');
-        return $query->result_array(); // Return results as an array
+        return $query->result_array();
+    }
+    public function get_notes_by_email($email)
+    {
+        $this->db->where('email', $email);
+        $query = $this->db->get('notes');
+        return $query->result_array();
     }
 
     public function edit_note($id, $data)

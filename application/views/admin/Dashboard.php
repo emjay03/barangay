@@ -186,7 +186,10 @@
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#addNoteModal">+</button>
                                 </div>
+
+
                                 <div class="card-body p-0" id="notesContainer" style="overflow-y: scroll;"></div>
+
                             </div>
                         </div>
                     </div>
@@ -203,6 +206,12 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+
+
+
+
+                                    <input type="hidden" id="emailInput" name="email" value="<?php echo htmlspecialchars($user->email); ?>" />
+
                                     <textarea id="noteInput" class="form-control" rows="3"
                                         placeholder="Write your note here..."></textarea>
                                     <input type="hidden" id="noteId" value="0" /> <!-- Hidden input for note ID -->
@@ -358,7 +367,12 @@
     <script>
         function updateTime() {
             const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const options = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
             document.getElementById('current-time').innerText = now.toLocaleTimeString([], options);
         }
 
@@ -366,7 +380,7 @@
         updateTime();
         setInterval(updateTime, 1000); // Update every second
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // VARIABLES FOR MONTHS
             const monthNames = [
                 "January", "February", "March", "April", "May", "June",
@@ -424,7 +438,7 @@
             }
 
             // EVENT LISTENERS FOR BUTTONS
-            nextMonthBtn.addEventListener("click", function () {
+            nextMonthBtn.addEventListener("click", function() {
                 if (currentMonth === 11) {
                     currentMonth = 0;
                     currentYear++;
@@ -434,7 +448,7 @@
                 renderCalendar(currentMonth, currentYear);
             });
 
-            prevMonthBtn.addEventListener("click", function () {
+            prevMonthBtn.addEventListener("click", function() {
                 if (currentMonth === 0) {
                     currentMonth = 11;
                     currentYear--;
@@ -448,17 +462,21 @@
             renderCalendar(currentMonth, currentYear);
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const notesContainer = document.getElementById("notesContainer");
             const saveNoteButton = document.getElementById("saveNoteButton");
             const deleteNoteButton = document.getElementById("deleteNoteButton");
             const noteInput = document.getElementById("noteInput");
             const noteIdInput = document.getElementById("noteId");
+            const emailInput = document.getElementById("emailInput");
             const addNoteModal = new bootstrap.Modal(document.getElementById('addNoteModal'));
+
+            const email = "<?php echo htmlspecialchars($user->email); ?>";
+
 
             // Function to fetch and display all notes
             function loadNotes() {
-                fetch('<?php echo site_url('notes/get_notes'); ?>')
+                fetch(`<?php echo site_url('notes/get_notes_by_email'); ?>?email=${encodeURIComponent(email)}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
@@ -467,6 +485,7 @@
                                 const noteElement = document.createElement("div");
                                 noteElement.className = "note p-2 border border-dark border-0 border-bottom";
                                 noteElement.textContent = note.note;
+
                                 noteElement.style.fontSize = "12px";
 
                                 // Show modal when the note is clicked
@@ -487,26 +506,32 @@
             }
 
             // Function to add a note
-            saveNoteButton.addEventListener("click", function () {
+            saveNoteButton.addEventListener("click", function() {
                 const noteText = noteInput.value.trim();
+                const emailText = noteInput.value.trim();
 
                 if (noteText) {
-                    const noteId = noteIdInput.value; // Get the note ID (0 for new notes)
+                    const noteId = noteIdInput.value;
                     const url = noteId === "0" ? '<?php echo site_url('notes/create_note'); ?>' : '<?php echo site_url('notes/edit_note'); ?>';
-                    const body = new URLSearchParams({ note: noteText, id: noteId });
+                    const body = new URLSearchParams({
+                        note: noteText,
+                        email: emailText,
+                        id: noteId
+                    });
 
                     fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: body
-                    })
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: body
+                        })
                         .then(response => response.json())
                         .then(data => {
                             if (data.status === 'success') {
                                 loadNotes(); // Reload notes after adding/editing
                                 noteInput.value = ''; // Clear the input field
+                                emailInput.value = '';
                                 noteIdInput.value = '0'; // Reset the hidden ID input
                                 addNoteModal.hide(); // Close the modal
                                 deleteNoteButton.style.display = "none"; // Hide delete button
@@ -521,18 +546,20 @@
             });
 
             // Function to delete a note
-            deleteNoteButton.addEventListener("click", function () {
+            deleteNoteButton.addEventListener("click", function() {
                 const noteId = noteIdInput.value;
 
                 if (noteId) {
                     if (confirm("Are you sure you want to delete this note?")) {
                         fetch('<?php echo site_url('notes/delete_note'); ?>', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: new URLSearchParams({ id: noteId })
-                        })
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: new URLSearchParams({
+                                    id: noteId
+                                })
+                            })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {

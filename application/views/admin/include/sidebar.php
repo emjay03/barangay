@@ -181,6 +181,7 @@
     <span class="menu-title">Settings</span>
   </span>
 
+
   <div class="collapse" id="collapseExample">
     <a href="#" class="Smenu-item">
       <i class="bi bi-person-vcard-fill"></i>
@@ -194,18 +195,20 @@
     </a>
   </div>
 
-  <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>
-  <a href="#" class="menu-item my-2">
-    <i class="bi bi-person-circle"></i>
-    <span class="menu-title">Account
-    </span>
-  </a>
+  <?php if (isset($user) && $user->role_id == 1): ?>
+    <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>
+    <a href="#" class="menu-item my-2">
+      <i class="bi bi-person-circle"></i>
+      <span class="menu-title">Account</span>
+    </a>
+    <a href="#" class="menu-item my-2">
+      <i class="bi bi-building-fill"></i>
+      <span class="menu-title">Barangay</span>
+    </a>
 
-  <a href="#" class="menu-item my-2">
-    <i class="bi bi-building-fill"></i>
-    <span class="menu-title">Barangay
-    </span>
-  </a>
+  <?php endif; ?>
+
+
 
   <a href="/barangay/auth" class="menu-item my-2 mt-5">
     <i class="bi bi-box-arrow-in-left"></i>
@@ -219,7 +222,7 @@
 
 <script>
   document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', function () {
+    item.addEventListener('click', function() {
       document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
 
       this.classList.add('active');

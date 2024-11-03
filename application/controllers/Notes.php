@@ -12,13 +12,16 @@ class Notes extends CI_Controller
 
     public function create_note()
     {
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('note', 'Note', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             echo json_encode(array('status' => 'error', 'message' => validation_errors()));
         } else {
-            $data = array('note' => $this->input->post('note'));
-
+            $data = array(
+                'note' => $this->input->post('note'),
+                'email' => $this->input->post('email')
+            );
             if ($this->Notes_model->create_note($data)) {
                 echo json_encode(array('status' => 'success', 'message' => 'Note added successfully.'));
             } else {
@@ -31,6 +34,33 @@ class Notes extends CI_Controller
     {
         $notes = $this->Notes_model->get_notes();
         echo json_encode(array('status' => 'success', 'data' => $notes));
+    }
+
+
+    public function get_notes_by_email()
+    {
+        $email = $this->input->get('email');
+
+        if (!$email) {
+            echo json_encode(array('status' => 'error', 'message' => 'Email is required.'));
+            return;
+        }
+
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(array('status' => 'error', 'message' => 'Invalid email format.'));
+            return;
+        }
+
+
+        $notes = $this->Notes_model->get_notes_by_email($email);
+
+
+        if (!empty($notes)) {
+            echo json_encode(array('status' => 'success', 'data' => $notes));
+        } else {
+            echo json_encode(array('status' => 'error', 'message' => 'No notes found for this email.'));
+        }
     }
 
     public function edit_note()

@@ -102,6 +102,7 @@ class Auth extends CI_Controller
 
         $user = $this->User_model->login_user($email, $password);
 
+
         if ($user) {
             $this->session->set_userdata('user_data', $user);
             redirect('dashboard');
