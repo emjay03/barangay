@@ -9,27 +9,30 @@
             <div class="modal-body d-flex">
                 <div class="col-4 m-5">
                     <form class="bg-light rounded-3 shadow p-5" id="indigencyForm">
+                        <input type="hidden" name="type" id="type" value="Indigency" />
                         <div class="mb-3">
-                            <label for="fullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="fullName" required
+                            <label for="fullname" class="form-label">Full Name : </label>
+                            <input type="text" class="form-control text-capitalize" id="fullname" name="fullname" required
                                 oninput="updateDisplay()">
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="address" required oninput="updateDisplay()">
+                            <input type="text" class="form-control text-capitalize" id="address" name="address" required oninput="updateDisplay()">
                         </div>
                         <div class="mb-3">
                             <label for="purpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="purpose" required
+                            <input type="text" class="form-control text-capitalize" id="purpose" name="purpose" required
                                 oninput="updateDisplay()">
                         </div>
                         <div class="mb-3">
                             <label for="dateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="dateInput" required oninput="updateDisplay()">
+                            <input type="date" class="form-control" id="dateInput" name="date" required oninput="updateDisplay()">
                         </div>
+
+
                     </form>
                 </div>
-                <div class="indigencyPrint p-3 col-7" id="printContent">
+                <div class=" indigencyPrint p-3 col-7" id="printContent">
                     <div class="border border-dark p-3">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
@@ -55,7 +58,7 @@
                                     <p class="fw-bold text-break">SANGUNIANG BARANGAY 185</p>
 
                                     <p class="fw-bolder mt-5 lh-sm" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">HON. RODOLFO
-                                         D. OLIVA <br /> <small class="fw-normal" style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Punong
+                                        D. OLIVA <br /> <small class="fw-normal" style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Punong
                                             Barangay</small>
                                     </p>
 
@@ -69,9 +72,9 @@
 
                                     <br /><br /><br /><br /><br />
 
-                                    <small style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">    
+                                    <small style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">
                                         Kagawad:</small><br /><br /><br />
-                                    <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MARIVIC 
+                                    <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MARIVIC
                                         GALIT HSIEH</p><br />
                                     <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">JUAN J. ESPAYOS JR
                                     </p><br />
@@ -96,7 +99,7 @@
                                     </div>
                                     <div class="position-relative w-75 z-n1 mt-5 mx-3">
                                         <img src="application/public/logo.png" alt="bglogo"
-                                            class="rounded-circle w-100 position-absolute mx-5" style="opacity: 0.1;"/>
+                                            class="rounded-circle w-100 position-absolute mx-5" style="opacity: 0.1;" />
                                     </div>
                                     <div class="px-3 text-justify z-3"
                                         style="font-size: 17px; font-family: 'Times New Roman', Times, serif; margin-top: 5rem; line-height: 1.5">
@@ -171,8 +174,41 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" onclick="printModalContent()">Print</button>
+                <button type="submit" class="btn btn-success" id="submitBtn">Print</button>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#submitBtn').on('click', function() {
+            // Get form data
+            const formData = {
+                fullname: $('#fullname').val(),
+                address: $('#address').val(),
+                purpose: $('#purpose').val(),
+                date: $('#dateInput').val(),
+                type: $('#type').val()
+            };
+
+            console.log(formData)
+            // Send data using AJAX
+            $.ajax({
+                url: 'http://localhost/barangay/certificate/create_certificate',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+
+                    printModalContent();
+
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    alert('Error submitting data: ' + error);
+                }
+            });
+        });
+    });
+</script>

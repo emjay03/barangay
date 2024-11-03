@@ -9,39 +9,40 @@
             <div class="modal-body d-flex">
                 <div class="col-4 m-5">
                     <form class="bg-light rounded-3 shadow p-5" id="clearanceForm">
+                        <input type="hidden" name="type" id="clearance_type" value="Clearance" />
                         <div class="mb-3">
                             <label for="clearanceFullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFullName" required
+                            <input type="text" class="form-control text-capitalize" id="clearanceFullName" name="fullname" required
                                 oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceBirthdate" class="form-label">Date of Birth : </label>
-                            <input type="date" class="form-control" id="clearanceBirthdate" required
+                            <input type="date" class="form-control" id="clearanceBirthdate" name="birthdate" required
                                 oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceBirthplace" class="form-label">Place of Birth : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceBirthplace" required
+                            <input type="text" class="form-control text-capitalize" id="clearanceBirthplace" name="placebirth" required
                                 oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceAddress" required
+                            <input type="text" class="form-control text-capitalize" id="clearanceAddress" name="address" required
                                 oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceFindings" class="form-label">Findings : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFindings" required
+                            <input type="text" class="form-control text-capitalize" id="clearanceFindings" name="findings" required
                                 oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearancePurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearancePurpose" required
+                            <input type="text" class="form-control text-capitalize" id="clearancePurpose" name="purpose" required
                                 oninput="updateDisplayClearance()">
                         </div>
                     </form>
@@ -188,7 +189,7 @@
                                                     style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
                                                     class="fw-semibold text-capitalize text-start bg-transparent w-50 mt-3"
                                                     id="clearanceDisplayFinding" readonly><br />
-                                                PURPOSE:  
+                                                PURPOSE:
                                                 <input type="text"
                                                     style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
                                                     class="fw-semibold text-capitalize text-start bg-transparent w-50"
@@ -234,8 +235,43 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" onclick="printModalContentClearance()">Print</button>
+                <button type="submit" class="btn btn-success" id="submitBarangay">Print</button>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#submitBarangay').on('click', function() {
+
+            const formData = {
+                fullname: $('#clearanceFullName').val(),
+                address: $('#clearanceAddress').val(),
+                purpose: $('#clearancePurpose').val(),
+                findings: $('#clearanceFindings').val(),
+                placebirth: $('#certificateDateInput').val(),
+                birthdate: $('#clearanceBirthdate').val(),
+                type: $('#clearane_type').val()
+            };
+
+            console.log("tet", formData)
+            // Send data using AJAX
+            $.ajax({
+                url: 'http://localhost/barangay/certificate/create_certificate',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+
+                    printModalContentClearance();
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    alert('Error submitting data: ' + error);
+                }
+            });
+        });
+    });
+</script>

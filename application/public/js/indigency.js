@@ -1,10 +1,10 @@
 function updateDisplay() {
-	const fullName = document.getElementById("fullName").value;
+	const fullname = document.getElementById("fullname").value;
 	const wifeName = document.getElementById("purpose").value;
 	const date = document.getElementById("dateInput").value;
 	const address = document.getElementById("address").value;
 
-	document.getElementById("displayName").value = fullName;
+	document.getElementById("displayName").value = fullname;
 	document.getElementById("displayPurpose").value = wifeName;
 	document.getElementById("displayAddress").value = address;
 
@@ -38,7 +38,7 @@ function printModalContent() {
 	const { jsPDF } = window.jspdf;
 
 	// Get the current values from the input fields
-	const fullName = document.getElementById("displayName").value;
+	const fullname = document.getElementById("displayName").value;
 	const purpose = document.getElementById("displayPurpose").value;
 	const address = document.getElementById("displayAddress").value;
 	const day = document.getElementById("day").value;
@@ -119,7 +119,7 @@ function printModalContent() {
                                     <div class="px-3 text-justify z-3"
                                         style="font-size: 17px; font-family: 'Times New Roman', Times, serif; margin-top: 5rem; line-height: 1.5">
                                         <span style="margin-left: 5rem; font-size: 17px;"></span>This is to certify that,
-                                        <strong class="text-capitalize" style=" font-size: 17px;">${fullName}</strong>,
+                                        <strong class="text-capitalize" style=" font-size: 17px;">${fullname}</strong>,
                                         is a bonafide resident of this barangay, presently residing at
                                         <strong class="text-capitalize" style=" font-size: 17px;">${address}</strong>,
                                         who belongs to the <strong

@@ -8,25 +8,28 @@
             </div>
             <div class="modal-body d-flex">
                 <div class="col-4 m-5">
+
                     <form class="bg-light rounded-3 shadow p-5" id="certificateForm">
+                        <input type="hidden" name="type" id="barangay_type" value="Barangay" />
                         <div class="mb-3">
                             <label for="certificateFullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificateFullName" required
+                            <input type="text" class="form-control text-capitalize" id="certificateFullName" name="fullname" required
                                 oninput="updateDisplayCertificate()">
                         </div>
                         <div class="mb-3">
                             <label for="certificateAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificateAddress" required oninput="updateDisplayCertificate()">
+                            <input type="text" class="form-control text-capitalize" id="certificateAddress" name="address" required oninput="updateDisplayCertificate()">
                         </div>
                         <div class="mb-3">
                             <label for="certificatePurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificatePurpose" required
+                            <input type="text" class="form-control text-capitalize" id="certificatePurpose" name="purpose" required
                                 oninput="updateDisplayCertificate()">
                         </div>
                         <div class="mb-3">
                             <label for="certificateDateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="certificateDateInput" required oninput="updateDisplayCertificate()">
+                            <input type="date" class="form-control" id="certificateDateInput" name="date" required oninput="updateDisplayCertificate()">
                         </div>
+
                     </form>
                 </div>
                 <div class="certificateIndigencyPrint p-3 col-7" id="certificatePrintContent">
@@ -55,7 +58,7 @@
                                     <p class="fw-bold text-break">SANGUNIANG BARANGAY 185</p>
 
                                     <p class="fw-bolder mt-5 lh-sm" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">HON. RODOLFO
-                                         D. OLIVA <br /> <small class="fw-normal" style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Punong
+                                        D. OLIVA <br /> <small class="fw-normal" style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Punong
                                             Barangay</small>
                                     </p>
 
@@ -69,9 +72,9 @@
 
                                     <br /><br /><br /><br /><br />
 
-                                    <small style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">    
+                                    <small style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">
                                         Kagawad:</small><br /><br /><br />
-                                    <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MARIVIC 
+                                    <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MARIVIC
                                         GALIT HSIEH</p><br />
                                     <p class="fw-semibold" style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">JUAN J. ESPAYOS JR
                                     </p><br />
@@ -96,7 +99,7 @@
                                     </div>
                                     <div class="position-relative w-75 z-n1 mt-5 mx-3">
                                         <img src="application/public/logo.png" alt="bglogo"
-                                            class="rounded-circle w-100 position-absolute mx-5" style="opacity: 0.1;"/>
+                                            class="rounded-circle w-100 position-absolute mx-5" style="opacity: 0.1;" />
                                     </div>
 
                                     <div class="px-3 text-justify z-3"
@@ -117,13 +120,13 @@
                                             class="fw-semibold text-capitalize text-center bg-transparent w-100"
                                             id="certificateDisplayAddress" readonly> <br /><br /><br />
 
-                                            this Barangay Certificate is being issued for the following purposes:
-                                                <input type="text"
+                                        this Barangay Certificate is being issued for the following purposes:
+                                        <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
                                             class="fw-semibold text-capitalize text-center bg-transparent w-100"
                                             id="certificateDisplayPurpose" readonly>
 
-                                            <br /><br /><br />
+                                        <br /><br /><br />
                                         Given on this
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; width: 2rem; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
@@ -172,8 +175,41 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" onclick="printModalContentCertificate()">Print</button>
+                <button type="submit" class="btn btn-success" id="submitBarangay">Print</button>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#submitBarangay').on('click', function() {
+
+            const formData = {
+                fullname: $('#certificateFullName').val(),
+                address: $('#certificateAddress').val(),
+                purpose: $('#certificatePurpose').val(),
+                date: $('#certificateDateInput').val(),
+                type: $('#barangay_type').val()
+            };
+
+            console.log("tet", formData)
+            // Send data using AJAX
+            $.ajax({
+                url: 'http://localhost/barangay/certificate/create_certificate',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+
+                    printModalContentCertificate();
+
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    alert('Error submitting data: ' + error);
+                }
+            });
+        });
+    });
+</script>
