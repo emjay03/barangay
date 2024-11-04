@@ -14,7 +14,12 @@ class Blotters extends CI_Controller
     public function index()
     {
         $data['all_blotters'] = $this->Blotters_model->get_all_blotters();
-        $this->load->view('admin/Blotter_record', $data);
+        $user = $this->session->userdata('user_data');
+
+        if (!$user) {
+            redirect('auth');
+        }
+        $this->load->view('admin/Blotter_record', array_merge($data, ['user' => $user]));
     }
 
     public function create_blotters()

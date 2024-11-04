@@ -12,7 +12,12 @@ class Certificate extends CI_Controller
     }
     public function index()
     {
-        $this->load->view("admin/Certificate_ensurance");
+
+        $user = $this->session->userdata('user_data');
+        if (!$user) {
+            redirect('auth');
+        }
+        $this->load->view('admin/Certificate_ensurance', array_merge(['user' => $user]));
     }
 
     public function create_certificate()

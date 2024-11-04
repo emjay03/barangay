@@ -12,8 +12,11 @@ class Settlement extends CI_Controller
     public function index()
     {
         $data['all_settlement'] = $this->Settlement_model->get_all_settlement();
-
-        $this->load->view('admin/Settlement_Schedule', $data);
+        $user = $this->session->userdata('user_data');
+        if (!$user) {
+            redirect('auth');
+        }
+        $this->load->view('admin/Settlement_Schedule', array_merge($data, ['user' => $user]));
     }
 
     public function create_settlement()

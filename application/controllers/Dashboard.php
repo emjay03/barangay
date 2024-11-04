@@ -25,7 +25,7 @@ class Dashboard extends CI_Controller
         $user = $this->session->userdata('user_data');
 
         if (!$user) {
-            redirect('login');
+            redirect('auth');
         }
 
 

@@ -35,11 +35,33 @@
         </div>
         <div class="col-6 d-flex justify-content-end align-items-center">
             <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
-                <i class="bi bi-person-circle fs-4 me-2"></i>
-                <span class="d-none d-sm-inline me-5"><?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
+                <i class="bi bi-person-circle fs-1 me-2"></i>
+                <div class=" ">
+                    <p class="d-none d-sm-inline me-5"><?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
 
-                 
-                </span>
+
+
+                    </p>
+                    <p class="fs-6"> <?php
+                                        $roleId = htmlspecialchars($user->role_id);
+
+                                        switch ($roleId) {
+                                            case 1:
+                                                echo "Superadmin";
+                                                break;
+                                            case 2:
+                                                echo "Admin";
+                                                break;
+                                            case 3:
+                                                echo "Staff";
+                                                break;
+                                            default:
+                                                echo "Unknown role";
+                                        }
+                                        ?>
+                    </p>
+
+                </div>
             </div>
         </div>
     </div>

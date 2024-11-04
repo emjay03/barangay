@@ -15,9 +15,12 @@ class Resident extends CI_Controller
     {
         $data['all_resident'] = $this->Resident_model->get_all_resident();
 
+        $user = $this->session->userdata('user_data');
 
-        $this->load->view('admin/Resident_information', $data);
-       
+        if (!$user) {
+            redirect('auth');
+        }
+        $this->load->view('admin/Resident_information', array_merge($data, ['user' => $user]));
     }
 
     public function create_resident()

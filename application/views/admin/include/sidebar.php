@@ -210,7 +210,8 @@
 
 
 
-  <a href="/barangay/auth" class="menu-item my-2 mt-5">
+
+  <a href="<?php echo site_url('auth/logout'); ?>" class="menu-item my-2 mt-5">
     <i class="bi bi-box-arrow-in-left"></i>
     <span class="menu-title">Signout
     </span>
