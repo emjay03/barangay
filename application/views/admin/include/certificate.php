@@ -175,7 +175,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="submitBarangay">Print</button>
+                <button type="submit" class="btn btn-success" id="submitCertificate">Print</button>
             </div>
         </div>
     </div>
@@ -184,7 +184,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#submitBarangay').on('click', function() {
+        $('#submitCertificate').on('click', function() {
 
             const formData = {
                 fullname: $('#certificateFullName').val(),
@@ -206,7 +206,7 @@
 
                 },
                 error: function(xhr, status, error) {
-                    // Handle error
+
                     alert('Error submitting data: ' + error);
                 }
             });
