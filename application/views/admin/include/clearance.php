@@ -252,13 +252,13 @@
                 address: $('#clearanceAddress').val(),
                 purpose: $('#clearancePurpose').val(),
                 findings: $('#clearanceFindings').val(),
-                placebirth: $('#certificateDateInput').val(),
+                placebirth: $('#clearanceBirthplace').val(),
                 birthdate: $('#clearanceBirthdate').val(),
-                type: $('#clearane_type').val()
+                type: $('#clearance_type').val()
             };
 
             console.log("tet", formData)
-            // Send data using AJAX
+
             $.ajax({
                 url: 'http://localhost/barangay/certificate/create_certificate',
                 type: 'POST',
