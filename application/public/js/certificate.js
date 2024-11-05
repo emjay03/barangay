@@ -12,11 +12,11 @@ function updateDisplayCertificate() {
 
     // Parse the date properly and format it
     if (!isNaN(dateInput)) {
-        formatDate(dateInput);
+        formatDateCertificate(dateInput);
     }
 }
 
-function formatDate(date) {
+function formatDateCertificate(date) {
     const day = date.getDate();
     const month = date.toLocaleString("default", { month: "long" });
     const year = date.getFullYear();
@@ -155,3 +155,4 @@ function printModalContentCertificate() {
     printWindow.document.close();
     printWindow.print();
 }
+

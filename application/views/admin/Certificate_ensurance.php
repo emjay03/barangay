@@ -45,14 +45,28 @@
     }
 
     .indigency {
+        background-image: url("application/public/indigency.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .clearance {
+        background-image: url("application/public/clearance.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .brgyid {
         background-image: url("application/public/indigency.png");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
     }
 
-    .residency {
-        background-image: url("application/public/indigency.png");
+    .certificate {
+        background-image: url("application/public/certificate.jpg");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -92,7 +106,7 @@
                             <div class="card p-2 shadow">
                                 <div class="card-head text-center fw-bold fs-4">B. CLEARANCE</div>
                                 <div class="card-body text-center d-flex justify-content-center">
-                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                    <div class="bg-danger border border-light shadow p-2 clearance"
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
@@ -105,9 +119,9 @@
                         </div>
                         <div class="col p-2">
                             <div class="card p-2 shadow">
-                                <div class="card-head text-center fw-bold fs-4">B. RESIDENCY</div>
+                                <div class="card-head text-center fw-bold fs-4">B. I.D</div>
                                 <div class="card-body text-center d-flex justify-content-center">
-                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                    <div class="bg-danger border border-light shadow p-2 brgyid"
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
@@ -120,7 +134,7 @@
                             <div class="card p-2 shadow">
                                 <div class="card-head text-center fw-bold fs-4">B. CERTIFICATE</div>
                                 <div class="card-body text-center d-flex justify-content-center">
-                                    <div class="bg-danger border border-light shadow p-2 residency"
+                                    <div class="bg-danger border border-light shadow p-2 certificate"
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">

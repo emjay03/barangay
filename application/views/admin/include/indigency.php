@@ -9,30 +9,28 @@
             <div class="modal-body d-flex">
                 <div class="col-4 m-5">
                     <form class="bg-light rounded-3 shadow p-5" id="indigencyForm">
-                        <input type="hidden" name="type" id="type" value="Indigency" />
+                        <input type="hidden" name="type" id="indigencyType" value="Indigency" />
                         <div class="mb-3">
-                            <label for="fullname" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="fullname" name="fullname" required
-                                oninput="updateDisplay()">
+                            <label for="indigencyFullname" class="form-label">Full Name : </label>
+                            <input type="text" class="form-control text-capitalize" id="indigencyFullname" name="fullname" required
+                                oninput="updateDisplayIndigency()">
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="address" name="address" required oninput="updateDisplay()">
+                            <label for="indigencyAddress" class="form-label">Address : </label>
+                            <input type="text" class="form-control text-capitalize" id="indigencyAddress" name="address" required oninput="updateDisplayIndigency()">
                         </div>
                         <div class="mb-3">
-                            <label for="purpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="purpose" name="purpose" required
-                                oninput="updateDisplay()">
+                            <label for="indigencyPurpose" class="form-label">Purpose : </label>
+                            <input type="text" class="form-control text-capitalize" id="indigencyPurpose" name="purpose" required
+                                oninput="updateDisplayIndigency()">
                         </div>
                         <div class="mb-3">
-                            <label for="dateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="dateInput" name="date" required oninput="updateDisplay()">
+                            <label for="indigencyDateInput" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="indigencyDateInput" name="date" required oninput="updateDisplayIndigency()">
                         </div>
-
-
                     </form>
                 </div>
-                <div class=" indigencyPrint p-3 col-7" id="printContent">
+                <div class="indigencyPrint p-3 col-7" id="indigencyPrintContent">
                     <div class="border border-dark p-3">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
@@ -106,11 +104,11 @@
                                         <span style="margin-left: 5rem; font-size: 17px;"></span>This is to certify that,
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent w-50" id="displayName" readonly>
+                                            class="fw-semibold text-capitalize text-center bg-transparent w-50" id="indigencyDisplayName" readonly>
                                         is a bonafide resident of this barangay, presently residing at
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent w-75" id="displayAddress"
+                                            class="fw-semibold text-capitalize text-center bg-transparent w-75" id="indigencyDisplayAddress"
                                             readonly>,
                                         who belongs to the <strong
                                             style="font-family: 'Times New Roman', Times, serif;">INDIGENT
@@ -122,23 +120,22 @@
                                             ASSISTANCE from</strong>
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent w-50" id="displayPurpose"
-                                            readonly>.
-                                        <br /> <br />
+                                            class="fw-semibold text-capitalize text-center bg-transparent w-50" id="indigencyDisplayPurpose"
+                                            readonly>.<br /> <br />
 
                                         Given on this
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; width: 2rem; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent" id="day" readonly>
-                                        <sup id="suffix"></sup>
+                                            class="fw-semibold text-capitalize text-center bg-transparent" id="indigencyDay" readonly>
+                                        <sup id="indigencySuffix"></sup>
                                         day of
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; width: 5rem; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent" id="month" readonly>
+                                            class="fw-semibold text-capitalize text-center bg-transparent" id="indigencyMonth" readonly>
                                         in the year of our Lord,
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; width: 5rem; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
-                                            class="fw-semibold text-capitalize text-center bg-transparent" id="year" readonly>
+                                            class="fw-semibold text-capitalize text-center bg-transparent" id="indigencyYear" readonly>
                                         at the <span class="fw-bold" style="font-family: 'Times New Roman', Times, serif; font-size: 16px;">Office of Barangay 185 Zone 16 District 3, Malaria, City of Caloocan.</span>
                                     </div>
 
@@ -174,7 +171,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="submitBtn">Print</button>
+                <button type="submit" class="btn btn-success" id="indigencySubmitBtn">Print</button>
             </div>
         </div>
     </div>
@@ -183,14 +180,14 @@
 
 <script>
     $(document).ready(function() {
-        $('#submitBtn').on('click', function() {
+        $('#indigencySubmitBtn').on('click', function() {
             // Get form data
             const formData = {
-                fullname: $('#fullname').val(),
-                address: $('#address').val(),
-                purpose: $('#purpose').val(),
-                date: $('#dateInput').val(),
-                type: $('#type').val()
+                fullname: $('#indigencyFullname').val(),
+                address: $('#indigencyAddress').val(),
+                purpose: $('#indigencyPurpose').val(),
+                date: $('#indigencyDateInput').val(),
+                type: $('#indigencyType').val()
             };
 
             console.log(formData)

@@ -10,7 +10,7 @@
                 <div class="col-4 m-5">
 
                     <form class="bg-light rounded-3 shadow p-5" id="certificateForm">
-                        <input type="hidden" name="type" id="barangay_type" value="certificate" />
+                        <input type="hidden" name="type" id="barangay_type" value="Certificate" />
                         <div class="mb-3">
                             <label for="certificateFullName" class="form-label">Full Name : </label>
                             <input type="text" class="form-control text-capitalize" id="certificateFullName" name="fullname" required

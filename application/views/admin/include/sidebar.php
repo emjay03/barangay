@@ -184,13 +184,8 @@
 
   <div class="collapse" id="collapseExample">
     <a href="#" class="Smenu-item">
-      <i class="bi bi-person-vcard-fill"></i>
-      <span class="menu-title">Account
-      </span>
-    </a>
-    <a href="#" class="Smenu-item">
       <i class="bi bi-gear-fill"></i>
-      <span class="menu-title">Barrangay
+      <span class="menu-title">Account Setting
       </span>
     </a>
   </div>
@@ -199,7 +194,7 @@
     <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>
     <a href="#" class="menu-item my-2">
       <i class="bi bi-person-circle"></i>
-      <span class="menu-title">Account</span>
+      <span class="menu-title">Add Account</span>
     </a>
     <a href="#" class="menu-item my-2">
       <i class="bi bi-building-fill"></i>

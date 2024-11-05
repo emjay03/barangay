@@ -207,9 +207,6 @@
                                 </div>
                                 <div class="modal-body">
 
-
-
-
                                     <input type="hidden" id="emailInput" name="email" value="<?php echo htmlspecialchars($user->email); ?>" />
 
                                     <textarea id="noteInput" class="form-control" rows="3"
@@ -508,7 +505,7 @@
             // Function to add a note
             saveNoteButton.addEventListener("click", function() {
                 const noteText = noteInput.value.trim();
-                const emailText = noteInput.value.trim();
+                const emailText = emailInput.value.trim();
 
                 if (noteText) {
                     const noteId = noteIdInput.value;

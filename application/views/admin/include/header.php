@@ -28,21 +28,23 @@
 
 <nav class="container-fluid p-3 shadow headnav " id="headnav">
     <div class="row">
-        <div class="col-6">
+        <div class="col-10">
             <button class="border-0 bg-transparent fs-4 text-light" id="btn-toggle">
                 <i class="bi bi-list text-bold fs-2"></i>
             </button>
         </div>
-        <div class="col-6 d-flex justify-content-end align-items-center">
+        <div class="col-2 d-flex justify-content-end align-items-center">
             <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
+                <div>
                 <i class="bi bi-person-circle fs-1 me-2"></i>
-                <div class=" ">
+                </div>
+                <div class="" style="line-height: 1">
                     <p class="d-none d-sm-inline me-5"><?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
 
 
 
-                    </p>
-                    <p class="fs-6"> <?php
+                    </p> <br />
+                    <span class="fs-6 fw-bold"><small> <?php
                                         $roleId = htmlspecialchars($user->role_id);
 
                                         switch ($roleId) {
@@ -58,8 +60,8 @@
                                             default:
                                                 echo "Unknown role";
                                         }
-                                        ?>
-                    </p>
+                                        ?> </small>
+                    </span>
 
                 </div>
             </div>
