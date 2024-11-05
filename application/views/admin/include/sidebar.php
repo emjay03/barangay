@@ -174,13 +174,13 @@
     </span>
   </a>
 
+  <?php if (isset($user) && $user-> role_id == 1 ||  $user-> role_id == 2): ?>
   <p class="text-light mt-5 mx-3" style="font-size: 12px">Setting</p>
   <span class="text-light setting menu-item text-start my-2" data-bs-toggle="collapse" href="#collapseExample"
     role="button" aria-expanded="false" aria-controls="collapseExample">
     <i class="bi bi-sliders2"></i>
     <span class="menu-title">Settings</span>
   </span>
-
 
   <div class="collapse" id="collapseExample">
     <a href="#" class="Smenu-item">
@@ -189,6 +189,7 @@
       </span>
     </a>
   </div>
+  <?php endif; ?>
 
   <?php if (isset($user) && $user->role_id == 1): ?>
     <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>

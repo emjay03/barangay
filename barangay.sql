@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2024 at 04:33 PM
+-- Generation Time: Nov 05, 2024 at 03:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -83,7 +83,15 @@ INSERT INTO `certicate` (`id`, `type`, `fullname`, `address`, `date`, `purpose`,
 (16, 'Barangay', 'd', 'd', '2024-11-09', 'd', NULL, '', '', '2024-11-03', 0),
 (17, 'Barangay', 'dadas', 'dsada', '2024-11-07', 'dasda', NULL, '', '', '2024-11-04', 0),
 (18, 'test', 'test', NULL, NULL, 'd', '2024-02-02', 'Qc', 'test', '2024-11-04', 0),
-(19, 'Clearance', 'DD', 'D', NULL, 'DDD', '2024-10-31', 'DDD', 'DDD', '2024-11-04', 0);
+(19, 'Clearance', 'DD', 'D', NULL, 'DDD', '2024-10-31', 'DDD', 'DDD', '2024-11-04', 0),
+(20, 'Indigency', 'dfsdfsd', 'dsfsdf', '2024-11-20', 'dsfsdf', NULL, NULL, NULL, '2024-11-05', 0),
+(21, 'Indigency', 'sdfsdf', 'dsfsdf', '2024-11-14', 'dfsdf', NULL, NULL, NULL, '2024-11-05', 0),
+(22, 'Indigency', 'wewe', 'dsfsdf', '2024-11-14', 'dfsdf', NULL, NULL, NULL, '2024-11-05', 0),
+(23, 'Clearance', 'sdsad', 'sadsa', NULL, 'asdsadas', '2024-11-15', 'sadsad', 'sadsad', '2024-11-05', 0),
+(24, 'certificate', 'dsdfsdf', 'sdfsd', '2024-11-20', 'fdsfsd', NULL, NULL, NULL, '2024-11-05', 0),
+(25, 'Clearance', 'rtyrtytry', 'ytyrtyry', NULL, 'yrtyrtyrt', '2024-11-06', 'tyrtyrytry', 'rtyrtytr', '2024-11-05', 0),
+(26, 'Certificate', 'ryrtyrtyry', 'tyrty', '2024-11-05', 'rtyrtytr', NULL, NULL, NULL, '2024-11-05', 0),
+(27, 'Indigency', 'Juan Dele Cruz', '185 Zone 16 District 3, Malaria, City of Caloocan', '2024-11-05', 'Financial', NULL, NULL, NULL, '2024-11-05', 0);
 
 -- --------------------------------------------------------
 
@@ -105,9 +113,15 @@ CREATE TABLE `notes` (
 
 INSERT INTO `notes` (`id`, `email`, `note`, `created_at`, `updated_at`) VALUES
 (1, 'test@gmail.com', 'test', '2024-10-22', '0000-00-00'),
-(2, 'admin@gmail.com', 'ddd', '2024-11-03', '0000-00-00'),
-(3, 'admin@gmail.com', 'test', '2024-11-03', '0000-00-00'),
-(4, 'test@gmail.com', 'dd', '2024-11-03', '0000-00-00');
+(2, 'admin@gmail.com', 'dddsadsadsa', '2024-11-03', '0000-00-00'),
+(4, 'test@gmail.com', 'dd', '2024-11-03', '0000-00-00'),
+(17, 'staff@gmail.com', 'staff note sample 1', '2024-11-05', '0000-00-00'),
+(18, 'staff@gmail.com', 'staff note sample 2 edit', '2024-11-05', '0000-00-00'),
+(19, 'staff@gmail.com', 'staff note sample 3', '2024-11-05', '0000-00-00'),
+(20, 'staff@gmail.com', 'staff note sample 4', '2024-11-05', '0000-00-00'),
+(21, 'staff@gmail.com', 'staff note sample 5 update', '2024-11-05', '0000-00-00'),
+(22, 'superadmin@gmail.com', 'supera admin note sample 1', '2024-11-05', '0000-00-00'),
+(25, 'staff@gmail.com', 'staff note sample 6', '2024-11-05', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -174,7 +188,7 @@ CREATE TABLE `resident_infos` (
 --
 
 INSERT INTO `resident_infos` (`resident_id`, `lastname`, `firstname`, `middlename`, `alias`, `birthday`, `age`, `gender`, `civilstatus`, `voterstatus`, `birth_of_place`, `citizenship`, `telephone_no`, `mobile_no`, `height`, `weight`, `PAG_IBIG`, `PHILHEALTH`, `SSS`, `TIN`, `email`, `spouse`, `father`, `mother`, `area`, `address_1`, `address_2`, `date_registered`, `status`, `created_at`, `updated_at`) VALUES
-(17, 'pretrr', 'f', 'f', 'f', '2024-02-02', 12, 'Female', 'Single', '0', 'test', 'Filipino', '01', '1', '1', 'undefined', 'test', 'test', 'test', 'test', 'da@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', 0, '2024-10-10 13:00:44', NULL),
+(17, 'pretrr', 'f', 'f', 'f', '2024-02-02', 12, 'Female', 'Single', '1', 'test', 'Filipino', '01', '1', '1', 'undefined', 'test', 'test', 'test', 'test', 'da@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-02-12', 0, '2024-10-10 13:00:44', NULL),
 (18, 'we', 'test', 'test', 'test', '2024-02-02', 12, 'female', 'test', 'test', 'test', 'test', '01', '1', '1', '1', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', 'test', 'test', 'test', 'test', 'test', '2024-10-17', 0, '2024-10-10 13:15:44', NULL);
 
 -- --------------------------------------------------------
@@ -256,7 +270,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `role_id`, `created_at`, `updated_at`) VALUES
 (1, 'testuser', 'testpassword', 3, '2024-09-19 20:49:42', '2024-09-19 14:49:29'),
 (2, 'test@gmail.com', '$2y$10$cIih1g2fMZijaDAsVbENfOldxEaNhCGKFxxsWp8suD3/MnOVt9M5q', 2, '2024-09-19 15:14:31', '0000-00-00 00:00:00'),
-(3, 'admin@gmail.com', '$2y$10$cL/yvHIL4ccLE/CIbycxvup82muWicweWn425b/a/kLhYUkAkmleC', 1, '2024-10-04 14:28:55', '0000-00-00 00:00:00'),
+(3, 'admin@gmail.com', '$2y$10$cL/yvHIL4ccLE/CIbycxvup82muWicweWn425b/a/kLhYUkAkmleC', 2, '2024-10-04 14:28:55', '0000-00-00 00:00:00'),
 (4, 'staff@gmail.com', '$2y$10$uBrptAmrkF6Kqlon.mySG.8cCnawAfzPaNbUu89S1ANOuZzUCBG7i', 3, '2024-11-04 15:52:20', '0000-00-00 00:00:00'),
 (5, 'superadmin@gmail.com', '$2y$10$ZBASVqp6MY7nszmWRJMXqugrj86qmMP.OUnLsHizcgFIbjCFFTav2', 1, '2024-11-04 15:54:06', '0000-00-00 00:00:00');
 
@@ -326,13 +340,13 @@ ALTER TABLE `blotters`
 -- AUTO_INCREMENT for table `certicate`
 --
 ALTER TABLE `certicate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `questions`

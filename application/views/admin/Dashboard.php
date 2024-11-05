@@ -206,8 +206,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-
-                                    <input type="hidden" id="emailInput" name="email" value="<?php echo htmlspecialchars($user->email); ?>" />
+                                    <input type="hidden" id="emailInput" name="email" value="<?php echo htmlspecialchars($user->email); ?>" readonly/>
 
                                     <textarea id="noteInput" class="form-control" rows="3"
                                         placeholder="Write your note here..."></textarea>
@@ -487,6 +486,7 @@
 
                                 // Show modal when the note is clicked
                                 noteElement.onclick = () => {
+                                    emailInput.value = note.email;
                                     noteInput.value = note.note; // Set the current note text in the input
                                     noteIdInput.value = note.id; // Set the ID of the note being edited
                                     deleteNoteButton.style.display = "block"; // Show delete button
@@ -528,7 +528,6 @@
                             if (data.status === 'success') {
                                 loadNotes(); // Reload notes after adding/editing
                                 noteInput.value = ''; // Clear the input field
-                                emailInput.value = '';
                                 noteIdInput.value = '0'; // Reset the hidden ID input
                                 addNoteModal.hide(); // Close the modal
                                 deleteNoteButton.style.display = "none"; // Hide delete button
