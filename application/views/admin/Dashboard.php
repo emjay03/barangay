@@ -29,7 +29,7 @@
     }
 
     #notesContainer {
-        scrollbar-width: thin;
+        scrollbar-width: NONE;
     }
 
     body {
@@ -176,12 +176,12 @@
 
                 <div class="col-l-12 col-xl-2 p-0 m-0 d-flex justify-content-center align-items-start mt-5"
                     style="max-height: 700px;">
-                    <div class="p-0 text-center">
-                        <div class="notes shadow">
+                    <div class="p-0 text-center" style="height: 500px;">
+                        <div class="notes shadow" style="height: 500px;">
                             <div class="card h-100">
                                 <div
                                     class="card-header text-start fw-bold d-flex justify-content-between align-items-center">
-                                    <span>Notes</span>
+                                    <span class="mx-5">Notes</span>
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#addNoteModal">+</button>
                                 </div>

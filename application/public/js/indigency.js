@@ -1,9 +1,38 @@
+// Function to get and increment the control number
+function generateControlNumber() {
+    const currentYear = new Date().getFullYear();
+    let lastControlNumber = localStorage.getItem("lastControlNumber");
+
+    // If no control number is stored, start from 1
+    if (!lastControlNumber) {
+        lastControlNumber = 1;
+    } else {
+        // Increment the last control number
+        lastControlNumber = parseInt(lastControlNumber, 10) + 1;
+    }
+
+    // Format the control number with padding (e.g., 2024-00001)
+    const formattedControlNumber = `${currentYear}-${String(lastControlNumber).padStart(5, '0')}`;
+
+    // Store the updated control number for future use
+    localStorage.setItem("lastControlNumber", lastControlNumber);
+
+    return formattedControlNumber;
+}
+
+// Function to update display based on form input
 function updateDisplayIndigency() {
     // Get the input values from the form
     const fullName = document.getElementById('indigencyFullname').value;
     const address = document.getElementById('indigencyAddress').value;
     const purpose = document.getElementById('indigencyPurpose').value;
     const dateInput = new Date(document.getElementById('indigencyDateInput').value);
+
+    // Get the generated control number
+    const controlNo = generateControlNumber();
+    
+    // Update the control number display field
+    document.getElementById('controlNo').innerText = controlNo;
 
     // Update the print content display fields
     document.getElementById('indigencyDisplayName').value = fullName;
@@ -34,10 +63,12 @@ function formatDateIndigency(date) {
     document.getElementById("indigencyYear").value = year;
 }
 
+// Function to print modal content to PDF
 function printModalContent() {
     const { jsPDF } = window.jspdf;
 
     // Get the current values from the input fields
+    const controlNo = document.getElementById("controlNo").innerText;
     const fullname = document.getElementById("indigencyDisplayName").value;
     const purpose = document.getElementById("indigencyDisplayPurpose").value;
     const address = document.getElementById("indigencyDisplayAddress").value;
@@ -45,7 +76,6 @@ function printModalContent() {
     const suffix = document.getElementById("indigencySuffix").innerText;
     const month = document.getElementById("indigencyMonth").value;
     const year = document.getElementById("indigencyYear").value;
-
     // Create the content for the PDF
     const modalContent = `
         <div>
@@ -82,7 +112,7 @@ function printModalContent() {
                     <div class="col-9">
                         <div class="text-center mt-5" style="line-height: 0.3;">
                             <h5 class="fw-bold fs-3 tracking-widest" style="font-family: 'Times New Roman', Times, serif;">BARANGAY INDIGENCY</h5>
-                            <p class="fw-bold" style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">Control No. :</p>
+                            <p class="fw-bold" style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">Control No. : ${controlNo}</p>
                         </div>
                         <div class="position-relative w-75 z-n1 mt-5 mx-3">
                             <img src="application/public/logo.png" alt="bglogo" class="w-100 position-absolute mx-5" style="opacity: 0.2;"/>

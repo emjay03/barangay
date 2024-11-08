@@ -135,7 +135,7 @@
                                         <p class="fw-bold"
                                             style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">
                                             Control
-                                            No. :</p>
+                                            No. : <span id="clearancecontrolNo"></span></p>
                                     </div>
                                     <div class="position-relative w-75 z-n1 mt-5 mx-3">
                                         <img src="application/public/logo.png" alt="bglogo"
@@ -205,7 +205,10 @@
 
                                     <div class="container-fluid" style="margin-top: 3rem;">
                                         <div class="row">
-                                            <div class="col-6 d-flex justify-content-center align-items-center mt-5">
+                                        <div class="col-6 mt-5">
+                                                <img src="application/public/signature1.png" alt="" height="65"
+                                                    class="pb-2 top-0 mx-2"
+                                                    style="border-bottom: solid 2px #000; position-absolute">
                                                 <p class="text-center"
                                                     style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                                     <strong style="font-family: 'Times New Roman', Times, serif;">

@@ -1,3 +1,25 @@
+// Function to get and increment the control number
+function clearancegenerateControlNumber() {
+    const currentYear = new Date().getFullYear();
+    let lastControlNumber = localStorage.getItem("lastControlNumber");
+
+    // If no control number is stored, start from 1
+    if (!lastControlNumber) {
+        lastControlNumber = 1;
+    } else {
+        // Increment the last control number
+        lastControlNumber = parseInt(lastControlNumber, 10) + 1;
+    }
+
+    // Format the control number with padding (e.g., 2024-00001)
+    const formattedControlNumber = `${currentYear}-${String(lastControlNumber).padStart(5, '0')}`;
+
+    // Store the updated control number for future use
+    localStorage.setItem("lastControlNumber", lastControlNumber);
+
+    return formattedControlNumber;
+}
+
 function updateDisplayClearance() {
     // Get values from the input fields
     const fullName = document.getElementById("clearanceFullName").value;
@@ -6,6 +28,12 @@ function updateDisplayClearance() {
     const address = document.getElementById("clearanceAddress").value;
     const findings = document.getElementById("clearanceFindings").value;
     const purpose = document.getElementById("clearancePurpose").value;
+
+    // Get the generated control number
+    const clearancecontrolNo = clearancegenerateControlNumber();
+    
+    // Update the control number display field
+    document.getElementById('clearancecontrolNo').innerText = clearancecontrolNo;
 
     // Update the display in the modal
     document.getElementById("clearanceDisplayName").value = fullName;
@@ -21,6 +49,7 @@ function printModalContentClearance() {
     const { jsPDF } = window.jspdf;
 
     // Get the current values from the input fields
+    const controlNo = document.getElementById("clearancecontrolNo").innerText;
     const fullName = document.getElementById("clearanceDisplayName").value;
     const birthdate = document.getElementById("clearanceDisplayBirthdate").value;
     const birthplace = document.getElementById("clearanceDisplayBirthplace").value;
@@ -83,7 +112,7 @@ function printModalContentClearance() {
                 <div class="col-9 z-3">
                     <div class="text-center mt-5" style="line-height: 0.3;">
                         <h5 class="fw-bold fs-3 tracking-widest" style="font-family: 'Times New Roman', Times, serif;">BARANGAY CLEARANCE</h5>
-                        <p class="fw-bold" style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">Control No. :</p>
+                        <p class="fw-bold" style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">Control No. : ${controlNo}</p>
                     </div>
                     <div class="position-relative w-75 z-n1 mt-5 mx-3">
                         <img src="application/public/logo.png" alt="bglogo" class="rounded-circle w-100 position-absolute mx-5" style="opacity: 0.2;" />
@@ -123,12 +152,17 @@ function printModalContentClearance() {
 
                     <div class="container-fluid" style="margin-top: 3rem;">
                         <div class="row">
-                            <div class="col-6 d-flex justify-content-center align-items-center mt-5">
-                                <p class="text-center" style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
-                                    <strong style="font-family: 'Times New Roman', Times, serif;">HON. RODOLFO D. OLIVA</strong><br />
-                                    Punong Barangay
-                                </p>
-                            </div>
+                            <div class="col-6 mt-5">
+                                                <img src="application/public/signature1.png" alt="" height="65"
+                                                    class="pb-2 top-0 mx-2"
+                                                    style="border-bottom: solid 2px #000; position-absolute">
+                                                <p class="text-center"
+                                                    style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
+                                                    <strong style="font-family: 'Times New Roman', Times, serif;">
+                                                        HON. RODOLFO D. OLIVA</strong> <br />
+                                                    Punong Barangay
+                                                </p>
+                                            </div>
                             <div class="col-6 d-flex justify-content-center align-items-center">
                                 <p class="text-center" style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                     <strong style="font-family: 'Times New Roman', Times, serif;">HON. ENGRACIA T. LAMPA</strong><br />

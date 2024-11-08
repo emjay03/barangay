@@ -95,7 +95,7 @@
                                             BARANGAY CERTIFICATE
                                         </h5>
                                         <p class="fw-bold" style="font-size: 15px; font-family: 'Times New Roman', Times, serif;">Control
-                                            No. :</p>
+                                            No. : <span id="certcontrolNo"></span></p>
                                     </div>
                                     <div class="position-relative w-75 z-n1 mt-5 mx-3">
                                         <img src="application/public/logo.png" alt="bglogo"
@@ -145,7 +145,10 @@
 
                                     <div class="container-fluid" style="margin-top: 6rem;">
                                         <div class="row">
-                                            <div class="col-6 d-flex justify-content-center align-items-center mt-5">
+                                        <div class="col-6 mt-5">
+                                                <img src="application/public/signature1.png" alt="" height="65"
+                                                    class="pb-2 top-0 mx-5"
+                                                    style="border-bottom: solid 2px #000; position-absolute">
                                                 <p class="text-center"
                                                     style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                                     <strong style="font-family: 'Times New Roman', Times, serif;">
@@ -211,5 +214,20 @@
                 }
             });
         });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var dateInput = document.getElementById("certificateDateInput");
+
+        // Get today's date in YYYY-MM-DD format
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+
+        // Set the input value to today's date
+        dateInput.value = today;
     });
 </script>

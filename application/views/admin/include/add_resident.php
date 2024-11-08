@@ -25,6 +25,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <!-- Alert message container -->
+                <div id="alertMessage" class="alert" style="display: none;"></div>
+
+                <!-- Form for adding resident -->
                 <form id="addResidentForm" action="<?php echo site_url('resident/create_resident'); ?>" method="post" class="p-5 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-3">
@@ -103,11 +107,11 @@
                             <label for="address_1" class="form-label">Adress</label>
                             <input type="text" class="form-control" id="address_1" name="address_1" required>
                         </div>
-                        
+
                     </div>
 
                     <div class="row mb-3">
-                    <div class="col-md-3">
+                        <div class="col-md-3">
                             <label for="telephone_no" class="form-label">Telephone No</label>
                             <input type="text" class="form-control" id="telephone_no" name="telephone_no">
                         </div>
@@ -126,7 +130,7 @@
                     </div>
 
                     <div class="row mb-3">
-                    <div class="col-md-3">
+                        <div class="col-md-3">
                             <label for="spouse" class="form-label">Spouse Name</label>
                             <input type="text" class="form-control" id="spouse" name="spouse">
                         </div>
@@ -150,3 +154,50 @@
         </div>
     </div>
 </div>
+
+<script>
+   document.getElementById('addResidentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const form = this;
+    const alertMessage = document.getElementById('alertMessage'); // Get the alert message element
+
+    // Clear any previous message
+    alertMessage.classList.remove('alert-success', 'alert-danger');
+    alertMessage.style.display = 'none';
+
+    // Perform AJAX request
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Check if the response status is success or error
+        alertMessage.classList.add(data.status === 'success' ? 'alert-success' : 'alert-danger');
+        alertMessage.innerText = data.message;
+        alertMessage.style.display = 'block'; // Show the alert message
+
+        // If the request is successful, hide the modal and reset the form
+        if (data.status === 'success') {
+            alert('Add Successfully!');
+            setTimeout(() => {
+                $('#addResidentModal').modal('hide'); // Hide the modal
+                form.reset(); // Reset the form
+                // Redirect to the resident page after 2 seconds
+                window.location.href = '/barangay/resident'; // Adjust the URL as needed
+            }, 500); 
+        }
+    })
+    .catch(error => {
+        // Handle any unexpected errors
+        alertMessage.classList.add('alert-danger');
+        alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
+        alertMessage.style.display = 'block';
+    });
+});
+
+</script>

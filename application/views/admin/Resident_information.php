@@ -247,12 +247,19 @@
                     <table class="resident-table table mb-5">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th class="d-none">id</th>
                                 <th>Lastname</th>
                                 <th>Firstname</th>
                                 <th>Middlename</th>
+                                <th class="d-none">Alias</th> <!-- Added column -->
+                                <th class="d-none">Birthday</th> <!-- Added column -->
+                                <th>Age</th> <!-- Added column -->
+                                <th>Gender</th> <!-- Added column -->
+                                <th class="d-none">Civil Status</th> <!-- Added column -->
+                                <th class="d-none">Citizenship</th>
+                                <th>Voter Status</th> <!-- Added column -->
                                 <th>Address 1</th>
-                                <th>Telephone No</th>
+                                <th class="d-none">Telephone No</th>
                                 <th>Mobile No</th>
                                 <th>Action</th>
                             </tr>
@@ -260,17 +267,29 @@
                         <tbody>
                             <?php foreach ($all_resident as $resident): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($resident['resident_id']); ?></td>
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['resident_id']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['lastname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['firstname']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['middlename']); ?></td>
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['alias']); ?></td>
+                                    <!-- Display alias -->
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['birthday']); ?></td>
+                                    <!-- Display birthday -->
+                                    <td><?php echo htmlspecialchars($resident['age']); ?></td> <!-- Display age -->
+                                    <td><?php echo htmlspecialchars($resident['gender']); ?></td> <!-- Display gender -->
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['civilstatus']); ?></td>
+                                    <!-- Display civilstatus -->
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['citizenship']); ?></td>
+                                    <td><?php
+                                    echo $resident['voterstatus'] == 1 ? 'Registered' : 'Not Registered';
+                                    ?></td>
+                                    <!-- Display voterstatus -->
                                     <td><?php echo htmlspecialchars($resident['address_1']); ?></td>
-                                    <td><?php echo htmlspecialchars($resident['telephone_no']); ?></td>
+                                    <td class="d-none"><?php echo htmlspecialchars($resident['telephone_no']); ?></td>
                                     <td><?php echo htmlspecialchars($resident['mobile_no']); ?></td>
 
                                     <!-- Edit button with the resident ID -->
                                     <td class="d-flex justify-content-center align-items-center">
-
                                         <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
                                             data-bs-target="#editResidentModal"
                                             data-resident='<?php echo json_encode($resident); ?>'>
@@ -281,6 +300,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </main>
@@ -309,132 +329,6 @@
             $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
-            });
-        });
-
-        document.getElementById('addResidentForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            fetch(this.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(this)),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(text => {
-                            throw new Error('Error: ' + text);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.className = 'alert';
-
-                    if (data.status === 'error') {
-                        alertMessage.innerText = data.message;
-                        alertMessage.classList.add('alert-danger');
-                    } else {
-                        alertMessage.innerText = 'Added successfully!';
-                        alertMessage.classList.add('alert-success');
-
-                        $('#addResidentModal').modal('hide');
-                        this.reset();
-
-                        setTimeout(() => {
-                            window.location.href = 'Resident';
-                        }, 2000);
-                    }
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                })
-                .catch(error => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
-                    alertMessage.className = 'alert alert-danger';
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                });
-        });
-
-        // Update resident
-        document.getElementById('editResidentForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            fetch(this.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(this)),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.className = 'alert';
-
-                    if (data.status === 'error') {
-                        alertMessage.innerText = data.message;
-                        alertMessage.classList.add('alert-danger');
-                    } else {
-                        alertMessage.innerText = data.message;
-                        alertMessage.classList.add('alert-success');
-
-                        $('#editResidentModal').modal('hide');
-
-                        setTimeout(() => {
-                            window.location.href = 'Resident';
-                        }, 2000);
-                    }
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                })
-                .catch(error => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
-                    alertMessage.className = 'alert alert-danger';
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                });
-            $(document).on('click', '[data-bs-target="#editResidentModal"]', function () {
-                const residentData = $(this).data('resident');
-                // Populate your modal fields with the resident data
-                console.log("tst", residentData)
             });
         });
     </script>
