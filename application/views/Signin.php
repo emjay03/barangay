@@ -68,7 +68,7 @@
             width: 60%;
             height: 60%;
             clip-path: polygon(100% 100%, 100% 0, 0 100%);
-            background-color: #FF0404;
+            background-color: #0021F8;
             opacity: 0.3;
             z-index: -1;
         }
@@ -94,7 +94,7 @@
             width: 50%;
             height: 50%;
             clip-path: polygon(100% 100%, 100% 0, 0 100%);
-            background-color: #FF0404;
+            background-color: #0021F8;
             opacity: 0.5;
             z-index: -1;
         }
@@ -156,14 +156,10 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <input type="submit" value="Sign in"
                                                 class="btn btn-primary px-5 border-0 text-center text-light fw-normal"
                                                 style="font-size: 14px;">
-                                        </div>
-                                        <div class="col-6 d-flex justify-content-end align-items-center">
-                                            <a href="" class="text-decoration-none" style="font-size: 12px;">Forget
-                                                Password</a>
                                         </div>
                                     </div>
                                 </form>

@@ -26,7 +26,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="indigencyDateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="indigencyDateInput" name="date" required oninput="updateDisplayIndigency()">
+                            <input type="date" class="form-control" id="indigencyDateInput" name="date" required oninput="updateDisplayIndigency()" readonly>
                         </div>
                     </form>
                 </div>
@@ -116,8 +116,6 @@
                                         <br /> <br />
                                         <span style="margin-left: 5rem;"></span>This certification is being issued upon from the request of the
                                         above-mentioned named to comply
-                                        <strong style="font-family: 'Times New Roman', Times, serif;">FINANCIAL
-                                            ASSISTANCE from</strong>
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
                                             class="fw-semibold text-capitalize text-center bg-transparent w-50" id="indigencyDisplayPurpose"
@@ -141,7 +139,8 @@
 
                                     <div class="container-fluid" style="margin-top: 6rem;">
                                         <div class="row">
-                                            <div class="col-6 d-flex justify-content-center align-items-center mt-5">
+                                            <div class="col-6 mt-5">
+                                                <img src="application/public/signature1.png" alt="" height="65" class="pb-2 top-0 mx-5" style="border-bottom: solid 2px #000; position-absolute">
                                                 <p class="text-center"
                                                     style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                                     <strong style="font-family: 'Times New Roman', Times, serif;">
@@ -149,7 +148,8 @@
                                                     Punong Barangay
                                                 </p>
                                             </div>
-                                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                            <div class="col-6 ">
+                                            <img src="application/public/signature2.png" alt="" height="65" class="pb-2 top-0 mx-5" style="border-bottom: solid 2px #000; position-absolute">
                                                 <p class="text-center"
                                                     style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                                     <strong style="font-family: 'Times New Roman', Times, serif;">
@@ -207,5 +207,20 @@
                 }
             });
         });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var dateInput = document.getElementById("indigencyDateInput");
+        
+        // Get today's date in YYYY-MM-DD format
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+        var yyyy = today.getFullYear();
+        
+        today = yyyy + '-' + mm + '-' + dd;
+        
+        // Set the input value to today's date
+        dateInput.value = today;
     });
 </script>

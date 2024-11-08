@@ -25,24 +25,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editResidentForm"
-                    method="post" class="p-5 rounded-4 shadow-lg">
+                <form id="editResidentForm" method="post" class="p-5 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <input type="hidden" id="updateresident_id" />
                             <label for="lastname" class="form-label">Lastname</label>
-                            <input type="text" class="form-control" id="updatelastname" name="lastname"
-                                required>
+                            <input type="text" class="form-control" id="updatelastname" name="lastname" required>
                         </div>
                         <div class="col-md-3">
                             <label for="firstname" class="form-label">Firstname</label>
-                            <input type="text" class="form-control" id="updatefirstname" name="firstname"
-                                required>
+                            <input type="text" class="form-control" id="updatefirstname" name="firstname" required>
                         </div>
                         <div class="col-md-3">
                             <label for="middlename" class="form-label">Middlename</label>
-                            <input type="text" class="form-control" id="updatemiddlename" name="middlename"
-                                required>
+                            <input type="text" class="form-control" id="updatemiddlename" name="middlename" required>
                         </div>
                         <div class="col-md-3">
                             <label for="alias" class="form-label">Alias</label>
@@ -53,8 +49,7 @@
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="birthday" class="form-label">Birthday</label>
-                            <input type="date" class="form-control" id="updatebirthday" name="birthday"
-                                required>
+                            <input type="date" class="form-control" id="updatebirthday" name="birthday" required>
                         </div>
                         <div class="col-md-3">
                             <label for="birth_of_place" class="form-label">birth_of_place</label>
@@ -63,8 +58,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="age" class="form-label">Age</label>
-                            <input type="number" class="form-control" id="updateage" name="age"
-                                required>
+                            <input type="number" class="form-control" id="updateage" name="age" required>
                         </div>
                         <div class="col-md-3">
                             <label for="gender" class="form-label">Gender</label>
@@ -75,7 +69,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="civilstatus" class="form-label">Civil Status</label>
                             <select class="form-select" id="updatecivilstatus" name="civilstatus" required>
                                 <option value="">Select</option>
@@ -86,7 +80,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="citizenship" class="form-label">Citizenship</label>
                             <select class="form-select" id="updatecitizenship" name="citizenship" required>
                                 <option value="">Select</option>
@@ -106,26 +100,19 @@
                         </div>
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="updateemail" name="email"
-                                required>
+                            <input type="text" class="form-control" id="updateemail" name="email" required>
                         </div>
-                        <div class="col-md-3">
-                            <label for="address_1" class="form-label">Address 1</label>
-                            <input type="text" class="form-control" id="updateaddress_1" name="address_1"
-                                required>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="address_2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="updateaddress_2" name="address_2">
-
-                        </div>
-                        <div class="col-md-3">
-                            <label for="telephone_no" class="form-label">Telephone No</label>
-                            <input type="text" class="form-control" id="updatetelephone_no" name="telephone_no">
+                        <div class="col-md-3 col-lg-6">
+                            <label for="address_1" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="updateaddress_1" name="address_1" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="telephone_no" class="form-label">Telephone No</label>
+                            <input type="text" class="form-control" id="updatetelephone_no" name="telephone_no">
+                        </div>
                         <div class="col-md-3">
                             <label for="mobile_no" class="form-label">Mobile No</label>
                             <input type="text" class="form-control" id="updatemobile_no" name="mobile_no">
@@ -138,32 +125,13 @@
                             <label for="weight" class="form-label">Weight (kg)</label>
                             <input type="text" class="form-control" id="updateweight" name="weight">
                         </div>
-                        <div class="col-md-3">
-                            <label for="PAG_IBIG" class="form-label">PAG-IBIG</label>
-                            <input type="text" class="form-control" id="updatePAG_IBIG" name="PAG_IBIG">
-                        </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-3">
-                            <label for="PHILHEALTH" class="form-label">PHILHEALTH</label>
-                            <input type="text" class="form-control" id="updatePHILHEALTH" name="PHILHEALTH">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="SSS" class="form-label">SSS</label>
-                            <input type="text" class="form-control" id="updateSSS" name="SSS">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="TIN" class="form-label">TIN</label>
-                            <input type="text" class="form-control" id="updateTIN" name="TIN">
-                        </div>
                         <div class="col-md-3">
                             <label for="spouse" class="form-label">Spouse Name</label>
                             <input type="text" class="form-control" id="updatespouse" name="spouse">
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="father" class="form-label">Father's Name</label>
                             <input type="text" class="form-control" id="updatefather" name="father">

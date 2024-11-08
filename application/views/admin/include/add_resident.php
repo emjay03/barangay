@@ -66,7 +66,7 @@
                                 <option value="Female">Female</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="civilstatus" class="form-label">Civil Status</label>
                             <select class="form-select" id="civilstatus" name="civilstatus" required>
                                 <option value="">Select</option>
@@ -76,7 +76,7 @@
                                 <option value="Widowed">Widowed</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="citizenship" class="form-label">Citizenship</label>
                             <select class="form-select" id="citizenship" name="citizenship" required>
                                 <option value="">Select</option>
@@ -99,21 +99,18 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="col-md-3">
-                            <label for="address_1" class="form-label">Address 1</label>
+                        <div class="col-md-6">
+                            <label for="address_1" class="form-label">Adress</label>
                             <input type="text" class="form-control" id="address_1" name="address_1" required>
                         </div>
-                        <div class="col-md-3">
-                            <label for="address_2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="address_2" name="address_2">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="telephone_no" class="form-label">Telephone No</label>
-                            <input type="text" class="form-control" id="telephone_no" name="telephone_no">
-                        </div>
+                        
                     </div>
 
                     <div class="row mb-3">
+                    <div class="col-md-3">
+                            <label for="telephone_no" class="form-label">Telephone No</label>
+                            <input type="text" class="form-control" id="telephone_no" name="telephone_no">
+                        </div>
                         <div class="col-md-3">
                             <label for="mobile_no" class="form-label">Mobile No</label>
                             <input type="text" class="form-control" id="mobile_no" name="mobile_no">
@@ -126,32 +123,13 @@
                             <label for="weight" class="form-label">Weight (kg)</label>
                             <input type="text" class="form-control" id="weight" name="weight">
                         </div>
-                        <div class="col-md-3">
-                            <label for="PAG_IBIG" class="form-label">PAG-IBIG</label>
-                            <input type="text" class="form-control" id="PAG_IBIG" name="PAG_IBIG">
-                        </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-3">
-                            <label for="PHILHEALTH" class="form-label">PHILHEALTH</label>
-                            <input type="text" class="form-control" id="PHILHEALTH" name="PHILHEALTH">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="SSS" class="form-label">SSS</label>
-                            <input type="text" class="form-control" id="SSS" name="SSS">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="TIN" class="form-label">TIN</label>
-                            <input type="text" class="form-control" id="TIN" name="TIN">
-                        </div>
-                        <div class="col-md-3">
+                    <div class="col-md-3">
                             <label for="spouse" class="form-label">Spouse Name</label>
                             <input type="text" class="form-control" id="spouse" name="spouse">
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="father" class="form-label">Father's Name</label>
                             <input type="text" class="form-control" id="father" name="father">
@@ -163,11 +141,6 @@
                         <div class="col-md-3">
                             <label for="area" class="form-label">Area</label>
                             <input type="text" class="form-control" id="area" name="area">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="date_registered" class="form-label">Date Registered</label>
-                            <input type="date" class="form-control" id="date_registered" name="date_registered"
-                                required>
                         </div>
                     </div>
 

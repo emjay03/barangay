@@ -93,8 +93,7 @@ function printModalContent() {
                             <strong class="text-capitalize" style="font-size: 17px;">${address}</strong>, who belongs to the 
                             <strong style="font-family: 'Times New Roman', Times, serif;">INDIGENT FAMILY</strong> with low average Family Income / no Permanent Job.
                             <br /><br />
-                            <span style="margin-left: 5rem;"></span>This certification is being issued upon the request of the above-mentioned named to comply
-                            <strong style="font-family: 'Times New Roman', Times, serif;">FINANCIAL ASSISTANCE from</strong> 
+                            <span style="margin-left: 5rem;"></span>This certification is being issued upon the request of the above-mentioned named to comply 
                             <strong class="text-capitalize" style="font-size: 17px;">${purpose}</strong>.
                             <br /><br />
                             Given on this <strong class="text-capitalize" style="font-size: 17px;">${day}</strong> <strong style="font-size: 17px;"><sup>${suffix}</sup></strong> day of
@@ -103,12 +102,15 @@ function printModalContent() {
                         </div>
                         <div class="container-fluid" style="margin-top: 6rem;">
                             <div class="row">
-                                <div class="col-6 d-flex justify-content-center align-items-center mt-5">
-                                    <p class="text-center" style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
-                                        <strong style="font-family: 'Times New Roman', Times, serif;">HON. RODOLFO D. OLIVA</strong><br />
-                                        Punong Barangay
-                                    </p>
-                                </div>
+                                <div class="col-6 mt-5">
+                                                <img src="application/public/signature1.png" alt="" height="65" class="pb-2 top-0 mx-2" style="border-bottom: solid 2px #000;">
+                                                <p class="text-center"
+                                                    style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
+                                                    <strong style="font-family: 'Times New Roman', Times, serif;">
+                                                        HON. RODOLFO D. OLIVA</strong> <br />
+                                                    Punong Barangay
+                                                </p>
+                                            </div>
                                 <div class="col-6 d-flex justify-content-center align-items-center">
                                     <p class="text-center" style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                         <strong style="font-family: 'Times New Roman', Times, serif;">HON. ENGRACIA T. LAMPA</strong><br />

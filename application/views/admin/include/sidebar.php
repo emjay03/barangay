@@ -170,7 +170,7 @@
   </a>
   <a href="/barangay/Certificate" class="menu-item my-2">
     <i class="bi bi-patch-check-fill"></i>
-    <span class="menu-title">Certificate Issurance
+    <span class="menu-title">Certificate Ensurance
     </span>
   </a>
 
@@ -193,7 +193,7 @@
 
   <?php if (isset($user) && $user->role_id == 1): ?>
     <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>
-    <a href="#" class="menu-item my-2">
+    <a href="/barangay/addaccount" class="menu-item my-2">
       <i class="bi bi-person-circle"></i>
       <span class="menu-title">Add Account</span>
     </a>

@@ -40,4 +40,26 @@ class User_model extends CI_Model
 
         return false;
     }
+
+    public function get_all_users()
+    {
+        return $this->db->get('users')->result_array();
+    }
+
+    public function get_user_by_id($id)
+    {
+        return $this->db->get_where('users', ['id' => $id])->row_array();
+    }
+
+    public function update_user($id, $data)
+    {
+        return $this->db->update('users', $data, ['id' => $id]);
+    }
+
+    public function delete_user($id)
+    {
+        return $this->db->delete('users', ['id' => $id]);
+    
+
+}
 }

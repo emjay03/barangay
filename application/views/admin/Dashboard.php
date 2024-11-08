@@ -131,18 +131,17 @@
                 <?php include 'application/views/admin/include/header.php'; ?>
             </header>
             <div class="row content">
+                <div class="col-lg-12 container-fluid z-3 d-flex align-items-center mb-3" style="background-color: #203659;"><p class="text-light mx-3 mt-3">Barangay 185 Malaria District 3, Caloocan City</p></div>
                 <div class="col-lg-12 col-xl-5 p-0 m-0 cal d-flex justify-content-center">
                     <div class="p-0 text-center" style="max-width: 390px">
-                        <p class="mt-5 fw-bold px-5">Barangay 185 Malaria District 3, Caloocan City</p>
-
-                        <h5 class="mt-3 mx-5 fw-bold text-start">Time</h5>
+                        <h5 class="mt-3 mx-2 fw-bold text-start">Time</h5>
                         <div class="text-center d-flex align-items-center justify-content-center time">
-                            <p id="current-time" class="fs-1 fw-bold text-light p-2 px-3 rounded-4 shadow"
+                            <p id="current-time" class="fs-1 fw-bold text-light p-2 px-5 rounded-4 shadow"
                                 style="background-color: #203659"></p>
                         </div>
 
                         <div class="mt-2 calendar">
-                            <div class="p-4">
+                            <div class="p-0">
                                 <h5 class="fw-bold text-start">Calendar</h5>
                                 <div class="card calendar shadow">
                                     <div class="card-body">
@@ -175,10 +174,10 @@
                     </div>
                 </div>
 
-                <div class="col-l-12 col-xl-3 p-0 m-0 d-flex justify-content-center align-items-center"
+                <div class="col-l-12 col-xl-2 p-0 m-0 d-flex justify-content-center align-items-start mt-5"
                     style="max-height: 700px;">
-                    <div class="p-0 text-center" style="max-width: 230px;">
-                        <div class="notes shadow" style="height: 500px; width: 230px;">
+                    <div class="p-0 text-center">
+                        <div class="notes shadow">
                             <div class="card h-100">
                                 <div
                                     class="card-header text-start fw-bold d-flex justify-content-between align-items-center">
@@ -224,13 +223,14 @@
                     </div>
                 </div>
 
-                <div class="col-l-12 col-xl-4 p-0 m-0 d-flex justify-content-center record">
-                    <div class="p-0 text-center" style="max-width: 280px">
+                <div class="col-lg-12 col-xl-5 p-0 m-0 d-flex justify-content-center record">
+                    <div class="px-3 text-center">
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
                             <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
                         </div>
 
-                        <div class="row p-0 m-0 fw-bold">
+                        <div class="container-fluid">
+                        <div class="row fw-bold">
                             <div class="col-6 m-0 p-1">
                                 <div class="card z-3 shadow">
                                     <div class="card-header">
@@ -296,6 +296,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
 
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
