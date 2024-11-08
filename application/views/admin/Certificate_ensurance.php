@@ -59,7 +59,7 @@
     }
 
     .brgyid {
-        background-image: url("application/public/indigency.png");
+        background-image: url("application/public/baranagayID.jpg");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
