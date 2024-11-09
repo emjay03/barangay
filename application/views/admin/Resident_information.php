@@ -248,9 +248,9 @@
                         <thead>
                             <tr>
                                 <th class="d-none">id</th>
-                                <th>Lastname</th>
-                                <th>Firstname</th>
-                                <th>Middlename</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
                                 <th class="d-none">Alias</th> <!-- Added column -->
                                 <th class="d-none">Birthday</th> <!-- Added column -->
                                 <th>Age</th> <!-- Added column -->
@@ -258,7 +258,7 @@
                                 <th class="d-none">Civil Status</th> <!-- Added column -->
                                 <th class="d-none">Citizenship</th>
                                 <th>Voter Status</th> <!-- Added column -->
-                                <th>Address 1</th>
+                                <th>Address</th>
                                 <th class="d-none">Telephone No</th>
                                 <th>Mobile No</th>
                                 <th>Action</th>

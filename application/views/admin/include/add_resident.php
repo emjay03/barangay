@@ -32,15 +32,15 @@
                 <form id="addResidentForm" action="<?php echo site_url('resident/create_resident'); ?>" method="post" class="p-5 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-3">
-                            <label for="lastname" class="form-label">Lastname</label>
+                            <label for="lastname" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastname" name="lastname" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="firstname" class="form-label">Firstname</label>
+                            <label for="firstname" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstname" name="firstname" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="middlename" class="form-label">Middlename</label>
+                            <label for="middlename" class="form-label">Middle Name</label>
                             <input type="text" class="form-control" id="middlename" name="middlename">
                         </div>
                         <div class="col-md-3">
@@ -55,7 +55,7 @@
                             <input type="date" class="form-control" id="birthday" name="birthday" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="birth_of_place" class="form-label">birth_of_place</label>
+                            <label for="birth_of_place" class="form-label">Place of Birth</label>
                             <input type="text" class="form-control" id="birth_of_place" name="birth_of_place" required>
                         </div>
                         <div class="col-md-3">
@@ -89,7 +89,7 @@
                             </select>
                         </div>
                         <div class="col-md-3 mt-3">
-                            <label for="voterstatus" class="form-label">voterstatus</label>
+                            <label for="voterstatus" class="form-label">Voter Status</label>
                             <select class="form-select" id="voterstatus" name="voterstatus" required>
                                 <option value="">Select</option>
                                 <option value="1">Registered</option>

@@ -23,15 +23,15 @@
                     <input type="hidden" id="updateresident_id" />
                     <div class="row mb-3">
                         <div class="col-md-3">
-                            <label for="lastname" class="form-label">Lastname</label>
+                            <label for="lastname" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="updatelastname" name="lastname" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="firstname" class="form-label">Firstname</label>
+                            <label for="firstname" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="updatefirstname" name="firstname" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="middlename" class="form-label">Middlename</label>
+                            <label for="middlename" class="form-label">Middle Name</label>
                             <input type="text" class="form-control" id="updatemiddlename" name="middlename" required>
                         </div>
                         <div class="col-md-3">
