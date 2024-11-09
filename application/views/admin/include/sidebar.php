@@ -170,7 +170,7 @@
   </a>
   <a href="/barangay/Certificate" class="menu-item my-2">
     <i class="bi bi-patch-check-fill"></i>
-    <span class="menu-title">Certificate Ensurance
+    <span class="menu-title">Certificate Insurance
     </span>
   </a>
 

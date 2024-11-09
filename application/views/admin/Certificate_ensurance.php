@@ -83,7 +83,7 @@
             </header>
             <div class="row content p-5 m-5 rounded-4 bg-light shadow-lg">
                 <div class="d-flex justify-content-between mb-5">
-                    <h1 class="fw-bold text-dark"><i class="bi bi-file-text me-2"></i>Certificate Ensurance</h1>
+                    <h1 class="fw-bold text-dark"><i class="bi bi-file-text me-2"></i>Certificate Insurance</h1>
                 </div>
                 <div class="contaier-fluid">
                     <div class="row">

@@ -80,10 +80,8 @@
                                 <option value="Filipino">Filipino</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="voterstatus" class="form-label">Voter Status</label>
                             <select class="form-select" id="updatevoterstatus" name="voterstatus" required>
                                 <option value="">Select</option>
@@ -91,11 +89,14 @@
                                 <option value="0">Not Registered</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="updateemail" name="email" required>
                         </div>
-                        <div class="col-md-3 col-lg-6">
+                        <div class="col-md-3 col-lg-9">
                             <label for="address_1" class="form-label">Address</label>
                             <input type="text" class="form-control" id="updateaddress_1" name="address_1" required>
                         </div>

@@ -88,10 +88,7 @@
 
                             </select>
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3">
                             <label for="voterstatus" class="form-label">voterstatus</label>
                             <select class="form-select" id="voterstatus" name="voterstatus" required>
                                 <option value="">Select</option>
@@ -99,11 +96,14 @@
                                 <option value="0">Not Registered</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <label for="address_1" class="form-label">Adress</label>
                             <input type="text" class="form-control" id="address_1" name="address_1" required>
                         </div>
