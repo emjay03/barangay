@@ -309,8 +309,9 @@
                                     <div class="card-header">
                                         <p class="text-start" style="font-size: 10px">Settled Cases</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
                                         style="background-color: #203659">
+                                        <?php echo !empty($get_Settled) ? $get_Settled : 0; ?>
                                     </div>
                                 </div>
                             </div>
@@ -319,8 +320,9 @@
                                     <div class="card-header">
                                         <p class="text-start" style="font-size: 10px">Unscheduled Cases</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
                                         style="background-color: #203659">
+                                        <?php echo !empty($get_Scheduled) ? $get_Scheduled  : 0; ?>
                                     </div>
                                 </div>
                             </div>
@@ -329,8 +331,8 @@
                                     <div class="card-header">
                                         <p class="text-start" style="font-size: 10px">Scheduled Cases</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
-                                        style="background-color: #203659">
+                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
+                                        style="background-color: #203659"> 0
                                     </div>
                                 </div>
                             </div>
@@ -339,8 +341,9 @@
                                     <div class="card-header">
                                         <p class="text-start" style="font-size: 10px">Settled Cases</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center rounded-bottom-2"
+                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
                                         style="background-color: #203659">
+                                        <?php echo !empty($get_Unscheduled) ? $get_Unscheduled : 0; ?>
                                     </div>
                                 </div>
                             </div>
