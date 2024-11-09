@@ -12,6 +12,12 @@ class Settlement extends CI_Controller
     public function index()
     {
         $data['all_settlement'] = $this->Settlement_model->get_all_settlement();
+        $data['get_Settled'] = $this->Settlement_model->get_Settled();
+        $data['get_Unscheduled'] = $this->Settlement_model->get_Unscheduled();
+        $data['get_Scheduled'] = $this->Settlement_model->get_Scheduled();
+
+
+
         $user = $this->session->userdata('user_data');
         if (!$user) {
             redirect('auth');

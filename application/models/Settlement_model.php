@@ -39,4 +39,22 @@ class Settlement_model extends CI_Model
 
         return null;
     }
+
+    public function get_Settled()
+    {
+        $this->db->where('status', 'Settled');
+        return $this->db->count_all_results('settlement');
+    }
+
+    public function get_Unscheduled()
+    {
+        $this->db->where('status', 'Unscheduled');
+        return $this->db->count_all_results('settlement');
+    }
+
+    public function get_Scheduled()
+    {
+        $this->db->where('status', 'Scheduled');
+        return $this->db->count_all_results('settlement');
+    }
 }

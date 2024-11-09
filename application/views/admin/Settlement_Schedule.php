@@ -363,7 +363,7 @@
                                         Settled Cases
                                     </div>
                                     <div class="card-body fs-2">
-                                        0
+                                        <?php echo !empty($get_Settled) ? $get_Settled : 0; ?>
                                     </div>
                                 </div>
                             </div>
@@ -373,7 +373,7 @@
                                         Scheduled Cases
                                     </div>
                                     <div class="card-body fs-2">
-                                        0
+                                        <?php echo !empty($get_Scheduled) ? $get_Scheduled  : 0; ?>
                                     </div>
                                 </div>
                             </div>
@@ -393,7 +393,7 @@
                                         Unscheduled Cases
                                     </div>
                                     <div class="card-body fs-2">
-                                        0
+                                        <?php echo !empty($get_Unscheduled) ? $get_Unscheduled : 0; ?>
                                     </div>
                                 </div>
                             </div>
