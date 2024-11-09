@@ -32,12 +32,25 @@
             </div>
             <div class="modal-body">
                 <div id="alertMessage" class="alert px-5" role="alert"></div>
-                <form id="addIncidentForm" action="<?php echo site_url('blotters/create_blotters'); ?>" method="post" class="p-4 rounded-4 shadow-lg">
+                <form id="addIncidentForm" action="<?php echo site_url('blotters/create_blotter_and_settlement'); ?>" method="post" class="p-4 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="incident_type" class="form-label">Incident Type</label>
-                            <input type="text" class="form-control" id="incident_type" name="incident_type" required>
+                            <label for="ComplaintType" class="form-label">ComplaintType</label>
+                            <input type="text" class="form-control" id="ComplaintType" name="ComplaintType" required>
                         </div>
+                        <div class="col-md-6">
+                            <label for="Description" class="form-label">Description</label>
+                            <textarea rows="4" type="text" class="form-control" id="Description" name="Description" required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ReportedBy" class="form-label">ReportedBy</label>
+                            <input type="text" class="form-control" id="ReportedBy" name="ReportedBy" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="AssignedTo" class="form-label">AssignedTo</label>
+                            <input type="text" class="form-control" id="AssignedTo" name="AssignedTo" required>
+                        </div>
+
                         <div class="col-md-6">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" id="status" name="status" required>
@@ -47,49 +60,27 @@
                                 <option value="Pending">Pending</option>
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label for="ActionTaken" class="form-label">ActionTaken</label>
+                            <input type="text" class="form-control" id="ActionTaken" name="ActionTaken" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ComplainantName" class="form-label">ComplainantName</label>
+                            <input type="text" class="form-control" id="ComplainantName" name="ComplainantName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="RespondentName" class="form-label">RespondentName</label>
+                            <input type="text" class="form-control" id="RespondentName" name="RespondentName" required>
+                        </div>
+
                     </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="schedule" class="form-label">Schedule</label>
-                            <input type="date" class="form-control" id="schedule" name="schedule" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="date_reported" class="form-label">Date Reported</label>
-                            <input type="date" class="form-control" id="date_reported" name="date_reported" required>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="time_reported" class="form-label">Time Reported</label>
-                            <input type="time" class="form-control" id="time_reported" name="time_reported" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="date_incident" class="form-label">Date Incident</label>
-                            <input type="date" class="form-control" id="date_incident" name="date_incident" required>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="time_incident" class="form-label">Time Incident</label>
-                            <input type="time" class="form-control" id="time_incident" name="time_incident" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="incident_location" class="form-label">Incident Location</label>
-                            <input type="text" class="form-control" id="incident_location" name="incident_location"
-                                required>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="incident_narrative" class="form-label">Incident Narrative</label>
-                            <textarea class="form-control" id="incident_narrative" name="incident_narrative" rows="3"
-                                required></textarea>
-                        </div>
-                    </div>
+
+
+
 
                     <button type="submit" class="btn btn-primary px-5">Submit Incident</button>
                 </form>
