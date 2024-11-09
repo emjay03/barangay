@@ -155,7 +155,7 @@
                         <div class="row p-5 mx-1 rounded-4 bg-light shadow-lg">
                             <div class="d-flex justify-content-between mb-5">
                                 <h1 class="fw-bold text-dark"><i class="bi bi-card-heading"></i>Settlement Schedule</h1>
-                                <button class="btn btn-primary max-w-50 px-5 m-2" data-bs-toggle="modal"
+                                <button class="btn btn-primary max-w-50 px-5 m-2 d-none" data-bs-toggle="modal"
                                     data-bs-target="#addSettlementModal">Add Settlement</button>
                             </div>
 

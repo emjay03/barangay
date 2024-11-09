@@ -124,7 +124,12 @@ class Blotters extends CI_Controller
 
 
                 if ($this->Settlement_model->create_settlement($settlement_data)) {
-                    echo json_encode(array('status' => 'success', 'message' => 'Blotter and settlement added successfully.'));
+                    echo "<script> alert ('Blotter and settlement added successfully.'); 
+
+                    setTimeout(() => {
+                        window.location.href = '/barangay/Blotters';
+                    }, 500);
+                    </script>";
                 } else {
                     echo json_encode(array('status' => 'error', 'message' => 'Failed to add settlement.'));
                 }
