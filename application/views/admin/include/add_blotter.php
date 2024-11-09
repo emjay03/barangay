@@ -32,7 +32,7 @@
             </div>
             <div class="modal-body">
                 <div id="alertMessage" class="alert px-5" role="alert"></div>
-                <form id="addIncidentForm" action="<?php echo site_url('blotters/create_blotter_and_settlement'); ?>" method="post" class="p-4 rounded-4 shadow-lg">
+                <form action="<?php echo site_url('blotters/create_blotter_and_settlement'); ?>" method="post" class="p-4 rounded-4 shadow-lg">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="ComplaintType" class="form-label">ComplaintType</label>
@@ -53,7 +53,7 @@
 
                         <div class="col-md-6">
                             <label for="status" class="form-label">Status</label>
-                            <select class="form-select" id="status" name="status" required>
+                            <select class="form-select" id="Status" name="Status" required>
                                 <option value="">Select</option>
                                 <option value="Open">Open</option>
                                 <option value="Closed">Closed</option>

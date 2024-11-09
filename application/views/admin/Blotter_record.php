@@ -308,69 +308,8 @@
             });
         });
 
-        document.getElementById('addIncidentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            fetch(this.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(this)),
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(text => {
-                            throw new Error('Error: ' + text);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.className = 'alert';
-
-                    if (data.status === 'error') {
-                        alertMessage.innerText = data.message;
-                        alertMessage.classList.add('alert-danger');
-                    } else {
-                        alertMessage.innerText = 'Added successfully!';
-                        alertMessage.classList.add('alert-success');
-
-                        $('#addResidentModal').modal('hide');
-                        this.reset();
-
-                        setTimeout(() => {
-                            window.location.href = 'Blotters';
-                        }, 2000);
-                    }
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                })
-                .catch(error => {
-                    const alertMessage = document.getElementById('alertMessage');
-                    alertMessage.innerText = 'An unexpected error occurred: ' + error.message;
-                    alertMessage.className = 'alert alert-danger';
-
-                    alertMessage.classList.add('show');
-                    setTimeout(() => {
-                        alertMessage.classList.remove('show');
-                        alertMessage.classList.add('hide');
-                        setTimeout(() => {
-                            alertMessage.style.display = 'none';
-                            alertMessage.classList.remove('hide');
-                        }, 500);
-                    }, 3000);
-                });
-        });
+        
+     
     </script>
 </body>
 
