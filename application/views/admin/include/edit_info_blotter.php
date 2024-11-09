@@ -13,67 +13,57 @@
 </style>
 
 <div class="modal fade" id="editIncidentModal" tabindex="-1" aria-labelledby="editIncidentModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editIncidentModalLabel">Edit Incident</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editIncidentForm" method="post" class="p-5 rounded-4 shadow-lg">
-                    <input type="hidden" id="blotter_id" name="blotter_id">
+                <form id="editIncidentForm" method="post" class="p-4 rounded-4 shadow-lg">
+                    <input type="hidden" id="blotter_id" name="id">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="edit_incident_type" class="form-label">Incident Type</label>
-                            <input type="text" class="form-control" id="edit_incident_type" name="incident_type" required>
+                            <label for="edit_complaint_type" class="form-label">Complaint Type</label>
+                            <input type="text" class="form-control" id="edit_complaint_type" name="ComplaintType" required>
                         </div>
                         <div class="col-md-6">
+                            <label for="edit_description" class="form-label">Description</label>
+                            <textarea rows="4" class="form-control" id="edit_description" name="Description" required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edit_reported_by" class="form-label">Reported By</label>
+                            <input type="text" class="form-control" id="edit_reported_by" name="ReportedBy" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edit_assigned_to" class="form-label">Assigned To</label>
+                            <input type="text" class="form-control" id="edit_assigned_to" name="AssignedTo" required>
+                        </div>
+
+                        <div class="col-md-6">
                             <label for="edit_status" class="form-label">Status</label>
-                            <select class="form-select" id="edit_status" name="status" required>
+                            <select class="form-select" id="edit_status" name="Status" required>
                                 <option value="">Select</option>
                                 <option value="Open">Open</option>
                                 <option value="Closed">Closed</option>
                                 <option value="Pending">Pending</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="edit_schedule" class="form-label">Schedule</label>
-                            <input type="date" class="form-control" id="edit_schedule" name="schedule" required>
+                            <label for="edit_action_taken" class="form-label">Action Taken</label>
+                            <input type="text" class="form-control" id="edit_action_taken" name="ActionTaken" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="edit_date_reported" class="form-label">Date Reported</label>
-                            <input type="date" class="form-control" id="edit_date_reported" name="date_reported" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="edit_time_reported" class="form-label">Time Reported</label>
-                            <input type="time" class="form-control" id="edit_time_reported" name="time_reported" required>
+                            <label for="edit_complainant_name" class="form-label">Complainant Name</label>
+                            <input type="text" class="form-control" id="edit_complainant_name" name="ComplainantName" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="edit_date_incident" class="form-label">Date Incident</label>
-                            <input type="date" class="form-control" id="edit_date_incident" name="date_incident" required>
+                            <label for="edit_respondent_name" class="form-label">Respondent Name</label>
+                            <input type="text" class="form-control" id="edit_respondent_name" name="RespondentName" required>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="edit_time_incident" class="form-label">Time Incident</label>
-                            <input type="time" class="form-control" id="edit_time_incident" name="time_incident" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="edit_incident_location" class="form-label">Incident Location</label>
-                            <input type="text" class="form-control" id="edit_incident_location" name="incident_location" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="edit_incident_narrative" class="form-label">Incident Narrative</label>
-                            <textarea class="form-control" id="edit_incident_narrative" name="incident_narrative" rows="3" required></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                    <button type="submit" class="btn btn-primary px-5">Save Changes</button>
                 </form>
             </div>
         </div>
@@ -87,17 +77,16 @@
         editButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const residentData = JSON.parse(this.getAttribute('data-resident'));
-                
-                document.getElementById('blotter_id').value = residentData.blotter_id;
-                document.getElementById('edit_incident_type').value = residentData.incident_type;
-                document.getElementById('edit_status').value = residentData.status;
-                document.getElementById('edit_schedule').value = residentData.schedule;
-                document.getElementById('edit_date_reported').value = residentData.date_reported;
-                document.getElementById('edit_time_reported').value = residentData.time_reported;
-                document.getElementById('edit_date_incident').value = residentData.date_incident;
-                document.getElementById('edit_time_incident').value = residentData.time_incident;
-                document.getElementById('edit_incident_location').value = residentData.incident_location;
-                document.getElementById('edit_incident_narrative').value = residentData.incident_narrative;
+
+                document.getElementById('blotter_id').value = residentData.id;
+                document.getElementById('edit_complaint_type').value = residentData.ComplaintType;
+                document.getElementById('edit_description').value = residentData.Description;
+                document.getElementById('edit_reported_by').value = residentData.ReportedBy;
+                document.getElementById('edit_assigned_to').value = residentData.AssignedTo;
+                document.getElementById('edit_status').value = residentData.Status;
+                document.getElementById('edit_action_taken').value = residentData.ActionTaken;
+                document.getElementById('edit_complainant_name').value = residentData.ComplainantName;
+                document.getElementById('edit_respondent_name').value = residentData.RespondentName;
             });
         });
 
@@ -117,6 +106,7 @@
                 // Hide the modal
                 $('#editIncidentModal').modal('hide');
 
+                alert('Update Successfully!');
                 // Redirect after a short delay
                 setTimeout(() => {
                     window.location.href = 'Blotters';
