@@ -144,50 +144,56 @@ class Blotters extends CI_Controller
 
     public function update_blotters($id)
     {
-        // Set validation rules
-        $this->form_validation->set_rules('incident_type', 'Incident Type', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('schedule', 'Schedule', 'required');
-        $this->form_validation->set_rules('date_reported', 'Date Reported', 'required');
-        $this->form_validation->set_rules('time_reported', 'Time Reported', 'required');
-        $this->form_validation->set_rules('date_incident', 'Date Incident', 'required');
-        $this->form_validation->set_rules('time_incident', 'Time Incident', 'required');
-        $this->form_validation->set_rules('incident_location', 'Incident Location', 'required');
-        $this->form_validation->set_rules('incident_narrative', 'Incident Narrative', 'required');
 
-        // Validate the input
+        $this->form_validation->set_rules('ComplaintType', 'Complaint Type', 'trim');
+        $this->form_validation->set_rules('Description', 'Description', 'trim');
+        $this->form_validation->set_rules('ReportedBy', 'Reported By', 'trim');
+        $this->form_validation->set_rules('AssignedTo', 'Assigned To', 'trim');
+        $this->form_validation->set_rules('Status', 'Status', 'trim');
+        $this->form_validation->set_rules('ActionTaken', 'Action Taken', 'trim');
+        $this->form_validation->set_rules('ComplainantName', 'Complainant Name', 'trim');
+        $this->form_validation->set_rules('RespondentName', 'Respondent Name', 'trim');
+
+
         if ($this->form_validation->run() === FALSE) {
+
             $errors = validation_errors();
             log_message('error', 'Validation errors: ' . $errors);
-            echo json_encode(array('status' => false, 'msg' => $errors));
-        } else {
-            // Prepare data for update
-            $data = [
-                'incident_type' => $this->input->post('incident_type'),
-                'status' => $this->input->post('status'),
-                'schedule' => $this->input->post('schedule'),
-                'date_reported' => $this->input->post('date_reported'),
-                'time_reported' => $this->input->post('time_reported'),
-                'date_incident' => $this->input->post('date_incident'),
-                'time_incident' => $this->input->post('time_incident'),
-                'incident_location' => $this->input->post('incident_location'),
-                'incident_narrative' => $this->input->post('incident_narrative')
-            ];
 
-            // Update the blotter in the database
-            if ($this->Blotters_model->update_blotters($data, $id)) {
-                echo json_encode([
-                    'status' => 'success',
-                    'message' => 'Incident updated successfully.'
-                ]);
-            } else {
-                echo json_encode([
-                    'status' => 'error',
-                    'message' => 'Failed to update incident. Please check the data and try again.'
-                ]);
-            }
+
+            echo json_encode(array('status' => false, 'msg' => $errors));
+            return;
+        }
+
+
+        $data = [
+            'ComplaintType' => $this->input->post('ComplaintType'),
+            'Description' => $this->input->post('Description'),
+            'ReportedBy' => $this->input->post('ReportedBy'),
+            'AssignedTo' => $this->input->post('AssignedTo'),
+            'Status' => $this->input->post('Status'),
+            'ActionTaken' => $this->input->post('ActionTaken'),
+            'ComplainantName' => $this->input->post('ComplainantName'),
+            'RespondentName' => $this->input->post('RespondentName'),
+        ];
+
+
+        if ($this->Blotters_model->update_blotters($data, $id)) {
+
+            echo json_encode([
+                'status' => true,
+                'message' => 'Incident updated successfully.'
+            ]);
+        } else {
+
+            log_message('error', 'Failed to update blotter with ID: ' . $id);
+            echo json_encode([
+                'status' => false,
+                'message' => 'Failed to update incident. Please check the data and try again.'
+            ]);
         }
     }
+
 
     public function list()
     {
