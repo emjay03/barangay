@@ -21,9 +21,10 @@ class Blotters_model extends CI_Model
         return $this->db->insert('blotterss', $data);
     }
 
+
     public function update_blotters($data, $id)
     {
-        return $this->db->where('blotter_id', $id)->update('blotters', $data);
+        return $this->db->where('id', $id)->update('blotterss', $data);
     }
 
     public function get_all_blotters()
