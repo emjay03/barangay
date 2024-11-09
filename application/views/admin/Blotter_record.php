@@ -247,22 +247,28 @@
                     <table class="incident-table mb-5">
                         <thead>
                             <tr>
-                                <th>Incident Type</th>
+                                <th>Blotter ID</th>
+                                <th>Complaint Type</th>
+                                <th>Description</th>
+                                <th>ReportedBy</th>
+                                <th>AssignedTo</th>
                                 <th>Status</th>
-                                <th>Schedule</th>
-                                <th>Date Reported</th>
-                                <th>Time Reported</th>
-                                <th>Action</th>
+                                <th>ActionTaken</th>
+                                <th>DateReported</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($all_blotters as $all_blotter): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($all_blotter['incident_type']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['status']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['schedule']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['date_reported']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['time_reported']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['BlotterID']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['ComplaintType']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['Description']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['ReportedBy']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['AssignedTo']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['Status']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['ActionTaken']); ?></td>
+                                    <td><?php echo htmlspecialchars($all_blotter['DateReported']); ?></td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
                                             data-bs-target="#editIncidentModal"
@@ -282,7 +288,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.incident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -296,22 +302,22 @@
                 }
             });
 
-            $('.search-btn').on('click', function () {
+            $('.search-btn').on('click', function() {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.incident-table').DataTable().search(searchValue).draw();
             });
         });
 
-        document.getElementById('addIncidentForm').addEventListener('submit', function (event) {
+        document.getElementById('addIncidentForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             fetch(this.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(this)),
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(this)),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
                 .then(response => {
                     if (!response.ok) {
                         return response.text().then(text => {
@@ -365,8 +371,6 @@
                     }, 3000);
                 });
         });
-
-
     </script>
 </body>
 

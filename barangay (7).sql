@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 04:49 PM
+-- Generation Time: Nov 09, 2024 at 03:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -50,6 +50,41 @@ CREATE TABLE `blotters` (
 INSERT INTO `blotters` (`blotter_id`, `incident_type`, `status`, `schedule`, `schedule_date`, `date_reported`, `time_reported`, `date_incident`, `time_incident`, `incident_location`, `incident_narrative`, `created_at`, `updated_at`) VALUES
 (1, 'testrrr', 'Open', '2024-10-21', NULL, '2024-02-02', '12:00:00', '2024-02-02', '12:00:00', 'Tala', 'test', NULL, NULL),
 (2, 'ghdddddd', 'Open', '2024-10-18', NULL, '2024-10-07', '20:54:00', '2024-10-01', '08:54:00', 'hjk', 'hgjk', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blotterss`
+--
+
+CREATE TABLE `blotterss` (
+  `id` int(11) NOT NULL,
+  `BlotterID` varchar(255) NOT NULL,
+  `ComplaintType` varchar(255) NOT NULL,
+  `Description` varchar(300) NOT NULL,
+  `ReportedBy` varchar(255) NOT NULL,
+  `AssignedTo` varchar(255) NOT NULL,
+  `ComplainantName` varchar(255) NOT NULL,
+  `RespondentName` varchar(255) NOT NULL,
+  `Status` varchar(255) NOT NULL,
+  `ActionTaken` varchar(255) NOT NULL,
+  `DateReported` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blotterss`
+--
+
+INSERT INTO `blotterss` (`id`, `BlotterID`, `ComplaintType`, `Description`, `ReportedBy`, `AssignedTo`, `ComplainantName`, `RespondentName`, `Status`, `ActionTaken`, `DateReported`) VALUES
+(6, '277948', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'open', 'loren', '2024-11-09 09:27:50'),
+(7, '217079', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'open', 'loren', '2024-11-09 09:27:52'),
+(8, '446228', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'open', 'loren', '2024-11-09 09:27:54'),
+(9, '922431', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'open', 'loren', '2024-11-09 09:31:09'),
+(10, '589454', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'pending', 'loren', '2024-11-09 09:35:43'),
+(11, '987239', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'pending', 'loren', '2024-11-09 09:36:41'),
+(12, '400086', 'Violence', 'lorem', 'lorem', 'lorem', '', '', 'pending', 'loren', '2024-11-09 09:37:35'),
+(13, '535940', 'Violence', 'lorem', 'lorem', 'lorem', 'lorem', 'lreom', 'pending', 'loren', '2024-11-09 09:41:44'),
+(14, '743817', 'Violence', 'lorem', 'lorem', 'lorem', 'lorem', 'lreom', 'pending', 'loren', '2024-11-09 09:42:39');
 
 -- --------------------------------------------------------
 
@@ -247,7 +282,8 @@ INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `settlement` (
   `id` int(11) NOT NULL,
   `case_number` int(11) NOT NULL,
-  `date_of_filling` date NOT NULL,
+  `BlotterID` varchar(255) NOT NULL,
+  `date_of_filling` datetime NOT NULL DEFAULT current_timestamp(),
   `type_of_case` varchar(255) NOT NULL,
   `details` varchar(500) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -263,6 +299,7 @@ CREATE TABLE `settlement` (
   `signature_file1` varchar(255) NOT NULL,
   `signature_file2` varchar(255) NOT NULL,
   `signature_file3` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -271,9 +308,13 @@ CREATE TABLE `settlement` (
 -- Dumping data for table `settlement`
 --
 
-INSERT INTO `settlement` (`id`, `case_number`, `date_of_filling`, `type_of_case`, `details`, `name`, `contact`, `respondent_relationship`, `date_mediation`, `lupon_member1`, `lupon_member2`, `lupon_member3`, `summary`, `term_settlement`, `date_settlement`, `signature_file1`, `signature_file2`, `signature_file3`, `created_at`, `updated_at`) VALUES
-(1, 7898, '2024-02-02', 'hjk', 'hj', 'jkm', 9456132, 0, '2024-02-02', 'hbn', 'dcs', 0, 'fds', 'fds20', '2024-02-03', 'file-sample_150kB.pdf', 'file-sample_150kB.pdf', 'file-sample_150kB.pdf', '2024-10-17 09:40:28', 0),
-(2, 89465, '2024-02-02', 'hjk', 'hj', 'jkm', 9456132, 0, '2024-02-02', 'hbn', 'dcs', 0, 'fds', 'fds20', '2024-02-03', 'file-sample_150kB.pdf', 'file-sample_150kB.pdf', 'file-sample_150kB.pdf', '2024-10-17 09:57:37', 0);
+INSERT INTO `settlement` (`id`, `case_number`, `BlotterID`, `date_of_filling`, `type_of_case`, `details`, `name`, `contact`, `respondent_relationship`, `date_mediation`, `lupon_member1`, `lupon_member2`, `lupon_member3`, `summary`, `term_settlement`, `date_settlement`, `signature_file1`, `signature_file2`, `signature_file3`, `status`, `created_at`, `updated_at`) VALUES
+(8, 995070, '446228', '2024-11-09 09:27:54', '', '', '', 0, 0, '0000-00-00', '', '', 0, '', '', '0000-00-00', '', '', '', 'Scheduled', '2024-11-09 09:27:54', 0),
+(9, 574175, '922431', '2024-11-09 09:31:09', '', '', '', 0, 0, '0000-00-00', '', '', 0, '', '', '0000-00-00', '', '', '', 'Unscheduled', '2024-11-09 09:31:09', 0),
+(10, 440820, '987239', '2024-11-09 09:36:41', 'Violence', '', '', 0, 0, '0000-00-00', '', '', 0, '', '', '0000-00-00', '', '', '', 'Unscheduled', '2024-11-09 09:36:41', 0),
+(11, 390197, '400086', '2024-11-09 09:37:35', 'Violence', 'lorem', '', 0, 0, '0000-00-00', '', '', 0, '', '', '0000-00-00', '', '', '', 'Unscheduled', '2024-11-09 09:37:35', 0),
+(12, 503036, '535940', '2024-11-09 09:41:44', 'Violence', 'lorem', '', 0, 0, '0000-00-00', '', '', 0, '', '', '0000-00-00', '', '', '', 'Unscheduled', '2024-11-09 09:41:44', 0),
+(13, 581082, '743817', '2024-11-09 09:42:39', 'Violence', '', '', 9876, 0, '0000-00-00', 'don', 'dan', 0, '', 'test', '2024-11-08', 'image 35.png', 'image 35.png', 'image 35.png', 'Settled', '2024-11-09 09:42:39', 0);
 
 -- --------------------------------------------------------
 
@@ -300,7 +341,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `role_id`, `created_at`, `update
 (3, 'admin@gmail.com', '$2y$10$cL/yvHIL4ccLE/CIbycxvup82muWicweWn425b/a/kLhYUkAkmleC', 1, '2024-10-04 14:28:55', '0000-00-00 00:00:00'),
 (4, 'staff@gmail.com', '$2y$10$uBrptAmrkF6Kqlon.mySG.8cCnawAfzPaNbUu89S1ANOuZzUCBG7i', 3, '2024-11-04 15:52:20', '0000-00-00 00:00:00'),
 (5, 'sasa@gmail.com', '$2y$10$xe9/0VvT0p95Lx/Tbmgly.nmzrETYqr7lN/iv.Sna43pnt6YqxMES', 1, '2024-11-04 15:54:06', '0000-00-00 00:00:00'),
-(6, 'kadusalejenalyn65@gmail.com', '$2y$10$WTQUv9hQnrdjzZQjowhFFeYKKFhj9cPe.XU.QQWmO1Cmn9SW7Fi26', 3, '2024-11-08 11:58:24', '0000-00-00 00:00:00');
+(6, 'kadusalejenalyn65@gmail.com', '$2y$10$WTQUv9hQnrdjzZQjowhFFeYKKFhj9cPe.XU.QQWmO1Cmn9SW7Fi26', 3, '2024-11-08 11:58:24', '0000-00-00 00:00:00'),
+(7, 'c@gmail.com', '$2y$10$j.6mnOcOhlErfRTfiJ1FGe2MSt2iIehJiFNu.AZPTsq0OIKVKPViq', 1, '2024-11-09 02:20:05', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -311,6 +353,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `role_id`, `created_at`, `update
 --
 ALTER TABLE `blotters`
   ADD PRIMARY KEY (`blotter_id`);
+
+--
+-- Indexes for table `blotterss`
+--
+ALTER TABLE `blotterss`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `certicate`
@@ -365,6 +413,12 @@ ALTER TABLE `blotters`
   MODIFY `blotter_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `blotterss`
+--
+ALTER TABLE `blotterss`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `certicate`
 --
 ALTER TABLE `certicate`
@@ -398,13 +452,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `settlement`
 --
 ALTER TABLE `settlement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

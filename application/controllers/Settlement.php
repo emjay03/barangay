@@ -109,18 +109,17 @@ class Settlement extends CI_Controller
     public function update_settlement($id)
     {
         // Set validation rules
-        $this->form_validation->set_rules('case_number', 'Case_number', 'required');
-        $this->form_validation->set_rules('date_of_filling', 'Date_of_filling', 'required');
-        $this->form_validation->set_rules('type_of_case', 'Type_of_case', 'required');
-        $this->form_validation->set_rules('details', 'Details', 'required');
-        $this->form_validation->set_rules('name', 'Name', 'required');
+
+
+        $this->form_validation->set_rules('details', 'Details');
+        $this->form_validation->set_rules('name', 'Name');
         $this->form_validation->set_rules('contact', 'Contact', 'required');
         $this->form_validation->set_rules('respondent_relationship', 'Respondent_relationship', 'required');
         $this->form_validation->set_rules('date_mediation', 'Date_mediation', 'required');
         $this->form_validation->set_rules('lupon_member1', 'Lupon_member1', 'required');
         $this->form_validation->set_rules('lupon_member2', 'Lupon_member2', 'required');
         $this->form_validation->set_rules('lupon_member3', 'Lupon_member3', 'required');
-        $this->form_validation->set_rules('summary', 'Summary', 'required');
+        $this->form_validation->set_rules('summary', 'Summary');
         $this->form_validation->set_rules('term_settlement', 'Term_settlement', 'required');
         $this->form_validation->set_rules('date_settlement', 'Date_settlement', 'required');
 
@@ -154,9 +153,8 @@ class Settlement extends CI_Controller
         }
 
         $data = array(
-            'case_number' => $this->input->post('case_number'),
-            'date_of_filling' => $this->input->post('date_of_filling'),
-            'type_of_case' => $this->input->post('type_of_case'),
+
+
             'details' => $this->input->post('details'),
             'name' => $this->input->post('name'),
             'contact' => $this->input->post('contact'),
@@ -171,6 +169,7 @@ class Settlement extends CI_Controller
             'signature_file1' => $file_names[0],
             'signature_file2' => $file_names[1],
             'signature_file3' => $file_names[2],
+            'status' => 'Setteled',
         );
 
         if ($this->Settlement_model->update_settlement($id, $data)) {

@@ -7,6 +7,7 @@ class Blotters extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Blotters_model');
+        $this->load->model('Settlement_model');
         $this->load->library('form_validation');
         $this->load->helper('security');
     }
@@ -59,6 +60,82 @@ class Blotters extends CI_Controller
             }
         }
     }
+
+
+
+
+
+
+
+
+
+    public function create_blotter_and_settlement()
+    {
+        // Set validation rules for Blotter
+        $this->form_validation->set_rules('ComplaintType', 'ComplaintType', 'required');
+        $this->form_validation->set_rules('Description', 'Description', 'required');
+        $this->form_validation->set_rules('ReportedBy', 'ReportedBy', 'required');
+        $this->form_validation->set_rules('AssignedTo', 'AssignedTo', 'required');
+        $this->form_validation->set_rules('Status', 'Status', 'required');
+        $this->form_validation->set_rules('ActionTaken', 'ActionTaken', 'required');
+        $this->form_validation->set_rules('ComplainantName', 'ComplainantName', 'required');
+        $this->form_validation->set_rules('RespondentName', 'RespondentName', 'required');
+
+        // Run form validation
+        if ($this->form_validation->run() === FALSE) {
+            echo json_encode(array('status' => false, 'msg' => validation_errors()));
+        } else {
+
+            $blotterId = rand(100000, 999999);
+
+
+            $blotter_data = array(
+                'BlotterID' => $blotterId,
+                'ComplaintType' => $this->input->post('ComplaintType'),
+                'Description' => $this->input->post('Description'),
+                'ReportedBy' => $this->input->post('ReportedBy'),
+                'AssignedTo' => $this->input->post('AssignedTo'),
+                'Status' => $this->input->post('Status'),
+                'ActionTaken' => $this->input->post('ActionTaken'),
+                'ComplainantName' => $this->input->post('ComplainantName'),
+                'RespondentName' => $this->input->post('RespondentName'),
+            );
+
+
+            if ($this->Blotters_model->create_blotterss($blotter_data)) {
+
+
+                $case_number = rand(100000, 999999);
+                $ComplaintType = $this->input->post('ComplaintType');
+                $Description = $this->input->post('Description');
+                $ComplainantName = $this->input->post('ComplainantName');
+
+                $settlement_data = array(
+                    'BlotterID' => $blotterId,
+                    'case_number' => $case_number,
+                    'status' => 'Unscheduled',
+                    'type_of_case' => $ComplaintType,
+                    'details' => $Description,
+                    'name' => $ComplainantName,
+
+
+
+                );
+
+
+                if ($this->Settlement_model->create_settlement($settlement_data)) {
+                    echo json_encode(array('status' => 'success', 'message' => 'Blotter and settlement added successfully.'));
+                } else {
+                    echo json_encode(array('status' => 'error', 'message' => 'Failed to add settlement.'));
+                }
+            } else {
+                echo json_encode(array('status' => 'error', 'message' => 'Failed to add blotter.'));
+            }
+        }
+    }
+
+
+
 
     public function update_blotters($id)
     {
