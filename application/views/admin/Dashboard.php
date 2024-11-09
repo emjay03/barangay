@@ -234,7 +234,7 @@
                             <div class="col-6 m-0 p-1">
                                 <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">total population</p>
+                                        <p class="text-start" style="font-size: 10px">Total Population</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
@@ -250,7 +250,7 @@
                             <div class="col-6 m-0 p-1">
                                 <div class="card z-3 shadow">
                                     <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">registered Voters</p>
+                                        <p class="text-start" style="font-size: 10px">Registered Voters</p>
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-center">
                                         <i class="bi bi-list-check fs-1 text-dark me-2"></i>
