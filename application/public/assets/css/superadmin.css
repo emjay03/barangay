@@ -1,0 +1,219 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+#notesContainer {
+	scrollbar-width: NONE;
+}
+
+body {
+	overflow: hidden;
+}
+
+main {
+	height: 100vh;
+	overflow-y: scroll;
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+#d-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 30%;
+    z-index: -1;
+    background-color: #FF4B33;
+}
+
+#d-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.today {
+	background-color: #fff;
+	color: #203659;
+	border-radius: 15px;
+	border: 1px solid #203659;
+	padding: 0;
+	height: 30px;
+	text-align: center;
+	line-height: 1;
+}
+
+.note {
+	background-color: #f8f9fa;
+	border: 1px solid #dee2e6;
+}
+
+/*sidebar*/
+.sidebar {
+	width: 350px;
+	max-width: 350px;
+	height: 100vh;
+	position: relative;
+	top: 0;
+	left: 0;
+	transition: all 0.3s ease;
+	z-index: 1000;
+	scrollbar-width: thin;
+	background-color: #ff4b33;
+	overflow-y: scroll;
+}
+
+/* WebKit browsers */
+.sidebar::-webkit-scrollbar {
+	width: 10px;
+	/* Width of the scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background-color: #ff7967;
+	/* Color of the scrollbar thumb */
+	border-radius: 5px;
+	/* Rounded edges for the scrollbar thumb */
+}
+
+.sidebar::-webkit-scrollbar-track {
+	background-color: #c92900;
+	/* Background of the scrollbar track */
+}
+
+/* Firefox */
+.sidebar {
+	scrollbar-width: thin;
+	/* Use 'auto' or 'thin' */
+	scrollbar-color: #ff7967 #c92900;
+	/* Thumb color and track color */
+}
+
+.sidebar.collapsed {
+	margin-left: -350px;
+}
+
+.menu-item {
+	padding: 15px 20px;
+	display: flex;
+	align-items: center;
+	color: white;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.Smenu-item {
+	padding: 15px 20px;
+	display: flex;
+	align-items: center;
+	color: white;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+	background-color: #c92900;
+}
+
+.Smenu-item:hover {
+	background-color: #c92900;
+}
+
+.menu-item span {
+	width: 100%;
+	letter-spacing: 1px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.Smenu-item span {
+	width: 100%;
+	letter-spacing: 1px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.menu-item i {
+	margin-right: 1rem;
+	font-size: 15px;
+}
+
+.Smenu-item i {
+	margin-right: 1rem;
+	font-size: 15px;
+}
+
+.menu-icon {
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+.menu-title {
+	transition: opacity 0.3s ease;
+}
+
+.toggle-btn {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+footer {
+	margin-top: 10rem;
+	color: white;
+	font-size: 10px;
+	text-align: center;
+	position: relative;
+	bottom: 10px;
+	width: 100%;
+}
+
+.menu-item.active {
+	background-color: #c92900;
+	border-bottom: 2px solid #fff;
+}
+
+.Smenu-item.active {
+	background-color: #c92900;
+	border-bottom: 2px solid #fff;
+}
+
+.setting {
+	width: 100%;
+}
+
+/*topbar*/
+.headnav {
+	background-color: #FF4B33;
+	max-width: 100vw;
+	width: calc(100vw - 250px);
+	transition: width 0.3s ease;
+	position: relative;
+	/* Smooth transition */
+	z-index: 100;
+	/* Ensure it stays on top */
+}
+
+.headnav.collapsed {
+	width: 100vw;
+	/* Adjust width when collapsed */
+}
+
+.btn-primary {
+	white-space: nowrap;
+	/* Prevent text wrapping */
+	overflow: hidden;
+	/* Hide overflowing content */
+	text-overflow: ellipsis;
+	/* Add ellipsis for overflow text */
+}

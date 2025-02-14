@@ -18,108 +18,12 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
 </head>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-    }
 
-    #notesContainer {
-        scrollbar-width: NONE;
-    }
-
-    body {
-        overflow: hidden;
-    }
-
-    main {
-        height: 100vh;
-        overflow-y: scroll;
-        width: 100vw;
-        overflow-x: hidden;
-    }
-
-    .cal {
-        position: relative;
-        isolation: isolate;
-    }
-
-    .cal::before {
-        content: "";
-        position: absolute;
-        top: -3rem;
-        left: 0;
-        width: 150px;
-        height: 150px;
-        background-color: #929EB2;
-        z-index: -5;
-        border-radius: 50%;
-        opacity: 0.5;
-    }
-
-    .cal::after {
-        content: "";
-        position: absolute;
-        top: 3rem;
-        left: -3rem;
-        width: 150px;
-        height: 150px;
-        background-color: #203659;
-        z-index: -5;
-        border-radius: 50%;
-        opacity: 0.5;
-    }
-
-    .record {
-        position: relative;
-        isolation: isolate;
-    }
-
-    .record::before {
-        content: "";
-        position: absolute;
-        bottom: -3rem;
-        right: 0;
-        width: 150px;
-        height: 150px;
-        background-color: #929EB2;
-        z-index: -5;
-        border-radius: 50%;
-        opacity: 0.5;
-    }
-
-    .record::after {
-        content: "";
-        position: absolute;
-        bottom: 3rem;
-        right: -3rem;
-        width: 150px;
-        height: 150px;
-        background-color: #203659;
-        z-index: -5;
-        border-radius: 50%;
-        opacity: 0.5;
-    }
-
-    .today {
-        background-color: #fff;
-        color: #203659;
-        border-radius: 15px;
-        border: 1px solid #203659;
-        padding: 0;
-        height: 30px;
-        text-align: center;
-        line-height: 1;
-    }
-
-    .note {
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-    }
 </style>
 
 <body>
@@ -131,14 +35,26 @@
                 <?php include 'application/views/admin/include/header.php'; ?>
             </header>
             <div class="row content">
-                <div class="col-lg-12 container-fluid z-3 d-flex align-items-center mb-3" style="background-color: #203659;"><p class="text-light mx-3 mt-3">Barangay 185 Malaria District 3, Caloocan City</p></div>
+                <div class="col-lg-12 container z-3 d-flex align-items-center mb-3">
+                    <div class="d-flex align-items-center justify-content-center py-3 my-3 w-100 position-relative">
+                        <div class="d-flex w-100 w-md-75 align-items-center justify-content-between px-5">
+                            <img src="application/public/northcaloocan_logo.png" alt="logo" height="100">
+                            <div class="text-center mx-5">
+                                <h1 class="fw-bold text-light" id="d-title" style="font-size: 50px">BARANGAY 185</h1>
+                                <p class="fw-bold   " style="margin-top: 10rem">Hon. RODOLFO “KAP ATO” OLIVA</p>
+                            </div>
+                            <img src="application/public/logo.png" alt="logo" height="100">
+                        </div>
+                        <div class="background w-full" id="d-background"></div>
+                    </div>
+                </div>
                 <div class="col-lg-12 col-xl-5 p-0 m-0 cal d-flex justify-content-center">
                     <div class="p-0 text-center" style="max-width: 390px">
-                        <h5 class="mt-3 mx-2 fw-bold text-start">Time</h5>
+                        <!-- <h5 class="mt-3 mx-2 fw-bold text-start">Time</h5>
                         <div class="text-center d-flex align-items-center justify-content-center time">
                             <p id="current-time" class="fs-1 fw-bold text-light p-2 px-5 rounded-4 shadow"
                                 style="background-color: #203659"></p>
-                        </div>
+                        </div> -->
 
                         <div class="mt-2 calendar">
                             <div class="p-0">
@@ -205,7 +121,8 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="hidden" id="emailInput" name="email" value="<?php echo htmlspecialchars($user->email); ?>" readonly/>
+                                    <input type="hidden" id="emailInput" name="email"
+                                        value="<?php echo htmlspecialchars($user->email); ?>" readonly />
 
                                     <textarea id="noteInput" class="form-control" rows="3"
                                         placeholder="Write your note here..."></textarea>
@@ -230,73 +147,73 @@
                         </div>
 
                         <div class="container-fluid">
-                        <div class="row fw-bold">
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Total Population</p>
+                            <div class="row fw-bold">
+                                <div class="col-6 m-0 p-1">
+                                    <div class="card z-3 shadow">
+                                        <div class="card-header">
+                                            <p class="text-start" style="font-size: 10px">Total Population</p>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
+                                            <div class="text-center w-100">
+                                                <p class="fw-bold mt-3 fs-3">
+                                                    <?php echo !empty($all_resident) ? $all_resident : 0; ?>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
-                                        <div class="text-center w-100">
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($all_resident) ? $all_resident : 0; ?>
-                                            </p>
+                                </div>
+
+                                <div class="col-6 m-0 p-1">
+                                    <div class="card z-3 shadow">
+                                        <div class="card-header">
+                                            <p class="text-start" style="font-size: 10px">Registered Voters</p>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-list-check fs-1 text-dark me-2"></i>
+                                            <div class="text-center w-100">
+                                                <p class="fw-bold mt-3 fs-3">
+                                                    <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 m-0 p-1">
+                                    <div class="card z-3 shadow">
+                                        <div class="card-header">
+                                            <p class="text-start" style="font-size: 10px">Male</p>
+                                        </div>
+                                        <div class="card-body d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
+                                            <div class="text-center w-100">
+                                                <p class="fw-bold mt-3 fs-3">
+                                                    <?php echo !empty($male_count) ? $male_count : 0; ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 m-0 p-1">
+                                    <div class="card z-3 shadow">
+                                        <div class="card-header">
+                                            <p class="text-start" style="font-size: 10px">Female</p>
+                                        </div>
+
+                                        <div class="card-body d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
+                                            <div class="text-center w-100">
+                                                <p class="fw-bold mt-3 fs-3">
+                                                    <?php echo !empty($female_count) ? $female_count : 0; ?>
+                                                </p>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Registered Voters</p>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
-                                        <div class="text-center w-100">
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Male</p>
-                                    </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
-                                        <div class="text-center w-100">
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($male_count) ? $male_count : 0; ?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Female</p>
-                                    </div>
-
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
-                                        <div class="text-center w-100">
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($female_count) ? $female_count : 0; ?>
-                                            </p>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         </div>
 
                         <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
@@ -322,7 +239,7 @@
                                     </div>
                                     <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
                                         style="background-color: #203659">
-                                        <?php echo !empty($get_Scheduled) ? $get_Scheduled  : 0; ?>
+                                        <?php echo !empty($get_Scheduled) ? $get_Scheduled : 0; ?>
                                     </div>
                                 </div>
                             </div>
@@ -365,22 +282,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        function updateTime() {
-            const now = new Date();
-            const options = {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
-            };
-            document.getElementById('current-time').innerText = now.toLocaleTimeString([], options);
-        }
-
-        // Initial rendering
-        updateTime();
-        setInterval(updateTime, 1000); // Update every second
-
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // VARIABLES FOR MONTHS
             const monthNames = [
                 "January", "February", "March", "April", "May", "June",
@@ -438,7 +340,7 @@
             }
 
             // EVENT LISTENERS FOR BUTTONS
-            nextMonthBtn.addEventListener("click", function() {
+            nextMonthBtn.addEventListener("click", function () {
                 if (currentMonth === 11) {
                     currentMonth = 0;
                     currentYear++;
@@ -448,7 +350,7 @@
                 renderCalendar(currentMonth, currentYear);
             });
 
-            prevMonthBtn.addEventListener("click", function() {
+            prevMonthBtn.addEventListener("click", function () {
                 if (currentMonth === 0) {
                     currentMonth = 11;
                     currentYear--;
@@ -462,7 +364,7 @@
             renderCalendar(currentMonth, currentYear);
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const notesContainer = document.getElementById("notesContainer");
             const saveNoteButton = document.getElementById("saveNoteButton");
             const deleteNoteButton = document.getElementById("deleteNoteButton");
@@ -507,7 +409,7 @@
             }
 
             // Function to add a note
-            saveNoteButton.addEventListener("click", function() {
+            saveNoteButton.addEventListener("click", function () {
                 const noteText = noteInput.value.trim();
                 const emailText = emailInput.value.trim();
 
@@ -521,12 +423,12 @@
                     });
 
                     fetch(url, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: body
-                        })
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: body
+                    })
                         .then(response => response.json())
                         .then(data => {
                             if (data.status === 'success') {
@@ -546,20 +448,20 @@
             });
 
             // Function to delete a note
-            deleteNoteButton.addEventListener("click", function() {
+            deleteNoteButton.addEventListener("click", function () {
                 const noteId = noteIdInput.value;
 
                 if (noteId) {
                     if (confirm("Are you sure you want to delete this note?")) {
                         fetch('<?php echo site_url('notes/delete_note'); ?>', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                },
-                                body: new URLSearchParams({
-                                    id: noteId
-                                })
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({
+                                id: noteId
                             })
+                        })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {
