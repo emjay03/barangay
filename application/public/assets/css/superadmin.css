@@ -3,10 +3,12 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
+	scrollbar-width: thin;
+	scroll-behavior: smooth;
 }
 
 #notesContainer {
-	scrollbar-width: NONE;
+	scrollbar-width: thin;
 }
 
 body {
@@ -20,6 +22,19 @@ main {
 	overflow-x: hidden;
 }
 
+.card-header, .calendar-head{
+	background-color: #FF4B33;
+}
+
+p {
+	font-size: 12px;
+}
+
+label {
+	font-weight: bold;
+	font-size: 14px;
+}
+
 #d-background {
     position: absolute;
     top: 50%;
@@ -31,21 +46,19 @@ main {
     background-color: #FF4B33;
 }
 
+.myNote {
+	background-color: #ededed;
+}
+
+.myNote:hover {
+	background-color: #dbdbdb;
+}
+
 #d-title {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-.today {
-	background-color: #fff;
-	color: #203659;
-	border-radius: 15px;
-	border: 1px solid #203659;
-	padding: 0;
-	height: 30px;
-	text-align: center;
-	line-height: 1;
 }
 
 .note {

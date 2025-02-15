@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 </head>
 
 <style>
@@ -41,33 +43,225 @@
                             <img src="application/public/northcaloocan_logo.png" alt="logo" height="100">
                             <div class="text-center mx-5">
                                 <h1 class="fw-bold text-light" id="d-title" style="font-size: 50px">BARANGAY 185</h1>
-                                <p class="fw-bold   " style="margin-top: 10rem">Hon. RODOLFO “KAP ATO” OLIVA</p>
+                                <h5 class="fw-bold   " style="margin-top: 10rem">Hon. RODOLFO “KAP ATO” OLIVA</h5>
                             </div>
                             <img src="application/public/logo.png" alt="logo" height="100">
                         </div>
                         <div class="background w-full" id="d-background"></div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-xl-5 p-0 m-0 cal d-flex justify-content-center">
-                    <div class="p-0 text-center" style="max-width: 390px">
-                        <!-- <h5 class="mt-3 mx-2 fw-bold text-start">Time</h5>
-                        <div class="text-center d-flex align-items-center justify-content-center time">
-                            <p id="current-time" class="fs-1 fw-bold text-light p-2 px-5 rounded-4 shadow"
-                                style="background-color: #203659"></p>
-                        </div> -->
 
-                        <div class="mt-2 calendar">
+                <div class="col-lg-12 container z-3 d-flex justify-content-end align-items-end px-4">
+                    <button class="btn btn-primary btn-sm">
+                        <a href="#residentSummary" class="px-2 text-light"
+                            style="font-size: 12px; text-decoration: none;">RESIDENT RECORD SUMMARY</a>
+                    </button>
+                </div>
+
+                <div class="col-lg-6 px-4 py-3">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div
+                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    <span class="mx-5">Mission</span>
+                                </div>
+
+
+                                <!-- <div class="card-body p-0 p-2" id="notesContainer" style="overflow-y: scroll; height: 500px;"></div> -->
+                                <div class="card-body">
+                                    <div class="form-group mt-2">
+                                        <textarea class="form-control" name="mission" id="mission"
+                                            style="height: 300px; font-size: 12px; resize: none;"></textarea>
+                                    </div>
+
+                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div
+                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    <span class="mx-5">Vision</span>
+                                </div>
+
+
+                                <!-- <div class="card-body p-0 p-2" id="notesContainer" style="overflow-y: scroll; height: 500px;"></div> -->
+                                <div class="card-body">
+                                    <div class="form-group mt-2">
+                                        <textarea class="form-control" name="vision" id="vision"
+                                            style="height: 300px; font-size: 12px; resize: none;"></textarea>
+                                    </div>
+
+                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 px-4 py-3">
+                    <!-- Add Announcement Modal -->
+                    <div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog"
+                        aria-labelledby="addAnnouncementModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold" id="addAnnouncementModalLabel">Add New Announcement
+                                    </h5>
+                                    <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?php echo site_url('announcement/create'); ?>" method="POST">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" name="title" id="title" required>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for="details">Details</label>
+                                            <textarea class="form-control" name="details" id="details"
+                                                required></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-5">
+                                            <button type="submit" class="btn btn-primary btn-sm ">Create
+                                                Announcement</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit Announcement Modal (will be triggered dynamically) -->
+                    <div class="modal fade" id="editAnnouncementModal" tabindex="-1" role="dialog"
+                        aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold" id="editAnnouncementModalLabel">Edit Announcement
+                                    </h5>
+                                    <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" id="editAnnouncementForm" method="POST">
+                                        <div class="form-group">
+                                            <label for="edit_title">Title</label>
+                                            <input type="text" class="form-control" name="title" id="edit_title"
+                                                required>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for="edit_details">Details</label>
+                                            <textarea class="form-control" name="details" id="edit_details"
+                                                required></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-end mt-5">
+                                            <button type="submit" class="btn btn-primary btn-sm ">Update
+                                                Announcement</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 text-center">
+                        <div class="notes shadow">
+                            <div class="card h-100">
+                                <div
+                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    <span class="mx-5"><i class="bi bi-megaphone-fill me-2"></i>Announcement</span>
+                                    <!-- <button class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#addNoteModal">+</button> -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                        id="addAnnouncement">
+                                        <i class="bi bi-plus-circle fs-5"></i>
+                                    </button>
+                                </div>
+
+
+                                <!-- <div class="card-body p-0 p-2" id="notesContainer" style="overflow-y: scroll; height: 500px;"></div> -->
+                                <div class="card-body p-3">
+                                    <table id="announcement-table" class="table table-borderless table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Announcements</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($all_announcements as $announcement): ?>
+                                                <tr>
+                                                    <td class="text-start">
+                                                        <!-- Card Structure inside the table cell -->
+                                                        <div class="card p-3 mb-3">
+                                                            <h5 class="card-title fw-bold">
+                                                                <?php echo htmlspecialchars($announcement['title']); ?>
+                                                            </h5>
+                                                            <h6 class="card-body">
+                                                                <?php echo htmlspecialchars($announcement['details']); ?>
+                                                            </h6>
+                                                            <div
+                                                                class="card-footer d-flex justify-content-between text-secondary">
+                                                                <p class="card-text">
+                                                                    <?php echo htmlspecialchars($announcement['date']); ?>
+                                                                </p>
+
+                                                                <p class="card-text">
+                                                                    <?php echo htmlspecialchars($announcement['updated_at']); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center" width="10%">
+                                                        <!-- Edit Button -->
+                                                        <button class="btn btn-primary editAnnouncement me-1 btn-sm"
+                                                            data-id="<?php echo $announcement['id']; ?>"
+                                                            data-title="<?php echo htmlspecialchars($announcement['title']); ?>"
+                                                            data-details="<?php echo htmlspecialchars($announcement['details']); ?>"
+                                                            data-toggle="modal" data-target="#editAnnouncementModal">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                        <!-- Delete Button -->
+                                                        <button class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this?'); 
+                                                            window.location.href='<?php echo site_url('announcement/delete/' . $announcement['id']); ?>';">
+                                                            <i class="bi bi-trash3-fill"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 px-4 py-3">
+                    <div class="p-0">
+                        <div class=" calendar">
                             <div class="p-0">
-                                <h5 class="fw-bold text-start">Calendar</h5>
+                                <div
+                                    class="calendar-head text-light fw-bold d-flex py-3 justify-content-start rounded-top">
+                                    <span class="mx-5"><i class="bi bi-megaphone-fill me-2"></i>Calendar</span>
+                                </div>
                                 <div class="card calendar shadow">
                                     <div class="card-body">
                                         <div class="calendar-header d-flex justify-content-between align-items-center">
                                             <button id="prevMonth"
-                                                class="btn rounded-circle btn-primary shadow fs-6 px-2 py-0"
+                                                class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
                                                 style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&lt;</button>
-                                            <p id="monthYear" class="m-0 fw-bold"></p>
+                                            <h5 id="monthYear" class="m-0 fw-bold"></h5>
                                             <button id="nextMonth"
-                                                class="btn rounded-circle btn-primary shadow fs-6 px-2 py-0"
+                                                class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
                                                 style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&gt;</button>
                                         </div>
                                         <div class="calendar-body mt-4 p-0 py-2"
@@ -90,181 +284,223 @@
                     </div>
                 </div>
 
-                <div class="col-l-12 col-xl-2 p-0 m-0 d-flex justify-content-center align-items-start mt-5"
-                    style="max-height: 700px;">
-                    <div class="p-0 text-center" style="height: 500px;">
-                        <div class="notes shadow" style="height: 500px;">
+                <div class="col-lg-6 px-4 py-3">
+                    <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-bold" id="addNoteModalLabel">Add Note</h5>
+                                        <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" id="emailInput" name="email"
+                                            value="<?php echo htmlspecialchars($user->email); ?>" readonly />
+
+                                        <textarea id="noteInput" class="form-control" rows="3"
+                                            placeholder="Write your note here..."></textarea>
+                                        <input type="hidden" id="noteId" value="0" /> <!-- Hidden input for note ID -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger btn-sm" id="deleteNoteButton"
+                                            style="display: none;">Delete</button>
+                                        <button type="button" class="btn btn-primary btn-sm"
+                                            id="saveNoteButton">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-0 text-center">
+                        <div class="notes shadow">
                             <div class="card h-100">
                                 <div
-                                    class="card-header text-start fw-bold d-flex justify-content-between align-items-center">
-                                    <span class="mx-5">Notes</span>
+                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    <span class="mx-5"><i class="bi bi-card-list me-2"></i>My Notes</span>
                                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#addNoteModal">+</button>
+                                        data-bs-target="#addNoteModal"><i class="bi bi-plus-circle fs-5"></i></button>
                                 </div>
 
 
-                                <div class="card-body p-0" id="notesContainer" style="overflow-y: scroll;"></div>
-
+                                <div class="card-body p-0 p-2 text-start" id="notesContainer"
+                                    style="overflow-y: scroll; height: 350px;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="addNoteModalLabel">Add Note</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="hidden" id="emailInput" name="email"
-                                        value="<?php echo htmlspecialchars($user->email); ?>" readonly />
+                <div class="col-lg-6 px-4 py-3" id="residentSummary">
+                    <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
+                        <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
+                    </div>
 
-                                    <textarea id="noteInput" class="form-control" rows="3"
-                                        placeholder="Write your note here..."></textarea>
-                                    <input type="hidden" id="noteId" value="0" /> <!-- Hidden input for note ID -->
+                    <div class="container-fluid">
+                        <div class="row fw-bold">
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <p class="text-start" style="font-size: 15px">Total Population</p>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($all_resident) ? $all_resident : 0; ?>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-danger" id="deleteNoteButton"
-                                        style="display: none;">Delete Note</button>
-                                    <button type="button" class="btn btn-primary" id="saveNoteButton">Save Note</button>
+                            </div>
+
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <p class="text-start" style="font-size: 15px">Registered Voters</p>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
+                            </div>
+
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <p class="text-start" style="font-size: 15px">Male</p>
+                                    </div>
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($male_count) ? $male_count : 0; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <p class="text-start" style="font-size: 15px">Female</p>
+                                    </div>
+
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <?php echo !empty($female_count) ? $female_count : 0; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <p class="text-start" style="font-size: 15px">PWD</p>
+                                    </div>
+
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-person-vcard me-2 fs-1"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 m-0 p-1">
+                                <div class="card z-3 shadow">
+                                    <div class="card-header">
+                                        <iz class="text-start" style="font-size: 15px">Senior Citizens</p>
+                                    </div>
+
+                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-person-vcard me-2 fs-1"></i>
+                                        <div class="text-center w-100">
+                                            <p class="fw-bold mt-3 fs-3">
+                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-12 col-xl-5 p-0 m-0 d-flex justify-content-center record">
+                <div class="col-lg-6 px-4 py-3">
+                    <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
+                        <p class="text-dark fs-6 xl-fs-6 mt-4">BLOTTER RECORD SUMMARY</p>
+                    </div>
+
+                    <div class="row p-0 m-0 fw-bold">
+                        <div class="col-lg-6 m-0 p-1">
+                            <div class="card z-3 shadow" style="max-height: 200px">
+                                <div class="card-header" style="background-color: #ff4b33">
+                                    <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
+                                </div>
+                                <div
+                                    class="card-body py-5 fs-3  d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    <?php echo !empty($get_Settled) ? $get_Settled : 0; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 m-0 p-1">
+                            <div class="card z-3 shadow" style="max-height: 200px">
+                                <div class="card-header" style="background-color: #ff4b33">
+                                    <p class="text-start text-light" style="font-size: 15px">Unscheduled Cases</p>
+                                </div>
+                                <div
+                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    <?php echo !empty($get_Scheduled) ? $get_Scheduled : 0; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 m-0 p-1">
+                            <div class="card z-3 shadow" style="max-height: 200px">
+                                <div class="card-header" style="background-color: #ff4b33">
+                                    <p class="text-start text-light" style="font-size: 15px">Scheduled Cases</p>
+                                </div>
+                                <div
+                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 m-0 p-1">
+                            <div class="card z-3 shadow" style="max-height: 200px">
+                                <div class="card-header" style="background-color: #ff4b33">
+                                    <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
+                                </div>
+                                <div
+                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    <?php echo !empty($get_Unscheduled) ? $get_Unscheduled : 0; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="col-lg-6 p-0 m-0 d-flex justify-content-center record" >
                     <div class="px-3 text-center">
-                        <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                            <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
-                        </div>
 
-                        <div class="container-fluid">
-                            <div class="row fw-bold">
-                                <div class="col-6 m-0 p-1">
-                                    <div class="card z-3 shadow">
-                                        <div class="card-header">
-                                            <p class="text-start" style="font-size: 10px">Total Population</p>
-                                        </div>
-                                        <div class="card-body d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
-                                            <div class="text-center w-100">
-                                                <p class="fw-bold mt-3 fs-3">
-                                                    <?php echo !empty($all_resident) ? $all_resident : 0; ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-6 m-0 p-1">
-                                    <div class="card z-3 shadow">
-                                        <div class="card-header">
-                                            <p class="text-start" style="font-size: 10px">Registered Voters</p>
-                                        </div>
-                                        <div class="card-body d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-list-check fs-1 text-dark me-2"></i>
-                                            <div class="text-center w-100">
-                                                <p class="fw-bold mt-3 fs-3">
-                                                    <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 m-0 p-1">
-                                    <div class="card z-3 shadow">
-                                        <div class="card-header">
-                                            <p class="text-start" style="font-size: 10px">Male</p>
-                                        </div>
-                                        <div class="card-body d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
-                                            <div class="text-center w-100">
-                                                <p class="fw-bold mt-3 fs-3">
-                                                    <?php echo !empty($male_count) ? $male_count : 0; ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 m-0 p-1">
-                                    <div class="card z-3 shadow">
-                                        <div class="card-header">
-                                            <p class="text-start" style="font-size: 10px">Female</p>
-                                        </div>
-
-                                        <div class="card-body d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
-                                            <div class="text-center w-100">
-                                                <p class="fw-bold mt-3 fs-3">
-                                                    <?php echo !empty($female_count) ? $female_count : 0; ?>
-                                                </p>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                            <p class="text-dark fs-6 xl-fs-6 mt-4">BLOTTER RECORD SUMMARY</p>
-                        </div>
-
-                        <div class="row p-0 m-0 fw-bold">
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow" style="max-height: 200px">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Settled Cases</p>
-                                    </div>
-                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
-                                        style="background-color: #203659">
-                                        <?php echo !empty($get_Settled) ? $get_Settled : 0; ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow" style="max-height: 200px">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Unscheduled Cases</p>
-                                    </div>
-                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
-                                        style="background-color: #203659">
-                                        <?php echo !empty($get_Scheduled) ? $get_Scheduled : 0; ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow" style="max-height: 200px">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Scheduled Cases</p>
-                                    </div>
-                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
-                                        style="background-color: #203659"> 0
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 m-0 p-1">
-                                <div class="card z-3 shadow" style="max-height: 200px">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 10px">Settled Cases</p>
-                                    </div>
-                                    <div class="card-body d-flex text-light align-items-center justify-content-center rounded-bottom-2"
-                                        style="background-color: #203659">
-                                        <?php echo !empty($get_Unscheduled) ? $get_Unscheduled : 0; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div
                             class="card bg-transparent border-0 mt-4 d-flex align-items-center justify-content-center z-3">
@@ -272,8 +508,8 @@
                                 onclick="window.location.href='/barangay/Dashboard'">Refresh Dashboard</button>
                         </div>
                     </div>
+                </div> -->
                 </div>
-            </div>
         </main>
     </div>
 
@@ -281,7 +517,64 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+
+
     <script>
+        $(document).ready(function () {
+            var table = $('#announcement-table').DataTable({
+                "paging": false,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "lengthChange": false,
+                "responsive": true,
+                "language": {
+                    "emptyTable": "No announcements available."
+                },
+                "scrollY": "300px",
+                "scrollCollapse": true,
+                "scroller": true,
+                "buttons": [
+                    {
+                        text: '+ Show All Data',  // Text for the button
+                        action: function (e, dt, node, config) {
+                            // This will show the full table data
+                            dt.rows().every(function () {
+                                this.visible(true);
+                            });
+                        }
+                    }
+                ]
+            });
+
+            $(document).on('click', '#addAnnouncement', function () {
+                $('#addAnnouncementModal').modal('show');
+            });
+
+
+            $(document).on('click', '.editAnnouncement', function () {
+                var id = $(this).data('id');
+                var title = $(this).data('title');
+                var details = $(this).data('details');
+
+                $('#editAnnouncementModal').modal('show');
+
+                $('#edit_title').val(title);
+                $('#edit_details').val(details);
+
+                // Update the form action to point to the correct edit URL
+                $('#editAnnouncementForm').attr('action', '<?php echo site_url('announcement/edit/'); ?>' + id);
+            });
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             // VARIABLES FOR MONTHS
             const monthNames = [
@@ -313,21 +606,15 @@
                 let date = 1;
 
                 for (let i = 0; i < 6; i++) {
-                    let row = document.createElement("div");
-                    row.className = "row";
-
-                    for (let j = 0; j < 7; j++) {
-                        let cell = document.createElement("div");
-                        cell.className = "col text-center py-2";
-
-                        if (i === 0 && j < firstDay) {
+                    let row = document.createElement("div"); row.className = "row"; for (let j = 0; j < 7; j++) {
+                        let cell = document.createElement("div"); cell.className = "col text-center py-2"; if (i === 0 && j < firstDay) {
                             cell.classList.add("empty");
                         } else if (date > daysInMonth) {
                             cell.classList.add("empty");
                         } else {
                             if (date === currentDate && month === today.getMonth() && year === today.getFullYear()) {
                                 cell.classList.add("today");
-                                cell.innerHTML = `<strong>${date}</strong>`;
+                                cell.innerHTML = `<strong class=" rounded-circle py-2 px-2 text-light">${date}</strong>`;
                             } else {
                                 cell.innerHTML = date;
                             }
@@ -385,7 +672,7 @@
                             notesContainer.innerHTML = ''; // Clear existing notes
                             data.data.forEach(note => {
                                 const noteElement = document.createElement("div");
-                                noteElement.className = "note p-2 border border-dark border-0 border-bottom";
+                                noteElement.className = "myNote p-3 my-1";
                                 noteElement.textContent = note.note;
 
                                 noteElement.style.fontSize = "12px";
@@ -393,10 +680,10 @@
                                 // Show modal when the note is clicked
                                 noteElement.onclick = () => {
                                     emailInput.value = note.email;
-                                    noteInput.value = note.note; // Set the current note text in the input
-                                    noteIdInput.value = note.id; // Set the ID of the note being edited
-                                    deleteNoteButton.style.display = "block"; // Show delete button
-                                    addNoteModal.show(); // Show the modal
+                                    noteInput.value = note.note;
+                                    noteIdInput.value = note.id;
+                                    deleteNoteButton.style.display = "block";
+                                    addNoteModal.show();
                                 };
 
                                 notesContainer.appendChild(noteElement);
@@ -415,7 +702,8 @@
 
                 if (noteText) {
                     const noteId = noteIdInput.value;
-                    const url = noteId === "0" ? '<?php echo site_url('notes/create_note'); ?>' : '<?php echo site_url('notes/edit_note'); ?>';
+                    const url = noteId === "0" ? '<?php echo site_url('notes/create_note'); ?>' :
+                        '<?php echo site_url('notes/edit_note'); ?>';
                     const body = new URLSearchParams({
                         note: noteText,
                         email: emailText,

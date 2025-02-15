@@ -53,3 +53,9 @@ $route['default_controller'] = 'welcome';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// $route['announcement'] = 'announcement/index';
+// $route['announcement/create'] = 'announcement/create';
+// $route['announcement/edit/(:num)'] = 'announcement/edit/$1';
+// $route['announcement/view/(:num)'] = 'announcement/view/$1';
+// $route['announcement/delete/(:num)'] = 'announcement/delete/$1';
