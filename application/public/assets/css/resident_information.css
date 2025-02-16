@@ -18,65 +18,6 @@ main {
     position: relative;
 }
 
-main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    z-index: 1;
-}
-
-.content {
-    position: relative;
-    margin-top: 5rem;
-    z-index: 2;
-}
-
-.resident-table {
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.resident-table th,
-.resident-table td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-    font-size: 13px;
-}
-
-.resident-table th {
-    background-color: #203659;
-    color: white;
-}
-
-.resident-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.resident-table tr:hover {
-    background-color: #e9ecef;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    font-size: 13px;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
 .dataTables_wrapper .dataTables_filter {
     display: flex;
     align-items: center;
@@ -159,18 +100,18 @@ main::before {
     padding: 5px 12px;
     margin-left: 5px;
     border-radius: 4px;
-    background-color: #f0f0f0;
+    background-color: white;
     color: white;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s !important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: #0056b3;
-    color: white;
+    background-color: #0056b3 !important;
+    color: white !important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background-color: #007bff;
+    background-color: red !important;
     color: white;
     border: none;
 }
@@ -204,4 +145,13 @@ main::before {
 
 .alert.hide {
     opacity: 0;
+}
+
+.btn.export-btn {
+    background-color: white !important;
+    color: black !important;
+    border-radius: 5px !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    border: solid 1px #000 !important;
 }

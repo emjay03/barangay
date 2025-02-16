@@ -36,6 +36,7 @@ class Resident extends CI_Controller
         } else {
             // Prepare the data for insertion
             $data = array(
+                'barangayid' => $this->input->post('barangayid'),
                 'lastname' => $this->input->post('lastname'),
                 'firstname' => $this->input->post('firstname'),
                 'middlename' => $this->input->post('middlename'),
@@ -72,6 +73,7 @@ class Resident extends CI_Controller
     public function update_resident($id)
     {
 
+        $this->form_validation->set_rules('barangayid', 'Barangayid', 'required');
         $this->form_validation->set_rules('lastname', 'Lastname', 'required');
         $this->form_validation->set_rules('firstname', 'Firstname', 'required');
         $this->form_validation->set_rules('middlename', 'Middlename', 'required');
@@ -105,6 +107,7 @@ class Resident extends CI_Controller
         } else {
 
             $data = [
+                'barangayid' => $this->input->post('barangayid'),
                 'lastname' => $this->input->post('lastname'),
                 'firstname' => $this->input->post('firstname'),
                 'middlename' => $this->input->post('middlename'),
@@ -184,6 +187,19 @@ class Resident extends CI_Controller
             ->set_output(json_encode($response));
     }
 
+    public function list_senior()
+    {
+        $resident = $this->Resident_model->get_residents_age_60_above();
+
+        $response = [
+            'status' => true,
+            'data' => $resident
+        ];
+
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
 
     public function list_female()
     {

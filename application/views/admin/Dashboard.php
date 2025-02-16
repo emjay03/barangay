@@ -63,44 +63,105 @@
                         <div class="col-lg-6">
                             <div class="card h-100">
                                 <div
-                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
                                     <span class="mx-5">Mission</span>
                                 </div>
 
-
-                                <!-- <div class="card-body p-0 p-2" id="notesContainer" style="overflow-y: scroll; height: 500px;"></div> -->
                                 <div class="card-body">
-                                    <div class="form-group mt-2">
-                                        <textarea class="form-control" name="mission" id="mission"
-                                            style="height: 300px; font-size: 12px; resize: none;"></textarea>
+                                    <div class="form-group mt-2 text-center" style="height: 300px;">
+                                        <h6><?php echo $mission['mission']; ?></h6>
+                                        <!-- <textarea class="form-control text-center" name="mission" id="mission"
+                                            style="height: 300px; font-size: 12px; resize: none;"></textarea> -->
                                     </div>
 
-                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2">
+                                    <!-- Button to open modal -->
+                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2"
+                                        style="position: absolute; bottom: 0.5rem; right: 0.5rem;"
+                                        data-bs-toggle="modal" data-bs-target="#missionModal">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="card h-100">
                                 <div
-                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                                    class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
                                     <span class="mx-5">Vision</span>
                                 </div>
 
-
-                                <!-- <div class="card-body p-0 p-2" id="notesContainer" style="overflow-y: scroll; height: 500px;"></div> -->
                                 <div class="card-body">
-                                    <div class="form-group mt-2">
-                                        <textarea class="form-control" name="vision" id="vision"
-                                            style="height: 300px; font-size: 12px; resize: none;"></textarea>
+                                    <div class="form-group mt-2 text-center" style="height: 300px;">
+                                        <h6><?php echo $vision['vision']; ?></h6>
+                                        <!-- <textarea class="form-control text-center" name="vision" id="vision"
+                                            style="height: 300px; font-size: 12px; resize: none;"></textarea> -->
                                     </div>
 
-                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2">
+                                    <!-- Button to open modal -->
+                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2"
+                                        style="position: absolute; bottom: 0.5rem; right: 0.5rem;"
+                                         data-bs-toggle="modal" data-bs-target="#visionModal">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Mission -->
+                <div class="modal fade" id="missionModal" tabindex="-1" aria-labelledby="missionModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="missionModalLabel">Edit Mission</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="<?php echo site_url('MissionVisionController/update_mission'); ?>"
+                                method="POST">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="mission" id="mission"
+                                            rows="4"><?php echo $mission['mission']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Vision -->
+                <div class="modal fade" id="visionModal" tabindex="-1" aria-labelledby="visionModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="visionModalLabel">Edit Vision</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="<?php echo site_url('MissionVisionController/update_vision'); ?>"
+                                method="POST">
+                                <div class="modal-body ">
+                                    <div class="form-group">
+                                        <textarea class="form-control " name="vision" id="vision"
+                                            rows="4"><?php echo $vision['vision']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -433,7 +494,7 @@
                                         <i class="bi bi-person-vcard me-2 fs-1"></i>
                                         <div class="text-center w-100">
                                             <p class="fw-bold mt-3 fs-3">
-                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> -->
+                                                <?php echo !empty($senior_count) ? $senior_count : 0; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -614,7 +675,7 @@
                         } else {
                             if (date === currentDate && month === today.getMonth() && year === today.getFullYear()) {
                                 cell.classList.add("today");
-                                cell.innerHTML = `<strong class=" rounded-circle py-2 px-2 text-light">${date}</strong>`;
+                                cell.innerHTML = `<strong class="border border-secondary py-2 px-2 text-dark">${date}</strong>`;
                             } else {
                                 cell.innerHTML = date;
                             }

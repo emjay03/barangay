@@ -43,6 +43,11 @@ class Resident_model extends CI_Model
         return $this->db->count_all_results('resident_infos');
     }
 
+    public function get_residents_age_60_above()
+    {
+        $this->db->where('age >=', 60); // This filters the rows where the age is 60 or greater
+        return $this->db->count_all_results('resident_infos');
+    }
 
     public function get_all_resident_count()
     {
