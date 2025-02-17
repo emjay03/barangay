@@ -40,17 +40,15 @@
             <?php include 'application/views/admin/include/header.php'; ?>
 
             <div class="content mt-5">
-            
-                <div class="container-fluid">
+                <div class="container-fluid ">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-primary ">
+                            <div class="card card-primary d-block" id="table">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between my-3">
                                         <h5 class="fw-bold text-dark"> <i class="bi bi-people-fill me-2"></i> Resident
                                             Information</h5>
-                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#addResidentModal"><i
+                                        <button class="btn btn-primary btn-sm" id="addresident"><i
                                                 class="bi bi-plus-circle me-2 my-0"></i>Add Resident</button>
                                     </div>
                                 </div>
@@ -61,11 +59,9 @@
                                             <tr style="font-size: 14px;">
                                                 <th class="d-none">id</th>
                                                 <th class="export">Resident id</th>
-                                                <th class="export">Last Name</th>
-                                                <th class="export">First Name</th>
-                                                <th class="export"> Middle Name</th>
-                                                <th class="d-none">Alias</th> <!-- Added column -->
-                                                <th class="d-none">Birthday</th> <!-- Added column -->
+                                                <th class="export">Full Name</th>
+                                                <th class="export">Occupation</th> <!-- Added column -->
+                                                <th class="export">Birthday</th> <!-- Added column -->
                                                 <th class="export">Age</th> <!-- Added column -->
                                                 <th class="export">Gender</th> <!-- Added column -->
                                                 <th class="d-none">Civil Status</th> <!-- Added column -->
@@ -84,13 +80,12 @@
                                                         <?php echo htmlspecialchars($resident['resident_id']); ?>
                                                     </td>
                                                     <td><?php echo htmlspecialchars($resident['barangayid']); ?></td>
-                                                    <td><?php echo htmlspecialchars($resident['lastname']); ?></td>
-                                                    <td><?php echo htmlspecialchars($resident['firstname']); ?></td>
-                                                    <td><?php echo htmlspecialchars($resident['middlename']); ?></td>
-                                                    <td class="d-none"><?php echo htmlspecialchars($resident['alias']); ?>
+                                                    <td><?php echo htmlspecialchars($resident['lastname'] . ', ' . $resident['firstname'] . ' ' . $resident['suffix'] . ' ' . $resident['middlename']); ?>
                                                     </td>
-                                                    <!-- Display alias -->
-                                                    <td class="d-none">
+                                                    <td class="">
+                                                        <?php echo htmlspecialchars($resident['occupation']); ?>
+                                                    </td>
+                                                    <td class="">
                                                         <?php echo htmlspecialchars($resident['birthday']); ?>
                                                     </td>
                                                     <!-- Display birthday -->
@@ -106,10 +101,11 @@
                                                         <?php echo htmlspecialchars($resident['citizenship']); ?>
                                                     </td>
                                                     <td><?php
-                                                    echo $resident['voterstatus'] == 1 ? 'Registered' : 'Not Registered';
+                                                    echo $resident['voterstatus'];
                                                     ?></td>
                                                     <!-- Display voterstatus -->
-                                                    <td><?php echo htmlspecialchars($resident['address_1']); ?></td>
+                                                    <td><?php echo htmlspecialchars($resident['building_house_number'] . ' ' . $resident['street'] . ' ' . $resident['purok'] . ' ' . $resident['subdivision'] . ' ' . $resident['barangay'] . ' ' . $resident['zone'] . ' ' . $resident['district'] . ' ' . $resident['municipality'] . ' ' . $resident['region']); ?>
+                                                    </td>
                                                     <td class="d-none">
                                                         <?php echo htmlspecialchars($resident['telephone_no']); ?>
                                                     </td>
@@ -194,6 +190,11 @@
                     }
                 }
                     ,]
+            });
+
+            $('#addresident').on('click', function () {
+                
+                $('#addResidentFormContainer').toggle();
             });
 
             $('.search-btn').on('click', function () {
