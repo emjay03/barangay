@@ -68,7 +68,7 @@ class Announcement extends CI_Controller
             $this->Announcement_model->insert_announcement($data);
 
             // Redirect to the announcements list
-            redirect('announcement');
+            redirect('dashboard');
         }
 
         // Load the view for creating a new announcement
@@ -97,7 +97,7 @@ class Announcement extends CI_Controller
             $this->Announcement_model->update_announcement($id, $updated_data);
 
             // Redirect to the announcements list
-            redirect('announcement');
+            redirect('dashboard');
         }
 
         // Load the edit view

@@ -1,10 +1,12 @@
 <nav class="container-fluid p-3 shadow headnav " id="headnav">
     <div class="d-flex justify-content-between align-items-center">
+
         <div class="">
             <button class="border-0 bg-transparent fs-4 text-light" id="btn-toggle">
                 <i class="bi bi-list text-bold fs-2"></i>
             </button>
         </div>
+
         <div class="d-flex justify-content-between align-items-center mt-3">
             <p  class="text-light fw-thin" style="font-size: 14px;"><i class="bi bi-calendar-event me-2"></i> <span id="current-time"></span></p>
             <div class="mx-3"></div>

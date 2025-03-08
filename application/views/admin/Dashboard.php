@@ -25,7 +25,6 @@
 </head>
 
 <style>
-
 </style>
 
 <body>
@@ -36,14 +35,14 @@
             <header>
                 <?php include 'application/views/admin/include/header.php'; ?>
             </header>
-            <div class="row content">
-                <div class="col-lg-12 container z-3 d-flex align-items-center mb-3">
+            <div class="row content px-3">
+                <div class="col-lg-12 container z-3 d-flex align-items-center mb-1">
                     <div class="d-flex align-items-center justify-content-center py-3 my-3 w-100 position-relative">
                         <div class="d-flex w-100 w-md-75 align-items-center justify-content-between px-5">
                             <img src="application/public/northcaloocan_logo.png" alt="logo" height="100">
                             <div class="text-center mx-5">
-                                <h1 class="fw-bold text-light" id="d-title" style="font-size: 50px">BARANGAY 185</h1>
-                                <h5 class="fw-bold   " style="margin-top: 10rem">Hon. RODOLFO “KAP ATO” OLIVA</h5>
+                                <h1 class="fw-bold text-light fs-1" id="d-title">BARANGAY 185</h1>
+                                <h5 class="fw-bold " style="margin-top: 7rem">Hon. RODOLFO “KAP ATO” OLIVA</h5>
                             </div>
                             <img src="application/public/logo.png" alt="logo" height="100">
                         </div>
@@ -52,59 +51,172 @@
                 </div>
 
                 <div class="col-lg-12 container z-3 d-flex justify-content-end align-items-end px-4">
-                    <button class="btn btn-primary btn-sm">
+                    <!-- <button class="btn btn-primary btn-sm">
                         <a href="#residentSummary" class="px-2 text-light"
                             style="font-size: 12px; text-decoration: none;">RESIDENT RECORD SUMMARY</a>
+                    </button> -->
+                    <button type="button" class="btn btn-primary btn-sm  mx-1" data-toggle="modal"
+                        id="calendarModalBtn">
+                        <i class="bi bi-calendar-fill fs-5"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm  mx-1" data-toggle="modal" id="notesModalBtn">
+                        <i class="bi bi-journal-bookmark-fill fs-5"></i> Notes
                     </button>
                 </div>
 
-                <div class="col-lg-6 px-4 py-3">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card h-100">
-                                <div
-                                    class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
-                                    <span class="mx-5">Mission</span>
-                                </div>
+                <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="missionModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="calendar">
+                                    <div class="p-0">
+                                        <div
+                                            class="calendar-head text-light fw-bold d-flex py-3 justify-content-between rounded-top px-2">
+                                            <span class="fw-bold"><i
+                                                    class="bi bi-calendar-fill me-2"></i>Calendar</span>
 
-                                <div class="card-body">
-                                    <div class="form-group mt-2 text-center" style="height: 300px;">
-                                        <h6><?php echo $mission['mission']; ?></h6>
-                                        <!-- <textarea class="form-control text-center" name="mission" id="mission"
-                                            style="height: 300px; font-size: 12px; resize: none;"></textarea> -->
+                                            <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="card calendar shadow">
+                                            <div class="card-body">
+                                                <div
+                                                    class="calendar-header d-flex justify-content-between align-items-center">
+                                                    <button id="prevMonth"
+                                                        class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
+                                                        style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&lt;</button>
+                                                    <h5 id="monthYear" class="m-0 fw-bold"></h5>
+                                                    <button id="nextMonth"
+                                                        class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
+                                                        style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&gt;</button>
+                                                </div>
+                                                <div class="calendar-body mt-4 p-0 py-2"
+                                                    style="font-size: 12px; height: 250px;">
+                                                    <div class="row fw-bold">
+                                                        <p class="col text-danger">Sun</p>
+                                                        <p class="col">Mon</p>
+                                                        <p class="col">Tue</p>
+                                                        <p class="col">Wed</p>
+                                                        <p class="col">Thu</p>
+                                                        <p class="col">Fri</p>
+                                                        <p class="col">Sat</p>
+                                                    </div>
+                                                    <div id="calendarDays" style="font-size: 14px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <!-- Button to open modal -->
-                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2"
-                                        style="position: absolute; bottom: 0.5rem; right: 0.5rem;"
-                                        data-bs-toggle="modal" data-bs-target="#missionModal">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="col-lg-6">
-                            <div class="card h-100">
-                                <div
-                                    class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
-                                    <span class="mx-5">Vision</span>
+                <div class="modal fade notesModal" id="notesModal" tabindex="-1" aria-labelledby="notesModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="alert alert-success notesAddedAlert" role="alert" style="display: none;">
+
                                 </div>
+                                <div class="notes shadow">
+                                    <div class="card">
+                                        <div
+                                            class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center px-3">
+                                            <span class=""><i class="bi bi-journal-bookmark-fill me-2"></i>My
+                                                Notes</span>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <button class="btn btn-primary btn-sm mx-2" type="button"
+                                                    id="addNotesModalBtn"><i
+                                                        class="bi bi-plus-circle fs-5"></i></button>
+                                                <button type="button" class="btn-close text-light"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                        </div>
 
-                                <div class="card-body">
-                                    <div class="form-group mt-2 text-center" style="height: 300px;">
-                                        <h6><?php echo $vision['vision']; ?></h6>
-                                        <!-- <textarea class="form-control text-center" name="vision" id="vision"
-                                            style="height: 300px; font-size: 12px; resize: none;"></textarea> -->
+
+                                        <div class="card-body p-0 p-2 text-start" id="notesContainer"
+                                            style="overflow-y: scroll; height: 350px;"></div>
                                     </div>
-
-                                    <!-- Button to open modal -->
-                                    <button class="btn btn-primary me-1 btn-sm float-end mt-2"
-                                        style="position: absolute; bottom: 0.5rem; right: 0.5rem;"
-                                         data-bs-toggle="modal" data-bs-target="#visionModal">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="alert alert-danger alertDanger" role="alert" style="display: none;">
+
+                                </div>
+                                <div class="modal-header">
+                                    <h5 class="modal-title fw-bold" id="addNoteModalLabel"></h5>
+                                    <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <input type="hidden" id="emailInput" name="email"
+                                            value="<?php echo htmlspecialchars($user->email); ?>" readonly />
+
+                                        <textarea id="noteInput" class="form-control" rows="10"
+                                            placeholder="Write your note here..."></textarea>
+                                        <input type="hidden" id="noteId" value="0" />
+                                        <!-- Hidden input for note ID -->
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-secondary btn-sm"
+                                                data-bs-dismiss="modal">Close</button> -->
+                                    <button type="button" class="btn btn-danger btn-sm" id="deleteNoteButton"
+                                        style="display: none;">Delete</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="saveNoteButton">Add
+                                        Note</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-6 col-xl-3 py-3">
+
+                    <div class="card">
+                        <div
+                            class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                            <span class="mx-2">Barangay Mission</span>
+
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#missionModal">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-group mt-2 text-center" style="height: 200px;">
+                                <h6><?php echo $mission['mission']; ?></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-3">
+                        <div
+                            class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
+                            <span class="mx-2">Barangay Vision</span>
+
+                            <button class="btn btn-primary me-1 btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#visionModal">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-group mt-2 text-center" style="height: 200px;">
+                                <h6><?php echo $vision['vision']; ?></h6>
                             </div>
                         </div>
                     </div>
@@ -113,27 +225,29 @@
                 <!-- Modal for Mission -->
                 <div class="modal fade" id="missionModal" tabindex="-1" aria-labelledby="missionModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="missionModalLabel">Edit Mission</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="<?php echo site_url('MissionVisionController/update_mission'); ?>"
-                                method="POST">
+                            <div class="modal-body">
+                                <div class="modal-header card-header text-light rounded-3">
+                                    <h5 class="modal-title" id="missionModalLabel">Barangay Mission</h5>
+                                    <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="mission" id="mission"
-                                            rows="4"><?php echo $mission['mission']; ?></textarea>
-                                    </div>
+                                    <form action="<?php echo site_url('MissionVisionController/update_mission'); ?>"
+                                        method="POST">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="mission" id="mission"
+                                                    rows="10"><?php echo $mission['mission']; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,39 +255,43 @@
                 <!-- Modal for Vision -->
                 <div class="modal fade" id="visionModal" tabindex="-1" aria-labelledby="visionModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="visionModalLabel">Edit Vision</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                            <div class="modal-body">
+                                <div class="modal-header card-header text-light rounded-3">
+                                    <h5 class="modal-title" id="visionModalLabel">Barangay Vision</h5>
+                                    <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="<?php echo site_url('MissionVisionController/update_vision'); ?>"
+                                        method="POST">
+                                        <div class="modal-body ">
+                                            <div class="form-group">
+                                                <textarea class="form-control " name="vision" id="vision"
+                                                    rows="10"><?php echo $vision['vision']; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <form action="<?php echo site_url('MissionVisionController/update_vision'); ?>"
-                                method="POST">
-                                <div class="modal-body ">
-                                    <div class="form-group">
-                                        <textarea class="form-control " name="vision" id="vision"
-                                            rows="4"><?php echo $vision['vision']; ?></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6 px-4 py-3">
+                <div class="col-md-12 col-lg-6 col-xl-4 py-3">
                     <!-- Add Announcement Modal -->
                     <div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog"
                         aria-labelledby="addAnnouncementModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title fw-bold" id="addAnnouncementModalLabel">Add New Announcement
+                                    <h5 class="modal-title fw-bold" id="addAnnouncementModalLabel">Add New
+                                        Announcement
                                     </h5>
                                     <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
@@ -205,7 +323,8 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title fw-bold" id="editAnnouncementModalLabel">Edit Announcement
+                                    <h5 class="modal-title fw-bold" id="editAnnouncementModalLabel">Edit
+                                        Announcement
                                     </h5>
                                     <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
@@ -306,96 +425,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 px-4 py-3">
-                    <div class="p-0">
-                        <div class=" calendar">
-                            <div class="p-0">
-                                <div
-                                    class="calendar-head text-light fw-bold d-flex py-3 justify-content-start rounded-top">
-                                    <span class="mx-5"><i class="bi bi-megaphone-fill me-2"></i>Calendar</span>
-                                </div>
-                                <div class="card calendar shadow">
-                                    <div class="card-body">
-                                        <div class="calendar-header d-flex justify-content-between align-items-center">
-                                            <button id="prevMonth"
-                                                class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
-                                                style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&lt;</button>
-                                            <h5 id="monthYear" class="m-0 fw-bold"></h5>
-                                            <button id="nextMonth"
-                                                class="btn rounded-circle btn-secondary shadow fs-6 px-2 py-0"
-                                                style="text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);">&gt;</button>
-                                        </div>
-                                        <div class="calendar-body mt-4 p-0 py-2"
-                                            style="font-size: 12px; height: 250px;">
-                                            <div class="row fw-bold">
-                                                <p class="col text-danger">Sun</p>
-                                                <p class="col">Mon</p>
-                                                <p class="col">Tue</p>
-                                                <p class="col">Wed</p>
-                                                <p class="col">Thu</p>
-                                                <p class="col">Fri</p>
-                                                <p class="col">Sat</p>
-                                            </div>
-                                            <div id="calendarDays" style="font-size: 14px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 px-4 py-3">
-                    <div class="modal fade" id="addNoteModal" tabindex="-1" aria-labelledby="addNoteModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form>
-                                    <div class="modal-header">
-                                        <h5 class="modal-title fw-bold" id="addNoteModalLabel">Add Note</h5>
-                                        <button type="button" class="btn-close text-sm" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="hidden" id="emailInput" name="email"
-                                            value="<?php echo htmlspecialchars($user->email); ?>" readonly />
-
-                                        <textarea id="noteInput" class="form-control" rows="3"
-                                            placeholder="Write your note here..."></textarea>
-                                        <input type="hidden" id="noteId" value="0" /> <!-- Hidden input for note ID -->
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger btn-sm" id="deleteNoteButton"
-                                            style="display: none;">Delete</button>
-                                        <button type="button" class="btn btn-primary btn-sm"
-                                            id="saveNoteButton">Save</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-0 text-center">
-                        <div class="notes shadow">
-                            <div class="card h-100">
-                                <div
-                                    class="card-header  text-light text-start fw-bold d-flex justify-content-between align-items-center">
-                                    <span class="mx-5"><i class="bi bi-card-list me-2"></i>My Notes</span>
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#addNoteModal"><i class="bi bi-plus-circle fs-5"></i></button>
-                                </div>
-
-
-                                <div class="card-body p-0 p-2 text-start" id="notesContainer"
-                                    style="overflow-y: scroll; height: 350px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 px-4 py-3" id="residentSummary">
+                <div class="col-md-12 col-lg-6 col-xl-3 py-3" id="residentSummary">
                     <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
                         <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
                     </div>
@@ -477,7 +507,7 @@
                                         <i class="bi bi-person-vcard me-2 fs-1"></i>
                                         <div class="text-center w-100">
                                             <p class="fw-bold mt-3 fs-3">
-                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> -->
+                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> --> 0
                                             </p>
                                         </div>
                                     </div>
@@ -504,52 +534,52 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 px-4 py-3">
+                <div class="col-md-12 col-lg-6 col-xl-2 py-3">
                     <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                        <p class="text-dark fs-6 xl-fs-6 mt-4">BLOTTER RECORD SUMMARY</p>
+                        <p class="text-dark fs-6 xl-fs-6">BLOTTER RECORD SUMMARY</p>
                     </div>
 
                     <div class="row p-0 m-0 fw-bold">
-                        <div class="col-lg-6 m-0 p-1">
+                        <div class="col-lg-12 m-0 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
                                 <div class="card-header" style="background-color: #ff4b33">
                                     <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
                                 </div>
                                 <div
-                                    class="card-body py-5 fs-3  d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    class="card-body fs-3  d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
                                     <?php echo !empty($get_Settled) ? $get_Settled : 0; ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 m-0 p-1">
+                        <div class="col-lg-12 m-0 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
                                 <div class="card-header" style="background-color: #ff4b33">
                                     <p class="text-start text-light" style="font-size: 15px">Unscheduled Cases</p>
                                 </div>
                                 <div
-                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    class="card-body fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
                                     <?php echo !empty($get_Scheduled) ? $get_Scheduled : 0; ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 m-0 p-1">
+                        <div class="col-lg-12 m-0 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
                                 <div class="card-header" style="background-color: #ff4b33">
                                     <p class="text-start text-light" style="font-size: 15px">Scheduled Cases</p>
                                 </div>
                                 <div
-                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    class="card-body  fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
                                     0
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 m-0 p-1">
+                        <div class="col-lg-12 m-0 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
                                 <div class="card-header" style="background-color: #ff4b33">
                                     <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
                                 </div>
                                 <div
-                                    class="card-body py-5 fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
+                                    class="card-body fs-3 d-flex text-dark align-items-center justify-content-center rounded-bottom-2">
                                     <?php echo !empty($get_Unscheduled) ? $get_Unscheduled : 0; ?>
                                 </div>
                             </div>
@@ -600,7 +630,7 @@
                 "language": {
                     "emptyTable": "No announcements available."
                 },
-                "scrollY": "300px",
+                "scrollY": "450px",
                 "scrollCollapse": true,
                 "scroller": true,
                 "buttons": [
@@ -620,6 +650,30 @@
                 $('#addAnnouncementModal').modal('show');
             });
 
+            $(document).on('click', '#calendarModalBtn', function () {
+                $('#calendarModal').modal('show');
+            });
+
+            $(document).on('click', '#notesModalBtn', function () {
+                $('#notesModal').modal('show');
+            });
+
+            $(document).on('click', '#addNotesModalBtn', function () {
+                const deleteNoteButton = document.getElementById("deleteNoteButton");
+                const noteInput = document.getElementById("noteInput");
+                const noteIdInput = document.getElementById("noteId");
+                const saveNoteButton = document.getElementById("saveNoteButton");
+                const addNoteModalLabel = document.getElementById("addNoteModalLabel");
+
+                addNoteModalLabel.innerHTML = 'Add Note';
+
+                $('#addNoteModal').modal('show');
+
+                noteInput.value = "";
+                noteIdInput.value = "0";
+                deleteNoteButton.style.display = "none";
+                saveNoteButton.innerHTML = "Add Note";
+            });
 
             $(document).on('click', '.editAnnouncement', function () {
                 var id = $(this).data('id');
@@ -675,7 +729,7 @@
                         } else {
                             if (date === currentDate && month === today.getMonth() && year === today.getFullYear()) {
                                 cell.classList.add("today");
-                                cell.innerHTML = `<strong class="border border-secondary py-2 px-2 text-dark">${date}</strong>`;
+                                cell.innerHTML = `<strong class="border border-primary py-1 px-2 text-light rounded-circle bg-primary ">${date}</strong>`;
                             } else {
                                 cell.innerHTML = date;
                             }
@@ -720,6 +774,9 @@
             const noteIdInput = document.getElementById("noteId");
             const emailInput = document.getElementById("emailInput");
             const addNoteModal = new bootstrap.Modal(document.getElementById('addNoteModal'));
+            const alertNote = document.querySelector(".notesAddedAlert");
+            const alertDanger = document.querySelector(".alertDanger");
+            const addNoteModalLabel = document.getElementById("addNoteModalLabel");
 
             const email = "<?php echo htmlspecialchars($user->email); ?>";
 
@@ -744,7 +801,10 @@
                                     noteInput.value = note.note;
                                     noteIdInput.value = note.id;
                                     deleteNoteButton.style.display = "block";
+                                    saveNoteButton.innerHTML = 'Edit Note';
                                     addNoteModal.show();
+
+                                    addNoteModalLabel.innerHTML = 'Edit Note';
                                 };
 
                                 notesContainer.appendChild(noteElement);
@@ -781,18 +841,40 @@
                         .then(response => response.json())
                         .then(data => {
                             if (data.status === 'success') {
-                                loadNotes(); // Reload notes after adding/editing
-                                noteInput.value = ''; // Clear the input field
-                                noteIdInput.value = '0'; // Reset the hidden ID input
-                                addNoteModal.hide(); // Close the modal
-                                deleteNoteButton.style.display = "none"; // Hide delete button
+
+                                alertNote.style.display = "block";
+
+                                if (noteIdInput.value === '0') {
+                                    alertNote.innerHTML = "Note added successfully!";
+                                } else {
+                                    alertNote.innerHTML = "Note edited successfully!";
+                                }
+
+                                loadNotes();
+                                noteInput.value = '';
+                                noteIdInput.value = '0';
+                                addNoteModal.hide();
+                                saveNoteButton.innerHTML = 'Save Note';
+
+                                setTimeout(() => {
+                                    alertNote.style.display = "none";
+
+                                    alertNote.innerHTML = "";
+                                }, 2000);
                             } else {
                                 console.error('Failed to save note:', data.message);
                             }
                         })
                         .catch(error => console.error('Error:', error));
                 } else {
-                    alert('Please enter a note.'); // Prompt for note text
+                    alertDanger.style.display = "block";
+
+                    alertDanger.innerHTML = "Please enter a note!";
+
+                    setTimeout(() => {
+                        alertDanger.style.display = "none";
+                        alertDanger.innerHTML = "";
+                    }, 2000);
                 }
             });
 
@@ -814,10 +896,20 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {
-                                    loadNotes(); // Reload notes after deleting
-                                    noteInput.value = ''; // Clear the input field
-                                    noteIdInput.value = '0'; // Reset the hidden ID input
-                                    addNoteModal.hide(); // Close the modal
+
+                                    alertNote.style.display = "block";
+                                    alertNote.innerHTML = "Note deleted successfully!";
+
+                                    loadNotes();
+                                    noteInput.value = '';
+                                    noteIdInput.value = '0';
+                                    addNoteModal.hide();
+
+                                    setTimeout(() => {
+                                        alertNote.style.display = "none";
+
+                                        alertNote.innerHTML = "";
+                                    }, 2000);
                                 } else {
                                     console.error('Failed to delete note:', data.message);
                                 }
