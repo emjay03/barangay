@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +32,9 @@
 
 
 </style>
+=======
+<?php include 'application/views/admin/include/header.php'; ?>
+>>>>>>> Stashed changes
 =======
 <?php include 'application/views/admin/include/header.php'; ?>
 >>>>>>> Stashed changes
