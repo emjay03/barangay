@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -237,12 +235,9 @@
         opacity: 0;
     }
 </style>
-=======
 <?php include 'application/views/admin/include/header.php'; ?>
->>>>>>> Stashed changes
-=======
+
 <?php include 'application/views/admin/include/header.php'; ?>
->>>>>>> Stashed changes
 
 <body>
     <div class="d-flex">
@@ -264,7 +259,8 @@
                                     </div>
 
                                     <div class="container-fluid overflow-scroll">
-                                        <table id="resident-table" class="table table-striped table-hover p-2"  width="100%">
+                                        <table id="resident-table" class="table table-striped table-hover p-2"
+                                            width="100%">
                                             <thead>
                                                 <tr style="font-size: 12px;">
                                                     <th>Blotter ID</th>
@@ -321,22 +317,14 @@
 
     <script>
         $(document).ready(function () {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            $('.incident-table').DataTable({
-                "paging": true,
-=======
-=======
->>>>>>> Stashed changes
+
+
             $('#resident-table').DataTable({
                 "dom": "<'row'<'col-md-12 d-flex justify-content-end mb-3'B><'col-md-6'l><'col-md-6'f>>" +
                     "<'row'<'col-md-12'tr>>" +
                     "<'row'<'col-md-5'i><'col-md-7'p>>",
                 "responsive": true,
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
                 "searching": true,
                 "paging": true,
                 language: {
@@ -386,33 +374,15 @@
                     ,]
             });
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
             $(document).on('click', '#addresident', function () {
                 $('#addResidentFormContainer').modal('show');
             });
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.resident-table').DataTable().search(searchValue).draw();
             });
         });
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     </script>
 </body>
 
