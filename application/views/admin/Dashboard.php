@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>barangay 185</title>
-    <link rel="shortcut icon" href="application/public/logo.png" type="image/x-icon">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-</head>
-
-<style>
-</style>
+<?php include 'application/views/admin/include/header.php'; ?>
 
 <body>
 
@@ -33,7 +6,7 @@
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
             <header>
-                <?php include 'application/views/admin/include/header.php'; ?>
+                <?php include 'application/views/admin/main/topnav.php'; ?>
             </header>
             <div class="row content px-3">
                 <div class="col-lg-12 container z-3 d-flex align-items-center mb-1">
@@ -203,7 +176,7 @@
                         </div>
                     </div>
 
-                    <div class="card mt-3">
+                    <div class="card mt-2">
                         <div
                             class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
                             <span class="mx-2">Barangay Vision</span>
@@ -287,7 +260,7 @@
                     <!-- Add Announcement Modal -->
                     <div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog"
                         aria-labelledby="addAnnouncementModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title fw-bold" id="addAnnouncementModalLabel">Add New
@@ -320,7 +293,7 @@
                     <!-- Edit Announcement Modal (will be triggered dynamically) -->
                     <div class="modal fade" id="editAnnouncementModal" tabindex="-1" role="dialog"
                         aria-labelledby="editAnnouncementModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title fw-bold" id="editAnnouncementModalLabel">Edit
@@ -425,108 +398,96 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-6 col-xl-3 py-3" id="residentSummary">
-                    <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                        <p class="text-dark fs-6 xl-fs-6 mt-2">RESIDENT RECORD SUMMARY</p>
+                <div class="col-md-12 col-lg-6 col-xl-3 py-1" id="residentSummary">
+                    <div class="card z-3 bg-transparent border-0 text-center p-1 fw-bold rounded-0">
+                        <p class="text-dark fs-6 xl-fs-6 mt-1">RESIDENT RECORD SUMMARY</p>
                     </div>
 
                     <div class="container-fluid">
                         <div class="row fw-bold">
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 15px">Total Population</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <p class=" text-start text-light" style="font-size: 12px">Total Population</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people-fill fs-1 text-dark me-2"></i>
-                                        <div class="text-center w-100">
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($all_resident) ? $all_resident : 0; ?>
-                                            </p>
-                                        </div>
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-people-fill fs-3 text-dark me-2"></i>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <?php echo !empty($all_resident) ? $all_resident : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 15px">Registered Voters</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <p class="text-start text-light" style="font-size: 11px">Registered Voters</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-list-check fs-1 text-dark me-2"></i>
-                                        <div class="text-center w-100">
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-list-check fs-3 text-dark me-2"></i>
                                             <p class="fw-bold mt-3 fs-3">
                                                 <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
                                             </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 15px">Male</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <p class="text-start text-light" style="font-size: 12px">Male</p>
                                     </div>
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-male fs-1 text-dark me-2 fw-bold"></i>
-                                        <div class="text-center w-100">
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-gender-male fs-3 text-dark me-2 fw-bold"></i>
                                             <p class="fw-bold mt-3 fs-3">
                                                 <?php echo !empty($male_count) ? $male_count : 0; ?>
                                             </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 15px">Female</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <p class="text-start text-light" style="font-size: 12px">Female</p>
                                     </div>
 
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gender-female fs-1 text-DARK me-2"></i>
-                                        <div class="text-center w-100">
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-gender-female fs-3 text-daek me-2"></i>
                                             <p class="fw-bold mt-3 fs-3">
                                                 <?php echo !empty($female_count) ? $female_count : 0; ?>
                                             </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <p class="text-start" style="font-size: 15px">PWD</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <p class="text-start text-light" style="font-size: 12px">PWD</p>
                                     </div>
 
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-person-vcard me-2 fs-1"></i>
-                                        <div class="text-center w-100">
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-person-vcard me-2 fs-3"></i>
                                             <p class="fw-bold mt-3 fs-3">
                                                 <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> --> 0
                                             </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 m-0 p-1">
                                 <div class="card z-3 shadow">
-                                    <div class="card-header">
-                                        <iz class="text-start" style="font-size: 15px">Senior Citizens</p>
+                                    <div class="card-header d-flex justify-content-start align-items-center">
+                                        <iz class="text-start text-light" style="font-size: 11px">Senior Citizens</p>
                                     </div>
 
-                                    <div class="card-body d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-person-vcard me-2 fs-1"></i>
-                                        <div class="text-center w-100">
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <i class="bi bi-person-vcard me-2 fs-3"></i>
                                             <p class="fw-bold mt-3 fs-3">
                                                 <?php echo !empty($senior_count) ? $senior_count : 0; ?>
                                             </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -535,8 +496,8 @@
                 </div>
 
                 <div class="col-md-12 col-lg-6 col-xl-2 py-3">
-                    <div class="card z-3 bg-transparent border-0 text-center p-3 fw-bold rounded-0">
-                        <p class="text-dark fs-6 xl-fs-6">BLOTTER RECORD SUMMARY</p>
+                    <div class="card z-3 bg-transparent border-0 text-center p-1 fw-bold rounded-0">
+                        <p class="text-dark" style="font-size: 13px;">BLOTTER RECORD SUMMARY</p>
                     </div>
 
                     <div class="row p-0 m-0 fw-bold">
@@ -604,19 +565,7 @@
         </main>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-    <!-- DataTables JS -->
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-
+    <?php include 'application/views/admin/include/jslink.php'; ?>
 
     <script>
         $(document).ready(function () {

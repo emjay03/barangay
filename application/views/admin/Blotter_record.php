@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,55 +236,75 @@
         opacity: 0;
     }
 </style>
+=======
+<?php include 'application/views/admin/include/header.php'; ?>
+>>>>>>> Stashed changes
 
 <body>
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
-            <?php include 'application/views/admin/include/header.php'; ?>
+            <?php include 'application/views/admin/main/topnav.php'; ?>
 
-            <div class="row content p-5 mx-5 rounded-4 bg-light shadow-lg ">
-                <div class="d-flex justify-content-between mb-5">
-                    <h1 class="fw-bold text-dark"> <i class="bi bi-card-list me-2"></i>Blotter Record</h1>
-                    <button class="btn btn-primary max-w-50 px-5 m-2" data-bs-toggle="modal"
-                        data-bs-target="#addIncidentModal">Add Blotter</button>
-                </div>
+            <div class="content mt-5">
+                <div class="container-fluid ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="" id="table">
+                                <div class="">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h5 class="fw-bold text-dark"> <i class="bi bi-card-list me-2"></i>Blotter
+                                            Record</h5>
+                                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#addIncidentModal">Add Blotter</button>
+                                    </div>
 
-                <div class="container-fluid overflow-scroll">
-                    <table class="incident-table mb-5">
-                        <thead>
-                            <tr>
-                                <th>Blotter ID</th>
-                                <th>Complaint Type</th>
-                                <th>Description</th>
-                                <th>ReportedBy</th>
-                                <th>AssignedTo</th>
-                                <th>Status</th>
-                                <th>ActionTaken</th>
-                                <th>DateReported</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($all_blotters as $all_blotter): ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($all_blotter['BlotterID']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['ComplaintType']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['Description']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['ReportedBy']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['AssignedTo']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['Status']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['ActionTaken']); ?></td>
-                                    <td><?php echo htmlspecialchars($all_blotter['DateReported']); ?></td>
-                                    <td class="d-flex justify-content-center align-items-center">
-                                        <button class="btn btn-primary px-3 my-1" data-bs-toggle="modal"
-                                            data-bs-target="#editIncidentModal"
-                                            data-resident='<?php echo json_encode($all_blotter); ?>'>Update</button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                                    <div class="container-fluid overflow-scroll">
+                                        <table id="resident-table" class="table table-striped table-hover p-2"  width="100%">
+                                            <thead>
+                                                <tr style="font-size: 12px;">
+                                                    <th>Blotter ID</th>
+                                                    <th>Complaint Type</th>
+                                                    <th>Description</th>
+                                                    <th>ReportedBy</th>
+                                                    <th>AssignedTo</th>
+                                                    <th>Status</th>
+                                                    <th>ActionTaken</th>
+                                                    <th>DateReported</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($all_blotters as $all_blotter): ?>
+                                                    <tr>
+                                                        <td><?php echo htmlspecialchars($all_blotter['BlotterID']); ?></td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['ComplaintType']); ?>
+                                                        </td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['Description']); ?>
+                                                        </td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['ReportedBy']); ?></td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['AssignedTo']); ?></td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['Status']); ?></td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['ActionTaken']); ?>
+                                                        </td>
+                                                        <td><?php echo htmlspecialchars($all_blotter['DateReported']); ?>
+                                                        </td>
+                                                        <td class="">
+                                                            <button class="btn btn-primary btn-sm me-1"
+                                                                data-bs-toggle="modal" data-bs-target="#editIncidentModal"
+                                                                data-resident='<?php echo json_encode($resident); ?>'>
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -292,30 +313,87 @@
     <?php include 'application/views/admin/include/add_blotter.php'; ?>
     <?php include 'application/views/admin/include/edit_info_blotter.php'; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'application/views/admin/include/jslink.php'; ?>
+
     <script>
         $(document).ready(function () {
+<<<<<<< Updated upstream
             $('.incident-table').DataTable({
                 "paging": true,
+=======
+            $('#resident-table').DataTable({
+                "dom": "<'row'<'col-md-12 d-flex justify-content-end mb-3'B><'col-md-6'l><'col-md-6'f>>" +
+                    "<'row'<'col-md-12'tr>>" +
+                    "<'row'<'col-md-5'i><'col-md-7'p>>",
+                "responsive": true,
+>>>>>>> Stashed changes
                 "searching": true,
-                "ordering": true,
-                "info": true,
-                "lengthChange": true,
-                "language": {
-                    "search": "<label class='search-label'></label> _INPUT_ <button class='btn btn-primary search-btn'>Search</button>",
-                    "searchPlaceholder": "Type to search...",
-                    "lengthMenu": "Show _MENU_ entries", // Customize the entries text
+                "paging": true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search",
+                },
+                "buttons": [{
+                    extend: 'copyHtml5',
+                    className: 'btn btn-outline-danger btn-sm export-btn',
+                    text: '<i class="bi bi-clipboard-fill"></i>  Copy',
+                    exportOptions: {
+                        columns: '.export'
+                    }
+                },
+                {
+                    extend: 'csvHtml5',
+                    className: 'btn btn-outline-secondary btn-sm export-btn',
+                    text: '<i class="bi bi-filetype-csv"></i>  CSV',
+                    exportOptions: {
+                        columns: '.export'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    className: 'btn btn-outline-secondary btn-sm export-btn',
+                    text: '<i class="bi bi-file-earmark-spreadsheet"></i>  Excel',
+                    exportOptions: {
+                        columns: '.export'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    className: 'btn btn-outline-secondary btn-sm export-btn',
+                    text: '<i class="bi bi-file-earmark-pdf-fill"></i> PDF',
+                    exportOptions: {
+                        columns: '.export'
+                    }
+                },
+                {
+                    extend: 'print',
+                    className: 'btn btn-outline-secondary btn-sm export-btn',
+                    text: '<i class="bi bi-printer-fill"></i>  Print',
+                    exportOptions: {
+                        columns: '.export'
+                    }
                 }
+                    ,]
             });
 
+<<<<<<< Updated upstream
+=======
+            $(document).on('click', '#addresident', function () {
+                $('#addResidentFormContainer').modal('show');
+            });
+
+>>>>>>> Stashed changes
             $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
-                $('.incident-table').DataTable().search(searchValue).draw();
+                $('.resident-table').DataTable().search(searchValue).draw();
             });
         });
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
     </script>
 </body>
 

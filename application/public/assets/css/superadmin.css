@@ -81,30 +81,22 @@ label {
 	overflow-y: scroll;
 }
 
-/* WebKit browsers */
 .sidebar::-webkit-scrollbar {
 	width: 10px;
-	/* Width of the scrollbar */
 }
 
 .sidebar::-webkit-scrollbar-thumb {
 	background-color: #ff7967;
-	/* Color of the scrollbar thumb */
 	border-radius: 5px;
-	/* Rounded edges for the scrollbar thumb */
 }
 
 .sidebar::-webkit-scrollbar-track {
 	background-color: #c92900;
-	/* Background of the scrollbar track */
 }
 
-/* Firefox */
 .sidebar {
 	scrollbar-width: thin;
-	/* Use 'auto' or 'thin' */
 	scrollbar-color: #ff7967 #c92900;
-	/* Thumb color and track color */
 }
 
 .sidebar.collapsed {
@@ -131,10 +123,14 @@ label {
 
 .menu-item:hover {
 	background-color: #c92900;
+	text-decoration: none;
+	color: white;
 }
 
 .Smenu-item:hover {
 	background-color: #c92900;
+	text-decoration: none;
+	color: white;
 }
 
 .menu-item span {

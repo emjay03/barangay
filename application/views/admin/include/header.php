@@ -1,83 +1,33 @@
-<nav class="container-fluid p-3 shadow headnav " id="headnav">
-    <div class="d-flex justify-content-between align-items-center">
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="">
-            <button class="border-0 bg-transparent fs-4 text-light" id="btn-toggle">
-                <i class="bi bi-list text-bold fs-2"></i>
-            </button>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <p  class="text-light fw-thin" style="font-size: 14px;"><i class="bi bi-calendar-event me-2"></i> <span id="current-time"></span></p>
-            <div class="mx-3"></div>
-            <p class="text-light fw-thin ml-5" style="font-size: 14px;"><i class="bi bi-clock me-2"></i> <span id="current-date"></span></p>
-        </div>
-        <div class="d-flex justify-content-end align-items-center">
-            <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
-                <div>
-                    <i class="bi bi-person-circle fs-1 me-2"></i>
-                </div>
-                <div class="" style="line-height: 1">
-                    <p class="d-none d-sm-inline me-5">
-                        <?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
+    <title>barangay 185</title>
+    <link rel="shortcut icon" href="application/public/logo.png" type="image/x-icon">
 
-                    </p> <br />
-                    <span class="fs-6 fw-bold"><small> <?php
-                    $roleId = htmlspecialchars($user->role_id);
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-                    switch ($roleId) {
-                        case 1:
-                            echo "Superadmin";
-                            break;
-                        case 2:
-                            echo "Admin";
-                            break;
-                        case 3:
-                            echo "Staff";
-                            break;
-                        default:
-                            echo "Unknown role";
-                    }
-                    ?> </small>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-<script>
-    const sidebar = document.getElementById('sidebar');
-    const headnav = document.getElementById('headnav');
-    const toggleBtn = document.getElementById('btn-toggle');
+    <!-- Buttons plugin CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.1/css/buttons.dataTables.min.css">
+    <!-- Bootstrap CSS for button styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        headnav.classList.toggle('collapsed');
-    });
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 
-    function updateTimeAndDate() {
-        const timeElement = document.getElementById('current-time');
-        const dateElement = document.getElementById('current-date');
-
-        const currentTime = new Date();
-        let hours = currentTime.getHours();
-        const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-        const seconds = currentTime.getSeconds().toString().padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-
-        hours = hours % 12; // Convert 24-hour format to 12-hour format
-        hours = hours ? hours : 12; // Handle the case for 12 AM/PM
-        const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
-
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const dateString = currentTime.toLocaleDateString('en-US', options);
-
-        timeElement.textContent = timeString;
-        dateElement.textContent = dateString;
-    }
-
-    updateTimeAndDate();
-    setInterval(updateTimeAndDate, 1000);
-</script>
+    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
+    <link rel="stylesheet" href="application/public/assets/css/resident_information.css" type="text/css">
+</head>

@@ -17,7 +17,7 @@
     <span class="menu-title">Dashboard</span>
   </a>
   <a href="/barangay/Resident" class="menu-item my-2">
-    <i class="bi bi-person"></i>
+    <i class="bi bi-person-fill"></i>
     <span class="menu-title">Resident Information</span>
   </a>
   <a href="/barangay/Blotters" class="menu-item my-2">
@@ -73,7 +73,7 @@
     </span>
   </a>
 
-  <footer class="px-2">@ Copyright &copy; 2024 BARANGAY 185 MALARIA DISTRICT 3, CALOOCAN CITY. All Right Reserved
+  <footer class="px-2">@ Copyright &copy; <?php echo date('Y'); ?> BARANGAY 185 MALARIA DISTRICT 3, CALOOCAN CITY. All Right Reserved
   </footer>
 </nav>
 
