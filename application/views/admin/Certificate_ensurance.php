@@ -19,6 +19,12 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Fruktur&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 </head>
 
 <style>
@@ -81,7 +87,7 @@
             <header>
                 <?php include 'application/views/admin/include/header.php'; ?>
             </header>
-            <div class="row content p-5 m-5 rounded-4 bg-light shadow-lg">
+            <div class="row content p-5 m-5 rounded-4 bg-light shadow-lg" id="certificateInsurance">
                 <div class="d-flex justify-content-between mb-5">
                     <h1 class="fw-bold text-dark"><i class="bi bi-file-text me-2"></i>Certificate Issuance</h1>
                 </div>
@@ -95,8 +101,9 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#indigencyModal">
+                                    <button class="btn btn-primary"
+                                        data-bs-target="#indigencyModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                        document.getElementById('indigencyModal').classList.remove('d-none')">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
                                 </div>
@@ -110,14 +117,15 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#clearanceModal">
+                                    <button class="btn btn-primary"
+                                        data-bs-target="#clearanceModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                        document.getElementById('clearanceModal').classList.remove('d-none')">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col p-2">
+                        <div class="col p-2 d-none">
                             <div class="card p-2 shadow">
                                 <div class="card-head text-center fw-bold fs-4">B. I.D</div>
                                 <div class="card-body text-center d-flex justify-content-center">
@@ -138,8 +146,9 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#certificateModal">
+                                    <button class="btn btn-primary"
+                                        data-bs-target="#certificateModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                        document.getElementById('certificateModal').classList.remove('d-none')">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
                                 </div>

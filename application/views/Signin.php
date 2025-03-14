@@ -123,6 +123,7 @@
                                     MALARIA DISTRICT 3,
                                     CALOOCAN CITY</h1>
                                 <p class="text-light fw-light">Barangay Information Management System @2024</p>
+                                <button class="btn btn-outline-light fw-bold mt-3" id="btn-toggle" onclick="location.href='<?= site_url('online-form') ?>'">Online Request Form</button>
                             </div>
                         </div>
                         <div class="col-md-5 col-12">

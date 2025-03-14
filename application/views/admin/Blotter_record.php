@@ -17,6 +17,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 </head>
 
 <style>
@@ -288,7 +294,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.incident-table').DataTable({
                 "paging": true,
                 "searching": true,
@@ -302,14 +308,14 @@
                 }
             });
 
-            $('.search-btn').on('click', function() {
+            $('.search-btn').on('click', function () {
                 var searchValue = $('.dataTables_filter input').val();
                 $('.incident-table').DataTable().search(searchValue).draw();
             });
         });
 
-        
-     
+
+
     </script>
 </body>
 

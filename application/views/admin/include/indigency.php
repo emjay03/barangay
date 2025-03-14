@@ -1,14 +1,18 @@
 <!-- Indigency Modal -->
-<div class="modal fade" id="indigencyModal" tabindex="-1" aria-labelledby="indigencyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen p-5">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="indigencyModalLabel">Indigency Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="d-none" id="indigencyModal" tabindex="-1" aria-labelledby="indigencyModalLabel" aria-hidden="true">
+    <div class="container-fluid p-5">
+        <div class="">
+            <div class="d-flex justify-content-start align-items-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="document.getElementById('indigencyModal').classList.add('d-none'); 
+                            document.getElementById('certificateInsurance').classList.remove('d-none');">
+                    Back
+                </button>
+                <h5 class="modal-title mx-5 fs-3 fw-bold" id="indigencyModalLabel"><i
+                        class="bi bi-file-text me-2"></i>Indigency Details</h5>
             </div>
-            <div class="modal-body d-flex">
-                <div class="col-4 m-5">
-                    <form class="bg-light rounded-3 shadow p-5" id="indigencyForm">
+            <div class="container-fluid row w-100">
+                <div class="col-4 m-5 d-flex justify-content-center align-items-start">
+                    <form class="bg-light w-100 rounded-3 shadow p-5" id="indigencyForm">
                         <input type="hidden" name="type" id="indigencyType" value="Indigency" />
                         <div class="mb-3">
                             <label for="indigencyFullname" class="form-label">Full Name : </label>
@@ -30,9 +34,11 @@
                             <input type="date" class="form-control" id="indigencyDateInput" name="date" required
                                 oninput="updateDisplayIndigency()" readonly>
                         </div>
+
+
                     </form>
                 </div>
-                <div class="indigencyPrint p-3 col-7" id="indigencyPrintContent">
+                <div class="indigencyPrint col-7" id="indigencyPrintContent">
                     <div class="border border-dark p-3">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
@@ -186,7 +192,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-6 ">
-    
+
                                                 <p class="text-center"
                                                     style="font-size: 17px; font-family: 'Times New Roman', Times, serif;">
                                                     <strong style="font-family: 'Times New Roman', Times, serif;">
@@ -205,14 +211,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="indigencySubmitBtn">Print</button>
+                <div class="modal-footer w-full d-flex justify-content-end">
+                    <!-- <button type="button" class="btn btn-secondary btn-sm mx-2 px-5" data-bs-dismiss="modal">Close</button> -->
+                    <button type="print" class="btn btn-success btn-sm px-5 py-2 mt-5 w-25 fs-5 fw-semibold"
+                        id="indigencySubmitBtn">Print</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -260,4 +268,4 @@
         // Set the input value to today's date
         dateInput.value = today;
     });
-</script>   
+</script>

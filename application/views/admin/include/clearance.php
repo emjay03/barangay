@@ -1,10 +1,14 @@
 <!-- Indigency Modal -->
-<div class="modal fade" id="clearanceModal" tabindex="-1" aria-labelledby="clearanceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen p-5">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="clearanceModalLabel">Clearance Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="d-none" id="clearanceModal" tabindex="-1" aria-labelledby="clearanceModalLabel" aria-hidden="true">
+    <div class="container-fluid p-5">
+        <div class="">
+            <div class="d-flex justify-content-start align-items-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="document.getElementById('clearanceModal').classList.add('d-none'); 
+                            document.getElementById('certificateInsurance').classList.remove('d-none');">
+                    Back
+                </button>
+                <h5 class="modal-title mx-5 fs-3 fw-bold" id="indigencyModalLabel"><i
+                        class="bi bi-file-text me-2"></i>Clearance Details</h5>
             </div>
             <div class="modal-body d-flex">
                 <div class="col-4 m-5">
@@ -12,8 +16,8 @@
                         <input type="hidden" name="type" id="clearance_type" value="Clearance" />
                         <div class="mb-3">
                             <label for="clearanceFullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFullName" name="fullname" required
-                                oninput="updateDisplayClearance()">
+                            <input type="text" class="form-control text-capitalize" id="clearanceFullName"
+                                name="fullname" required oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
@@ -24,26 +28,26 @@
 
                         <div class="mb-3">
                             <label for="clearanceBirthplace" class="form-label">Place of Birth : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceBirthplace" name="placebirth" required
-                                oninput="updateDisplayClearance()">
+                            <input type="text" class="form-control text-capitalize" id="clearanceBirthplace"
+                                name="placebirth" required oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceAddress" name="address" required
-                                oninput="updateDisplayClearance()">
+                            <input type="text" class="form-control text-capitalize" id="clearanceAddress" name="address"
+                                required oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearanceFindings" class="form-label">Findings : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFindings" name="findings" required
-                                oninput="updateDisplayClearance()">
+                            <input type="text" class="form-control text-capitalize" id="clearanceFindings"
+                                name="findings" required oninput="updateDisplayClearance()">
                         </div>
 
                         <div class="mb-3">
                             <label for="clearancePurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearancePurpose" name="purpose" required
-                                oninput="updateDisplayClearance()">
+                            <input type="text" class="form-control text-capitalize" id="clearancePurpose" name="purpose"
+                                required oninput="updateDisplayClearance()">
                         </div>
                     </form>
                 </div>
@@ -164,7 +168,8 @@
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
                                             class="fw-semibold text-capitalize text-center bg-transparent w-75"
-                                            id="clearanceDisplayAddress" readonly> and signature appears hereon has undergone
+                                            id="clearanceDisplayAddress" readonly> and signature appears hereon has
+                                        undergone
                                         <span class="fw-bold"
                                             style="font-family: 'Times New Roman', Times, serif; font-size: 16px;">RECORD
                                             CHECK</span> from the office and the result is indicated as follows.
@@ -174,16 +179,23 @@
                                             <div class="col-5">
                                                 <div class="d-flex">
                                                     <div class="leftThumb">
-                                                        <div class="me-3 border border-dark border-3" style="height: 90px; width: 90px;"></div>
-                                                        <small style="font-size: 10px; font-family: 'Times New Roman', Times, serif;">Left Thumb Mark</small>
+                                                        <div class="me-3 border border-dark border-3"
+                                                            style="height: 90px; width: 90px;"></div>
+                                                        <small
+                                                            style="font-size: 10px; font-family: 'Times New Roman', Times, serif;">Left
+                                                            Thumb Mark</small>
                                                     </div>
                                                     <div class="rightThumb">
-                                                        <div class=" me-2 border border-dark border-3" style="height: 90px; width: 90px;"></div>
-                                                        <small style="font-size: 10px; font-family: 'Times New Roman', Times, serif;">Right Thumb Mark</small>
+                                                        <div class=" me-2 border border-dark border-3"
+                                                            style="height: 90px; width: 90px;"></div>
+                                                        <small
+                                                            style="font-size: 10px; font-family: 'Times New Roman', Times, serif;">Right
+                                                            Thumb Mark</small>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-7 fw-bold" style="font-size: 18px; font-family: 'Times New Roman', Times, serif;">
+                                            <div class="col-7 fw-bold"
+                                                style="font-size: 18px; font-family: 'Times New Roman', Times, serif;">
                                                 FINDINGS:
                                                 <input type="text"
                                                     style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
@@ -205,7 +217,7 @@
 
                                     <div class="container-fluid" style="margin-top: 3rem;">
                                         <div class="row">
-                                        <div class="col-6 mt-5">
+                                            <div class="col-6 mt-5">
                                                 <img src="application/public/signature1.png" alt="" height="65"
                                                     class="pb-2 top-0 mx-2"
                                                     style="border-bottom: solid 2px #000; position-absolute">
@@ -236,9 +248,9 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="submitBarangay">Print</button>
+            <div class="modal-footer w-full d-flex justify-content-end">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                <button type="submit" class="btn btn-success btn-sm px-5 py-2 mt-5 w-25 fs-5 fw-semibold" id="submitBarangay">Print</button>
             </div>
         </div>
     </div>
@@ -247,8 +259,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#submitBarangay').on('click', function() {
+    $(document).ready(function () {
+        $('#submitBarangay').on('click', function () {
 
             const formData = {
                 fullname: $('#clearanceFullName').val(),
@@ -266,11 +278,11 @@
                 url: 'http://localhost/barangay/certificate/create_certificate',
                 type: 'POST',
                 data: formData,
-                success: function(response) {
+                success: function (response) {
 
                     printModalContentClearance();
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // Handle error
                     alert('Error submitting data: ' + error);
                 }

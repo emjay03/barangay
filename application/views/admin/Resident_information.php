@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
     <link rel="stylesheet" href="application/public/assets/css/resident_information.css" type="text/css">
 
-
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- Buttons plugin CSS -->
