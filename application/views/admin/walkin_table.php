@@ -19,7 +19,7 @@
                                                 class="bi bi-plus-circle me-2 my-0"></i>Add Resident</button> -->
                                     </div>
                                 </div>
-                                <div class="mt-5">
+                                <div class="my-5">
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="input-group mb-3 mt-5">

@@ -11,48 +11,9 @@
                         class="bi bi-file-text me-2"></i>Clearance Details</h5>
             </div>
             <div class="modal-body d-flex">
-                <div class="col-4 m-5">
-                    <form class="bg-light rounded-3 shadow p-5" id="clearanceForm">
-                        <input type="hidden" name="type" id="clearance_type" value="Clearance" />
-                        <div class="mb-3">
-                            <label for="clearanceFullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFullName"
-                                name="fullname" required oninput="updateDisplayClearance()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="clearanceBirthdate" class="form-label">Date of Birth : </label>
-                            <input type="date" class="form-control" id="clearanceBirthdate" name="birthdate" required
-                                oninput="updateDisplayClearance()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="clearanceBirthplace" class="form-label">Place of Birth : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceBirthplace"
-                                name="placebirth" required oninput="updateDisplayClearance()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="clearanceAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceAddress" name="address"
-                                required oninput="updateDisplayClearance()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="clearanceFindings" class="form-label">Findings : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearanceFindings"
-                                name="findings" required oninput="updateDisplayClearance()">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="clearancePurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="clearancePurpose" name="purpose"
-                                required oninput="updateDisplayClearance()">
-                        </div>
-                    </form>
-                </div>
-                <div class="indigencyPrint p-3 col-7" id="clearanceContent">
-                    <div class="border border-dark p-3">
+                <div class="col-7 overflow-y-scroll bg-light mt-5" id="clearanceContent"
+                    style="height: 650px; max-height: 800px;">
+                    <div class="border border-dark " style=" background-color: white; height: 1100px;">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
                                 style="border-bottom: solid 3px #000;">
@@ -60,11 +21,14 @@
                                 <div class="d-block text-center" style="line-height: 0.3;">
                                     <img src="application/public/rp.png" alt="logo3" class="" width="300" />
                                     <p class="mt-2 fw-bold"
-                                        style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">City of
+                                        style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+                                        City of
                                         Caloocan</p>
-                                    <p class="fw-bold" style="font-family: 'Times New Roman', Times, serif;">Barangay
+                                    <p class="fw-bold" style="font-family: 'Times New Roman', Times, serif;">
+                                        Barangay
                                         158 Zone 16 District 3</p>
-                                    <p class="fw-bold" style="font-family: 'Times New Roman', Times, serif;">Mobile No.
+                                    <p class="fw-bold" style="font-family: 'Times New Roman', Times, serif;">
+                                        Mobile No.
                                         : 0921-9662901</p>
                                 </div>
                                 <img src="application/public/northcaloocan_logo.png" alt="logo2" class="rounded-circle"
@@ -78,7 +42,8 @@
                                     <p class="fw-bold text-break">SANGUNIANG BARANGAY 185</p>
 
                                     <p class="fw-bolder mt-5 lh-sm"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">HON.
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        HON.
                                         RODOLFO
                                         D. OLIVA <br /> <small class="fw-normal"
                                             style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Punong
@@ -86,14 +51,16 @@
                                     </p>
 
                                     <p class="fw-bolder mt-5 lh-sm"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">ROSALINA
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        ROSALINA
                                         V. TIGLAO
                                         <br /> <small class="fw-normal"
                                             style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Treasurer</small>
                                     </p>
 
                                     <p class="fw-bolder mt-5 lh-sm"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">NANCY E.
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        NANCY E.
                                         MARCELINO <br /> <small class="fw-normal"
                                             style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">Secretary</small>
                                     </p>
@@ -103,14 +70,17 @@
                                     <small style="font-size: 13px; font-family: 'Times New Roman', Times, serif;">
                                         Kagawad:</small><br /><br /><br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MARIVIC
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        MARIVIC
                                         GALIT HSIEH</p><br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">JUAN J.
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        JUAN J.
                                         ESPAYOS JR
                                     </p><br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MELVIN F.
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        MELVIN F.
                                         ESPAYOS
                                     </p><br />
                                     <p class="fw-semibold"
@@ -118,14 +88,17 @@
                                         CONCEPCION T. CAMMAYO
                                     </p><br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">MANOLITO
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        MANOLITO
                                         N. BAOILAN</p><br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">VICTOR C.
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        VICTOR C.
                                         DIAZ</p>
                                     <br />
                                     <p class="fw-semibold"
-                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">ENGRACIA
+                                        style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
+                                        ENGRACIA
                                         T. LAMPA</p>
 
                                     <br /><br /><br />
@@ -147,7 +120,8 @@
                                     </div>
                                     <div class="px-3 text-justify z-3"
                                         style="font-size: 17px; font-family: 'Times New Roman', Times, serif; margin-top: 5rem; line-height: 1.5">
-                                        <span style="margin-left: 5rem; font-size: 17px;"></span>This is to certify
+                                        <span style="margin-left: 5rem; font-size: 17px;"></span>This is to
+                                        certify
                                         that,
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 18px; font-family: 'Times New Roman', Times, serif;"
@@ -168,7 +142,8 @@
                                         <input type="text"
                                             style="border: none; border-bottom: 1px solid #000; font-size: 17px; font-family: 'Times New Roman', Times, serif;"
                                             class="fw-semibold text-capitalize text-center bg-transparent w-75"
-                                            id="clearanceDisplayAddress" readonly> and signature appears hereon has
+                                            id="clearanceDisplayAddress" readonly> and signature appears hereon
+                                        has
                                         undergone
                                         <span class="fw-bold"
                                             style="font-family: 'Times New Roman', Times, serif; font-size: 16px;">RECORD
@@ -247,10 +222,89 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer w-full d-flex justify-content-end">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <button type="submit" class="btn btn-success btn-sm px-5 py-2 mt-5 w-25 fs-5 fw-semibold" id="submitBarangay">Print</button>
+
+                <div class="col-4 m-5">
+                    <div class="card shadow w-100" style="border-top: 2px solid oklch(0.705 0.213 47.604);">
+                        <div class="card-body">
+                            <form class="" id="clearanceForm">
+                                <input type="hidden" name="type" id="clearance_type" value="Clearance" />
+                                <div class="mb-3">
+                                    <label for="clearancePurpose" class="form-label">Purpose : </label>
+                                    <input type="hidden" id="clearancePurpose" name="purpose" />
+                                    <select class="form-control text-capitalize" id="clearnacePurpose1" required
+                                        onchange="document.getElementById('clearancePurpose').value=this.value">
+                                        <option value="">Select purpose</option>
+                                        <option value="Proof of residency">Proof of residency</option>
+                                        <option value="Proof of good moral character">Proof of good moral character
+                                        </option>
+                                        <option value="Job application">Job application</option>
+                                        <option value="Business permits">Business permits</option>
+                                        <option value="Loan applications">Loan applications</option>
+                                        <option value="Government-related Processes">Government-related Processes
+                                        </option>
+                                        <option value="Scholarship">Scholarship</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <input type="text" class="form-control text-capitalize mt-2"
+                                        id="clearnacePurposeOthers" disabled>
+                                    <small class="form-text text-muted">Specify : </small>
+                                    <script>
+                                        const selectPurpose1 = document.getElementById('clearnacePurpose1');
+                                        const inputPurpose1 = document.getElementById('clearnacePurposeOthers');
+                                        selectPurpose1.addEventListener('change', function () {
+                                            if (this.value === 'Others') {
+                                                inputPurpose1.disabled = false;
+                                            } else {
+                                                inputPurpose1.disabled = true;
+                                                inputPurpose1.value = '';
+                                            }
+                                        });
+                                        inputPurpose1.addEventListener('input', function () {
+                                            if (!inputPurpose1.disabled) {
+                                                document.getElementById('clearancePurpose').value = inputPurpose1.value;
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="clearanceFullName" class="form-label">Full Name : </label>
+                                    <input type="text" class="form-control text-capitalize" id="clearanceFullName"
+                                        name="fullname" required oninput="updateDisplayClearance()">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="clearanceBirthdate" class="form-label">Date of Birth : </label>
+                                    <input type="date" class="form-control" id="clearanceBirthdate" name="birthdate"
+                                        required oninput="updateDisplayClearance()">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="clearanceBirthplace" class="form-label">Place of Birth : </label>
+                                    <input type="text" class="form-control text-capitalize" id="clearanceBirthplace"
+                                        name="placebirth" required oninput="updateDisplayClearance()">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="clearanceAddress" class="form-label">Address : </label>
+                                    <input type="text" class="form-control text-capitalize" id="clearanceAddress"
+                                        name="address" required oninput="updateDisplayClearance()">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="clearanceFindings" class="form-label">Findings : </label>
+                                    <input type="text" class="form-control text-capitalize" id="clearanceFindings"
+                                        name="findings" required oninput="updateDisplayClearance()">
+                                </div>
+                            </form>
+                            <div class="modal-footer w-full d-flex justify-content-center">
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                <button type="submit"
+                                    class="btn btn-primary btn-sm px-5 py-2 mt-5 w-100 fs-5 fw-semibold"
+                                    id="submitBarangay">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

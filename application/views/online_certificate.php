@@ -134,6 +134,7 @@
                         </p>
 
                         <p class="text-light fw-bold text-uppercase">Online Request Form</p>
+                        <p class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</p>
                     </div>
 
                     <div class="d-block text-center d-none d-lg-block">
@@ -153,29 +154,117 @@
                         </p>
 
                         <h1 class="text-light fw-bold text-uppercase mt-5">Online Request Form</h1>
+                        <h4 class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</h4>
                     </div>
 
-                    <div class="container-fluid mt-5 pt-3 pt-lg-5 px-lg-5">
-                        <div class="row px-lg-5">
-                            <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '<?php echo base_url(); ?>OnlineClearance';" id="addresident">Barangay
-                                    Clearance</button>
-                            </div>
-                            <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '<?php echo base_url(); ?>OnlineCertificate';" id="addresident">barangay
-                                    Certificate</button>
-                            </div>
-                            <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '<?php echo base_url(); ?>OnlineIndigency';" id="addresident">barangay
-                                    Indigency</button>
-                            </div>
-                            <div class="col-md-12 col-md-6 col-lg-6">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '<?php echo base_url(); ?>OnlineId';" id="addresident">barangay
-                                    I . D</button>
+                    <h1>Online Certificate Form</h1>
+
+                    <!-- Start of the form -->
+                    <?php echo form_open('OnlineCertificate/create_certificate', array('id' => 'certificateForm')); ?>
+
+                    <div class="d-none">
+                        <label for="type">Type:</label>
+                        <input type="hidden" name="type" id="type" value="Certificate" />
+                        <?php echo form_error('type'); ?>
+                    </div>
+
+                    <div class="d-none">
+                        <label for="status">Status:</label>
+                        <input type="hidden" name="status" id="status" value="pending" />
+                        <?php echo form_error('status'); ?>
+                    </div>
+
+                    <div>
+                        <label for="fullname">Fullname:</label>
+                        <input type="text" name="fullname" id="fullname" value="<?php echo set_value('fullname'); ?>" />
+                        <?php echo form_error('fullname'); ?>
+                    </div>
+
+                    <div>
+                        <label for="address">Address:</label>
+                        <input type="text" name="address" id="address" value="<?php echo set_value('address'); ?>" />
+                        <?php echo form_error('address'); ?>
+                    </div>
+
+                    <div>
+                        <label for="purpose">Purpose:</label>
+                        <input type="text" name="purpose" id="purpose" value="<?php echo set_value('purpose'); ?>" />
+                        <?php echo form_error('purpose'); ?>
+                    </div>
+
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" id="date" value="<?php echo set_value('date'); ?>" />
+                        <?php echo form_error('date'); ?>
+                    </div>
+
+                    <div>
+                        <label for="birthdate">Birthdate:</label>
+                        <input type="date" name="birthdate" id="birthdate"
+                            value="<?php echo set_value('birthdate'); ?>" />
+                        <?php echo form_error('birthdate'); ?>
+                    </div>
+
+                    <div>
+                        <label for="placebirth">Place of Birth:</label>
+                        <input type="text" name="placebirth" id="placebirth"
+                            value="<?php echo set_value('placebirth'); ?>" />
+                        <?php echo form_error('placebirth'); ?>
+                    </div>
+
+                    <div class="d-none">
+                        <label for="findings">Findings:</label>
+                        <input type="hidden" name="findings" id="findings" value="" />
+                        <?php echo form_error('findings'); ?>
+                    </div>
+
+                    <div>
+                        <button type="submit">Submit Certificate</button>
+                    </div>
+
+                    <?php echo form_close(); ?>
+                    <!-- End of the form -->
+
+                    <!-- Success Modal -->
+                    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="successModalLabel">Request Submitted Successfully</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Your request has been submitted successfully.</p>
+                                    <p><strong>Fullname:</strong> <span id="modalFullname"></span></p>
+                                    <p><strong>Type:</strong> <span id="modalType"></span></p>
+                                    <p>Please screenshot this information before closing.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <script>
+                        $('#certificateForm').on('submit', function(e) {
+                            e.preventDefault();
+                            // Assuming AJAX submission here for demonstration
+                            $.ajax({
+                                url: '<?php echo base_url(); ?>OnlineCertificate/create_certificate',
+                                type: 'POST',
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                    // Assuming the response contains the status
+                                    if (response.status === 'success') {
+                                        $('#modalFullname').text($('#fullname').val());
+                                        $('#modalType').text($('#type').val());
+                                        $('#successModal').modal('show');
+                                    }
+                                }
+                            });
+                        });
+                    </script>
             </div>
         </div>
     </main>

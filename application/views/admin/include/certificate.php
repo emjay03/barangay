@@ -11,35 +11,9 @@
                         class="bi bi-file-text me-2"></i>Certificate Details</h5>
             </div>
             <div class="modal-body d-flex">
-                <div class="col-4 m-5">
-
-                    <form class="bg-light rounded-3 shadow p-5" id="certificateForm">
-                        <input type="hidden" name="type" id="barangay_type" value="Certificate" />
-                        <div class="mb-3">
-                            <label for="certificateFullName" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificateFullName"
-                                name="fullname" required oninput="updateDisplayCertificate()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="certificateAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificateAddress"
-                                name="address" required oninput="updateDisplayCertificate()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="certificatePurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="certificatePurpose"
-                                name="purpose" required oninput="updateDisplayCertificate()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="certificateDateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="certificateDateInput" name="date" required
-                                oninput="updateDisplayCertificate()">
-                        </div>
-
-                    </form>
-                </div>
-                <div class="certificateIndigencyPrint p-3 col-7" id="certificatePrintContent">
-                    <div class="border border-dark p-3">
+                <div class="certificateIndigencyPrint col-7 overflow-y-scroll bg-light mt-5"
+                    id="certificatePrintContent" style="height: 500px; max-height: 600px;">
+                    <div class="border border-dark " style=" background-color: white; height: 1000px;">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
                                 style="border-bottom: solid 3px #000;">
@@ -211,10 +185,78 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer w-full d-flex justify-content-end">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <button type="submit" class="btn btn-success btn-sm px-5 py-2 mt-5 w-25 fs-5 fw-semibold" id="submitCertificate">Print</button>
+
+                <div class="col-4 m-5">
+                    <div class="card shadow w-100" style="border-top: 2px solid oklch(0.705 0.213 47.604);">
+                        <div class="card-body">
+                            <form class="" id="certificateForm">
+                                <input type="hidden" name="type" id="barangay_type" value="Certificate" />
+                                <div class="mb-3">
+                                    <label for="certificatePurpose" class="form-label">Purpose : </label>
+                                    <input type="hidden" id="certificatePurpose" name="purpose" />
+                                    <select class="form-control text-capitalize" id="certificatePurpose1" required
+                                        onchange="document.getElementById('certificatePurpose').value=this.value">
+                                        <option value="">Select purpose</option>
+                                        <option value="Proof of residency">Proof of residency</option>
+                                        <option value="Proof of good moral character">Proof of good moral character
+                                        </option>
+                                        <option value="Job application">Job application</option>
+                                        <option value="Business permits">Business permits</option>
+                                        <option value="Loan applications">Loan applications</option>
+                                        <option value="Government-related Processes">Government-related Processes
+                                        </option>
+                                        <option value="Scholarship">Scholarship</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <input type="text" class="form-control text-capitalize mt-2"
+                                        id="certificatePurposeOthers" disabled>
+                                    <small class="form-text text-muted">Specify : </small>
+                                    <script>
+                                        const selectPurpose2 = document.getElementById('certificatePurpose1');
+                                        const inputPurpose2 = document.getElementById('certificatePurposeOthers');
+                                        selectPurpose2.addEventListener('change', function () {
+                                            if (this.value === 'Others') {
+                                                inputPurpose2.disabled = false;
+                                                document.getElementById('certificatePurpose').value = '';
+                                            } else {
+                                                inputPurpose2.disabled = true;
+                                                inputPurpose2.value = '';
+                                            }
+                                        });
+                                        inputPurpose2.addEventListener('input', function () {
+                                            if (!inputPurpose2.disabled) {
+                                                document.getElementById('certificatePurpose').value = inputPurpose2.value;
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="certificateFullName" class="form-label">Full Name : </label>
+                                    <input type="text" class="form-control text-capitalize" id="certificateFullName"
+                                        name="fullname" required oninput="updateDisplayCertificate()">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="certificateAddress" class="form-label">Address : </label>
+                                    <input type="text" class="form-control text-capitalize" id="certificateAddress"
+                                        name="address" required oninput="updateDisplayCertificate()">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="certificateDateInput" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="certificateDateInput" name="date"
+                                        required oninput="updateDisplayCertificate()">
+                                </div>
+
+                            </form>
+
+                            <div class="modal-footer w-full d-flex justify-content-center">
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                <button type="submit"
+                                    class="btn btn-primary btn-sm px-5 py-2 mt-5 w-100 fs-5 fw-semibold"
+                                    id="submitCertificate">Print</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

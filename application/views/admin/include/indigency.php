@@ -1,7 +1,7 @@
 <!-- Indigency Modal -->
 <div class="d-none" id="indigencyModal" tabindex="-1" aria-labelledby="indigencyModalLabel" aria-hidden="true">
-    <div class="container-fluid p-5">
-        <div class="">
+    <div class="container-fluid p-3">
+        <div class="container-fluid">
             <div class="d-flex justify-content-start align-items-center">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="document.getElementById('indigencyModal').classList.add('d-none'); 
                             document.getElementById('certificateInsurance').classList.remove('d-none');">
@@ -10,36 +10,10 @@
                 <h5 class="modal-title mx-5 fs-3 fw-bold" id="indigencyModalLabel"><i
                         class="bi bi-file-text me-2"></i>Indigency Details</h5>
             </div>
-            <div class="container-fluid row w-100">
-                <div class="col-4 m-5 d-flex justify-content-center align-items-start">
-                    <form class="bg-light w-100 rounded-3 shadow p-5" id="indigencyForm">
-                        <input type="hidden" name="type" id="indigencyType" value="Indigency" />
-                        <div class="mb-3">
-                            <label for="indigencyFullname" class="form-label">Full Name : </label>
-                            <input type="text" class="form-control text-capitalize" id="indigencyFullname"
-                                name="fullname" required oninput="updateDisplayIndigency()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="indigencyAddress" class="form-label">Address : </label>
-                            <input type="text" class="form-control text-capitalize" id="indigencyAddress" name="address"
-                                required oninput="updateDisplayIndigency()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="indigencyPurpose" class="form-label">Purpose : </label>
-                            <input type="text" class="form-control text-capitalize" id="indigencyPurpose" name="purpose"
-                                required oninput="updateDisplayIndigency()">
-                        </div>
-                        <div class="mb-3">
-                            <label for="indigencyDateInput" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="indigencyDateInput" name="date" required
-                                oninput="updateDisplayIndigency()" readonly>
-                        </div>
-
-
-                    </form>
-                </div>
-                <div class="indigencyPrint col-7" id="indigencyPrintContent">
-                    <div class="border border-dark p-3">
+            <div class="container-fluid row">
+                <div class="col-7 overflow-y-scroll bg-light mt-5" id="indigencyPrintContent"
+                    style="height: 500px; max-height: 600px;">
+                    <div class="border border-dark " style=" background-color: white; height: 1000px;">
                         <div class="header">
                             <div class="d-flex justify-content-between align-items-center py-2 px-5"
                                 style="border-bottom: solid 3px #000;">
@@ -211,10 +185,77 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer w-full d-flex justify-content-end">
-                    <!-- <button type="button" class="btn btn-secondary btn-sm mx-2 px-5" data-bs-dismiss="modal">Close</button> -->
-                    <button type="print" class="btn btn-success btn-sm px-5 py-2 mt-5 w-25 fs-5 fw-semibold"
-                        id="indigencySubmitBtn">Print</button>
+
+                <div class="container-fluid col-4 mt-5">
+                    <div class="card shadow w-100" style="border-top: 2px solid oklch(0.705 0.213 47.604);">
+                        <div class="card-body">
+                            <form id="indigencyForm">
+                                <input type="hidden" name="type" id="indigencyType" value="Indigency" />
+                                <div class="mb-3">
+                                    <label for="indigencyPurpose" class="form-label">Purpose : </label>
+                                    <input type="hidden" class="form-control text-capitalize" id="indigencyPurpose"
+                                        name="purpose" readonly onchange="updateDisplayIndigency()">
+                                    <select class="form-control text-capitalize" id="indigencyPurpose1" required>
+                                        <option value="">Select purpose</option>
+                                        <option value="Proof of residency">Proof of residency</option>
+                                        <option value="Proof of good moral character">Proof of good moral character
+                                        </option>
+                                        <option value="Job application">Job application</option>
+                                        <option value="Business permits">Business permits</option>
+                                        <option value="Loan applications">Loan applications</option>
+                                        <option value="Government-related Processes">Government-related Processes
+                                        </option>
+                                        <option value="Scholarship">Scholarship</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <input type="text" class="form-control text-capitalize mt-2"
+                                        id="indigencyPurposeOthers" disabled>
+                                    <small class="form-text text-muted">Specify : </small>
+                                    <script>
+                                        const selectPurpose = document.getElementById('indigencyPurpose1');
+                                        const inputPurpose = document.getElementById('indigencyPurposeOthers');
+                                        const purposeInput = document.getElementById('indigencyPurpose');
+                                        selectPurpose.addEventListener('change', function () {
+                                            if (this.value === 'Others') {
+                                                inputPurpose.disabled = false;
+                                            } else {
+                                                inputPurpose.disabled = true;
+                                                inputPurpose.value = '';
+                                                purposeInput.value = this.value;
+                                            }
+                                        });
+                                        inputPurpose.addEventListener('input', function () {
+                                            if (!inputPurpose.disabled) {
+                                                purposeInput.value = inputPurpose.value;
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="indigencyFullname" class="form-label">Full Name : </label>
+                                    <input type="text" class="form-control text-capitalize" id="indigencyFullname"
+                                        name="fullname" required oninput="updateDisplayIndigency()">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="indigencyAddress" class="form-label">Address : </label>
+                                    <input type="text" class="form-control text-capitalize" id="indigencyAddress"
+                                        name="address" required oninput="updateDisplayIndigency()">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="indigencyDateInput" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="indigencyDateInput" name="date" required
+                                        oninput="updateDisplayIndigency()" readonly>
+                                </div>
+
+                            </form>
+                            <div class="modal-footer w-full d-flex justify-content-center">
+                                <!-- <button type="button" class="btn btn-secondary btn-sm mx-2 px-5" data-bs-dismiss="modal">Close</button> -->
+                                <button type="print"
+                                    class="btn btn-primary btn-sm px-5 py-2 mt-5 w-100 fs-5 fw-semibold"
+                                    id="indigencySubmitBtn"><i class="bi bi-printer-fill me-2"></i>Print</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -21,6 +21,8 @@ function generateControlNumber() {
 }
 
 // Function to update display based on form input
+document.addEventListener("DOMContentLoaded", updateDisplayIndigency);
+
 function updateDisplayIndigency() {
     // Get the input values from the form
     const fullName = document.getElementById('indigencyFullname').value;

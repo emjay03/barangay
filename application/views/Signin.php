@@ -16,6 +16,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <style>
         * {
             margin: 0;
@@ -98,6 +100,22 @@
             opacity: 0.5;
             z-index: -1;
         }
+
+        .btn-primary {
+            background-color: oklch(0.705 0.213 47.604) !important;
+        }
+
+        .btn-primary:hover {
+            background-color: oklch(0.646 0.222 41.116) !important;
+        }
+
+        .btn-info {
+            background-color: oklch(0.553 0.195 38.402) !important;
+        }
+
+        .btn-info:hover {
+            background-color: oklch(0.47 0.157 37.304) !important;
+        }
     </style>
 </head>
 <!--<img class="rounded-circle me-4" style="z-index: 2"
@@ -108,8 +126,8 @@
     <main class="bg-light" style="height: 100vh;">
         <div class="login" style="height: 100%;">
             <div class="loginContainer d-flex justify-content-center align-items-center" style="height: 100%;">
-                <div class="container-fluid p-5 d-flex justify-content-center align-items-center">
-                    <div class="row" style="max-width: 992px">
+                <div class="container-fluid p-2 p-md-5 d-flex justify-content-center align-items-center">
+                    <div class="container-fluid row" style="max-width: 1300px">
                         <div class="col-md-7 d-none d-md-block d-flex justify-content-center align-items-center">
                             <div class="d-block text-center py-5 px-5">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -118,16 +136,18 @@
                                     <img class="rounded-circle mx-3" style="z-index: 2"
                                         src="application/public/northcaloocan_logo.png" alt="barangay187" width="120">
                                 </div>
-                                <h1 class="text-light fw-bold mt-3"
+                                <h4 class="text-light fw-bold mt-3"
                                     style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">BARANGAY 185
                                     MALARIA DISTRICT 3,
-                                    CALOOCAN CITY</h1>
-                                <p class="text-light fw-light">Barangay Information Management System @2024</p>
-                                <button class="btn btn-outline-light fw-bold mt-3" id="btn-toggle" onclick="location.href='<?= site_url('online-form') ?>'">Online Request Form</button>
+                                    CALOOCAN CITY</h4>
+                                    <p class="text-light fw-light">Barangay Information Management System &copy; <?php echo date('Y'); ?></p>
+                                <button class="btn btn-info btn-md fw-semibold mt-3 w-75 text-light px-5 border-0"
+                                    onclick="window.location.href = '<?php echo base_url(); ?>Online';">Online Request
+                                    Form</button>
                             </div>
                         </div>
-                        <div class="col-md-5 col-12">
-                            <div class="bg-light rounded-4 p-3 shadow-lg text-start">
+                        <div class="col-md-5 col-12 p-0 d-flex justify-content-center align-items-center">
+                            <div class="container-fluid bg-light rounded-4 p-3 shadow-lg text-start">
                                 <h3 class="fw-bold ">Signin</h3>
                                 <p class="fw-semibold">Signin to start your session</p>
 
@@ -154,25 +174,43 @@
                                     </div>
 
                                     <div class="mb-3 form-group">
-                                        <label for="email" class="form-label fw-bold" style="font-size: 14px">Email</label>
-                                        <input type="text" name="email" class="form-control border-2 Username"
+                                        <label for="email" class="form-label fw-bold"
+                                            style="font-size: 14px">Email</label>
+                                        <input type="text" name="email" class="form-control Username"
                                             placeholder="Enter your Email"
-                                            style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px;"
+                                            style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px; border-bottom: 2px solid oklch(0.21 0.006 285.885);"
                                             required>
                                     </div>
 
-                                    <div class="mb-3 form-group">
-                                        <label for="password" class="form-label fw-bold" style="font-size: 14px">Password</label>
-                                        <input type="password" name="password" class="form-control border-2 shadow-lg Password"
+                                    <div class="mb-3 form-group position-relative">
+                                        <label for="password" class="form-label fw-bold"
+                                            style="font-size: 14px">Password</label>
+                                        <input type="password" name="password" class="form-control shadow-lg Password"
                                             placeholder="Enter your password"
-                                            style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px;"
+                                            style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px; border-bottom: 2px solid oklch(0.21 0.006 285.885);"
                                             required>
+                                        <i class="bi bi-eye-fill position-absolute end-0 top-50 mt-3 me-3 translate-middle-y"
+                                            style="cursor: pointer; right: 10px" id="togglePassword"
+                                            onclick="togglePassword()"></i>
                                     </div>
+
+                                    <script>
+                                        const togglePassword = () => {
+                                            const password = document.querySelector('.Password');
+                                            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                                            password.setAttribute('type', type);
+                                            document.querySelector('#togglePassword').classList.toggle('bi-eye');
+                                        }
+                                    </script>
 
                                     <div class="mt-4">
                                         <input type="submit" value="Sign in"
                                             class="btn btn-primary w-100 px-5 border-0 text-center text-light fw-normal"
                                             style="font-size: 14px;">
+                                        <button class="btn btn-info btn-sm w-100 px-5 border-0 text-center text-light fw-normal mt-2 block d-md-none"
+                                            onclick="window.location.href = '<?php echo base_url(); ?>Online';">Online
+                                            Request
+                                            Form</button>
                                     </div>
                                 </form>
                             </div>
