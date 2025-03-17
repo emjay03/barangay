@@ -30,4 +30,17 @@
 
     <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
     <link rel="stylesheet" href="application/public/assets/css/resident_information.css" type="text/css">
+
+    <style>
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .show>.btn-primary.dropdown-toggle {
+            background-color: oklch(0.666 0.179 58.318);
+        }
+
+        btn-primary:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
 </head>

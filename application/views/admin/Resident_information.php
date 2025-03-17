@@ -1,36 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Barangay 185</title>
-    <link rel="shortcut icon" href="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220"
-        type="image/x-icon">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-
-    <link rel="stylesheet" href="application/public/assets/css/superadmin.css" type="text/css">
-    <link rel="stylesheet" href="application/public/assets/css/resident_information.css" type="text/css">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <!-- Buttons plugin CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.1/css/buttons.dataTables.min.css">
-    <!-- Bootstrap CSS for button styling -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<style>
-
-
-</style>
-<?php include 'application/views/admin/include/header.php'; ?>
 <?php include 'application/views/admin/include/header.php'; ?>
 
 <body>
@@ -40,7 +7,7 @@
         <main class="bg-light">
             <?php include 'application/views/admin/main/topnav.php'; ?>
 
-            <div class="content mt-5">
+            <div class="content mt-5 pt-5">
                 <div class="container-fluid ">
                     <div class="row">
                         <div class="col-md-12">
@@ -76,7 +43,7 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($all_resident as $resident): ?>
-                                                <tr style="font-size: 12px;">
+                                                <tr style="font-size: 14px;">
                                                     <td class="d-none">
                                                         <?php echo htmlspecialchars($resident['resident_id']); ?>
                                                     </td>

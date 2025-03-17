@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Certificate extends CI_Controller
+class Walkin extends CI_Controller
 {
     public function __construct()
     {
@@ -10,22 +10,23 @@ class Certificate extends CI_Controller
         $this->load->library("form_validation");
         $this->load->helper("security");
     }
-     // Method for displaying certificates
-     public function index()
-     {
-         $user = $this->session->userdata('user_data');
-         if (!$user) {
-             redirect('auth');
-         }
- 
-         $data = [
-             'user' => $user,
-             'certificates' => $this->Certificate_model->get_all_areas()
-         ];
- 
-         // Load only the Certificate Ensurance view
-         $this->load->view('admin/Certificate_ensurance', $data);
-     }
+
+    // Method for displaying walkin table
+    public function index()
+    {
+        $user = $this->session->userdata('user_data');
+        if (!$user) {
+            redirect('auth');
+        }
+
+        $data = [
+            'user' => $user,
+            'certificates' => $this->Certificate_model->get_all_areas()
+        ];
+
+        // Load only the Certificate Ensurance view
+        $this->load->view('admin/walkin_table', $data);
+    }
 
     public function create_certificate()
     {

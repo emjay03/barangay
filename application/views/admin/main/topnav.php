@@ -1,24 +1,26 @@
-<nav class="container-fluid p-3 shadow headnav " id="headnav">
+<nav class="container-fluid p-3 shadow headnav" id="headnav">
     <div class="d-flex justify-content-between align-items-center">
 
         <div class="">
-            <button class="border-0 bg-transparent fs-4 text-light" id="btn-toggle">
-                <i class="bi bi-list text-bold fs-2"></i>
+            <button class="btn btn-dark btn-sm border-0 text-light" id="btn-toggle">
+                <i class="bi bi-list text-bold fs-4"></i>
             </button>
         </div>
 
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <p  class="text-light fw-thin" style="font-size: 14px;"><i class="bi bi-calendar-event me-2"></i> <span id="current-time"></span></p>
+            <p  class="text-dark fw-thin" style="font-size: 14px;"><i class="bi bi-calendar-event me-2"></i> <span id="current-time"></span></p>
             <div class="mx-3"></div>
-            <p class="text-light fw-thin ml-5" style="font-size: 14px;"><i class="bi bi-clock me-2"></i> <span id="current-date"></span></p>
+            <p class="text-dark fw-thin ml-5" style="font-size: 14px;"><i class="bi bi-clock me-2"></i> <span id="current-date"></span></p>
         </div>
         <div class="d-flex justify-content-end align-items-center">
-            <div class="text-light px-3 mx-0 d-flex justify-content-end align-items-center">
+            <div class="text-dark px-2 me-5 mx-5 d-flex justify-content-end align-items-center shadow rounded py-2">
                 <div>
-                    <i class="bi bi-person-circle fs-1 me-2"></i>
+                    <span class="d-flex justify-content-center align-items-center rounded-circle text-center fs-4 me-2 bg-dark text-light" style="width: 40px; height: 41px;">
+                        <?php echo strtoupper(substr(htmlspecialchars($user->email), 0, 1)); ?>
+                    </span>
                 </div>
                 <div class="" style="line-height: 1">
-                    <p class="d-none d-sm-inline me-5">
+                    <p class="d-none d-sm-inline me-0">
                         <?php echo isset($user) ? htmlspecialchars($user->email) : 'Guest'; ?>
 
                     </p> <br />

@@ -1,62 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Barangay 185</title>
-    <link rel="shortcut icon" href="https://tse3.mm.bing.net/th?id=OIP.54-qxAfgXRkmPyPDmECkWQAAAA&pid=Api&P=0&h=220"
-        type="image/x-icon">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-    <!-- DataTables Bootstrap integration CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script> <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-    <!-- DataTables Bootstrap integration JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap JS -->
-</head>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-        scrollbar-width: thin;
-    }
-
-    body {
-        overflow: hidden;
-    }
-
-    main {
-        height: 100vh;
-        overflow-y: scroll;
-        width: 100vw;
-        overflow-x: hidden;
-        position: relative;
-    }
-</style>
+<?php include 'application/views/admin/include/header.php'; ?>
 
 <body>
     <div class="d-flex">
         <?php include 'application/views/admin/include/sidebar.php'; ?>
-        <main class="bg-light">
-            <?php include 'application/views/admin/include/header.php'; ?>
-            <div class="container mt-3 p-5">
 
-                <div class="d-flex justify-content-between m2-5">
+        <main class="bg-light">
+            <?php include 'application/views/admin/main/topnav.php'; ?>
+
+            <div class="mt-5 pt-5 px-3">
+                <div class="d-flex justify-content-between align-items-center mt-3">
                     <h1 class="fw-bold text-dark"> <i class="bi bi-people-fill me-2"></i>Add Account</h1>
                     <!-- Button to trigger Add User Modal -->
                     <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addUserModal">
@@ -67,7 +19,7 @@
                     <!-- Table Container (col-12 to make it full-width) -->
                     <div class="col-12">
                         <h3 class="mt-5">User List</h3>
-                        <table id="userTable" class="table table-striped table-bordered">
+                        <table id="resident-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>Email</th>
@@ -92,8 +44,9 @@
                                         </td>
                                         <td class="d-flex justify-content-center align-items-center">
                                             <!-- Edit Button -->
-                                            <button class="btn btn-primary me-2 px-3 my-1 edit-btn" data-id="<?= $user['id']; ?>"
-                                                data-bs-toggle="modal" data-bs-target="#editUserModal"
+                                            <button class="btn btn-primary me-2 px-3 my-1 edit-btn"
+                                                data-id="<?= $user['id']; ?>" data-bs-toggle="modal"
+                                                data-bs-target="#editUserModal"
                                                 data-user='<?php echo json_encode($user); ?>'>
                                                 Edit
                                             </button>
@@ -183,10 +136,12 @@
         </div>
     </div>
 
+    <?php include 'application/views/admin/include/jslink.php'; ?>
+
     <script>
         $(document).ready(function () {
             // Initialize DataTable
-            $('#userTable').DataTable({
+            $('#resident-table').DataTable({
                 "paging": true,
                 "searching": true,
                 "ordering": true,

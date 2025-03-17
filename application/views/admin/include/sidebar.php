@@ -28,27 +28,42 @@
     <i class="bi bi-calendar-fill"></i>
     <span class="menu-title">Settlement Schedule</span>
   </a>
-  <a href="/barangay/Certificate" class="menu-item my-2">
-    <i class="bi bi-patch-check-fill"></i>
-    <span class="menu-title">Certificate Issuance
-    </span>
-  </a>
 
-  <?php if (isset($user) && $user-> role_id == 1 ||  $user-> role_id == 2): ?>
-  <p class="text-light mt-5 mx-3" style="font-size: 12px">Setting</p>
-  <span class="text-light setting menu-item text-start my-2" data-bs-toggle="collapse" href="#collapseExample"
-    role="button" aria-expanded="false" aria-controls="collapseExample">
-    <i class="bi bi-sliders2"></i>
-    <span class="menu-title">Settings</span>
+  <span class="text-light Smenu-item text-start mx-1 rounded" data-bs-toggle="collapse" href="#certificate"
+    role="button" aria-expanded="false" aria-controls="certificate">
+    <i class="bi bi-patch-check-fill"></i>
+    <span class="menu-title">Certificate Issuance</span>
   </span>
 
-  <div class="collapse" id="collapseExample">
-    <a href="#" class="Smenu-item">
-      <i class="bi bi-gear-fill"></i>
-      <span class="menu-title">Account Setting
+  <div class="collapse mt-2" id="certificate">
+    <a href="/barangay/Certificate" class="menu-item mx-2 rounded">
+      <i class="bi bi-patch-check-fill"></i>
+      <span class="menu-title">Walk-in Certificate
+      </span>
+    </a>
+
+    <a href="#" class="menu-item mx-2 rounded mt-2">
+      <i class="bi bi-patch-check-fill"></i>
+      <span class="menu-title">Online Request
       </span>
     </a>
   </div>
+
+  <?php if (isset($user) && $user->role_id == 1 || $user->role_id == 2): ?>
+    <p class="text-light mt-5 mx-3" style="font-size: 12px">Setting</p>
+    <span class="text-light menu-item text-start " data-bs-toggle="collapse" href="#collapseExample" role="button"
+      aria-expanded="false" aria-controls="collapseExample">
+      <i class="bi bi-sliders2"></i>
+      <span class="menu-title">Settings</span>
+    </span>
+
+    <div class="collapse mt-2" id="collapseExample">
+      <a href="#" class="Smenu-item">
+        <i class="bi bi-gear-fill"></i>
+        <span class="menu-title">Account Setting
+        </span>
+      </a>
+    </div>
   <?php endif; ?>
 
   <?php if (isset($user) && $user->role_id == 1): ?>
@@ -57,11 +72,6 @@
       <i class="bi bi-person-circle"></i>
       <span class="menu-title">Add Account</span>
     </a>
-    <a href="#" class="menu-item my-2">
-      <i class="bi bi-building-fill"></i>
-      <span class="menu-title">Barangay</span>
-    </a>
-
   <?php endif; ?>
 
 
@@ -73,13 +83,14 @@
     </span>
   </a>
 
-  <footer class="px-2">@ Copyright &copy; <?php echo date('Y'); ?> BARANGAY 185 MALARIA DISTRICT 3, CALOOCAN CITY. All Right Reserved
+  <footer class="px-2">@ Copyright &copy; <?php echo date('Y'); ?> BARANGAY 185 MALARIA DISTRICT 3, CALOOCAN CITY. All
+    Right Reserved
   </footer>
 </nav>
 
 <script>
   document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
       document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
 
       this.classList.add('active');

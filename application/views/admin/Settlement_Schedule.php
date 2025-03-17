@@ -7,14 +7,14 @@
         <main class="bg-light">
             <?php include 'application/views/admin/main/topnav.php'; ?>
 
-            <div class="content mt-5">
-                <div class="container-fluid ">
+            <div class="content mt-5 my-5 pt-5">
+                <div class="container-fluid mt-3">
                     <div class="p-0 mx-0 rounded-4 bg-light">
                         <div class="d-flex justify-content-between mb-2">
                             <h5 class="fw-bold text-dark"><i class="bi bi-card-heading me-2"></i>Settlement
                                 Schedule
                             </h5>
-                            <button class="btn btn-primary max-w-50 px-5 m-2 d-none" data-bs-toggle="modal"
+                            <button class="btn btn-primary btn-sm max-w-50 px-5 m-2" data-bs-toggle="modal"
                                 data-bs-target="#addSettlementModal">Add Settlement</button>
                         </div>
 
@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="col-md-3 p-1 mb-3 rounded-3">
                                     <div class="card p-2 shadow text-center">
-                                        <div class="card-header bg-primary py-3 text-light">
+                                        <div class="card-header bg-success py-3 text-light">
                                             Settled Cases
                                         </div>
                                         <div class="card-body fs-2">
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3 p-1 mb-3 rounded-3">
                                     <div class="card p-2 shadow text-center">
-                                        <div class="card-header bg-success py-3 text-light">
+                                        <div class="card-header bg-primary py-3 text-light">
                                             Scheduled Cases
                                         </div>
                                         <div class="card-body fs-2">
@@ -63,16 +63,16 @@
                             </div>
                         </div>
 
-                        <div class="container-fluid">
+                        <div class="container-fluid my-2">
                             <ul class="d-flex justify-content-start align-items-center list-unstyled">
-                                <li><button class="clickable me-2 border-0 btn-primary btn-sm"
+                                <li><button class="clickable me-2 border-0 btn-primary btn-sm py-2 px-2"
                                         data-target="#scheduledTable">Settlement Scheduled</button></li>
-                                <li><button class="clickable me-2 border-0 btn-primary btn-sm"
+                                <li><button class="clickable me-2 border-0 btn-primary btn-sm py-2 px-2"
                                         data-target="#unscheduledTable">Unschedules Settlement</button>
                                 </li>
-                                <li><button class="clickable me-2 border-0 btn-primary btn-sm"
+                                <li><button class="clickable me-2 border-0 btn-primary btn-sm py-2 px-2"
                                         data-target="#todayTable">Schedule Today</button></li>
-                                <li><button class="clickable border-0 btn-primary btn-sm"
+                                <li><button class="clickable border-0 btn-primary btn-sm py-2 px-2"
                                         data-target="#settledTable">Settled Cases</button></li>
                             </ul>
                         </div>
@@ -82,26 +82,26 @@
                                 <table id="resident-table" class="table table-striped table-hover p-2" width="100%">
                                     <thead>
                                         <tr style="font-size: 12px;">
-                                            <th scope="col">Case Number</th>
-                                            <th scope="col">Blotter ID</th>
-                                            <th scope="col">Date of Filling</th>
-                                            <th scope="col">Type of Case</th>
-                                            <th scope="col">Details</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Contact</th>
-                                            <th scope="col">Respondent Relationship</th>
-                                            <th scope="col">Date Mediation</th>
-                                            <th scope="col">Lupon Member 1</th>
-                                            <th scope="col">Lupon Member 2</th>
-                                            <th scope="col">Lupon Member 3</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Term Settlement</th>
-                                            <th scope="col">Date Settlement</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col" class="export">Case Number</th>
+                                            <th scope="col" class="export">Blotter ID</th>
+                                            <th scope="col" class="export">Date of Filling</th>
+                                            <th scope="col" class="export">Type of Case</th>
+                                            <th scope="col" class="export">Details</th>
+                                            <th scope="col" class="export">Name</th>
+                                            <th scope="col" class="export">Contact</th>
+                                            <th scope="col" class="export">Respondent Relationship</th>
+                                            <th scope="col" class="export">Date Mediation</th>
+                                            <th scope="col" class="export">Lupon Member 1</th>
+                                            <th scope="col" class="export">Lupon Member 2</th>
+                                            <th scope="col" class="export">Lupon Member 3</th>
+                                            <th scope="col" class="export">Summary</th>
+                                            <th scope="col" class="export">Term Settlement</th>
+                                            <th scope="col" class="export">Date Settlement</th>
+                                            <th scope="col" class="export">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="font-size: 14px;">
                                         <?php foreach ($all_settlement as $settlement): ?>
                                             <?php if ($settlement['status'] === 'Scheduled'): ?>
                                                 <tr>
@@ -149,28 +149,27 @@
                             <div class="">
                                 <table id="resident-table2" class="table table-striped table-hover p-2" width="100%">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">Case Number</th>
-                                            <th scope="col">Blotter ID</th>
-                                            <th scope="col">Date of Filling</th>
-                                            <th scope="col">Type of Case</th>
-                                            <th scope="col">Details</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Contact</th>
-                                            <th scope="col">Respondent Relationship</th>
-                                            <th scope="col">Date Mediation</th>
-                                            <th scope="col">Lupon Member 1</th>
-                                            <th scope="col">Lupon Member 2</th>
-                                            <th scope="col">Lupon Member 3</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Term Settlement</th>
-                                            <th scope="col">Date Settlement</th>
-                                            <th scope="col">Status</th>
-
+                                        <tr style="font-size: 12px;">
+                                            <th scope="col" class="export">Case Number</th>
+                                            <th scope="col" class="export">Blotter ID</th>
+                                            <th scope="col" class="export">Date of Filling</th>
+                                            <th scope="col" class="export">Type of Case</th>
+                                            <th scope="col" class="export">Details</th>
+                                            <th scope="col" class="export">Name</th>
+                                            <th scope="col" class="export">Contact</th>
+                                            <th scope="col" class="export">Respondent Relationship</th>
+                                            <th scope="col" class="export">Date Mediation</th>
+                                            <th scope="col" class="export">Lupon Member 1</th>
+                                            <th scope="col" class="export">Lupon Member 2</th>
+                                            <th scope="col" class="export">Lupon Member 3</th>
+                                            <th scope="col" class="export">Summary</th>
+                                            <th scope="col" class="export">Term Settlement</th>
+                                            <th scope="col" class="export">Date Settlement</th>
+                                            <th scope="col" class="export">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="font-size: 14px;">
                                         <?php foreach ($all_settlement as $settlement): ?>
                                             <?php if ($settlement['status'] === 'Unscheduled'): ?>
                                                 <tr>
@@ -218,28 +217,27 @@
                             <div class="">
                                 <table id="resident-table4" class="table table-striped table-hover p-2" width="100%">
                                     <thead>
-                                        <tr>
-                                            <th scope="col">Case Number</th>
-                                            <th scope="col">Blotter ID</th>
-                                            <th scope="col">Date of Filling</th>
-                                            <th scope="col">Type of Case</th>
-                                            <th scope="col">Details</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Contact</th>
-                                            <th scope="col">Respondent Relationship</th>
-                                            <th scope="col">Date Mediation</th>
-                                            <th scope="col">Lupon Member 1</th>
-                                            <th scope="col">Lupon Member 2</th>
-                                            <th scope="col">Lupon Member 3</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Term Settlement</th>
-                                            <th scope="col">Date Settlement</th>
-                                            <th scope="col">Status</th>
-
+                                        <tr style="font-size: 12px;">
+                                            <th scope="col" class="export">Case Number</th>
+                                            <th scope="col" class="export">Blotter ID</th>
+                                            <th scope="col" class="export">Date of Filling</th>
+                                            <th scope="col" class="export">Type of Case</th>
+                                            <th scope="col" class="export">Details</th>
+                                            <th scope="col" class="export">Name</th>
+                                            <th scope="col" class="export">Contact</th>
+                                            <th scope="col" class="export">Respondent Relationship</th>
+                                            <th scope="col" class="export">Date Mediation</th>
+                                            <th scope="col" class="export">Lupon Member 1</th>
+                                            <th scope="col" class="export">Lupon Member 2</th>
+                                            <th scope="col" class="export">Lupon Member 3</th>
+                                            <th scope="col" class="export">Summary</th>
+                                            <th scope="col" class="export">Term Settlement</th>
+                                            <th scope="col" class="export">Date Settlement</th>
+                                            <th scope="col" class="export">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody style="font-size: 14px;">
                                         <?php foreach ($all_settlement as $settlement): ?>
                                             <?php if ($settlement['status'] === 'Settled'): ?>
                                                 <tr>
@@ -289,48 +287,55 @@
 
             <div class="modal fade" id="addSettlementModal" tabindex="-1" aria-labelledby="addSettlementModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addSettlementModalLabel">Add Settlement</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="addSettlementForm">
-                                <div class="mb-3">
+                            <form id="addSettlementForm" class="row g-3">
+                                <div class="col-md-4">
                                     <label for="caseNumber" class="form-label">Case Number</label>
                                     <input type="text" class="form-control" id="caseNumber" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4"></div><div class="col-md-4"></div>
+                                <div class="col-md-4">
                                     <label for="dateFilling" class="form-label">Date of Filling</label>
                                     <input type="date" class="form-control" id="dateFilling" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="typeOfCase" class="form-label">Type of Case</label>
                                     <input type="text" class="form-control" id="typeOfCase" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-12">
                                     <label for="details" class="form-label">Details</label>
-                                    <textarea class="form-control" id="details" rows="3" required></textarea>
+                                    <textarea class="form-control" id="details" rows="5" required></textarea>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="contact" class="form-label">Contact</label>
                                     <input type="text" class="form-control" id="contact" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="respondentRelationship" class="form-label">Respondent
                                         Relationship</label>
                                     <input type="text" class="form-control" id="respondentRelationship" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="dateMediation" class="form-label">Date Mediation</label>
                                     <input type="date" class="form-control" id="dateMediation" required>
+
+                                    <label for="termSettlement" class="form-label">Term Settlement</label>
+                                    <input type="text" class="form-control" id="termSettlement" required>
+
+                                    <label for="dateSettlement" class="form-label">Date Settlement</label>
+                                    <input type="date" class="form-control" id="dateSettlement" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="luponMembers" class="form-label">Lupon Members</label>
                                     <input type="text" class="form-control" placeholder="Member 1" id="luponMember1"
                                         required>
@@ -339,18 +344,11 @@
                                     <input type="text" class="form-control mt-2" placeholder="Member 3"
                                         id="luponMember3" required>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="summary" class="form-label">Summary</label>
-                                    <textarea class="form-control" id="summary" rows="3" required></textarea>
+                                    <textarea class="form-control" id="summary" rows="5" required></textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="termSettlement" class="form-label">Term Settlement</label>
-                                    <input type="text" class="form-control" id="termSettlement" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="dateSettlement" class="form-label">Date Settlement</label>
-                                    <input type="date" class="form-control" id="dateSettlement" required>
-                                </div>
+                                
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -433,8 +431,6 @@
                     </div>
                 </div>
             </div>
-
-
         </main>
     </div>
     <?php include 'application/views/admin/include/add_resident.php'; ?>

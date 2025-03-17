@@ -39,103 +39,103 @@ main {
 }
 
 .btn.export-btn {
-    background: #FF4B33 !important;
+    background: oklch(0.75 0.183 55.934) !important;
     color: white !important;
     border-radius: 5px !important;
     padding: 5px 10px !important;
     font-size: 12px !important;
-    border: solid 1px #d23e2b !important;
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
 }
 
 .btn.export-btn:hover {
     transform: scale(1.030) !important;
     font-weight: 500;
-    background: #FF4B33 !important;
+    background: oklch(0.75 0.183 55.934) !important;
     color: white !important;
     border-radius: 5px !important;
     padding: 5px 10px !important;
     font-size: 12px !important;
-    border: solid 1px #d23e2b !important;
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
 }
 
 #resident-table_length label {
-    color: #d23e2b;
+    color: oklch(0.75 0.183 55.934);
     font-size: 14px !important;
     font-weight: 500 !important;
 }
 
 #resident-table_length select{
-    border: solid 1px #d23e2b !important;
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
 }
 
 #resident-table_filter {
-    color: #d23e2b;
+    color: oklch(0.75 0.183 55.934);
 }
 
 #resident-table_filter input{
-    border: solid 1px #d23e2b !important;
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
 }
 
 #resident-table_filter input:focus{
     outline: none !important;
-    box-shadow: 0 0 0 0px #d23e2b !important;
+    box-shadow: 0 0 0 0px oklch(0.75 0.183 55.934) !important;
     font-size: 14px !important;
     font-weight: 500 !important;
 }
 
 #resident-table_info {
-    color: #d23e2b;
+    color: oklch(0.75 0.183 55.934);
     font-size: 14px !important;
     font-weight: 500 !important;
 }
 
 #resident-table_paginate {
-    color: #d23e2b;
+    color: oklch(0.75 0.183 55.934);
     font-size: 14px !important;
     font-weight: 500 !important;
 }
 
 #resident-table_previous, #resident-table_next{    
-    background: #FF4B33 !important;
+    background: oklch(0.75 0.183 55.934) !important;
     color: white !important;
     font-size: 14px !important;
 }
 
 #resident-table_previous:hover, #resident-table_next:hover{    
-    background: #fd4229 !important;
+    background: oklch(0.75 0.183 55.934) !important;
     color: white !important;
 }
 
 #resident-table_previous.disabled, #resident-table_next.disabled{    
-    color: #d23e2b !important;
+    color: oklch(0.75 0.183 55.934) !important;
     background: transparent !important;
 }
 
 #resident-table_previous.disabled:hover, #resident-table_next.disabled:hover{    
-    color: #d23e2b !important;
+    color: oklch(0.75 0.183 55.934) !important;
     background: transparent !important;
-}
-
-.paginate_button.current, .paginate_button.current:hover {
-    background: #FF4B33 !important;
-    color: white !important;
 }
 
 .paginate_button.current.disabled, .paginate_button.current.disabled:hover {
     background: transparent !important;
-    color: #d23e2b !important;
+    color: white!important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    background: #fa5640 !important;
+    background: oklch(0.75 0.183 55.934) !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .paginate_button.current{
+    background: oklch(0.705 0.213 47.604) !important;
     color: white !important;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background: #fd4229 !important;
+    background: oklch(0.75 0.183 55.934) !important;
     color: white !important;
 }
 
 .active {
-    background-color: red;
+    background-color: white;
 }

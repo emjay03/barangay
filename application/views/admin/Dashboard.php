@@ -9,7 +9,7 @@
                 <?php include 'application/views/admin/main/topnav.php'; ?>
             </header>
             <div class="row content px-3">
-                <div class="col-lg-12 container z-3 d-flex align-items-center mb-1">
+                <div class="col-lg-12 container z-3 d-flex align-items-center mb-0 mt-5">
                     <div class="d-flex align-items-center justify-content-center py-3 my-3 w-100 position-relative">
                         <div class="d-flex w-100 w-md-75 align-items-center justify-content-between px-5">
                             <img src="application/public/northcaloocan_logo.png" alt="logo" height="100">
@@ -21,20 +21,6 @@
                         </div>
                         <div class="background w-full" id="d-background"></div>
                     </div>
-                </div>
-
-                <div class="col-lg-12 container z-3 d-flex justify-content-end align-items-end px-4">
-                    <!-- <button class="btn btn-primary btn-sm">
-                        <a href="#residentSummary" class="px-2 text-light"
-                            style="font-size: 12px; text-decoration: none;">RESIDENT RECORD SUMMARY</a>
-                    </button> -->
-                    <button type="button" class="btn btn-primary btn-sm  mx-1" data-toggle="modal"
-                        id="calendarModalBtn">
-                        <i class="bi bi-calendar-fill fs-5"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm  mx-1" data-toggle="modal" id="notesModalBtn">
-                        <i class="bi bi-journal-bookmark-fill fs-5"></i> Notes
-                    </button>
                 </div>
 
                 <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="missionModalLabel"
@@ -156,8 +142,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-6 col-xl-3 py-3">
-
+                <div class="col-md-12 col-lg-6 col-xl-3 py-0">
                     <div class="card">
                         <div
                             class="card-header text-light text-start fw-bold d-flex justify-content-between align-items-center">
@@ -171,7 +156,7 @@
 
                         <div class="card-body">
                             <div class="form-group mt-2 text-center" style="height: 200px;">
-                                <h6><?php echo $mission['mission']; ?></h6>
+                                <p><?php echo $mission['mission']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -189,7 +174,7 @@
 
                         <div class="card-body">
                             <div class="form-group mt-2 text-center" style="height: 200px;">
-                                <h6><?php echo $vision['vision']; ?></h6>
+                                <p><?php echo $vision['vision']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -256,7 +241,21 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-6 col-xl-4 py-3">
+                <div class="col-md-12 col-lg-6 col-xl-4 py-0">
+                    <div class="py-2 z-3 d-flex justify-content-start align-items-end px-0">
+                        <!-- <button class="btn btn-primary btn-sm">
+                        <a href="#residentSummary" class="px-2 text-light"
+                            style="font-size: 12px; text-decoration: none;">RESIDENT RECORD SUMMARY</a>
+                    </button> -->
+                        <button type="button" class="btn btn-primary btn-sm mx-1" data-toggle="modal"
+                            id="calendarModalBtn">
+                            <i class="bi bi-calendar-fill fs-5"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm  mx-1" data-toggle="modal"
+                            id="notesModalBtn">
+                            <i class="bi bi-journal-bookmark-fill fs-5"></i> Notes
+                        </button>
+                    </div>
                     <!-- Add Announcement Modal -->
                     <div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog"
                         aria-labelledby="addAnnouncementModalLabel" aria-hidden="true">
@@ -354,12 +353,12 @@
                                                     <td class="text-start">
                                                         <!-- Card Structure inside the table cell -->
                                                         <div class="card p-3 mb-3">
-                                                            <h5 class="card-title fw-bold">
+                                                            <h6 class="card-title fw-bold">
                                                                 <?php echo htmlspecialchars($announcement['title']); ?>
-                                                            </h5>
-                                                            <h6 class="card-body">
-                                                                <?php echo htmlspecialchars($announcement['details']); ?>
                                                             </h6>
+                                                            <p class="card-body">
+                                                                <?php echo htmlspecialchars($announcement['details']); ?>
+                                                            </p>
                                                             <div
                                                                 class="card-footer d-flex justify-content-between text-secondary">
                                                                 <p class="card-text">
@@ -398,7 +397,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-6 col-xl-3 py-1" id="residentSummary">
+                <div class="col-md-12 col-lg-6 col-xl-3 py-0" id="residentSummary">
                     <div class="card z-3 bg-transparent border-0 text-center p-1 fw-bold rounded-0">
                         <p class="text-dark fs-6 xl-fs-6 mt-1">RESIDENT RECORD SUMMARY</p>
                     </div>
@@ -426,9 +425,9 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <i class="bi bi-list-check fs-3 text-dark me-2"></i>
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
-                                            </p>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <?php echo !empty($registered_voters) ? $registered_voters : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -440,9 +439,9 @@
                                     </div>
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <i class="bi bi-gender-male fs-3 text-dark me-2 fw-bold"></i>
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($male_count) ? $male_count : 0; ?>
-                                            </p>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <?php echo !empty($male_count) ? $male_count : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -455,9 +454,9 @@
 
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <i class="bi bi-gender-female fs-3 text-daek me-2"></i>
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($female_count) ? $female_count : 0; ?>
-                                            </p>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <?php echo !empty($female_count) ? $female_count : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -470,9 +469,9 @@
 
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <i class="bi bi-person-vcard me-2 fs-3"></i>
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> --> 0
-                                            </p>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <!-- <?php echo !empty($female_count) ? $female_count : 0; ?> --> 0
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -485,9 +484,9 @@
 
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <i class="bi bi-person-vcard me-2 fs-3"></i>
-                                            <p class="fw-bold mt-3 fs-3">
-                                                <?php echo !empty($senior_count) ? $senior_count : 0; ?>
-                                            </p>
+                                        <p class="fw-bold mt-3 fs-3">
+                                            <?php echo !empty($senior_count) ? $senior_count : 0; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -495,15 +494,15 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-lg-6 col-xl-2 py-3">
+                <div class="col-md-12 col-lg-6 col-xl-2 py-0">
                     <div class="card z-3 bg-transparent border-0 text-center p-1 fw-bold rounded-0">
                         <p class="text-dark" style="font-size: 13px;">BLOTTER RECORD SUMMARY</p>
                     </div>
 
-                    <div class="row p-0 m-0 fw-bold">
+                    <div class="row p-0 my-1 fw-bold">
                         <div class="col-lg-12 m-0 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
-                                <div class="card-header" style="background-color: #ff4b33">
+                                <div class="card-header" style="background-color: oklch(0.75 0.183 55.934)">
                                     <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
                                 </div>
                                 <div
@@ -512,9 +511,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 m-0 p-0">
+                        <div class="col-lg-12 my-1 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
-                                <div class="card-header" style="background-color: #ff4b33">
+                                <div class="card-header" style="background-color: oklch(0.75 0.183 55.934)">
                                     <p class="text-start text-light" style="font-size: 15px">Unscheduled Cases</p>
                                 </div>
                                 <div
@@ -523,9 +522,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 m-0 p-0">
+                        <div class="col-lg-12 my-1 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
-                                <div class="card-header" style="background-color: #ff4b33">
+                                <div class="card-header" style="background-color: oklch(0.75 0.183 55.934)">
                                     <p class="text-start text-light" style="font-size: 15px">Scheduled Cases</p>
                                 </div>
                                 <div
@@ -534,9 +533,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 m-0 p-0">
+                        <div class="col-lg-12 my-1 p-0">
                             <div class="card z-3 shadow" style="max-height: 200px">
-                                <div class="card-header" style="background-color: #ff4b33">
+                                <div class="card-header" style="background-color: oklch(0.75 0.183 55.934)">
                                     <p class="text-start text-light" style="font-size: 15px">Settled Cases</p>
                                 </div>
                                 <div

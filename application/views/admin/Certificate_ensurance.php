@@ -85,8 +85,9 @@
         <?php include 'application/views/admin/include/sidebar.php'; ?>
         <main class="bg-light">
             <header>
-                <?php include 'application/views/admin/include/header.php'; ?>
+                <?php include 'application/views/admin/main/topnav.php'; ?>
             </header>
+            <div class="mt-5 pt-5"></div>
             <div class="row content p-5 m-5 rounded-4 bg-light shadow-lg" id="certificateInsurance">
                 <div class="d-flex justify-content-between mb-5">
                     <h1 class="fw-bold text-dark"><i class="bi bi-file-text me-2"></i>Certificate Issuance</h1>
@@ -101,8 +102,7 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary"
-                                        data-bs-target="#indigencyModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                    <button class="btn btn-primary" data-bs-target="#indigencyModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
                                         document.getElementById('indigencyModal').classList.remove('d-none')">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
@@ -117,8 +117,7 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary"
-                                        data-bs-target="#clearanceModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                    <button class="btn btn-primary" data-bs-target="#clearanceModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
                                         document.getElementById('clearanceModal').classList.remove('d-none')">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
@@ -146,9 +145,23 @@
                                         style="width: 250px; height: 300px;"></div>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button class="btn btn-primary"
-                                        data-bs-target="#certificateModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
+                                    <button class="btn btn-primary" data-bs-target="#certificateModal" onclick="document.getElementById('certificateInsurance').classList.add('d-none');
                                         document.getElementById('certificateModal').classList.remove('d-none')">
+                                        <i class="bi bi-box-arrow-in-down-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col p-2">
+                            <div class="card p-2 shadow">
+                                <div class="card-head text-center fw-bold fs-4">WALK-IN TABLE</div>
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="bg-light shadow rounded border border-light shadow p-2"
+                                        style="width: 250px; height: 300px;"></div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-primary" data-bs-target="#certificateModal" onclick="window.location.href = '<?php echo base_url(); ?>Walkin';">
                                         <i class="bi bi-box-arrow-in-down-left"></i>
                                     </button>
                                 </div>
