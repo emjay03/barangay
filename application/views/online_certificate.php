@@ -295,7 +295,7 @@
 
                                 if (barangayid.length > 0) {
                                     // Make an AJAX request to fetch fullname and address based on barangayid
-                                    fetch('"/OnlineCertificate/fetch_fullname_by_barangayid?barangayid=' + barangayid)
+                                    fetch('/OnlineCertificate/fetch_fullname_by_barangayid?barangayid=' + barangayid)
                                         .then(response => response.json())
                                         .then(data => {
                                             if (data.status === 'success') {
