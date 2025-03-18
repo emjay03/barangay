@@ -47,7 +47,16 @@ class OnlineCertificate extends CI_Controller
             }
 
             // Generate the control number
-            $control_number = $this->OnlineCertificate_model->generate_control_number();
+            $year = date('Y');
+            $number = 10000;
+            $control_number = $year . '-' . $number;
+            $check_control_number = $this->OnlineCertificate_model->check_control_number($control_number);
+
+            if ($check_control_number) {
+                // If control number exists, increment it
+                $number++;
+                $control_number = $year . '-' . $number;
+            }
 
             // Prepare the data for insertion
             $data = array(
@@ -65,17 +74,18 @@ class OnlineCertificate extends CI_Controller
 
             // Call the model to insert data
             if ($this->OnlineCertificate_model->create_certificate($data)) {
-                // Success, return success message
-                echo json_encode(array('status' => 'success', 'message' => 'Certificate added successfully.'));
-                return;
+                // Success, return success message with the control number
+                echo json_encode(array(
+                    'status' => 'success',
+                    'message' => 'Certificate added successfully.',
+                    'control_number' => $control_number // Return the control number
+                ));
             } else {
                 // Failure, return failure message
                 echo json_encode(array('status' => 'error', 'message' => 'Failed to add certificate.'));
-                return;
             }
         }
     }
-
 
     // Fetch fullname based on barangayid
     // Fetch fullname and address based on barangayid

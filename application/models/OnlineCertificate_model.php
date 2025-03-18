@@ -20,6 +20,13 @@ class OnlineCertificate_model extends CI_Model
         return $query->result();  // returning the result as an array of objects
     }
 
+    public function check_control_number($control_number)
+    {
+        $this->db->where('control_number', $control_number);
+        $query = $this->db->get('online_certificate');
+        return $query->num_rows() > 0; // Returns true if the control number exists
+    }
+    
     public function update_certificate_status($certificate_id, $data)
     {
         $this->db->where('id', $certificate_id);
@@ -64,23 +71,26 @@ class OnlineCertificate_model extends CI_Model
         $current_year = date('Y');
 
         // Get the latest control number for the current year
-        $this->db->like('control_number', $current_year, 'before');
+        $this->db->like('control_number', $current_year . '-', 'before'); // Look for records that start with the current year
         $this->db->order_by('control_number', 'DESC');
         $query = $this->db->get('online_certificate', 1);
 
         if ($query->num_rows() > 0) {
+            // If we have records for the current year, extract the last control number
             $last_control_number = $query->row()->control_number;
-            // Extract the number part and increment by 1
+
+            // Extract the number part after the dash and increment it by 1
             $last_number = (int) substr($last_control_number, -5);  // Get the last 5 digits
             $new_number = $last_number + 1;
         } else {
-            // If no previous control number exists for this year, start from 10000
+            // If no records exist for the current year, start from 10000
             $new_number = 10000;
         }
 
-        // Create the new control number
+        // Generate the new control number
         $new_control_number = $current_year . '-' . str_pad($new_number, 5, '0', STR_PAD_LEFT);
 
         return $new_control_number;
     }
 }
+

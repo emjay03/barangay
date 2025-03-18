@@ -265,18 +265,21 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="responseModalLabel"></h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <h5 class="modal-title fw-semibold" id="responseModalLabel"></h5>
+                                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button> -->
                                 </div>
                                 <div class="modal-body">
                                     <p id="modalMessage"></p>
                                     <p id="modalDetails"></p>
-                                    <p id="screenshotMessage"></p>
+                                    
+                                    <p id="controlNumber" class="fw-bold fs-1 my-3"></p>
+                                    
+                                    <p id="screenshotMessage" class="fw-semibold"></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                        onclick="window.location.reload();">Close</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal"
+                                        onclick="window.location.reload();">Okay</button>
                                 </div>
                             </div>
                         </div>
@@ -340,13 +343,17 @@
                                     // Check if the response is successful
                                     if (response.status === 'success') {
                                         // Success: Show success modal
+                                        $('#responseModalLabel').addClass('text-success');
                                         $('#responseModalLabel').text('Request Submitted Successfully');
                                         $('#modalMessage').text('Your certificate request has been submitted successfully.');
                                         $('#modalDetails').html('<strong>Fullname:</strong> ' + $('#fullname').val() + '<br><strong>Type:</strong> ' + $('#type').val());
                                         $('#screenshotMessage').text('Please screenshot this information before closing.');
                                         $('#responseModal').modal('show');
+
+                                        $('#controlNumber').text(response.control_number);
                                     } else {
                                         // Error: Show error modal with the message
+                                        $('#responseModalLabel').addClass('text-danger');
                                         $('#responseModalLabel').text('Error');
                                         $('#modalMessage').text(response.message || 'An error occurred while submitting the form.');
                                         $('#modalDetails').empty();
@@ -355,6 +362,7 @@
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
                                     // Handle AJAX request error
+                                    $('#responseModalLabel').addClass('text-danger');
                                     $('#responseModalLabel').text('Error');
                                     $('#modalMessage').text('There was an issue submitting your request. Please try again later.');
                                     $('#modalDetails').empty();
