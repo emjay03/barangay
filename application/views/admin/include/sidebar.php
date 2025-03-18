@@ -12,19 +12,19 @@
 
   <!-- Menu Items -->
   <p class="text-light mt-5 mx-3" style="font-size: 12px">General</p>
-  <a href="/barangay/dashboard" class="menu-item mt-3 mb-2">
+  <a href="<?php echo site_url('/dashboard'); ?>" class="menu-item mt-3 mb-2">
     <i class="bi bi-house-fill"></i>
     <span class="menu-title">Dashboard</span>
   </a>
-  <a href="/barangay/Resident" class="menu-item my-2"> 
+  <a href="<?php echo site_url('/Resident'); ?>" class="menu-item my-2"> 
     <i class="bi bi-person-fill"></i>
     <span class="menu-title">Resident Information</span>
   </a>
-  <a href="/barangay/Blotters" class="menu-item my-2">
+  <a href="<?php echo site_url('/Blotters'); ?>" class="menu-item my-2">
     <i class="bi bi-archive-fill"></i>
     <span class="menu-title">Blotter Record</span>
   </a>
-  <a href="/barangay/settlement" class="menu-item my-2">
+  <a href="<?php echo site_url('/settlement'); ?>" class="menu-item my-2">
     <i class="bi bi-calendar-fill"></i>
     <span class="menu-title">Settlement Schedule</span>
   </a>
@@ -36,7 +36,7 @@
   </span>
 
   <div class="collapse mt-2" id="certificate">
-    <a href="/barangay/Certificate" class="menu-item mx-2 rounded">
+    <a href="<?php echo site_url('/walkin'); ?>" class="menu-item mx-2 rounded">
       <i class="bi bi-patch-check-fill"></i>
       <span class="menu-title">Walk-in Certificate
       </span>
@@ -49,7 +49,7 @@
     </span>
 
     <div class="collapse mt-2" id="OnlineRequest">
-      <a href="/barangay/OnlineCert" class="menu-item mx-2 rounded mt-2">
+      <a href="<?php echo site_url('/OnlineCert'); ?>" class="menu-item mx-2 rounded mt-2">
         <i class="bi bi-patch-check-fill"></i>
         <span class="menu-title">Barangay Certificate
         </span>
@@ -77,7 +77,7 @@
 
   <?php if (isset($user) && $user->role_id == 1): ?>
     <p class="text-light mt-5 mx-3" style="font-size: 12px">Accounts</p>
-    <a href="/barangay/addaccount" class="menu-item my-2">
+    <a href="<?php echo site_url('/addaccount'); ?>" class="menu-item my-2">
       <i class="bi bi-person-circle"></i>
       <span class="menu-title">Add Account</span>
     </a>
