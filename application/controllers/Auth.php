@@ -46,23 +46,19 @@ class Auth extends CI_Controller
 
         if ($user) {
             $this->session->set_userdata('user_data', $user);
-            redirect('dashboard');
+            redirect('/dashboard');
         } else {
             // Set flash data for invalid login
             $this->session->set_flashdata('error', 'Invalid email or password.');
-            redirect('auth');
+            redirect('/auth');
         }
     }
 
     public function logout()
     {
-
-
-
-
         $this->session->sess_destroy();
 
 
-        redirect('auth/login');
+        redirect('/auth/login');
     }
 }

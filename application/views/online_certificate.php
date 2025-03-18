@@ -284,7 +284,10 @@
 
                     <script>
                         document.getElementById('barangayid').addEventListener('keyup', function (event) {
-                            if (event.key === 'Enter') {
+                            // Check if enter key is pressed in desktop and mobile
+                            var isEnterKey = event.key === 'Enter' || event.keyCode === 13;
+
+                            if (isEnterKey) {
                                 var barangayid = this.value;
 
                                 if (barangayid.length > 0) {

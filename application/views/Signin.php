@@ -142,7 +142,7 @@
                                     CALOOCAN CITY</h4>
                                     <p class="text-light fw-light">Barangay Information Management System &copy; <?php echo date('Y'); ?></p>
                                 <button class="btn btn-info btn-md fw-semibold mt-3 w-75 text-light px-5 border-0"
-                                    onclick="window.location.href = '<?php echo base_url(); ?>Online';">Online Request
+                                    onclick="window.location.href = '/barangay/Online';">Online Request
                                     Form</button>
                             </div>
                         </div>
