@@ -46,17 +46,23 @@ class OnlineCertificate extends CI_Controller
                 return;
             }
 
-            // Generate the control number
+            // Get the current year
             $year = date('Y');
-            $number = 10000;
-            $control_number = $year . '-' . $number;
-            $check_control_number = $this->OnlineCertificate_model->check_control_number($control_number);
 
-            if ($check_control_number) {
-                // If control number exists, increment it
-                $number++;
-                $control_number = $year . '-' . $number;
+            // Find the highest existing control number for the current year
+            $max_number = $this->OnlineCertificate_model->get_max_control_number($year);
+
+            // If no existing records, start from 10000
+            if (!$max_number) {
+                $new_number = 10000;
+            } else {
+                // Extract the numeric part of the highest control number and increment it
+                $current_number = (int) substr($max_number, 5); // Get the number part after the year (e.g., 10001)
+                $new_number = $current_number + 1;
             }
+
+            // Generate the new control number
+            $control_number = $year . '-' . $new_number;
 
             // Prepare the data for insertion
             $data = array(

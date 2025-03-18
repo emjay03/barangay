@@ -20,13 +20,25 @@ class OnlineCertificate_model extends CI_Model
         return $query->result();  // returning the result as an array of objects
     }
 
-    public function check_control_number($control_number)
+    public function get_max_control_number($year)
     {
-        $this->db->where('control_number', $control_number);
+        // Get the highest control number for the current year
+        $this->db->like('control_number', $year, 'after'); // Match any control number starting with the year
+        $this->db->order_by('control_number', 'DESC'); // Order by control number descending to get the highest number
+        $this->db->limit(1); // Get only one result
         $query = $this->db->get('online_certificate');
-        return $query->num_rows() > 0; // Returns true if the control number exists
+
+        // If a record exists, return the highest control number
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->control_number;
+        }
+
+        // If no records exist, return null
+        return null;
     }
-    
+
+
     public function update_certificate_status($certificate_id, $data)
     {
         $this->db->where('id', $certificate_id);

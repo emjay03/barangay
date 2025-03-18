@@ -158,19 +158,19 @@
                     <div class="container-fluid mt-5 pt-3 pt-lg-5 px-lg-5">
                         <div class="row px-lg-5">
                             <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/OnlineClearance';" id="addresident">Barangay
+                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/barangay/OnlineClearance';" id="addresident">Barangay
                                     Clearance</button>
                             </div>
                             <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/OnlineCertificate';" id="addresident">barangay
+                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/barangay/OnlineCertificate';" id="addresident">barangay
                                     Certificate</button>
                             </div>
                             <div class="col-md-12 col-md-6 col-lg-6 mb-3">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/OnlineIndigency';" id="addresident">barangay
+                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/barangay/OnlineIndigency';" id="addresident">barangay
                                     Indigency</button>
                             </div>
                             <div class="col-md-12 col-md-6 col-lg-6">
-                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/OnlineId';" id="addresident">barangay
+                                <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '/barangay/OnlineId';" id="addresident">barangay
                                     I . D</button>
                             </div>
                         </div>
