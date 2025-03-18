@@ -1,78 +1,53 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Online_Certificate extends CI_Controller
+class Onlinecert extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("Certificate_model");
+        $this->load->model("OnlineCertificate_model");
         $this->load->library("form_validation");
         $this->load->helper("security");
     }
 
-    // Method for displaying all certificates
-    public function all_certificates()
+    // Method for displaying certificates
+    public function index()
     {
-        // Get all certificates from the model
-        $data['certificates'] = $this->Certificate_model->get_all_certificates();
+        // Fetch user session data
+        $user = $this->session->userdata('user_data');
 
-        // Load the view and pass the certificates data
-        $this->load->view('all_certificates', $data);
+        if (!$user) {
+            // Redirect to the authentication page if no user session exists
+            redirect('auth');
+        }
+
+        // Fetch all online certificates
+        $data = [
+            'user' => $user,
+            'certificates' => $this->OnlineCertificate_model->get_all_online_certificates()  // Use the updated method name
+        ];
+
+        // Load the view with the certificates data
+        $this->load->view('admin/online_cert_table', $data);
     }
 
-    // Other methods ...
+    public function update_status_to_done($certificate_id)
+    {
+        $data = array(
+            'status' => 'Done',
+            'updated_at' => date('Y-m-d H:i:s')
+        );
+
+        // Update the status to 'Done'
+        $update_result = $this->OnlineCertificate_model->update_certificate_status($certificate_id, $data);
+
+        if ($update_result) {
+            echo json_encode(array('status' => 'success'));
+        } else {
+            echo json_encode(array('status' => 'error', 'message' => 'Failed to update status.'));
+        }
+    }
+
+    // Other methods for certificate handling...
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Certificates</title>
-</head>
-<body>
-
-    <h1>All Certificates</h1>
-
-    <?php if (!empty($certificates)): ?>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Type</th>
-                    <th>Full Name</th>
-                    <th>Address</th>
-                    <th>Date</th>
-                    <th>Purpose</th>
-                    <th>Birth Date</th>
-                    <th>Place of Birth</th>
-                    <th>Findings</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($certificates as $certificate): ?>
-                    <tr>
-                        <td><?php echo $certificate->id; ?></td>
-                        <td><?php echo $certificate->type; ?></td>
-                        <td><?php echo $certificate->fullname; ?></td>
-                        <td><?php echo $certificate->address; ?></td>
-                        <td><?php echo $certificate->date; ?></td>
-                        <td><?php echo $certificate->purpose; ?></td>
-                        <td><?php echo $certificate->birthdate; ?></td>
-                        <td><?php echo $certificate->placebirth; ?></td>
-                        <td><?php echo $certificate->findings; ?></td>
-                        <td><?php echo $certificate->created_at; ?></td>
-                        <td><?php echo $certificate->updated_at; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No certificates found.</p>
-    <?php endif; ?>
-
-</body>
-</html>

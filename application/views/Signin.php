@@ -176,7 +176,7 @@
                                     <div class="mb-3 form-group">
                                         <label for="email" class="form-label fw-bold"
                                             style="font-size: 14px">Email</label>
-                                        <input type="text" name="email" class="form-control Username"
+                                        <input type="text" name="email" class="form-control Username  rounded-0"
                                             placeholder="Enter your Email"
                                             style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px; border-bottom: 2px solid oklch(0.21 0.006 285.885);"
                                             required>
@@ -185,7 +185,7 @@
                                     <div class="mb-3 form-group position-relative">
                                         <label for="password" class="form-label fw-bold"
                                             style="font-size: 14px">Password</label>
-                                        <input type="password" name="password" class="form-control shadow-lg Password"
+                                        <input type="password" name="password" class="form-control shadow-lg  rounded-0 Password"
                                             placeholder="Enter your password"
                                             style="box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); font-size: 14px; border-bottom: 2px solid oklch(0.21 0.006 285.885);"
                                             required>

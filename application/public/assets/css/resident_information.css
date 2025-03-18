@@ -139,3 +139,61 @@ main {
 .active {
     background-color: white;
 }
+
+#resident-table2_length label {
+    color: oklch(0.75 0.183 55.934);
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+#resident-table2_length select{
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
+}
+
+#resident-table2_filter {
+    color: oklch(0.75 0.183 55.934);
+}
+
+#resident-table2_filter input{
+    border: solid 1px oklch(0.75 0.183 55.934) !important;
+}
+
+#resident-table2_filter input:focus{
+    outline: none !important;
+    box-shadow: 0 0 0 0px oklch(0.75 0.183 55.934) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+#resident-table2_info {
+    color: oklch(0.75 0.183 55.934);
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+#resident-table2_paginate {
+    color: oklch(0.75 0.183 55.934);
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+#resident-table2_previous, #resident-table2_next{    
+    background: oklch(0.75 0.183 55.934) !important;
+    color: white !important;
+    font-size: 14px !important;
+}
+
+#resident-table2_previous:hover, #resident-table2_next:hover{    
+    background: oklch(0.75 0.183 55.934) !important;
+    color: white !important;
+}
+
+#resident-table2_previous.disabled, #resident-table2_next.disabled{    
+    color: oklch(0.75 0.183 55.934) !important;
+    background: transparent !important;
+}
+
+#resident-table2_previous.disabled:hover, #resident-table2_next.disabled:hover{    
+    color: oklch(0.75 0.183 55.934) !important;
+    background: transparent !important;
+}

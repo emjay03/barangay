@@ -42,11 +42,20 @@
       </span>
     </a>
 
-    <a href="#" class="menu-item mx-2 rounded mt-2">
+    <span class="text-light Smenu-item text-start mx-2 mt-2 rounded" data-bs-toggle="collapse" href="#OnlineRequest"
+      role="button" aria-expanded="false" aria-controls="OnlineRequest">
       <i class="bi bi-patch-check-fill"></i>
-      <span class="menu-title">Online Request
-      </span>
-    </a>
+      <span class="menu-title">Online Request</span>
+    </span>
+
+    <div class="collapse mt-2" id="OnlineRequest">
+      <a href="/barangay/OnlineCert" class="menu-item mx-2 rounded mt-2">
+        <i class="bi bi-patch-check-fill"></i>
+        <span class="menu-title">Barangay Certificate
+        </span>
+      </a>
+    </div>
+
   </div>
 
   <?php if (isset($user) && $user->role_id == 1 || $user->role_id == 2): ?>

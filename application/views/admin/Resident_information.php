@@ -20,7 +20,7 @@
                                                 class="bi bi-plus-circle me-2 my-0"></i>Add Resident</button>
                                     </div>
                                 </div>
-                                <div class="mt-5">
+                                <div class="mt-5 mb-3">
                                     <table id="resident-table" class="table table-striped  table-hover p-2"
                                         width="100%">
                                         <thead class="">

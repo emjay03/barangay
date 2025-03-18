@@ -16,6 +16,11 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <style>
         * {
             margin: 0;
@@ -25,7 +30,7 @@
             transition: all 0.3s ease;
         }
 
-        main {
+        .login {
             background-image: url("application/public/background.png");
             background-repeat: no-repeat;
             background-size: cover;
@@ -35,7 +40,7 @@
             isolation: isolate;
         }
 
-        main::before {
+        .login::before {
             content: "";
             position: absolute;
             top: 0;
@@ -47,56 +52,17 @@
             z-index: -1;
         }
 
-        .login::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 60%;
-            height: 60%;
-            clip-path: polygon(0 0, 100% 0, 0 100%);
-            background-color: #FF0000;
-            opacity: 0.3;
-            z-index: -1;
+        .btn-primary {
+            background-color: oklch(0.705 0.213 47.604) !important;
         }
 
-        .login::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 60%;
-            height: 60%;
-            clip-path: polygon(100% 100%, 100% 0, 0 100%);
-            background-color: #095100;
-            opacity: 0.3;
-            z-index: -1;
+        .btn-primary:hover {
+            background-color: oklch(0.646 0.222 41.116) !important;
         }
 
-        .loginContainer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 50%;
-            clip-path: polygon(0 0, 100% 0, 0 100%);
-            background-color: #FF0000;
-            opacity: 0.5;
-            z-index: -1;
-        }
-
-        .loginContainer::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50%;
-            height: 50%;
-            clip-path: polygon(100% 100%, 100% 0, 0 100%);
-            background-color: #095100;
-            opacity: 0.5;
-            z-index: -1;
+        .border-primary {
+            border-color: oklch(0.21 0.006 285.885) !important;
+            border-width: 2px;
         }
 
         .btn-primary {
@@ -106,6 +72,19 @@
         .btn-primary:hover {
             background-color: oklch(0.646 0.222 41.116) !important;
         }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .col-12 input {
+            font-size: 13px;
+        }
+
+        .col-12 select {
+            font-size: 13px;
+        }
     </style>
 </head>
 <!--<img class="rounded-circle me-4" style="z-index: 2"
@@ -113,160 +92,276 @@
                     alt="barangay187" width="100">-->
 
 <body>
-    <main class="bg-light" style="height: 100vh;">
-        <div class="login" style="height: 100%;">
+    <main class="bg-light">
+        <div>
             <div class="loginContainer" style="height: 100%;">
-                <div class="container-fluid ">
-                    <div class="d-block text-center d-block d-lg-none">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
-                                src="application/public/brgy185.jpg" alt="barangay187" width="70">
-                            <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
-                                src="application/public/northcaloocan_logo.png" alt="barangay187" width="70">
+                <div class="container-fluid p-0 pb-1">
+                    <div class="container-fluid login py-5">
+                        <div class="d-block text-center d-block d-lg-none">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
+                                    src="application/public/brgy185.jpg" alt="barangay187" width="70">
+                                <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
+                                    src="application/public/northcaloocan_logo.png" alt="barangay187" width="70">
+                            </div>
+                            <p class="text-light fw-bold mt-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                                BARANGAY 185
+                                MALARIA DISTRICT 3,
+                                CALOOCAN CITY</p>
+                            <p class="text-light fw-light" style="font-size: 12px;">Barangay Information Management
+                                System &copy;
+                                <?php echo date('Y'); ?>
+                            </p>
+
+                            <p class="text-light fw-bold text-uppercase">Online Request Form</p>
+                            <p class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</p>
                         </div>
-                        <p class="text-light fw-bold mt-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                            BARANGAY 185
-                            MALARIA DISTRICT 3,
-                            CALOOCAN CITY</p>
-                        <p class="text-light fw-light" style="font-size: 12px;">Barangay Information Management
-                            System &copy;
-                            <?php echo date('Y'); ?>
-                        </p>
 
-                        <p class="text-light fw-bold text-uppercase">Online Request Form</p>
-                        <p class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</p>
-                    </div>
+                        <div class="d-block text-center d-none d-lg-block">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
+                                    src="application/public/brgy185.jpg" alt="barangay187" width="120">
+                                <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
+                                    src="application/public/northcaloocan_logo.png" alt="barangay187" width="120">
+                            </div>
+                            <h1 class="text-light fw-bold mt-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                                BARANGAY 185
+                                MALARIA DISTRICT 3,
+                                CALOOCAN CITY</h1>
+                            <p class="text-light fw-light" style="font-size: 20px;">Barangay Information Management
+                                System &copy;
+                                <?php echo date('Y'); ?>
+                            </p>
 
-                    <div class="d-block text-center d-none d-lg-block">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
-                                src="application/public/brgy185.jpg" alt="barangay187" width="120">
-                            <img class="rounded-circle mx-3 mt-3 mt-lg-5" style="z-index: 2"
-                                src="application/public/northcaloocan_logo.png" alt="barangay187" width="120">
+                            <h1 class="text-light fw-bold text-uppercase mt-3">Online Request Form</h1>
+                            <h4 class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</h4>
                         </div>
-                        <h1 class="text-light fw-bold mt-3" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                            BARANGAY 185
-                            MALARIA DISTRICT 3,
-                            CALOOCAN CITY</h1>
-                        <p class="text-light fw-light" style="font-size: 20px;">Barangay Information Management
-                            System &copy;
-                            <?php echo date('Y'); ?>
-                        </p>
-
-                        <h1 class="text-light fw-bold text-uppercase mt-5">Online Request Form</h1>
-                        <h4 class="text-light fw-bold text-uppercase mt-2">Barangay Certificate</h4>
                     </div>
-
-                    <h1>Online Certificate Form</h1>
 
                     <!-- Start of the form -->
-                    <?php echo form_open('OnlineCertificate/create_certificate', array('id' => 'certificateForm')); ?>
+                    <div class="d-flex justify-content-center align-items-center mx-2 mt-3 mt-lg-0 mb-3">
+                        <div class="card shadow px-0 p-lg-2 mt-lg-5"
+                            style="border-top: 2px solid oklch(0.705 0.213 47.604); width: 500px;">
+                            <h5 class="card-header">Online Certificate Form</h5>
+                            <div class="card-body">
+                                <form action="" id="certificateForm" method="post">
+                                    <div class="row container-fluid">
+                                        <div class="col-12 mb-3">
+                                            <label for="barangayid"><span class="text-danger">*</span>Barangay I.D #
+                                                :</label>
+                                            <input type="text" name="barangayid" required
+                                                class="form-control text-capitalize rounded-0 border-primary border-top-0 border-end-0 border-start-0"
+                                                id="barangayid" value="<?php echo set_value('barangayid'); ?>"
+                                                placeholder="Enter Barangay I.D #" />
+                                            <?php echo form_error('barangayid'); ?>
+                                        </div>
 
-                    <div class="d-none">
-                        <label for="type">Type:</label>
-                        <input type="hidden" name="type" id="type" value="Certificate" />
-                        <?php echo form_error('type'); ?>
+                                        <div id="nextStep" class="col-12 d-none">
+                                            <div class="col-12 mb-3">
+                                                <label for="certificatePurpose" class="form-label"><span
+                                                        class="text-danger">*</span>Purpose : </label>
+                                                <input type="hidden" id="certificatePurpose" name="purpose" required />
+                                                <select class="form-control text-capitalize" id="certificatePurpose1"
+                                                    required
+                                                    onchange="document.getElementById('certificatePurpose').value=this.value">
+                                                    <option value="">Select purpose</option>
+                                                    <option value="Proof of residency">Proof of residency</option>
+                                                    <option value="Proof of good moral character">Proof of good moral
+                                                        character
+                                                    </option>
+                                                    <option value="Job application">Job application</option>
+                                                    <option value="Business permits">Business permits</option>
+                                                    <option value="Loan applications">Loan applications</option>
+                                                    <option value="Government-related Processes">Government-related
+                                                        Processes
+                                                    </option>
+                                                    <option value="Scholarship">Scholarship</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                                <input type="text" class="form-control text-capitalize mt-2"
+                                                    id="certificatePurposeOthers" disabled>
+                                                <small class="form-text text-muted">Specify : </small>
+                                                <script>
+                                                    const selectPurpose2 = document.getElementById('certificatePurpose1');
+                                                    const inputPurpose2 = document.getElementById('certificatePurposeOthers');
+                                                    selectPurpose2.addEventListener('change', function () {
+                                                        if (this.value === 'Others') {
+                                                            inputPurpose2.disabled = false;
+                                                            inputPurpose2.required = true;
+                                                            document.getElementById('certificatePurpose').value = '';
+                                                        } else {
+                                                            inputPurpose2.disabled = true;
+                                                            inputPurpose2.required = false;
+                                                            inputPurpose2.value = '';
+                                                        }
+                                                    });
+                                                    inputPurpose2.addEventListener('input', function () {
+                                                        if (!inputPurpose2.disabled) {
+                                                            document.getElementById('certificatePurpose').value = inputPurpose2.value;
+                                                        }
+                                                    });
+                                                </script>
+                                            </div>
+
+                                            <div class="col-12 d-none">
+                                                <label for="type"><span class="text-danger">*</span>Type:</label>
+                                                <input type="hidden" name="type" id="type" value="Certificate" />
+                                                <?php echo form_error('type'); ?>
+                                            </div>
+
+                                            <div class="col-12 d-none">
+                                                <label for="status"><span class="text-danger">*</span>Status:</label>
+                                                <input type="hidden" name="status" id="status" value="pending" />
+                                                <?php echo form_error('status'); ?>
+                                            </div>
+
+                                            <div class="col-12 mb-3">
+                                                <label for="fullname"><span class="text-danger">*</span>Fullname
+                                                    :</label>
+                                                <input type="text" name="fullname" required readonly
+                                                    class="form-control text-capitalize rounded-0 border-primary border-top-0 border-end-0 border-start-0"
+                                                    id="fullname" value="<?php echo set_value('fullname'); ?>"
+                                                    placeholder="Enter Fullname" />
+                                                <?php echo form_error('fullname'); ?>
+                                            </div>
+
+                                            <div class="col-12 mb-3">
+                                                <label for="address"><span class="text-danger">*</span>Input Current
+                                                    Address:</label>
+                                                <input type="text" name="address" id="address" required readonly
+                                                    class="form-control text-capitalize rounded-0 border-primary border-top-0 border-end-0 border-start-0"
+                                                    value="<?php echo set_value('address'); ?>" />
+                                                <?php echo form_error('address'); ?>
+                                            </div>
+
+                                            <div class="col-12 mb-3">
+                                                <label for="date"><span class="text-danger">*</span>Date:</label>
+                                                <input type="date" name="date" id="date" readonly required
+                                                    class="form-control text-capitalize rounded-0 border-primary border-top-0 border-end-0 border-start-0"
+                                                    value="<?php echo date('Y-m-d'); ?>" />
+                                                <?php echo form_error('date'); ?>
+                                            </div>
+
+                                            <div class="col-12 mt-3">
+                                                <button
+                                                    class="btn btn-primary w-100 px-5 border-0 text-center text-light fw-normal"
+                                                    type="submit">
+                                                    Submit Certificate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="d-none">
-                        <label for="status">Status:</label>
-                        <input type="hidden" name="status" id="status" value="pending" />
-                        <?php echo form_error('status'); ?>
-                    </div>
 
-                    <div>
-                        <label for="fullname">Fullname:</label>
-                        <input type="text" name="fullname" id="fullname" value="<?php echo set_value('fullname'); ?>" />
-                        <?php echo form_error('fullname'); ?>
-                    </div>
-
-                    <div>
-                        <label for="address">Address:</label>
-                        <input type="text" name="address" id="address" value="<?php echo set_value('address'); ?>" />
-                        <?php echo form_error('address'); ?>
-                    </div>
-
-                    <div>
-                        <label for="purpose">Purpose:</label>
-                        <input type="text" name="purpose" id="purpose" value="<?php echo set_value('purpose'); ?>" />
-                        <?php echo form_error('purpose'); ?>
-                    </div>
-
-                    <div>
-                        <label for="date">Date:</label>
-                        <input type="date" name="date" id="date" value="<?php echo set_value('date'); ?>" />
-                        <?php echo form_error('date'); ?>
-                    </div>
-
-                    <div>
-                        <label for="birthdate">Birthdate:</label>
-                        <input type="date" name="birthdate" id="birthdate"
-                            value="<?php echo set_value('birthdate'); ?>" />
-                        <?php echo form_error('birthdate'); ?>
-                    </div>
-
-                    <div>
-                        <label for="placebirth">Place of Birth:</label>
-                        <input type="text" name="placebirth" id="placebirth"
-                            value="<?php echo set_value('placebirth'); ?>" />
-                        <?php echo form_error('placebirth'); ?>
-                    </div>
-
-                    <div class="d-none">
-                        <label for="findings">Findings:</label>
-                        <input type="hidden" name="findings" id="findings" value="" />
-                        <?php echo form_error('findings'); ?>
-                    </div>
-
-                    <div>
-                        <button type="submit">Submit Certificate</button>
-                    </div>
-
-                    <?php echo form_close(); ?>
                     <!-- End of the form -->
 
-                    <!-- Success Modal -->
-                    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                    <!-- Success/Error Modal -->
+                    <div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="successModalLabel">Request Submitted Successfully</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="responseModalLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Your request has been submitted successfully.</p>
-                                    <p><strong>Fullname:</strong> <span id="modalFullname"></span></p>
-                                    <p><strong>Type:</strong> <span id="modalType"></span></p>
-                                    <p>Please screenshot this information before closing.</p>
+                                    <p id="modalMessage"></p>
+                                    <p id="modalDetails"></p>
+                                    <p id="screenshotMessage"></p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        onclick="window.location.reload();">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <script>
-                        $('#certificateForm').on('submit', function(e) {
-                            e.preventDefault();
-                            // Assuming AJAX submission here for demonstration
+                        document.getElementById('barangayid').addEventListener('keyup', function (event) {
+                            if (event.key === 'Enter') {
+                                var barangayid = this.value;
+
+                                if (barangayid.length > 0) {
+                                    // Make an AJAX request to fetch fullname and address based on barangayid
+                                    fetch('<?php echo site_url("OnlineCertificate/fetch_fullname_by_barangayid"); ?>?barangayid=' + barangayid)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.status === 'success') {
+                                                // Populate the fullname field with the received first, middle, last name and suffix
+                                                document.getElementById('fullname').value = data.firstname + ' ' + data.middlename + ' ' + data.lastname + ' ' + data.suffix;
+
+                                                // Populate the address field with the received address
+                                                document.getElementById('address').value = data.address;
+
+                                                // Show the next step button
+                                                document.getElementById('nextStep').classList.remove('d-none');
+                                            } else {
+                                                // Handle the case where barangayid is not found
+                                                alert(data.message);
+                                                document.getElementById('fullname').value = '';
+                                                document.getElementById('address').value = '';
+                                                document.getElementById('nextStep').classList.add('d-none');
+                                            }
+                                        })
+                                        .catch(error => console.error('Error:', error));
+                                } else {
+                                    // If barangayid is empty, clear the fullname and address fields
+                                    document.getElementById('fullname').value = '';
+                                    document.getElementById('address').value = '';
+                                    document.getElementById('nextStep').classList.add('d-none');
+                                }
+                            }
+                        });
+
+                        $('#certificateForm').on('submit', function (e) {
+                            e.preventDefault();  // Prevent normal form submission
+
+                            // Hide the modal initially (optional)
+                            $('#responseModal').modal('hide');
+
+                            // Make the AJAX request
                             $.ajax({
-                                url: '<?php echo base_url(); ?>OnlineCertificate/create_certificate',
+                                url: '<?php echo base_url(); ?>OnlineCertificate/create_certificate',  // Controller URL
                                 type: 'POST',
-                                data: $(this).serialize(),
-                                success: function(response) {
-                                    // Assuming the response contains the status
+                                data: $(this).serialize(),  // Serialize form data
+                                dataType: 'json',  // Expecting JSON response
+                                success: function (response) {
+                                    console.log(response);  // Add this line to check the response in the console
+
+                                    // Check if the response is successful
                                     if (response.status === 'success') {
-                                        $('#modalFullname').text($('#fullname').val());
-                                        $('#modalType').text($('#type').val());
-                                        $('#successModal').modal('show');
+                                        // Success: Show success modal
+                                        $('#responseModalLabel').text('Request Submitted Successfully');
+                                        $('#modalMessage').text('Your certificate request has been submitted successfully.');
+                                        $('#modalDetails').html('<strong>Fullname:</strong> ' + $('#fullname').val() + '<br><strong>Type:</strong> ' + $('#type').val());
+                                        $('#screenshotMessage').text('Please screenshot this information before closing.');
+                                        $('#responseModal').modal('show');
+                                    } else {
+                                        // Error: Show error modal with the message
+                                        $('#responseModalLabel').text('Error');
+                                        $('#modalMessage').text(response.message || 'An error occurred while submitting the form.');
+                                        $('#modalDetails').empty();
+                                        $('#responseModal').modal('show');
                                     }
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    // Handle AJAX request error
+                                    $('#responseModalLabel').text('Error');
+                                    $('#modalMessage').text('There was an issue submitting your request. Please try again later.');
+                                    $('#modalDetails').empty();
+                                    $('#responseModal').modal('show');
                                 }
                             });
                         });
                     </script>
+                </div>
             </div>
-        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
