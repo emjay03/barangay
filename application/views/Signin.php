@@ -151,7 +151,7 @@
                                 <h3 class="fw-bold ">Signin</h3>
                                 <p class="fw-semibold">Signin to start your session</p>
 
-                                <form action="<?php echo site_url('auth/login'); ?>" method="post"
+                                <form action="auth/login" method="post"
                                     class="p-3 rounded-3">
                                     <div class="row">
                                         <!-- Success Message -->
