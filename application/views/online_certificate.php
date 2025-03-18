@@ -274,7 +274,7 @@
                                     <p id="modalDetails"></p>
                                     
                                     <p id="controlNumber" class="fw-bold fs-1 my-3"></p>
-                                    
+
                                     <p id="screenshotMessage" class="fw-semibold"></p>
                                 </div>
                                 <div class="modal-footer">
@@ -295,7 +295,7 @@
 
                                 if (barangayid.length > 0) {
                                     // Make an AJAX request to fetch fullname and address based on barangayid
-                                    fetch('<?php echo site_url("OnlineCertificate/fetch_fullname_by_barangayid"); ?>?barangayid=' + barangayid)
+                                    fetch('"/OnlineCertificate/fetch_fullname_by_barangayid?barangayid=' + barangayid)
                                         .then(response => response.json())
                                         .then(data => {
                                             if (data.status === 'success') {
@@ -333,7 +333,7 @@
 
                             // Make the AJAX request
                             $.ajax({
-                                url: '<?php echo base_url(); ?>OnlineCertificate/create_certificate',  // Controller URL
+                                url: '/OnlineCertificate/create_certificate',  // Controller URL
                                 type: 'POST',
                                 data: $(this).serialize(),  // Serialize form data
                                 dataType: 'json',  // Expecting JSON response
