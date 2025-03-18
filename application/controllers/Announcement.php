@@ -39,21 +39,6 @@ class Announcement extends CI_Controller
         $this->load->view('admin/dashboard', array_merge($data, ['user' => $user]));
     }
 
-    // View a specific announcement
-    public function view($id)
-    {
-        // Get announcement by ID
-        $data['announcement'] = $this->Announcement_model->get_announcement_by_id($id);
-
-        // Check if the announcement exists
-        if (empty($data['announcement'])) {
-            show_404(); // Show 404 if announcement is not found
-        }
-
-        // Pass the data to the view
-        $this->load->view('admin/announcement_view', $data);
-    }
-
     // Create a new announcement
     public function create()
     {
@@ -72,7 +57,7 @@ class Announcement extends CI_Controller
         }
 
         // Load the view for creating a new announcement
-        $this->load->view('admin/create_announcement');
+        $this->load->view('admin/dashboard');
     }
 
     // Update an existing announcement
@@ -101,7 +86,7 @@ class Announcement extends CI_Controller
         }
 
         // Load the edit view
-        $this->load->view('admin/edit_announcement', $data);
+        $this->load->view('admin/dashboard', $data);
     }
 
     // Delete an announcement
@@ -111,7 +96,7 @@ class Announcement extends CI_Controller
         $this->Announcement_model->delete_announcement($id);
 
         // Redirect to the announcements list
-        redirect('announcement');
+        redirect('dashboard');
     }
 }
 ?>

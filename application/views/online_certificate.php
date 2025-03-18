@@ -307,6 +307,8 @@
 
                                                 // Show the next step button
                                                 document.getElementById('nextStep').classList.remove('d-none');
+
+                                                document.getElementById('barangayid').readOnly = true;
                                             } else {
                                                 // Handle the case where barangayid is not found
                                                 alert(data.message);
