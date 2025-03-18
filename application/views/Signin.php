@@ -207,8 +207,8 @@
                                         <input type="submit" value="Sign in"
                                             class="btn btn-primary w-100 px-5 border-0 text-center text-light fw-normal"
                                             style="font-size: 14px;">
-                                        <button class="btn btn-info btn-sm w-100 px-5 border-0 text-center text-light fw-normal mt-2 block d-md-none"
-                                            onclick="window.location.href = '<?php echo base_url(); ?>Online';">Online
+                                        <button class="btn btn-info btn-sm w-100 px-5 border-0 text-center text-light fw-normal mt-2 block d-md-none py-2"
+                                            onclick="window.location.href = 'Online';">Online
                                             Request
                                             Form</button>
                                     </div>
