@@ -8,10 +8,8 @@ class Resident_model extends CI_Model
         $this->load->database();
     }
 
-
     public function create_resident($data)
     {
-
         return $this->db->insert('resident_infos', $data);
     }
 

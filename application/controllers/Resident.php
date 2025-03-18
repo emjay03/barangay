@@ -2,7 +2,6 @@
 
 class Resident extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -16,243 +15,183 @@ class Resident extends CI_Controller
         $data['all_resident'] = $this->Resident_model->get_all_resident();
 
         $user = $this->session->userdata('user_data');
-
-        if (!$user) {
+        if (! $user) {
             redirect('auth');
         }
+
         $this->load->view('admin/Resident_information', array_merge($data, ['user' => $user]));
     }
 
     public function create_resident()
     {
-        // Set validation rules
-        $this->form_validation->set_rules('lastname', 'Lastname', 'required');
-        $this->form_validation->set_rules('firstname', 'Firstname', 'required');
-        // Add the rest of your validation rules...
+        // Validation rules for the form fields
+        $this->form_validation->set_rules('barangayid', 'Barangay Id', 'required|numeric');
+        $this->form_validation->set_rules('lastname', 'Lastname', 'required|max_length[100]');
+        $this->form_validation->set_rules('firstname', 'Firstname', 'required|max_length[100]');
+        $this->form_validation->set_rules('middlename', 'Middlename', 'max_length[100]');
+        $this->form_validation->set_rules('suffix', 'Suffix', 'max_length[50]');
+        $this->form_validation->set_rules('lifestatus', 'Life Status', 'max_length[50]');
+        $this->form_validation->set_rules('pwd', 'PWD Status', 'max_length[50]');
+        $this->form_validation->set_rules('birthday', 'Birthday', 'required|valid_date');
+        $this->form_validation->set_rules('age', 'Age', 'required|numeric');
+        $this->form_validation->set_rules('gender', 'Gender', 'required|in_list[Male,Female]');
+        $this->form_validation->set_rules('civilstatus', 'Civil Status', 'required|max_length[50]');
+        $this->form_validation->set_rules('religion', 'Religion', 'max_length[100]');
+        $this->form_validation->set_rules('voterstatus', 'Voter Status', 'max_length[50]');
+        $this->form_validation->set_rules('occupation', 'Occupation', 'max_length[100]');
+        $this->form_validation->set_rules('birth_of_place', 'Place of Birth', 'max_length[255]');
+        $this->form_validation->set_rules('citizenship', 'Citizenship', 'max_length[100]');
+        $this->form_validation->set_rules('telephone_no', 'Telephone No', 'max_length[20]');
+        $this->form_validation->set_rules('mobile_no', 'Mobile No', 'required|max_length[20]');
+        $this->form_validation->set_rules('height', 'Height', 'numeric');
+        $this->form_validation->set_rules('weight', 'Weight', 'numeric');
+        $this->form_validation->set_rules('email', 'Email', 'valid_email|max_length[255]');
+        $this->form_validation->set_rules('spouse', 'Spouse', 'max_length[100]');
+        $this->form_validation->set_rules('father', 'Father', 'max_length[100]');
+        $this->form_validation->set_rules('mother', 'Mother', 'max_length[100]');
+        $this->form_validation->set_rules('area', 'Area', 'max_length[255]');
+        $this->form_validation->set_rules('building_house_number', 'Building/House No', 'max_length[100]');
+        $this->form_validation->set_rules('street', 'Street', 'max_length[100]');
+        $this->form_validation->set_rules('purok', 'Purok', 'max_length[50]');
+        $this->form_validation->set_rules('subdivision', 'Subdivision', 'max_length[100]');
+        $this->form_validation->set_rules('barangay', 'Barangay', 'max_length[100]');
+        $this->form_validation->set_rules('zone', 'Zone', 'max_length[50]');
+        $this->form_validation->set_rules('district', 'District', 'max_length[50]');
+        $this->form_validation->set_rules('municipality', 'Municipality', 'max_length[100]');
+        $this->form_validation->set_rules('region', 'Region', 'max_length[100]');
 
         // Check if the form validation is successful
-        if ($this->form_validation->run() === FALSE) {
-            echo json_encode(array('status' => false, 'msg' => validation_errors()));
-        } else {
-            // Prepare the data for insertion
-            $data = array(
-                'barangayid' => $this->input->post('barangayid'),
-                'lastname' => $this->input->post('lastname'),
-                'firstname' => $this->input->post('firstname'),
-                'middlename' => $this->input->post('middlename'),
-                'alias' => $this->input->post('alias'),
-                'birthday' => $this->input->post('birthday'),
-                'age' => $this->input->post('age'),
-                'gender' => $this->input->post('gender'),
-                'civilstatus' => $this->input->post('civilstatus'),
-                'voterstatus' => $this->input->post('voterstatus'),
-                'birth_of_place' => $this->input->post('birth_of_place'),
-                'citizenship' => $this->input->post('citizenship'),
-                'telephone_no' => $this->input->post('telephone_no'),
-                'mobile_no' => $this->input->post('mobile_no'),
-                'height' => $this->input->post('height'),
-                'weight' => $this->input->post('weight'),
-                'email' => $this->input->post('email'),
-                'spouse' => $this->input->post('spouse'),
-                'father' => $this->input->post('father'),
-                'mother' => $this->input->post('mother'),
-                'area' => $this->input->post('area'),
-                'address_1' => $this->input->post('address_1'),
-            );
+        if ($this->form_validation->run() === false) {
+            // Return the validation errors
+            echo json_encode(['status' => 'error', 'message' => validation_errors()]);
+            return;
+        }
 
-            // Insert into the database using the model
-            if ($this->Resident_model->create_resident($data)) {
-                echo json_encode(array('status' => 'success', 'message' => 'Resident added successfully.'));
-            } else {
-                echo json_encode(array('status' => 'error', 'message' => 'Failed to add resident.'));
-            }
+        // Sanitize input data
+        $data = array(
+            'barangayid'            => $this->input->post('barangayid'),
+            'lastname'              => $this->input->post('lastname'),
+            'firstname'             => $this->input->post('firstname'),
+            'middlename'            => $this->input->post('middlename'),
+            'suffix'                => $this->input->post('suffix'),
+            'lifestatus'            => $this->input->post('lifestatus'),
+            'pwd'                   => $this->input->post('pwd'),
+            'birthday'              => $this->input->post('birthday'),
+            'age'                   => $this->input->post('age'),
+            'gender'                => $this->input->post('gender'),
+            'civilstatus'           => $this->input->post('civilstatus'),
+            'religion'              => $this->input->post('religion'),
+            'voterstatus'           => $this->input->post('voterstatus'),
+            'occupation'            => $this->input->post('occupation'),
+            'birth_of_place'        => $this->input->post('birth_of_place'),
+            'citizenship'           => $this->input->post('citizenship'),
+            'telephone_no'          => $this->input->post('telephone_no'),
+            'mobile_no'             => $this->input->post('mobile_no'),
+            'height'                => $this->input->post('height'),
+            'weight'                => $this->input->post('weight'),
+            'email'                 => $this->input->post('email'),
+            'spouse'                => $this->input->post('spouse'),
+            'father'                => $this->input->post('father'),
+            'mother'                => $this->input->post('mother'),
+            'area'                  => $this->input->post('area'),
+            'building_house_number' => $this->input->post('building_house_number'),
+            'street'                => $this->input->post('street'),
+            'purok'                 => $this->input->post('purok'),
+            'subdivision'           => $this->input->post('subdivision'),
+            'barangay'              => $this->input->post('barangay'),
+            'zone'                  => $this->input->post('zone'),
+            'district'              => $this->input->post('district'),
+            'municipality'          => $this->input->post('municipality'),
+            'region'                => $this->input->post('region'),
+            'date_registered'       => date('Y-m-d H:i:s'),
+            'status'                => 'active',
+            'created_at'            => date('Y-m-d H:i:s'),
+            'updated_at'            => date('Y-m-d H:i:s'),
+        );
+
+        // Insert data into the database using the model
+        if ($this->Resident_model->create_resident($data)) {
+            echo json_encode(['status' => 'success', 'message' => 'Resident added successfully.']);
+            return  ;
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to add resident.']);
         }
     }
 
-
     public function update_resident($id)
     {
-
-        $this->form_validation->set_rules('barangayid', 'Barangayid', 'required');
         $this->form_validation->set_rules('lastname', 'Lastname', 'required');
         $this->form_validation->set_rules('firstname', 'Firstname', 'required');
-        $this->form_validation->set_rules('middlename', 'Middlename', 'required');
-        $this->form_validation->set_rules('alias', 'Alias', 'required');
-        $this->form_validation->set_rules('birthday', 'Birthday', 'required');
-        $this->form_validation->set_rules('age', 'Age', 'required');
-        $this->form_validation->set_rules('gender', 'Gender', 'required');
-        $this->form_validation->set_rules('civilstatus', 'Civil Status', 'required');
-        $this->form_validation->set_rules('voterstatus', 'Voter Status', 'required');
-        $this->form_validation->set_rules('birth_of_place', 'Birth of Place', 'required');
-        $this->form_validation->set_rules('citizenship', 'Citizenship', 'required');
-        $this->form_validation->set_rules('telephone_no', 'Telephone No', 'required');
-        $this->form_validation->set_rules('mobile_no', 'Mobile No', 'required');
-        $this->form_validation->set_rules('height', 'Height', 'required');
-        $this->form_validation->set_rules('weight', 'Weight', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('spouse', 'Spouse', 'required');
-        $this->form_validation->set_rules('father', 'Father', 'required');
-        $this->form_validation->set_rules('mother', 'Mother', 'required');
-        $this->form_validation->set_rules('area', 'Area', 'required');
-        $this->form_validation->set_rules('address_1', 'Address 1', 'required');
-
+        // Add all other validation rules...
 
         // Validate the input
-        if ($this->form_validation->run() === FALSE) {
-            // Return validation errors as JSON
-            echo json_encode([
-                'status' => false,
-                'msg' => validation_errors()
-            ]);
+        if ($this->form_validation->run() === false) {
+            echo json_encode(['status' => false, 'msg' => validation_errors()]);
         } else {
-
             $data = [
-                'barangayid' => $this->input->post('barangayid'),
-                'lastname' => $this->input->post('lastname'),
-                'firstname' => $this->input->post('firstname'),
-                'middlename' => $this->input->post('middlename'),
-                'alias' => $this->input->post('alias'),
-                'birthday' => $this->input->post('birthday'),
-                'age' => $this->input->post('age'),
-                'gender' => $this->input->post('gender'),
-                'civilstatus' => $this->input->post('civilstatus'),
-                'voterstatus' => $this->input->post('voterstatus'),
-                'birth_of_place' => $this->input->post('birth_of_place'),
-                'citizenship' => $this->input->post('citizenship'),
-                'telephone_no' => $this->input->post('telephone_no'),
-                'mobile_no' => $this->input->post('mobile_no'),
-                'height' => $this->input->post('height'),
-                'weight' => $this->input->post('weight'),
-                'email' => $this->input->post('email'),
-                'spouse' => $this->input->post('spouse'),
-                'father' => $this->input->post('father'),
-                'mother' => $this->input->post('mother'),
-                'area' => $this->input->post('area'),
-                'address_1' => $this->input->post('address_1'),
-
+                'barangayid'            => $this->input->post('barangayid'),
+                'lastname'              => $this->input->post('lastname'),
+                'firstname'             => $this->input->post('firstname'),
+                'middlename'            => $this->input->post('middlename'),
+                'suffix'                => $this->input->post('suffix'),
+                'lifestatus'            => $this->input->post('lifestatus'),
+                'pwd'                   => $this->input->post('pwd'),
+                'birthday'              => $this->input->post('birthday'),
+                'age'                   => $this->input->post('age'),
+                'gender'                => $this->input->post('gender'),
+                'civilstatus'           => $this->input->post('civilstatus'),
+                'voterstatus'           => $this->input->post('voterstatus'),
+                'birth_of_place'        => $this->input->post('birth_of_place'),
+                'citizenship'           => $this->input->post('citizenship'),
+                'telephone_no'          => $this->input->post('telephone_no'),
+                'mobile_no'             => $this->input->post('mobile_no'),
+                'height'                => $this->input->post('height'),
+                'weight'                => $this->input->post('weight'),
+                'email'                 => $this->input->post('email'),
+                'spouse'                => $this->input->post('spouse'),
+                'father'                => $this->input->post('father'),
+                'mother'                => $this->input->post('mother'),
+                'area'                  => $this->input->post('area'),
+                'building_house_number' => $this->input->post('building_house_number'),
+                'street'                => $this->input->post('street'),
+                'purok'                 => $this->input->post('purok'),
+                'subdivision'           => $this->input->post('subdivision'),
+                'barangay'              => $this->input->post('barangay'),
+                'zone'                  => $this->input->post('zone'),
+                'district'              => $this->input->post('district'),
+                'municipality'          => $this->input->post('municipality'),
+                'region'                => $this->input->post('region'),
             ];
 
-
             if ($this->Resident_model->update_resident($data, $id)) {
-
-                echo json_encode([
-                    'status' => 'success',
-                    'message' => 'Resident updated successfully.'
-                ]);
+                echo json_encode(['status' => 'success', 'message' => 'Resident updated successfully.']);
             } else {
-
-                echo json_encode([
-                    'status' => 'error',
-                    'message' => 'Failed to update resident. Please check the data and try again.'
-                ]);
+                echo json_encode(['status' => 'error', 'message' => 'Failed to update resident.']);
             }
         }
     }
 
     public function archive_resident($id)
     {
-
-        $data = [
-            'status' => '1',
-
-        ];
-
+        $data = ['status' => 'archived'];
 
         if ($this->Resident_model->archive_resident($data, $id)) {
-            // Return success response as JSON
-            echo json_encode([
-                'status' => 'success',
-                'message' => 'Resident archived successfully.'
-            ]);
+            echo json_encode(['status' => 'success', 'message' => 'Resident archived successfully.']);
         } else {
-
-            echo json_encode([
-                'status' => 'error',
-                'message' => 'Failed to archive resident. Please try again.'
-            ]);
+            echo json_encode(['status' => 'error', 'message' => 'Failed to archive resident.']);
         }
     }
-
-    public function list()
-    {
-        $resident = $this->Resident_model->get_all_resident();
-
-        $response = [
-            'status' => true,
-            'data' => $resident
-        ];
-
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($response));
-    }
-
-    public function list_senior()
-    {
-        $resident = $this->Resident_model->get_residents_age_60_above();
-
-        $response = [
-            'status' => true,
-            'data' => $resident
-        ];
-
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($response));
-    }
-
-    public function list_female()
-    {
-        $resident = $this->Resident_model->get_female_residents();
-
-        $response = [
-            'status' => true,
-            'data' => $resident
-        ];
-
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($response));
-    }
-
-    public function list_male()
-    {
-        $resident = $this->Resident_model->get_male_residents();
-
-        $response = [
-            'status' => true,
-            'data' => $resident
-        ];
-
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($response));
-    }
-    public function resident_count()
-    {
-        $resident = $this->Resident_model->get_all_resident_count();
-
-        $response = [
-            'status' => true,
-            'data' => $resident
-        ];
-
-        return $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($response));
-    }
-
 
     public function voters_registered()
     {
         $registered = $this->Resident_model->get_all_registered_voter();
-
-        $registered = [
-            'status' > true,
-            'data' => $registered
+        $response   = [
+            'status' => true,
+            'data'   => $registered,
         ];
+
         return $this->output
             ->set_content_type('application/json')
-            ->set_output(json_encode($registered));
+            ->set_output(json_encode($response));
     }
 }
