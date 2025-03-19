@@ -1,6 +1,9 @@
-<IfModule authz_core_module>
-    Require all granted
-</IfModule>
-<IfModule !authz_core_module>
-    allow from all
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect to the index.php file if the URL does not contain it
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
