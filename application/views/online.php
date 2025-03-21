@@ -171,7 +171,7 @@
                             </div>
                             <div class="col-md-12 col-md-6 col-lg-6">
                                 <button class="btn btn-primary btn-sm w-100 py-md-3 py-lg-3 py-xl-4 py-2 fw-semibold border-0" onclick="window.location.href = '<?php echo base_url(); ?>OnlineId';" id="addresident">barangay
-                                    I . D</button>
+                                    I.D.</button>
                             </div>
                         </div>
                     </div>

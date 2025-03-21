@@ -36,7 +36,7 @@
   </span>
 
   <div class="collapse mt-2" id="certificate">
-    <a href="<?php echo site_url('/walkin'); ?>" class="menu-item mx-2 rounded">
+    <a href="<?php echo site_url('/Certificate'); ?>" class="menu-item mx-2 rounded">
       <i class="bi bi-patch-check-fill"></i>
       <span class="menu-title">Walk-in Certificate
       </span>

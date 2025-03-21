@@ -18,7 +18,7 @@ class OnlineCertificate extends CI_Controller
         $this->load->view('online_certificate');
     }
 
-    public function create_certificate()
+    public function create_clearance()
     {
         // Set validation rules
         $this->form_validation->set_rules('type', 'Type', 'required');
